@@ -2,4 +2,4 @@
 
 namespace Arse\Bandit;
 
-echo "qqqqqqqqqqqqqA"rseBaditooooooooooooooooooooooooooooooooooooooo";
+echo "qqqqqqqqqqqqqArseBaditooooooooooooooooooooooooooooooooooooooo";
