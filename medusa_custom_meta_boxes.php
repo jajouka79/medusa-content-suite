@@ -19,6 +19,16 @@ Author URI: http://www.medusamediacreations.co.uk
 
 
 
+use Codecourse\Repositories\UserRepository as UserRepository;
+use Codecourse\Filters\AuthFilter as AuthFilter;
+
+require_once __DIR__ . 'vendor/autoload.php'; 
+
+//$user = new UserRepository();
+
+$authFilter = new AuthFilter();
+
+
 
 
 /*
