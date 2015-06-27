@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1f533f0c2867a226990f337b8bf96127",
+    "hash": "dbc5b54432e291958088ba1fd67b6732",
     "packages": [
         {
             "name": "WebDevStudios/cmb2-attached-posts",
@@ -137,6 +137,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mustardBees/cmb_field_map",
+                "reference": "origin/master"
+            },
+            "type": "library"
+        },
+        {
+            "name": "wpplex/wp-options",
+            "version": "1.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wpplex/wp-options",
                 "reference": "origin/master"
             },
             "type": "library"

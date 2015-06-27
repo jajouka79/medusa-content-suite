@@ -17,7 +17,18 @@
         }
     ],
 	"repositories": [ 
-
+	    {
+	      "type": "package",
+	      "package": {
+	          "name": "wpplex/wp-options",
+	          "version": "1.8.1",
+	          "source": {
+	              "url": "https://github.com/wpplex/wp-options",
+	              "type": "git",
+	              "reference": "origin/master"
+	          }
+	      }
+	    },
 		{
 		  "type": "package",
 		  "package": {
@@ -73,7 +84,8 @@
 	    "mustardBees/cmb-field-select2": "2.0.4",
 	    "mustardBees/cmb_field_map": "2.1.1",
 	    "mustardBees/cmb-field-gallery": "2.0.2",
-	    "WebDevStudios/cmb2-attached-posts": "1.2.2"
+	    "WebDevStudios/cmb2-attached-posts": "1.2.2",
+        "wpplex/wp-options": "1.8.1"
     },
     "extra" : {
         "installer-name" : "plugin-name"
@@ -82,5 +94,8 @@
     "support": {
         "issues": "https://github.com/vendor/plugin-name/issues",
         "source": "https://github.com/vendor/plugin-name/pods-frontier-auto-template"
-    }
+    },
+	"autoload": {
+		"psr-4": {"Arse\\Bandit\\": "lib-test"}
+	}
 }
