@@ -96,6 +96,6 @@
         "source": "https://github.com/vendor/plugin-name/pods-frontier-auto-template"
     },
 	"autoload": {
-		"psr-4": {"Arse\\Bandit\\": "lib-test"}
+		"psr-4": {"Codecourse\\": "lib-test/Codecourse"}
 	}
 }
