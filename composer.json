@@ -16,7 +16,12 @@
             "role" : "Developer"
         }
     ],
+    "minimum-stability": "dev",
 	"repositories": [ 
+	    {
+	      "type": "vcs",
+	      "url": "/var/www/medusa_custom_meta_boxes"
+	    },
 	    {
 	      "type": "package",
 	      "package": {

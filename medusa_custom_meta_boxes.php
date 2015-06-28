@@ -28,9 +28,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $authFilter = new AuthFilter();
 
-
-
-
 /*
 lines 47, 633, 625 - needs activating
 cmb2 plugin needs setting up
