@@ -6,6 +6,6 @@ class AuthFilter
 {
 	public function __construct()
 	{
-		die("authfilter");
+		print("authfilter");
 	}
 }
