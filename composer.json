@@ -1,5 +1,5 @@
 {
-    "name" : "medusa/meta-boxes",
+    "name" : "jajouka/medusa_custom_meta_boxes",
     "description" : "Medusa meta plugin.",
     "type" : "wordpress-plugin",
     "keywords" : [ "wordpress" ],
@@ -18,10 +18,6 @@
     ],
     "minimum-stability": "dev",
 	"repositories": [ 
-	    {
-	      "type": "vcs",
-	      "url": "/var/www/medusa_custom_meta_boxes"
-	    },
 	    {
 	      "type": "package",
 	      "package": {
