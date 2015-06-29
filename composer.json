@@ -16,7 +16,6 @@
             "role" : "Developer"
         }
     ],
-    "minimum-stability": "dev",
 	"repositories": [ 
 	    {
 	      "type": "package",
