@@ -72,7 +72,6 @@
         "php" : ">=5.3",
 	    "mustardBees/cmb-field-select2": "2.0.4",
 	    "mustardBees/cmb_field_map": "2.1.1",
-	    "mustardBees/cmb-field-gallery": "2.0.2",
 	    "WebDevStudios/cmb2-attached-posts": "1.2.2",
         "wpplex/wp-options": "1.8.1"
     },
