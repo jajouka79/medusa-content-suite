@@ -57,6 +57,18 @@
 		{
 		  "type": "package",
 		  "package": {
+		      "name": "mustardBees/cmb-field-gallery",
+		      "version": "2.0.2",
+		      "source": {
+		          "url": "https://github.com/mustardBees/cmb-field-gallery",
+		          "type": "git",
+		          "reference": "origin/master"
+		      }
+		  }
+		},
+		{
+		  "type": "package",
+		  "package": {
 		      "name": "WebDevStudios/cmb2-attached-posts",
 		      "version": "1.2.2",
 		      "source": {
