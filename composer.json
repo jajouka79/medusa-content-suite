@@ -70,8 +70,6 @@
     "require" : {
         "composer/installers" : "~1.0.0",
         "php" : ">=5.3",
-	    "mustardBees/cmb-field-select2": "2.0.4",
-	    "mustardBees/cmb_field_map": "2.1.1",
 	    "WebDevStudios/cmb2-attached-posts": "1.2.2",
         "wpplex/wp-options": "1.8.1"
     },
