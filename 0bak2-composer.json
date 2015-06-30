@@ -1,0 +1,89 @@
+{
+    "name" : "jajouka/medusa_custom_meta_boxes",
+    "description" : "Medusa meta plugin.",
+    "type" : "wordpress-plugin",
+    "keywords" : [ "wordpress" ],
+    "license" : "GPL-2.0+",
+    "authors" : [
+        {
+            "name" : "Simon Beasley",
+            "email" : "email@somewhere.com",
+            "role" : "Lead Developer"
+        },
+        {
+            "name" : "Developer Name",
+            "email" : "email@somewhere.com",
+            "role" : "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+	"repositories": [ 
+	    {
+	      "type": "package",
+	      "package": {
+	          "name": "wpplex/wp-options",
+	          "version": "1.8.1",
+	          "source": {
+	              "url": "https://github.com/wpplex/wp-options",
+	              "type": "git",
+	              "reference": "origin/master"
+	          }
+	      }
+	    },
+		{
+		  "type": "package",
+		  "package": {
+		      "name": "mustardBees/cmb-field-select2",
+		      "version": "2.0.4",
+		      "source": {
+		          "url": "https://github.com/mustardBees/cmb-field-select2",
+		          "type": "git",
+		          "reference": "origin/master"
+		      }
+		  }
+		},
+		{
+		  "type": "package",
+		  "package": {
+		      "name": "mustardBees/cmb_field_map",
+		      "version": "2.1.1",
+		      "source": {
+		          "url": "https://github.com/mustardBees/cmb_field_map",
+		          "type": "git",
+		          "reference": "origin/master"
+		      }
+		  }
+		},
+		{
+		  "type": "package",
+		  "package": {
+		      "name": "WebDevStudios/cmb2-attached-posts",
+		      "version": "1.2.2",
+		      "source": {
+		          "url": "https://github.com/WebDevStudios/cmb2-attached-posts",
+		          "type": "git",
+		          "reference": "origin/master"
+		      }
+		  }
+		}
+    ],
+    "require" : {
+        "composer/installers" : "~1.0.0",
+        "php" : ">=5.3",
+	    "mustardBees/cmb-field-select2": "2.0.4",
+	    "mustardBees/cmb_field_map": "2.1.1",
+	    "WebDevStudios/cmb2-attached-posts": "1.2.2",
+        "wpplex/wp-options": "1.8.1"
+    },
+    "extra" : {
+        "installer-name" : "plugin-name"
+    },
+    "homepage" : "http://plugin-name.com",
+    "support": {
+        "issues": "https://github.com/vendor/plugin-name/issues",
+        "source": "https://github.com/vendor/plugin-name/pods-frontier-auto-template"
+    },
+	"autoload": {
+		"psr-4": {"Codecourse\\": "lib-test/Codecourse"}
+	}
+}
