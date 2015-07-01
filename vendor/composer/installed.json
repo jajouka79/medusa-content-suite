@@ -97,42 +97,6 @@
         ]
     },
     {
-        "name": "mustardBees/cmb-field-select2",
-        "version": "2.0.4",
-        "version_normalized": "2.0.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/mustardBees/cmb-field-select2",
-            "reference": "origin/master"
-        },
-        "type": "library",
-        "installation-source": "source"
-    },
-    {
-        "name": "mustardBees/cmb_field_map",
-        "version": "2.1.1",
-        "version_normalized": "2.1.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/mustardBees/cmb_field_map",
-            "reference": "origin/master"
-        },
-        "type": "library",
-        "installation-source": "source"
-    },
-    {
-        "name": "mustardBees/cmb-field-gallery",
-        "version": "2.0.2",
-        "version_normalized": "2.0.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/mustardBees/cmb-field-gallery",
-            "reference": "origin/master"
-        },
-        "type": "library",
-        "installation-source": "source"
-    },
-    {
         "name": "WebDevStudios/cmb2-attached-posts",
         "version": "1.2.2",
         "version_normalized": "1.2.2.0",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b4c044cb9b789241370003764ceebe01",
+    "hash": "f29616e0369567e99786c4596b85bc19",
     "packages": [
         {
             "name": "WebDevStudios/cmb2-attached-posts",
@@ -110,36 +110,6 @@
                 "zikula"
             ],
             "time": "2015-02-18 17:17:01"
-        },
-        {
-            "name": "mustardBees/cmb-field-gallery",
-            "version": "2.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mustardBees/cmb-field-gallery",
-                "reference": "origin/master"
-            },
-            "type": "library"
-        },
-        {
-            "name": "mustardBees/cmb-field-select2",
-            "version": "2.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mustardBees/cmb-field-select2",
-                "reference": "origin/master"
-            },
-            "type": "library"
-        },
-        {
-            "name": "mustardBees/cmb_field_map",
-            "version": "2.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mustardBees/cmb_field_map",
-                "reference": "origin/master"
-            },
-            "type": "library"
         },
         {
             "name": "wpplex/wp-options",
