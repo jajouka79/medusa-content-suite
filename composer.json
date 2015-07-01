@@ -42,35 +42,11 @@
           "reference": "origin/master"
 	      }
 		  }
-		},
-		{
-		  "type": "package",
-		  "package": {
-	      "name": "mustardBees/cmb-field-select2",
-	      "version": "2.0.4",
-	      "source": {
-          "url": "https://github.com/mustardBees/cmb-field-select2",
-          "type": "git",
-          "reference": "origin/master"
-	      }
-		  }
-		},
-		{
-		  "type": "package",
-		  "package": {
-	      "name": "mustardBees/cmb_field_map",
-	      "version": "2.1.1",
-	      "source": {
-          "url": "https://github.com/mustardBees/cmb_field_map",
-          "type": "git",
-          "reference": "origin/master"
-	      }
-		  }
 		}
   ],
   "require" : {
-      "composer/installers" : "~1.0.0",
-      "php" : ">=5.3",
+ 		"composer/installers": "~1.0.12",
+    "php" : ">=5.3",
     "WebDevStudios/cmb2-attached-posts": "1.2.2",
       "wpplex/wp-options": "1.8.1"
   },
