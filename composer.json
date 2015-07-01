@@ -4,6 +4,7 @@
   "type" : "wordpress-plugin",
   "keywords" : [ "wordpress" ],
   "license" : "GPL-2.0+",
+  "minimum-stability": "dev",
   "authors" : [
     {
       "name" : "Simon Beasley",
