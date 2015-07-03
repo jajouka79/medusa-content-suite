@@ -35,7 +35,7 @@
 		      "name": "jajouka79/cmb-field-select2",
 		      "version": "2.0.4",
 		      "source": {
-		          "url": "https://github.com/mustardBees/cmb-field-select2",
+		          "url": "https://github.com/jajouka79/cmb-field-select2",
 		          "type": "git",
 		          "reference": "origin/master"
 		      }
@@ -47,7 +47,7 @@
 		      "name": "jajouka79/cmb-field-select2",
 		      "version": "2.0.4",
 		      "source": {
-		          "url": "https://github.com/mustardBees/cmb-field-select2",
+		          "url": "https://github.com/jajouka79/cmb-field-select2",
 		          "type": "git",
 		          "reference": "origin/master"
 		      }
@@ -59,7 +59,7 @@
 		      "name": "jajouka79/cmb_field_map",
 		      "version": "2.1.1",
 		      "source": {
-		          "url": "https://github.com/mustardBees/cmb_field_map",
+		          "url": "https://github.com/jajouka79/cmb_field_map",
 		          "type": "git",
 		          "reference": "origin/master"
 		      }
@@ -71,7 +71,7 @@
 		      "name": "jajouka79/cmb-field-gallery",
 		      "version": "2.0.2",
 		      "source": {
-		          "url": "https://github.com/mustardBees/cmb-field-gallery",
+		          "url": "https://github.com/jajouka79/cmb-field-gallery",
 		          "type": "git",
 		          "reference": "origin/master"
 		      }
