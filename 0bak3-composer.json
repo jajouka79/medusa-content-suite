@@ -32,19 +32,7 @@
 		{
 		  "type": "package",
 		  "package": {
-		      "name": "jajouka79/cmb-field-select2",
-		      "version": "2.0.4",
-		      "source": {
-		          "url": "https://github.com/mustardBees/cmb-field-select2",
-		          "type": "git",
-		          "reference": "origin/master"
-		      }
-		  }
-		},		
-		{
-		  "type": "package",
-		  "package": {
-		      "name": "jajouka79/cmb-field-select2",
+		      "name": "mustardBees/cmb-field-select2",
 		      "version": "2.0.4",
 		      "source": {
 		          "url": "https://github.com/mustardBees/cmb-field-select2",
@@ -56,7 +44,7 @@
 		{
 		  "type": "package",
 		  "package": {
-		      "name": "jajouka79/cmb_field_map",
+		      "name": "mustardBees/cmb_field_map",
 		      "version": "2.1.1",
 		      "source": {
 		          "url": "https://github.com/mustardBees/cmb_field_map",
@@ -68,10 +56,22 @@
 		{
 		  "type": "package",
 		  "package": {
-		      "name": "jajouka79/cmb-field-gallery",
+		      "name": "mustardBees/cmb-field-gallery",
 		      "version": "2.0.2",
 		      "source": {
 		          "url": "https://github.com/mustardBees/cmb-field-gallery",
+		          "type": "git",
+		          "reference": "origin/master"
+		      }
+		  }
+		},
+		{
+		  "type": "package",
+		  "package": {
+		      "name": "WebDevStudios/cmb2-attached-posts",
+		      "version": "1.2.2",
+		      "source": {
+		          "url": "https://github.com/WebDevStudios/cmb2-attached-posts",
 		          "type": "git",
 		          "reference": "origin/master"
 		      }
@@ -81,14 +81,14 @@
     "require" : {
 			"composer/installers" : "~1.0.0",
 			"php" : ">=5.3",
-			"jajouka79/cmb-field-select2": "2.0.4",
-			"jajouka79/cmb2-attached-posts": "2.0.4",
-			"jajouka79/cmb_field_map": "2.1.1",
-			"jajouka79/cmb-field-gallery": "2.0.2",
+			"mustardBees/cmb-field-select2": "2.0.4",
+			"mustardBees/cmb_field_map": "2.1.1",
+			"mustardBees/cmb-field-gallery": "2.0.2",
+			"WebDevStudios/cmb2-attached-posts": "1.2.2",
 			"wpplex/wp-options": "1.8.1"
     },
     "extra" : {
-      "installer-name" : "plugin-name"
+        "installer-name" : "plugin-name"
     },
     "homepage" : "http://plugin-name.com",
     "support": {
