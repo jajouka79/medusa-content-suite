@@ -79,14 +79,15 @@
 		}
     ],
     "require" : {
-			"composer/installers" : "~1.0.0",
-			"php" : ">=5.3",
-			"jajouka79/cmb-field-select2": "2.0.4",
-			"jajouka79/cmb2-attached-posts": "1.2.2",
-			"jajouka79/cmb_field_map": "2.1.1",
-			"wpplex/wp-options": "1.8.1"
+		"composer/installers": "~1.0.0",
+		"php": ">=5.3",
+		"jajouka79/cmb-field-select2": "2.0.4",
+		"jajouka79/cmb2-attached-posts": "1.2.2",
+		"jajouka79/cmb_field_map": "2.1.1",
+		"jajouka79/cmb-field-gallery": "2.0.2",
+		"wpplex/wp-options": "1.8.1"
     },
-    "extra" : {
+    "extra": {
       "installer-name" : "plugin-name"
     },
     "homepage" : "http://plugin-name.com",
