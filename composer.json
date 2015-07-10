@@ -56,7 +56,7 @@
 		{
 		  "type": "package",
 		  "package": {
-	      "name": "jajouka79/cmb_field_map",
+	      "name": "jajouka79/cmb-field-map",
 	      "version": "2.1.1",
 	      "source": {
           "url": "https://github.com/jajouka79/cmb_field_map",
