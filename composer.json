@@ -72,8 +72,8 @@
 		"jajouka79/cmb-field-select2": "*",
 		"jajouka79/cmb2-attached-posts": "*",
 		"jajouka79/cmb-field-gallery": "*",
-		"wpplex/wp-options": "v1.8.1"
-    
+		"wpplex/wp-options": "*"
+
   },
   "extra": {
     "installer-name" : "plugin-name"
