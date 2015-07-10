@@ -53,23 +53,40 @@
 	      }
 		  }
 		},
-		{
-		  "type": "package",
-		  "package": {
-	      "name": "jajouka79/cmb-field-gallery",
-	      "version": "2.0.2",
-	      "source": {
+    {
+      "type": "package",
+      "package": {
+        "name": "jajouka79/cmb-field-gallery",
+        "version": "2.0.2",
+        "source": {
           "url": "https://github.com/jajouka79/cmb-field-gallery",
           "type": "git",
           "reference": "origin/master"
-	      }
-		  }
-		}
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "webdevstudios/CMB2",
+        "version": "*",
+        "source": {
+          "url": "https://github.com/webdevstudios/CMB2",
+          "type": "git",
+          "reference": "origin/master"
+        }
+      }
+    }
+
+    
+
+
   ],
   "require" : {
 		"composer/installers": "~1.0.0",
 		"php": ">=5.3",
-		"jajouka79/cmb-field-select2": "*",
+    "webdevstudios/CMB2": "*",
+    "jajouka79/cmb-field-select2": "*",
 		"jajouka79/cmb2-attached-posts": "*",
 		"jajouka79/cmb-field-gallery": "*",
 		"wpplex/wp-options": "*"
