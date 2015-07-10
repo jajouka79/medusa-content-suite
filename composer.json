@@ -69,7 +69,7 @@
       "type": "package",
       "package": {
         "name": "webdevstudios/CMB2",
-        "version": "*",
+        "version": "v2.0.8",
         "source": {
           "url": "https://github.com/webdevstudios/CMB2",
           "type": "git",
@@ -85,21 +85,14 @@
   "require" : {
 		"composer/installers": "~1.0.0",
 		"php": ">=5.3",
-    "webdevstudios/CMB2": "*",
+    "webdevstudios/CMB2": "v2.0.8",
     "jajouka79/cmb-field-select2": "*",
 		"jajouka79/cmb2-attached-posts": "*",
 		"jajouka79/cmb-field-gallery": "*",
 		"wpplex/wp-options": "*"
 
   },
-  "extra": {
-    "installer-name" : "plugin-name"
-  },
-  "homepage" : "http://plugin-name.com",
-  "support": {
-    "issues": "https://github.com/vendor/plugin-name/issues",
-    "source": "https://github.com/vendor/plugin-name/pods-frontier-auto-template"
-  },
+
 	"autoload": {
 		"psr-4": {"Codecourse\\": "lib-test/Codecourse"}
 	}
