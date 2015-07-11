@@ -63,8 +63,6 @@ class medusa_custom_meta_boxes {
 //#TODO - include in medusa_configuration function, add fields to the taxonomy array
 
 
-$cats=null;
-
 function cmb2_taxonomy_meta_initiate( array $meta_box )  {
   //echo('medusa me first- ---<br><br>');
   //require_once 'CMB2/init.php';
