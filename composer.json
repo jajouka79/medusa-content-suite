@@ -86,7 +86,6 @@
 		"jajouka79/cmb2-attached-posts": "*",
 		"jajouka79/cmb-field-gallery": "*",
 		"wpplex/wp-options": "*"
-
   },
 
 	"autoload": {
