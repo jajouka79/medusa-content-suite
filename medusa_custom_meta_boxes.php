@@ -67,9 +67,8 @@ function cmb2_taxonomy_meta_initiate( array $meta_box )  {
   //echo('medusa me first- ---<br><br>');
   //require_once 'CMB2/init.php';
   //require_once 'fields/Taxonomy_MetaData/Taxonomy_MetaData_CMB2.php';
-  /**
-   * Semi-standard CMB2 metabox/fields array
-   */
+
+
   //_curriculum_areas_tax_fields_image_full_width
   $prefix="_curriculum_areas_tax_fields_";//TODO - change to more generic field title - beware of associations
   $meta_box = array(
@@ -137,7 +136,7 @@ function cmb2_taxonomy_meta_initiate( array $meta_box )  {
   );
 
   // (Recommended) Use wp-large-options
-  require_once 'wp-large-options/wp-large-options.php';
+  //require_once 'wp-large-options/wp-large-options.php';
   $overrides = array(
       'get_option'    => 'wlo_get_option',
       'update_option' => 'wlo_update_option',
@@ -148,9 +147,8 @@ function cmb2_taxonomy_meta_initiate( array $meta_box )  {
   //     print 'class ! exists in cmb2_taxonomy_meta_initiate <br><br>';
   // }
 
-  /**
-   * Instantiate our taxonomy meta class
-  */
+
+  //Instantiate our taxonomy meta class
 
   return $meta_box;
 
@@ -165,5 +163,3 @@ function cmb2_taxonomy_meta_initiate( array $meta_box )  {
 
 
 //add_action( 'init', 'cmb2_taxonomy_meta_initiate',10 );
-
-
