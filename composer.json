@@ -85,7 +85,7 @@
     "jajouka79/cmb-field-select2": "*",
 		"jajouka79/cmb2-attached-posts": "*",
     "jajouka79/cmb-field-gallery": "*",
-    "jajouka79/wp-large-options": "*"
+    "jajouka79/wp-large-options" : "*"
   },
 
 	"autoload": {
