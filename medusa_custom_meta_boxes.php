@@ -32,7 +32,9 @@ use Codecourse\Repositories\UserRepository as UserRepository;
 use Codecourse\Filters\AuthFilter as AuthFilter;
 use Codecourse\FieldTypes\AddressUk as AddressUk;
 
-require_once __DIR__ . '/vendor/autoload.php'; 
+//require_once __DIR__ . '/vendor/autoload.php'; 
+
+require_once '/var/www/bedrock/vendor/autoload.php'; 
 
 $authFilter = new AuthFilter();
 $addressUk = new AddressUk();
