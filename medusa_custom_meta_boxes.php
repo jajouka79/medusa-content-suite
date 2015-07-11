@@ -57,28 +57,6 @@ class medusa_custom_meta_boxes {
   }
 
 
-//include "example-functions.php";
-class medusa_custom_meta_boxes {
-    function __construct( $meta_box_args ) {
-        #write_log("medusa_custom_meta_boxes - __construct");
-        #write_log("meta_box_args");
-        #write_log($meta_box_args);
-        $this->meta_box_args = $meta_box_args;
-
-        #write_log($this);
-        #add_filter( 'cmb_meta_boxes', array(&$this, 'medusa_custom_meta_boxes'));
-        add_filter( 'cmb2_meta_boxes', array( &$this, 'medusa_custom_meta_boxes' ) );
-    }
-
-    public function medusa_custom_meta_boxes() {
-
-        #write_log("medusa_custom_meta_boxes - medusa_custom_meta_boxes");
-        #write_log($this->meta_box_args);
-        return $this->meta_box_args;
-
-    }
-}
-
 
 
 
