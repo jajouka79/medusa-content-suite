@@ -56,7 +56,7 @@ class medusa_custom_meta_boxes {
     return $this->meta_box_args;
   }
 
-
+}
 
 
 
