@@ -52,18 +52,6 @@
           "reference": "origin/master"
         }
       }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "jajouka79/wp-large-options",
-        "version": "*",
-        "source": {
-          "url": "https://github.com/jajouka79/wp-large-options",
-          "type": "git",
-          "reference": "origin/master"
-        }
-      }
     }
   ],
   "require" : {
@@ -72,8 +60,7 @@
     "webdevstudios/cmb2": "*",
     "jajouka79/cmb-field-select2": "*",
 		"jajouka79/cmb2-attached-posts": "*",
-    "jajouka79/cmb-field-gallery": "*",
-    "jajouka79/wp-large-options": "*"
+    "jajouka79/cmb-field-gallery": "*"
   },
 
 	"autoload": {
