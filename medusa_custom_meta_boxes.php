@@ -36,7 +36,7 @@ use Codecourse\FieldTypes\AddressUk as AddressUk;
 
 echo "DIR - " . __DIR__ . "<br>";
 
-require_once '/var/www/bedrock/vendor/autoload.php'; 
+//require_once '/var/www/bedrock/vendor/autoload.php'; 
 
 $authFilter = new AuthFilter();
 $addressUk = new AddressUk();
