@@ -16,54 +16,39 @@
       "role" : "Developer"
     }
   ],
-	"repositories": [ 
-		{
-		  "type": "package",
-		  "package": {
-	      "name": "jajouka79/cmb-field-select2",
-	      "version": "2.0.4",
-	      "source": {
-          "url": "https://github.com/jajouka79/cmb-field-select2",
-          "type": "git",
-          "reference": "origin/master"
-	      }
-		  }
-		},		
-		{
-		  "type": "package",
-		  "package": {
-	      "name": "jajouka79/cmb2-attached-posts",
-	      "version": "1.2.2",
-	      "source": {
-          "url": "https://github.com/jajouka79/cmb2-attached-posts",
-          "type": "git",
-          "reference": "origin/master"
-	      }
-		  }
-		},
+  "repositories": [ 
     {
-      "type": "package",
-      "package": {
-        "name": "jajouka79/cmb-field-gallery",
-        "version": "2.0.2",
-        "source": {
-          "url": "https://github.com/jajouka79/cmb-field-gallery",
-          "type": "git",
-          "reference": "origin/master"
-        }
-      }
+      "type": "composer", 
+      "url": "http://toran.local/app.php/repo/private/"
+    },
+    {
+      "type": "composer", 
+      "url": "http://toran.local/app.php/repo/packagist/"
+    },
+    {
+      "packagist": false
     }
   ],
   "require" : {
 		"composer/installers": "~1.0.0",
 		"php": ">=5.3",
     "webdevstudios/cmb2": "*",
-    "jajouka79/cmb-field-select2": "*",
-		"jajouka79/cmb2-attached-posts": "*",
-    "jajouka79/cmb-field-gallery": "*"
+    "mustardBees/cmb-field-select2": "*",
+    "WebDevStudios/cmb2-attached-posts": "*",
+    "mustardBees/cmb-field-gallery": "*"
   },
 
 	"autoload": {
-		"psr-4": {"Codecourse\\": "lib-test/Codecourse"}
+		"psr-4": {
+      "Codecourse\\": "lib-test/Codecourse",
+      "xxx2\\": "lib-test/xxx2"
+    },
+
+    "files": [
+
+      "vendor/mustardBees/cmb-field-select2/cmb-field-select2.php"
+ 
+    ]
+
 	}
 }

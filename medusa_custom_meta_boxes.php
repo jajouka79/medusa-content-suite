@@ -27,29 +27,41 @@ Author URI: http://www.medusamediacreations.co.uk
 #
 
 */
-
 use Codecourse\Repositories\UserRepository as UserRepository;
-use Codecourse\Filters\AuthFilter as AuthFilter;
-use Codecourse\FieldTypes\AddressUk as AddressUk;
+#use Codecourse\Filters\AuthFilter as AuthFilter;
+#use Codecourse\FieldTypes\AddressUk as AddressUk;
+use Codecourse\Functions\FunctionsInc as FunctionsInc;
 
-//require_once __DIR__ . '/vendor/autoload.php'; 
+#require_once __DIR__ . '/vendor/autoload.php'; 
+#echo "DIR - " . __DIR__ . "<br>";
 
-echo "DIR - " . __DIR__ . "<br>";
+require_once '/var/www/bedrock/vendor/autoload.php'; 
+#not needed????????
 
-//require_once '/var/www/bedrock/vendor/autoload.php'; 
 
-$authFilter = new AuthFilter();
-$addressUk = new AddressUk();
+//require_once 'vendor/webdevstudios/cmb2/init.php';
 
-/*
-  if ( file_exists(  __DIR__ .'/vendor/cmb2/init.php' ) ) {
-      require_once  __DIR__ .'/vendor/cmb2/init.php';
-  } elseif ( file_exists(  __DIR__ .'/vendor/CMB2/init.php' ) ) {
-      require_once  __DIR__ .'/vendor/CMB2/init.php';
-  }
-*/
+$UserRepository = new UserRepository();
+$FunctionsInc = new FunctionsInc();
+
+#$authFilter = new AuthFilter();
+#$XaddressUk = new AddressUk();
+
+
+
+
+
+
+
+
+
+
+
+
 
 //include "example-functions.php";
+
+
 class medusa_custom_meta_boxes {
   function __construct( $meta_box_args ) {
     $this->meta_box_args = $meta_box_args;
