@@ -35,19 +35,24 @@
     "webdevstudios/cmb2": "*",
     "mustardBees/cmb-field-select2": "*",
     "WebDevStudios/cmb2-attached-posts": "*",
-    "mustardBees/cmb-field-gallery": "*"
+    "mustardBees/cmb-field-gallery": "*",
+    "WebDevStudios/CMB2-Date-Range-Field": "*",
+    "mattkrupnik/cmb2-field-slider": "*",
+    "mustardBees/cmb_field_map": "*",
+    "JayWood/CMB2_RGBa_Picker": "*",
+    "WebDevStudios/CMB2-Post-Search-field": "*"
   },
 
 	"autoload": {
 		"psr-4": {
+      "Config\\": "Config",
+      "CMB\\": "CMB",
+      "Functions\\": "Functions",
       "Codecourse\\": "lib-test/Codecourse",
       "xxx2\\": "lib-test/xxx2"
     },
 
-    "files": [
-
-      "vendor/mustardBees/cmb-field-select2/cmb-field-select2.php"
- 
+    "files": [  
     ]
 
 	}

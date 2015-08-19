@@ -2,8 +2,6 @@
 
 namespace Codecourse\Functions;
 
-#my\foo();
-
 echo "Codecourse\FunctionsCodecourse\Functions<br>";
 
 add_action( 'cmb2_init', 'Codecourse\Functions\yourprefix_register_demo_metabox' );
@@ -25,20 +23,28 @@ function yourprefix_register_demo_metabox() {
 	) );
 
 	$cmb_demo->add_field( array(
-		'name'       => __( 'Test Text', 'cmb2' ),
+		'name'       => __( 'CTest Text', 'cmb2' ),
 		'desc'       => __( 'field description (optional)', 'cmb2' ),
 		'id'         => $prefix . 'text',
 		'type' => 'pw_select',
 		'options' => array( "op1", "op2", "op3"),
-		'sanitization_cb' => 'pw_select2_sanitise',		
 		//'show_on_cb' => 'yourprefix_hide_if_no_cats', // function should return a bool value
 	) );
 
 	$cmb_demo->add_field( array(
-		'name' => __( 'Test Text Small', 'cmb2' ),
+		'name' => __( 'CTest Text Small', 'cmb2' ),
 		'desc' => __( 'field description (optional)', 'cmb2' ),
 		'id'   => $prefix . 'textsmall',
-		'type' => 'text_small',
+		'type' => 'pw_map',
+		'default' => 'pw_map',
+	) );	
+
+	$cmb_demo->add_field( array(
+		'name' => __( 'test 1', 'cmb2' ),
+		'desc' => __( 'desc', 'cmb2' ),
+		'id'   => $prefix . 'textsmall',
+		'type' => 'pw_map',
+		'default' => 'pw_map'
 	) );
 }
 
@@ -46,6 +52,6 @@ class FunctionsInc
 {
 	public function __construct()
 	{
-echo "FunctionsIncFunctionsIncFunctionsIncFunctionsInc<br>";
+echo "FunctionsInc<br>";
 	}
 }

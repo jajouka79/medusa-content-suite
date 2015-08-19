@@ -27,35 +27,112 @@ Author URI: http://www.medusamediacreations.co.uk
 #
 
 */
-use Codecourse\Repositories\UserRepository as UserRepository;
+#use Codecourse\TaxonomyMeta\TaxonomyMetaXX as TaxonomyMetaXX;
 #use Codecourse\Filters\AuthFilter as AuthFilter;
 #use Codecourse\FieldTypes\AddressUk as AddressUk;
 use Codecourse\Functions\FunctionsInc as FunctionsInc;
 
+use MedusaContentSuite\Taxonomy\TaxFormatters as TaxFormatters;
+use MedusaContentSuite\Taxonomy\TaxTypes as TaxTypes;
+use MedusaContentSuite\Taxonomy\TaxMods as TaxMods;
+
+use MedusaContentSuite\Post\PostTypes as PostTypes;
+use MedusaContentSuite\Post\PostMods as PostMods;
+
+use MedusaContentSuite\Functions\Callbacks as Callbacks;
+use MedusaContentSuite\Functions\Rules as Rules;
+
+use MedusaContentSuite\Config\MainConfig as MainConfig;
+use MedusaContentSuite\Config\MenuConfig as MenuConfig;
+use MedusaContentSuite\Config\MetaConfig as MetaConfig;
+use MedusaContentSuite\Config\PostConfig as PostConfig;
+use MedusaContentSuite\Config\TaxConfig as TaxConfig;
+use MedusaContentSuite\Config\ModConfig as ModConfig;
+
+use MedusaContentSuite\CMB\FieldTypes\CustomFieldTypes as CustomFieldTypes;
+use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
+use MedusaContentSuite\CMB\Meta\PostMeta as PostMeta;
+use MedusaContentSuite\CMB\Meta\TaxMeta as TaxMeta;
+
 #require_once __DIR__ . '/vendor/autoload.php'; 
-#echo "DIR - " . __DIR__ . "<br>";
+//echo "DIR - " . __DIR__ . "<br>";
 
 require_once '/var/www/bedrock/vendor/autoload.php'; 
-#not needed????????
 
-
-//require_once 'vendor/webdevstudios/cmb2/init.php';
-
-$UserRepository = new UserRepository();
 $FunctionsInc = new FunctionsInc();
+#$TaxonomyMetaXX = new TaxonomyMetaXX();
 
 #$authFilter = new AuthFilter();
 #$XaddressUk = new AddressUk();
 
+#$PostTypes = new PostTypes();
+$PostMods = new PostMods();
+
+$TaxTypes = new TaxTypes();
+$TaxFormatters = new TaxFormatters();
+$TaxMods = new TaxMods();
+
+$Rules = new Rules();
 
 
 
+$PostTypes = new PostTypes();
+$PostTypes->init();
+$PostTypes = $PostTypes->registerPostTypes();
+print("<b>PostTypes</b>");
+print_r($PostTypes);
 
 
 
+$Callbacks = new Callbacks();
+$Callbacks->init();
+$Callbacks = $Callbacks->getCallbacks();
+print("<b>Callbacks</b>");
+print_r($Callbacks);
 
 
+$MainConfig = new MainConfig();
+$MainConfig->init();
+$MainConfig = $MainConfig->getMainConfig();
+print("<b>MainConfig</b>");
+print_r($MainConfig);
 
+$MenuConfig = new MenuConfig();
+$MenuConfig->init();
+$MenuConfig = $MenuConfig->getMenuConfig();
+print("<b>MenuConfig</b>");
+print_r($MenuConfig);
+
+$PostConfig = new PostConfig();
+$PostConfig->init();
+$PostConfig = $PostConfig->getPostConfig();
+print("<b>PostConfig</b>");
+print_r($PostConfig);
+
+$TaxConfig = new TaxConfig();
+$TaxConfig->init();
+$TaxConfig = $TaxConfig->getTaxConfig();
+print("<b>TaxConfig</b>");
+print_r($TaxConfig);
+
+#need functions
+$MetaConfig = new MetaConfig();
+$MetaConfig->init();
+$MetaConfig = $MetaConfig->getMetaConfig();
+print("<b>MetaConfig</b>");
+print_r($MetaConfig);
+
+
+$ModConfig = new ModConfig();
+$ModConfig->init();
+$ModConfig = $ModConfig->getModConfig();
+print("<b>ModConfig</b>");
+print_r($ModConfig);
+
+$CustomFieldTypes = new CustomFieldTypes();
+$PackagesFieldTypes = new PackagesFieldTypes();
+$PostMeta = new PostMeta();
+$TaxMeta = new TaxMeta();
 
 
 
@@ -78,104 +155,3 @@ class medusa_custom_meta_boxes {
 
 //#TODO - include in medusa_configuration function, add fields to the taxonomy array
 
-
-function cmb2_taxonomy_meta_initiate( array $meta_box )  {
-  //echo('medusa me first- ---<br><br>');
-  //require_once 'CMB2/init.php';
-  //require_once 'fields/Taxonomy_MetaData/Taxonomy_MetaData_CMB2.php';
-
-
-  //_curriculum_areas_tax_fields_image_full_width
-  $prefix="_curriculum_areas_tax_fields_";//TODO - change to more generic field title - beware of associations
-  $meta_box = array(
-    'id'         => 'cat_options',
-    // 'key' and 'value' should be exactly as follows
-    'show_on'    => array( 'key' => 'options-page', 'value' => array( 'unknown', ), ),
-    'object_types'  => array( 'page', ), // Post type
-    'show_names' => true, // Show field names on the left
-    'fields'     => array(
-
-      array(
-        'name' => 'Description',
-        'desc' => 'Type the description text here.',
-        'id' => $prefix . 'description',
-        'type' => 'wysiwyg',
-        'options' => array(
-          'wpautop' => true, // use wpautop?
-          'media_buttons' => false, // show insert/upload button(s)
-          'textarea_rows' => get_option( 'default_post_edit_rows', 25 ), // rows="..."
-          'tabindex' => '',
-          'editor_css' => '', // intended for extra styles for both visual and HTML editors buttons, needs to include the `<style>` tags, can use "scoped".
-          'editor_class' => '', // add extra class(es) to the editor textarea
-          'teeny' => false, // output the minimal editor config used in Press This
-          'dfw' => true, // replace the default fullscreen with DFW (needs specific css)
-          'tinymce' => true, // load TinyMCE, can be used to pass settings directly to TinyMCE using an array()
-          'quicktags' => true // load Quicktags, can be used to pass settings directly to Quicktags using an array()
-        )
-      ),
-
-      array(
-        'name' => 'Excerpt (Short teaser text)',
-        'desc' => 'Type the excerpt text here',
-        'id' => $prefix . 'excerpt',
-        'type' => 'wysiwyg',
-        'options' => array(
-          'wpautop' => true, // use wpautop?
-          'media_buttons' => false, // show insert/upload button(s)
-          'textarea_rows' => get_option( 'default_post_edit_rows', 25 ), // rows="..."
-          'tabindex' => '',
-          'editor_css' => '', // intended for extra styles for both visual and HTML editors buttons, needs to include the `<style>` tags, can use "scoped".
-          'editor_class' => '', // add extra class(es) to the editor textarea
-          'teeny' => false, // output the minimal editor config used in Press This
-          'dfw' => true, // replace the default fullscreen with DFW (needs specific css)
-          'tinymce' => true, // load TinyMCE, can be used to pass settings directly to TinyMCE using an array()
-          'quicktags' => true // load Quicktags, can be used to pass settings directly to Quicktags using an array()
-        )
-      ),
-
-      array(
-        'name'         => __( 'Image - thumb', 'cmb2' ),
-        'desc'         => __( 'Upload or add image.', 'cmb2' ),
-        'id'           => $prefix . 'image_thumb',
-        'type'         => 'file',
-        'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
-      ),
-
-      array(
-        'name'         => __( 'Image - full width image', 'cmb2' ),
-        'desc'         => __( 'Upload or add image.', 'cmb2' ),
-        'id'           => $prefix . 'image_full_width',
-        'type'         => 'file',
-        'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
-      ),
-    )
-  );
-
-  // (Recommended) Use wp-large-options
-  //require_once 'wp-large-options/wp-large-options.php';
-  $overrides = array(
-      'get_option'    => 'wlo_get_option',
-      'update_option' => 'wlo_update_option',
-      'delete_option' => 'wlo_delete_option',
-  );
-
-  // if(! class_exists('CMB2')){
-  //     print 'class ! exists in cmb2_taxonomy_meta_initiate <br><br>';
-  // }
-
-
-  //Instantiate our taxonomy meta class
-
-  return $meta_box;
-
-  /*
-    $cats = new Taxonomy_MetaData_CMB2( 'curriculum_areas', $meta_box, __( 'Category Settings', 'taxonomy-metadata' ), $overrides );
-    $cats2 = new Taxonomy_MetaData_CMB2( 'training_areas', $meta_box, __( 'Category Settings', 'taxonomy-metadata' ), $overrides );
-  */
-
-}
-
-#add_filter('cmb2-taxonomy_meta_boxes', 'cmb2_taxonomy_meta_initiate');
-
-
-//add_action( 'init', 'cmb2_taxonomy_meta_initiate',10 );
