@@ -5,15 +5,15 @@ namespace MedusaContentSuite\Config;
 class TaxConfig
 {
 
-  public function init()
-  {
-		print("<ul><li>TaxConfig > init</li></ul>");
-    add_action('init', array($this, 'getTaxConfig'), 1);
-  }
+	public function init()
+	{
+		#print( "<ul><li>TaxConfig > init</li></ul>" );
+		add_action( 'init', array( $this, 'getTaxConfig' ), 1 );
+	}
 
 	public function getTaxConfig()
 	{
-
+		
 		//TX - News Category
 			$labels=array(
 				'name' => _x( 'News Category', 'taxonomy general name' ),
@@ -77,14 +77,9 @@ class TaxConfig
 			$config[1]['taxes']='event_category';
 			$config[1]['types'][0]['id']='event';
 			$config[1]['types'][0]['show_tax_meta']=false;
-			$config[1]['types'][1]['id']='ubs_event';
-			$config[1]['types'][1]['show_tax_meta']=false;
-			$config[1]['types'][0]['id']='showcase';
-			$config[1]['types'][0]['show_tax_meta']=false;
 
 			return $config;
 
 	}
-
 
 }

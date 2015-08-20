@@ -6,6 +6,6 @@ class Rules
 {
 	public function __construct()
 	{
-		print("Rules > <br>");
+		#print("Rules > <br>");
 	}
 }

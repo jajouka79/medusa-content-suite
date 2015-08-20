@@ -7,7 +7,7 @@ class MenuConfig
 
   public function init()
   {
-		print("<ul><li>MenuConfig > init</li></ul>");
+	#print("<ul><li>MenuConfig > init</li></ul>");
     add_action('init', array($this, 'getMenuConfig'), 1);
   }
 

@@ -27,10 +27,8 @@ Author URI: http://www.medusamediacreations.co.uk
 #
 
 */
-#use Codecourse\TaxonomyMeta\TaxonomyMetaXX as TaxonomyMetaXX;
-#use Codecourse\Filters\AuthFilter as AuthFilter;
-#use Codecourse\FieldTypes\AddressUk as AddressUk;
-use Codecourse\Functions\FunctionsInc as FunctionsInc;
+
+namespace MedusaContentSuite;
 
 use MedusaContentSuite\Taxonomy\TaxFormatters as TaxFormatters;
 use MedusaContentSuite\Taxonomy\TaxTypes as TaxTypes;
@@ -51,94 +49,128 @@ use MedusaContentSuite\Config\ModConfig as ModConfig;
 
 use MedusaContentSuite\CMB\FieldTypes\CustomFieldTypes as CustomFieldTypes;
 use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
+
 use MedusaContentSuite\CMB\Meta\PostMeta as PostMeta;
 use MedusaContentSuite\CMB\Meta\TaxMeta as TaxMeta;
 
-#require_once __DIR__ . '/vendor/autoload.php'; 
-//echo "DIR - " . __DIR__ . "<br>";
 
-require_once '/var/www/bedrock/vendor/autoload.php'; 
-
-$FunctionsInc = new FunctionsInc();
-#$TaxonomyMetaXX = new TaxonomyMetaXX();
-
-#$authFilter = new AuthFilter();
-#$XaddressUk = new AddressUk();
-
-#$PostTypes = new PostTypes();
-$PostMods = new PostMods();
-
-$TaxTypes = new TaxTypes();
-$TaxFormatters = new TaxFormatters();
-$TaxMods = new TaxMods();
-
-$Rules = new Rules();
+$MedusaContentSuite = new MedusaContentSuite();
+$MedusaContentSuite->init();
 
 
+class MedusaContentSuite
+{
 
-$PostTypes = new PostTypes();
-$PostTypes->init();
-$PostTypes = $PostTypes->registerPostTypes();
-print("<b>PostTypes</b>");
-print_r($PostTypes);
+  public function init()
+  {
+    #print( "<ul><li>PostTypes > init</li></ul>" );
+    add_action( 'init', array( $this, 'load' ), 1 );
+  }
 
+  public function load()
+  {
 
+    #require_once __DIR__ . '/vendor/autoload.php'; 
+    //echo "DIR - " . __DIR__ . "<br>";
 
-$Callbacks = new Callbacks();
-$Callbacks->init();
-$Callbacks = $Callbacks->getCallbacks();
-print("<b>Callbacks</b>");
-print_r($Callbacks);
-
-
-$MainConfig = new MainConfig();
-$MainConfig->init();
-$MainConfig = $MainConfig->getMainConfig();
-print("<b>MainConfig</b>");
-print_r($MainConfig);
-
-$MenuConfig = new MenuConfig();
-$MenuConfig->init();
-$MenuConfig = $MenuConfig->getMenuConfig();
-print("<b>MenuConfig</b>");
-print_r($MenuConfig);
-
-$PostConfig = new PostConfig();
-$PostConfig->init();
-$PostConfig = $PostConfig->getPostConfig();
-print("<b>PostConfig</b>");
-print_r($PostConfig);
-
-$TaxConfig = new TaxConfig();
-$TaxConfig->init();
-$TaxConfig = $TaxConfig->getTaxConfig();
-print("<b>TaxConfig</b>");
-print_r($TaxConfig);
-
-#need functions
-$MetaConfig = new MetaConfig();
-$MetaConfig->init();
-$MetaConfig = $MetaConfig->getMetaConfig();
-print("<b>MetaConfig</b>");
-print_r($MetaConfig);
+    require_once '/var/www/bedrock/vendor/autoload.php'; 
 
 
-$ModConfig = new ModConfig();
-$ModConfig->init();
-$ModConfig = $ModConfig->getModConfig();
-print("<b>ModConfig</b>");
-print_r($ModConfig);
+    #$authFilter = new AuthFilter();
+    #$XaddressUk = new AddressUk();
 
-$CustomFieldTypes = new CustomFieldTypes();
-$PackagesFieldTypes = new PackagesFieldTypes();
-$PostMeta = new PostMeta();
-$TaxMeta = new TaxMeta();
+    $PostMods = new PostMods();
+
+    $TaxFormatters = new TaxFormatters();
+    $TaxMods = new TaxMods();
+
+    $Rules = new Rules();
+
+    
+    $TaxTypes = new TaxTypes();
+    $TaxTypes->init();
+    $TaxTypes = $TaxTypes->registerTaxTypes();
+
+    
+    $PostTypes = new PostTypes();
+    $PostTypes->init();
+    $PostTypes = $PostTypes->registerPostTypes();
+
+
+    $Callbacks = new Callbacks();
+    $Callbacks->init();
+    $Callbacks = $Callbacks->getCallbacks();
+
+
+    $MainConfig = new MainConfig();
+    $MainConfig->init();
+    $MainConfig = $MainConfig->getMainConfig();
+
+    $MenuConfig = new MenuConfig();
+    $MenuConfig->init();
+    $MenuConfig = $MenuConfig->getMenuConfig();
+
+    $PostConfig = new PostConfig();
+    $PostConfig->init();
+    $PostConfig = $PostConfig->getPostConfig();
+
+    $TaxConfig = new TaxConfig();
+    $TaxConfig->init();
+    $TaxConfig = $TaxConfig->getTaxConfig();
+
+    $MetaConfig = new MetaConfig();
+    $MetaConfig->init();
+    $MetaConfig = $MetaConfig->getMetaConfig();
+
+    $ModConfig = new ModConfig();
+    $ModConfig->init();
+    $ModConfig = $ModConfig->getModConfig();
+
+    $PostMeta = new PostMeta();
+    $PostMeta->init();
+    $PostMeta = $PostMeta->registerPostMeta();
+
+    $CustomFieldTypes = new CustomFieldTypes();
+    $PackagesFieldTypes = new PackagesFieldTypes();
+
+    $TaxMeta = new TaxMeta();
+
+    if ( ! is_admin( ) ) :
+
+      /*print("<br><b>Callbacks</b><br>");
+      print_r($Callbacks);
+      print("<br><b>MainConfig</b><br>");
+      print_r($MainConfig);
+      print("<br><b>MenuConfig</b><br>");
+      print_r($MenuConfig);
+      print("<br><b>PostConfig</b><br>");
+      print_r($PostConfig);
+      print("<br><b>TaxConfig</b><br>");
+      print_r($TaxConfig);      
+      print("<br><b>MetaConfig</b><br>");
+      print_r($MetaConfig);
+      print("<br><b>ModConfig</b><br>");
+      print_r($ModConfig);
+      print( "<br><b>PostTypes</b><br>" );
+      print_r( $PostTypes );
+      print( "<br><b>TaxTypes</b><br>" );
+      print_r( $TaxTypes );
+      print( "<br><b>PostMeta</b><br>" );
+      print_r( $PostMeta );*/
+
+    endif;
+
+  }
+
+
+}
+
 
 
 
 //include "example-functions.php";
 
-
+/*
 class medusa_custom_meta_boxes {
   function __construct( $meta_box_args ) {
     $this->meta_box_args = $meta_box_args;
@@ -149,9 +181,6 @@ class medusa_custom_meta_boxes {
     return $this->meta_box_args;
   }
 
-}
+}*/
 
-
-
-//#TODO - include in medusa_configuration function, add fields to the taxonomy array
-
+?>

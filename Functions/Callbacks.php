@@ -7,7 +7,7 @@ class Callbacks
 
   public function init()
   {
-		print("<ul><li>Callbacks > init</li></ul>");
+		#print("<ul><li>Callbacks > init</li></ul>");
     add_action('init', array($this, 'getCallbacks'), 5);
   }
 

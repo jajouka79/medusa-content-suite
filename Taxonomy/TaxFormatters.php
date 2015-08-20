@@ -6,6 +6,6 @@ class TaxFormatters
 {
 	public function __construct()
 	{
-		print("TaxFormatters > <br>");
+		#print("TaxFormatters > <br>");
 	}
 }

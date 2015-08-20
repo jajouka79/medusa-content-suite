@@ -12,11 +12,11 @@ print_r($Callbacks);
 class MetaConfig
 {
 
-  public function init()
-  {
-		print("<ul><li>MetaConfig > init</li></ul>");
-    add_action('init', array($this, 'getMetaConfig'), 1);
-  }
+	public function init()
+	{
+		#print("<ul><li>MetaConfig > init</li></ul>");
+		add_action( 'init', array( $this, 'getMetaConfig' ), 1 );
+	}
 
 	public function getMetaConfig()
 	{

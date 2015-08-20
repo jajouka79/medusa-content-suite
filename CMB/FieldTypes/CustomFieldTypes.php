@@ -6,6 +6,6 @@ class CustomFieldTypes
 {
 	public function __construct()
 	{
-		print("CustomFieldTypes > <br>");
+		#print("CustomFieldTypes > <br>");
 	}
 }

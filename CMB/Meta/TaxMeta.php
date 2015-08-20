@@ -6,6 +6,6 @@ class TaxMeta
 {
 	public function __construct()
 	{
-		print("TaxMeta > <br>");
+		#print("TaxMeta > <br>");
 	}
 }

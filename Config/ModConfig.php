@@ -7,12 +7,12 @@ class ModConfig
 
   public function init()
   {
-		print( "<ul><li>ModConfig > init</li></ul>" );
-    add_action( 'init', array( $this, 'getModConfig'), 1 );
-		add_action( 'widgets_init', array( $this, 'medusa_configuration_sidebars' ), 1 );
-		add_filter( 'gettext', array( $this, 'custom_enter_title' ), 1 );
-		add_filter( 'getdecsription', array( $this, 'custom_enter_desc' ), 1 );
-		add_action( 'init', array( $this, 'my_add_excerpts_to_pages' ), 1 );
+	#print( "<ul><li>ModConfig > init</li></ul>" );
+	add_action( 'init', array( $this, 'getModConfig'), 1 );
+	add_action( 'widgets_init', array( $this, 'medusa_configuration_sidebars' ), 1 );
+	add_filter( 'gettext', array( $this, 'custom_enter_title' ), 1 );
+	add_filter( 'getdecsription', array( $this, 'custom_enter_desc' ), 1 );
+	add_action( 'init', array( $this, 'my_add_excerpts_to_pages' ), 1 );
   }
 
 	public function getModConfig()

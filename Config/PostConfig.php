@@ -7,8 +7,8 @@ class PostConfig
 
   public function init()
   {
-		print("<ul><li>PostConfig > init</li></ul>");
-    add_action('init', array($this, 'getPostConfig'), 1);
+	#print( "<ul><li>PostConfig > init</li></ul>" );
+    add_action( 'init', array( $this, 'getPostConfig' ), 1 );
   }
 
 	public function getPostConfig()
@@ -91,11 +91,25 @@ class PostConfig
 				'rewrite'        => $rewrite,
 				'description'   => 'Holds our news articles and news article data',
 				'public'        => true,
-				'menu_position' => 7,
+				'menu_position' => 20,
 				'supports'      => array( 'title', 'editor', 'attributes' ), //'excerpt', , 'comments', 'thumbnail', 'page-attributes'
 				'has_archive'   => true,
 				'hierarchical' => false,
+				'exclude_from_search' => false,
+				'publicly_queryable' => true,
 				'show_ui' => true,
+				'show_in_menu' => true,
+				'show_in_admin_bar' => true,
+				'show_in_nav_menus' => true,
+				'menu_icon' => 'dashicons-admin-page',
+				#'capability_type' => null, #array('news', 'news'), #plural
+				#'capabilities' => null,
+				#'map_meta_cap' => null,
+				#'register_meta_box_cb' => null,
+				#'taxonomies' => null,
+				'query_var' => 'news_artiiiicle',
+				'can_export' => true,
+
 			);
 
 			$config[0]['types']='news_article';
@@ -194,16 +208,31 @@ class PostConfig
 				),
 			);
 
-			/*$config[1]['args'] = array(
+			$config[1]['args'] = array(
 				'labels'        => $labels,
 				'rewrite'        => $rewrite,
-				'description'   => 'Holds our events and event related data',
+				'description'   => 'Holds our event and event related data',
 				'public'        => true,
-				'menu_position' => 2,
-				'supports'      => array( 'title', 'editor' ), //'excerpt', 'comments', 'thumbnail', 'attributes'
+				'menu_position' => 20,
+				'supports'      => array( 'title', 'editor', 'attributes' ), //'excerpt', , 'comments', 'thumbnail', 'page-attributes'
 				'has_archive'   => true,
-				'show_ui' 		=> true,
+				'hierarchical' => false,
+				'exclude_from_search' => false,
+				'publicly_queryable' => true,
+				'show_ui' => true,
+				'show_in_menu' => true,
+				'show_in_admin_bar' => true,
+				'show_in_nav_menus' => true,
+				'menu_icon' => 'dashicons-admin-page',
+				#'capability_type' => null, #array('news', 'news'), #plural
+				#'capabilities' => null,
+				#'map_meta_cap' => null,
+				#'register_meta_box_cb' => null,
+				#'taxonomies' => null,
+				'query_var' => 'evvvvvvents',
+				'can_export' => true,
 			);
+
 			$config[1]['types']='event';
 			$config[1]['extras']=array(
 				'sidebars'=>false,
@@ -217,7 +246,7 @@ class PostConfig
 				'nav_menu_position'=>1,
 				'show_posts_in_nav_menu'=>true,
 				'create_dummy_posts'=>false,
-			);*/
+			);
 
 			return $config;
 

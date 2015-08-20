@@ -6,6 +6,6 @@ class PostMods
 {
 	public function __construct()
 	{
-		print("PostMods > <br>");
+		#print("PostMods > <br>");
 	}
 }

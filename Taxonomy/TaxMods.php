@@ -6,6 +6,6 @@ class TaxMods
 {
 	public function __construct()
 	{
-		print("TaxMods > <br>");
+		#print("TaxMods > <br>");
 	}
 }

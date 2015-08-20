@@ -9,7 +9,6 @@ class PostTypes
 
   public function init()
   {
-		print( "<ul><li>PostTypes > init</li></ul>" );
     add_action( 'init', array( $this, 'getPostConfig' ), 1 );
     add_action( 'init', array( $this, 'registerPostTypes' ), 2 );
   }
@@ -38,15 +37,9 @@ class PostTypes
 			#write_log( "yes, this is the main site" . "<br />" );
 		}
 
-		echo "count - " . count ( $PostConfig )  ;
-
 		if( ! empty ( $PostConfig ) ):
 
 			foreach ( $PostConfig as $p ):
-
-				print ( "<pre>" );
-				print_r ( $p );
-				print ( "</pre>" );
 
 				if ( ! is_main_site( $blog_id ) ) :
 
@@ -54,10 +47,6 @@ class PostTypes
 					#write_log("name - " . $p['args']['labels']['name']);
 
 					if( ! isset($p['extras']['mu_main_site_only']) || $p['extras']['mu_main_site_only'] == false ):
-						echo "<br> - WWWWWWWWWWWWWWWWWW - <br>";
-
-						#write_log " -- mu_main_site_only - " . $p['extras']['mu_main_site_only'] . "<br />";
-						#write_log(" -- mu_main_site_only - " . $p['extras']['mu_main_site_only'] . "<br />");
 						register_post_type( $p['types'], $p['args'] );
 
 					else:
@@ -65,19 +54,8 @@ class PostTypes
 					endif;
 
 				else:
-					#write_log( $p['types'] );
-				
+					#write_log( $p['types'] );				
 					if( ! isset( $p['extras']['sub_site_only']) || $p['extras']['sub_site_only'] == false ):
-						echo "<br> - XXXXXXXXXXXXXXXXXX - <br>";
-
-						print ( "types:<pre>" );
-						print_r ( $p['types'] );
-						print ( "</pre>" );
-
-						print ( "args:<pre>" );
-						print_r ( $p['args'] );
-						print ( "</pre>" );
-
 						register_post_type( $p['types'], $p['args'] );
 					endif;
 
@@ -92,11 +70,8 @@ class PostTypes
 
 		endif;
 
+		return $PostConfig;
+
 	}
-
-
-
-
-
 
 }
