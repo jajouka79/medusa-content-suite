@@ -29,7 +29,7 @@ class TaxConfig
 				'menu_name' => __( 'News Category' ),
 			);
 			// Control the slugs used for this taxonomy
-			$config[0]['args']=array(
+			$args = array(
 				'labels' => $labels,
 				'slug' => 'news-category', // This controls the base slug that will display before each term
 				'with_front' => false, // Don't display the category base before "/locations/"
@@ -42,9 +42,11 @@ class TaxConfig
 					'assign_terms' => 'update_core'
 				),
 			);
-			$config[0]['taxes']='news_category';
-			$config[0]['types'][0]['id']='news_article';
-			$config[0]['types'][0]['show_tax_meta']=false;
+			$taxes = 'news_category';
+			$types = array ( 'id' => 'news_article', 'show_tax_meta' => false );
+
+			$config[] = array ( 'args' => $args, 'types' => $types, 'taxes' => $taxes );
+
 
 		//TX - Event Category
 			$labels=array(
@@ -61,7 +63,7 @@ class TaxConfig
 				'menu_name' => __( 'Event Category' ),
 			);
 			// Control the slugs used for this taxonomy
-			$config[1]['args']=array(
+			$args = array(
 				'labels' => $labels,
 				'slug' => 'event_category', // This controls the base slug that will display before each term
 				'with_front' => false, // Don't display the category base before "/locations/"
@@ -74,9 +76,12 @@ class TaxConfig
 					'assign_terms' => 'update_core'
 				),
 			);
-			$config[1]['taxes']='event_category';
-			$config[1]['types'][0]['id']='event';
-			$config[1]['types'][0]['show_tax_meta']=false;
+
+			$taxes = 'event_category';
+			$types = array ( 'id' => 'event', 'show_tax_meta' => false );
+
+			$config[] = array ( 'args' => $args, 'types' => $types, 'taxes' => $taxes );
+
 
 			return $config;
 

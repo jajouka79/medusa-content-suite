@@ -14,7 +14,7 @@ class PostConfig
 	public function getPostConfig()
 	{
 		//PT - News Article
-			$prefix='_news_article_';
+			$prefix = '_news_article_';
 			$labels = array(
 				'name'               => _x( 'News Articles', 'post type general name' ),
 				'singular_name'      => _x( 'News Article', 'post type singular name' ),
@@ -86,7 +86,7 @@ class PostConfig
 				),
 			);
 
-			$config[0]['args'] = array(
+			$args = array(
 				'labels'        => $labels,
 				'rewrite'        => $rewrite,
 				'description'   => 'Holds our news articles and news article data',
@@ -112,9 +112,9 @@ class PostConfig
 
 			);
 
-			$config[0]['types']='news_article';
+			$types = 'news_article';
 			
-			$config[0]['extras']=array(
+			$extras = array(
 				'sidebars'=>false,
 				'list_page'=>739,
 				'mu_main_site_only'=>false,
@@ -128,6 +128,23 @@ class PostConfig
 				'create_dummy_posts'=>false,
 				'url_query_vars'=>array( 'page_id' ),
 			);
+
+			$config[] = array ( 'args' => $args, 'types' => $types, 'extras' => $extras );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		//PT - Events
 			$labels = array(
@@ -208,7 +225,7 @@ class PostConfig
 				),
 			);
 
-			$config[1]['args'] = array(
+			$args = array(
 				'labels'        => $labels,
 				'rewrite'        => $rewrite,
 				'description'   => 'Holds our event and event related data',
@@ -233,8 +250,9 @@ class PostConfig
 				'can_export' => true,
 			);
 
-			$config[1]['types']='event';
-			$config[1]['extras']=array(
+			$types = 'event';
+
+			$extras = array(
 				'sidebars'=>false,
 				'list_page'=>false,
 				'mu_main_site_only'=>false,
@@ -247,6 +265,10 @@ class PostConfig
 				'show_posts_in_nav_menu'=>true,
 				'create_dummy_posts'=>false,
 			);
+
+			$config[] = array ( 'args' => $args, 'types' => $types, 'extras' => $extras );
+
+
 
 			return $config;
 

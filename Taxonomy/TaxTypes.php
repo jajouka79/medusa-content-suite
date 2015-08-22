@@ -36,28 +36,30 @@ class TaxTypes
 		$num_taxes = count($TaxConfig);
 		#echo "num_taxes - " . $num_taxes . "<br>";
 
-		for( $x = 0; $x < count( $TaxConfig ); $x++ ):
+		#for( $x = 0; $x < count( $TaxConfig ); $x++ ):
 
-			if( isset( $TaxConfig[$x]['types'] ) ):
+		foreach ( $TaxConfig as $tc ) :
 
-				if($TaxConfig[$x]['types']):
+			if( isset( $tc['types'] ) ) :
 
-					$num_types = count( $TaxConfig[$x]['types'] );
+				if( $tc['types'] ) :
+
+					$num_types = count( $tc['types'] );
 					#echo "num_types - " . $num_types . "<br>";
 
 					$type_array=array();
 					for($y=0; $y<$num_types; $y++):
-						#print $TaxConfig[$x]['taxes'] . " - TaxConfig[$x]['types'][$y]['id'] - " . $TaxConfig[$x]['types'][$y]['id'] . "<br><br><br>";
-						$type_array[$y]=$TaxConfig[$x]['types'][$y]['id'];
+						$type_array[$y] = $tc['types'][$y]['id'];
 					endfor;
 
-					register_taxonomy($TaxConfig[$x]['taxes'], $type_array, $TaxConfig[$x]['args']);
+					register_taxonomy($tc['taxes'], $type_array, $tc['args']);
 
 				endif;
 
 			endif;
 
-		endfor;
+		endforeach;
+		#endfor;
 
 
 		return $TaxConfig;

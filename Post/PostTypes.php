@@ -41,6 +41,12 @@ class PostTypes
 
 			foreach ( $PostConfig as $p ):
 
+				/*
+				echo "<pre>";
+				print_r ( $p );
+				echo "</pre>";
+				*/
+				
 				if ( ! is_main_site( $blog_id ) ) :
 
 					#echo "name - " . $p['args']['labels']['name'];

@@ -1,71 +1,49 @@
 <?php
-
 namespace MedusaContentSuite\CMB\Meta;
-
-use MedusaContentSuite\Config\MetaConfig as MetaConfig;
+#use MedusaContentSuite as MedusaContentSuite;
+use MedusaContentSuite\Config\PostMetaConfig as PostMetaConfig;
 
 class PostMeta
 {
-
-	public function init()
+	public function init( )
 	{
-		#print( "<ul><li>PostMeta > init</li></ul>" );
-		#print_r ( $this->registerPostMeta() );
-		#add_filter( 'cmb2_meta_boxes', array( &$this, 'registerPostMeta' ) );
 		add_action( 'cmb2_init', array( $this, 'registerPostMeta' ) );
 	}
 
-	public function getMetaConfig()
+	public function getPostMetaConfig( )
 	{
-		$MetaConfig = new MetaConfig();
-		$MetaConfig = $MetaConfig->getMetaConfig();
-		return $MetaConfig;
+		$PostMetaConfig = new PostMetaConfig;
+		$PostMetaConfig = $PostMetaConfig->getPostMetaConfig( );
+		return $PostMetaConfig;
 	}
 
-	public function registerPostMeta()
+
+	public function registerPostMeta( )
 	{		
-		echo "registerPostMeta()<br><br>";
+		#echo "registerPostMeta( )<br><br>";
 		
-		/*
-		$MetaConfig = $this->getMetaConfig();
-		return $MetaConfig;
-		*/
-
+		$PostMetaConfig = $this->getPostMetaConfig( );
 		
+		foreach ( $PostMetaConfig as $mc ) :
 
-		$cmb_demo = new_cmb2_box( array(
-			'id'            => $prefix . 'metabox',
-			'title'         => __( 'Test Metabox', 'cmb2' ),
-			'object_types'  => array( 'page', ), // Post type
-			// 'show_on_cb' => 'yourprefix_show_if_front_page', // function should return a bool value
-			// 'context'    => 'normal',
-			// 'priority'   => 'high',
-			// 'show_names' => true, // Show field names on the left
-			// 'cmb_styles' => false, // false to disable the CMB stylesheet
-			// 'closed'     => true, // true to keep the metabox closed by default
-		) );
+			$box_config = $mc;
+			$box_fields = $mc[ 'fields' ];
+			unset( $box_config[ 'fields' ] );
 
-		$cmb_demo->add_field( array(
-			'name'       => __( 'Test Text', 'cmb2' ),
-			'desc'       => __( 'field description (optional)', 'cmb2' ),
-			'id'         => $prefix . 'text',
-			'type'       => 'text',
-			'show_on_cb' => 'yourprefix_hide_if_no_cats', // function should return a bool value
-			// 'sanitization_cb' => 'my_custom_sanitization', // custom sanitization callback parameter
-			// 'escape_cb'       => 'my_custom_escaping',  // custom escaping callback parameter
-			// 'on_front'        => false, // Optionally designate a field to wp-admin only
-			// 'repeatable'      => true,
-		) );
+			#print( "<br><br>" );
+			#print_r( $box_config );
 
-		$cmb_demo->add_field( array(
-			'name' => __( 'Test Text Small', 'cmb2' ),
-			'desc' => __( 'field description (optional)', 'cmb2' ),
-			'id'   => $prefix . 'textsmall',
-			'type' => 'text_small',
-			// 'repeatable' => true,
-		) );
+			$cmb_demo = new_cmb2_box( $box_config );
 
-		
+			foreach ( $box_fields as $f ) :
+				$cmb_demo->add_field( $f );
+				#print( "<br><br>" );
+				#print_r( $f );
+			endforeach;
+
+			#break;
+
+		endforeach;
 
 	}
 
