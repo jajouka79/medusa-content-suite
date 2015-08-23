@@ -58,22 +58,27 @@ class PostMeta
 					}
 
 					if ( ! empty ( $mb['grid'] ) ) :
+	
+						$cmb2Grid = new \Cmb2Grid\Grid\Cmb2Grid( $cmb_demo );
+		
 						$box_grid = $mb[ 'grid' ];
 
 						/*print( "<br>box_grid:<br><pre>" );
 						print_r( $box_grid );
 						print ("</pre>");*/
 
-						foreach ( $box_grid['rows'] as $row ) :
-							print( "<br>rows:<br><pre>" );
-							print_r( $row );
+						foreach ( $box_grid['rows'] as $r ) :
+
+							$row = $cmb2Grid->addRow();
+						
+							print( "<br>r:<br><pre>" );
+							print_r( $r );
 							print ("</pre>");
 						endforeach;
 
 					endif;
 
 					/*
-					$cmb2Grid = new \Cmb2Grid\Grid\Cmb2Grid($cmb_demo);
 					$row = $cmb2Grid->addRow();
 					*/
 
