@@ -37,7 +37,108 @@ class PostMetaConfig
 						'type' => 'textarea',
 					),
 
-				)
+					array(
+					    'name'    => 'Test Color Picker',
+					    'id'      => 'wiki_test_colorpicker',
+					    'type'    => 'colorpicker',
+					    'default' => '#ffffff',
+					),
+
+					array(
+					    'name'    => __( 'RGBa Colorpicker', 'cmb2' ),
+					    'desc'    => __( 'Field description (optional)', 'cmb2' ),
+					    'id'   => $prefix . 'test_colorpicker',
+					    'type' => 'rgba_colorpicker',
+					    'default'  => '#ffffff',
+					),
+
+					array(
+					    'name'        => __( 'Related post' ),
+					    'id'          => 'prefix_related_post',
+					    'type'        => 'post_search_text', // This field type
+					    // post type also as array
+					    'post_type'   =>  'news_article',
+					    // or checkbox, used in the modal view to select the post type
+					    'select_type' => 'radio'
+					),
+
+					array(
+					    'name' => 'Location',
+					    'desc' => 'Drag the marker to set the exact location',
+					    'id' => $prefix . 'location',
+					    'type' => 'pw_map',
+					    // 'split_values' => true, // Save latitude and longitude as two separate fields
+					),
+
+					array(
+						'name' => 'Featured News Article?',
+						'desc' => 'Select featured news article',
+						'id' => $prefix . 'featured_news_article',
+						'type'    => 'select',
+						'options' => array(
+							'no' => __( 'No', 'cmb' ),
+							'yes'   => __( 'Yes', 'cmb' ),
+						),
+						'show_option_none' => false,
+					),
+					array(
+						'name' => 'Featured on Front Page?',
+						'desc' => 'Select if news article featured on front page X',
+						'id' => $prefix . 'featured_on_front',
+						'type'    => 'select',
+						'options' => array(
+							'no' => __( 'No', 'cmb' ),
+							'yes'   => __( 'Yes', 'cmb' ),
+						),
+						//'default' => 'no',
+						'show_option_none' => false,
+					),
+
+
+				),
+
+
+				'grid' => array(
+
+					'rows' => array(
+
+						array(
+							'columns' => array(
+								array(
+									$prefix . 'location', 
+									'class' => 'col-md-8
+								'),
+								array(
+									'prefix_related_post', 
+									'class' => 'col-md-4'
+								),
+							),
+						),
+
+
+						array(
+							'columns' => array(
+								array(
+									'wiki_test_colorpicker', 
+									'class' => 'col-md-2
+								'),
+								array(
+									$prefix . 'test_colorpicker', 
+									'class' => 'col-md-2'
+								),
+
+								array(
+									$prefix . 'featured_news_article', 
+									'class' => 'col-md-2
+								'),
+								array(
+									$prefix . 'featured_on_front', 
+									'class' => 'col-md-2'
+								),
+							),
+						),
+					),
+				),
 			);
 		
 		#post

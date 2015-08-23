@@ -29,10 +29,11 @@ use MedusaContentSuite\Config\TaxConfig as TaxConfig;
 use MedusaContentSuite\Config\ModConfig as ModConfig;
 
 use MedusaContentSuite\CMB\Meta\PostMeta as PostMeta;
+use MedusaContentSuite\CMB\Meta\TaxMeta as TaxMeta;
 
 /*use MedusaContentSuite\CMB\FieldTypes\CustomFieldTypes as CustomFieldTypes;
 use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
-use MedusaContentSuite\CMB\Meta\TaxMeta as TaxMeta;*/
+*/
 
 require_once '/var/www/bedrock/vendor/autoload.php';
 
@@ -109,6 +110,9 @@ class MedusaContentSuite
 
     $PostMeta = new PostMeta;
     $PostMeta->init();
+    
+    $TaxMeta = new TaxMeta;
+    $TaxMeta->init();
 
     if ( ! is_admin( ) ) :
 

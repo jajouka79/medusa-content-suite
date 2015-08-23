@@ -20,15 +20,13 @@ class Callbacks
 		return $config;
 
 	}
+
 	public function tester($a)
 	{
 		$b = 'returned! ---- from ' . $a;
 		return $b;
 
 	}
-
-
-
 
 
     public function medusa_custom_meta_boxes_get_countries() {
@@ -273,5 +271,18 @@ class Callbacks
 	    return $term_options;
 	}
 
+	public function cmb_get_formidable_forms_list() {
+	    global $wpdb;
+	    $sql = "SELECT ID, form_key, name FROM `wp_frm_forms`";
+	    $forms = $wpdb->get_results( $sql );
+	    //write_log($forms);
+	    $form_options = array();
+	    if ( ! empty( $forms ) ) {
+	        foreach ( $forms as $form ) {
+	            $form_options[ $form->ID ] = $form->name;
+	        }
+	    }
+	    return $form_options;
+	}
 
 }

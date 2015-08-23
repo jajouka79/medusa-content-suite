@@ -43,7 +43,12 @@ class TaxConfig
 				),
 			);
 			$taxes = 'news_category';
-			$types = array ( 'id' => 'news_article', 'show_tax_meta' => false );
+			$types = array ( 
+				array (
+					'id' => 'news_article', 
+					'show_tax_meta' => false 
+				),
+			);
 
 			$config[] = array ( 'args' => $args, 'types' => $types, 'taxes' => $taxes );
 
@@ -78,7 +83,12 @@ class TaxConfig
 			);
 
 			$taxes = 'event_category';
-			$types = array ( 'id' => 'event', 'show_tax_meta' => false );
+			$types = array ( 
+				array (
+					'id' => 'event', 
+					'show_tax_meta' => false 
+				),
+			);
 
 			$config[] = array ( 'args' => $args, 'types' => $types, 'taxes' => $taxes );
 

@@ -33,34 +33,24 @@ class TaxTypes
 		print_r ( $TaxConfig );
 		echo "</pre>";*/
 
-		$num_taxes = count($TaxConfig);
-		#echo "num_taxes - " . $num_taxes . "<br>";
-
-		#for( $x = 0; $x < count( $TaxConfig ); $x++ ):
-
 		foreach ( $TaxConfig as $tc ) :
 
-			if( isset( $tc['types'] ) ) :
+			if( ! empty ( $tc['types'] ) ) :
 
 				if( $tc['types'] ) :
 
-					$num_types = count( $tc['types'] );
-					#echo "num_types - " . $num_types . "<br>";
+					$type_array = array();
+					foreach ( $tc['types'] as $t ) :
+						$type_array[] = $t['id'];
+					endforeach;
 
-					$type_array=array();
-					for($y=0; $y<$num_types; $y++):
-						$type_array[$y] = $tc['types'][$y]['id'];
-					endfor;
-
-					register_taxonomy($tc['taxes'], $type_array, $tc['args']);
+					register_taxonomy( $tc['taxes'], $type_array, $tc['args'] );
 
 				endif;
 
 			endif;
 
 		endforeach;
-		#endfor;
-
 
 		return $TaxConfig;
 
