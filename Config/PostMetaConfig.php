@@ -36,6 +36,25 @@ class PostMetaConfig
 						'id' => $prefix . 'page_desc',
 						'type' => 'textarea',
 					),
+					array(
+						'name'         => __( 'Images', 'cmb' ),
+						'desc'         => __( 'Upload or add multiple photos.', 'cmb' ),
+						'id'           => $prefix . 'images',
+						'type'         => 'file_list',
+						'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
+					),
+					array(
+						'name' => 'Start Date',
+						'desc' => 'Choose Start Date',
+						'id' => $prefix . 'start_date',
+						'type' => 'text_date_timestamp'
+					),
+					array(
+						'name' => 'End Date',
+						'desc' => 'Choose End Date',
+						'id' => $prefix . 'end_date',
+						'type' => 'text_date_timestamp'
+					),
 
 					array(
 					    'name'    => 'Test Color Picker',
@@ -50,24 +69,6 @@ class PostMetaConfig
 					    'id'   => $prefix . 'test_colorpicker',
 					    'type' => 'rgba_colorpicker',
 					    'default'  => '#ffffff',
-					),
-
-					array(
-					    'name'        => __( 'Related post' ),
-					    'id'          => 'prefix_related_post',
-					    'type'        => 'post_search_text', // This field type
-					    // post type also as array
-					    'post_type'   =>  'news_article',
-					    // or checkbox, used in the modal view to select the post type
-					    'select_type' => 'radio'
-					),
-
-					array(
-					    'name' => 'Location',
-					    'desc' => 'Drag the marker to set the exact location',
-					    'id' => $prefix . 'location',
-					    'type' => 'pw_map',
-					    // 'split_values' => true, // Save latitude and longitude as two separate fields
 					),
 
 					array(
@@ -95,6 +96,25 @@ class PostMetaConfig
 					),
 
 
+					array(
+					    'name'        => __( 'Related post' ),
+					    'id'          => 'prefix_related_post',
+					    'type'        => 'post_search_text', // This field type
+					    // post type also as array
+					    'post_type'   =>  'news_article',
+					    // or checkbox, used in the modal view to select the post type
+					    'select_type' => 'radio'
+					),
+
+					array(
+					    'name' => 'Location',
+					    'desc' => 'Drag the marker to set the exact location',
+					    'id' => $prefix . 'location',
+					    'type' => 'pw_map',
+					    // 'split_values' => true, // Save latitude and longitude as two separate fields
+					),
+
+
 				),
 
 
@@ -105,38 +125,51 @@ class PostMetaConfig
 						array(
 							'columns' => array(
 								array(
-									$prefix . 'location', 
-									'class' => 'col-md-8
-								'),
-								array(
-									'prefix_related_post', 
-									'class' => 'col-md-4'
+									$prefix . 'images', 
+									'class' => 'col-md-6 '
 								),
+								array(
+									$prefix . 'start_date', 
+									'class' => 'col-md-3 '
+								),
+								array(
+									$prefix . 'end_date', 
+									'class' => 'col-md-3 '
+								),
+							),
+						),/*
+
+						array(
+							'columns' => array(
+								array(
+									'wiki_test_colorpicker', 
+									'class' => 'col-md-2 '
+								),
+								array(
+									$prefix . 'test_colorpicker', 
+									'class' => 'col-md-2 '
+								),
+								array(
+									$prefix . 'images', 
+									'class' => 'col-md-6
+								'),															
 							),
 						),
 
 
 						array(
 							'columns' => array(
-								array(
-									'wiki_test_colorpicker', 
-									'class' => 'col-md-2
-								'),
-								array(
-									$prefix . 'test_colorpicker', 
-									'class' => 'col-md-2'
-								),
 
 								array(
 									$prefix . 'featured_news_article', 
-									'class' => 'col-md-2
-								'),
+									'class' => 'col-md-2'
+								),
 								array(
 									$prefix . 'featured_on_front', 
 									'class' => 'col-md-2'
 								),
 							),
-						),
+						),*/
 					),
 				),
 			);

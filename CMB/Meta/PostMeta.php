@@ -44,16 +44,25 @@ class PostMeta
 					$cmb_demo = new_cmb2_box( $box_config );
 
 					$metabox_id = $box_config['id'];
-					#echo "<br><br>!!!!!!!!!!-----------metabox_id:".$metabox_id."-----------!!!!!!!!!!<br><br>";
-					
+			
+					$box_fields_named = array();
+				
 					foreach ( $box_fields as $f ) :
 						$f['metabox_id'] = $metabox_id;
-						$cmb_demo->add_field( $f );
+						$xxx = $cmb_demo->add_field( $f );
+						$box_fields_named[$f['id']] = $xxx;
 						/*print( "<br>f : <br>" );
 						print_r( $f );*/
+						/*print( "<br>xxx : <br><pre>" );
+						var_dump( $xxx );
+						print( "</pre>" );*/
 					endforeach;
+					
+					/*print( "<br><pre>box_fields_named : <br>" );
+					print_r( $box_fields_named );
+					print( "</pre>" );*/
 
-					if(!is_admin()){
+					if ( ! is_admin() ){
 					    continue;
 					}
 
@@ -63,26 +72,36 @@ class PostMeta
 		
 						$box_grid = $mb[ 'grid' ];
 
-						/*print( "<br>box_grid:<br><pre>" );
+						/*
+						print( "<br>box_grid:<br><pre>" );
 						print_r( $box_grid );
-						print ("</pre>");*/
+						print ("</pre>");
+						*/
 
 						foreach ( $box_grid['rows'] as $r ) :
 
 							$row = $cmb2Grid->addRow();
 						
-							print( "<br>r:<br><pre>" );
+							/*print( "<br>r:<br><pre>" );
 							print_r( $r );
-							print ("</pre>");
+							print ("</pre>");*/
+
+							$columns = array( );
+
+							foreach ( $r['columns'] as $column ) :
+								$columns[] = $box_fields_named[ $column[0] ];
+
+								/*print( "<br>column:<br><pre>" );
+								print_r( $column );
+								print ("</pre>");*/
+							endforeach;
+
+
+							$row->addColumns( $columns );
 						endforeach;
+						
 
 					endif;
-
-					/*
-					$row = $cmb2Grid->addRow();
-					*/
-
-
 
 					/*$row->addColumns(array(
 					   array($field1, 'class' => 'col-md-8'),
