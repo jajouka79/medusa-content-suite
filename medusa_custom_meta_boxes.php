@@ -48,7 +48,6 @@ class MedusaContentSuite
   {
     #print( "<ul><li>PostTypes > init</li></ul>" );
     add_action( 'init', array( $this, 'load' ), 1 );
-    require_once plugin_dir_path( __FILE__ ).'tester.php';
   }
 
   public function load()
@@ -141,23 +140,5 @@ class MedusaContentSuite
 
   }
 }
-
-
-
-
-//include "example-functions.php";
-
-/*
-class medusa_custom_meta_boxes {
-  function __construct( $meta_box_args ) {
-    $this->meta_box_args = $meta_box_args;
-    add_filter( 'cmb2_meta_boxes', array( &$this, 'medusa_custom_meta_boxes' ) );
-  }
-
-  public function medusa_custom_meta_boxes(){
-    return $this->meta_box_args;
-  }
-
-}*/
 
 ?>

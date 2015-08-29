@@ -28,10 +28,6 @@ class TaxTypes
 		global $blog_id;
 
 		$TaxConfig =  $this->getTaxConfig();
-		/*print("<h1>this->TaxConfig</h1>");
-		echo "<pre>";
-		print_r ( $TaxConfig );
-		echo "</pre>";*/
 
 		foreach ( $TaxConfig as $tc ) :
 
@@ -66,33 +62,13 @@ class TaxTypes
 		global $tx_data;
 		global $pt_data;
 
-		/*
-
-		print "remove_taxonomy_boxes - > tx_data";
-
-		print "<pre>";
-		print_r($tx_data);
-		print "</pre>";
-
-		print "pt_data<pre>";
-		print_r($pt_data);
-		print "</pre>";
-
-		$num_taxes=count($tx_data);
-		echo "num_taxes - " . $num_taxes . "<br>";
-
-		*/
-
 		for($x=0; $x<count($tx_data); $x++):
 
 			if(isset($tx_data[$x]['types'])):
 
 				if($tx_data[$x]['types']):
 					$num_types=count($tx_data[$x]['types']);
-					#echo "num_types - " . $num_types . "<br>";
-
-						$tax_id='';
-
+					$tax_id='';
 
 					if($tx_data[$x]['args']['hierarchical']==true):
 						$tax_id=$tx_data[$x]['taxes'].'div';
@@ -100,15 +76,7 @@ class TaxTypes
 						$tax_id='tagsdiv-'.$tx_data[$x]['taxes'];
 					endif;
 
-					#echo "tx_data[$x]['args']['hierarchical'] - " . $tx_data[$x]['args']['hierarchical'] . "<br>";
-
-
 					for($y=0; $y<$num_types; $y++):
-
-
-						#print $tax_id . " - tx_data[$x]['types'][$y]['id'] - " . $tx_data[$x]['types'][$y]['id'] . "<br>";
-						#print "tx_data[$x]['types'][$y]['show_tax_meta'] - " . $tx_data[$x]['types'][$y]['show_tax_meta'] . "<br>";
-
 
 						if($tx_data[$x]['types'][$y]['show_tax_meta'] == false):
 							remove_meta_box($tax_id, $tx_data[$x]['types'][$y]['id'], 'side');
@@ -122,9 +90,6 @@ class TaxTypes
 
 		endfor;
 
-	}
-
-
-	
+	}	
 
 }

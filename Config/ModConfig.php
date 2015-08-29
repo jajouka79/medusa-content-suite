@@ -70,15 +70,6 @@ class ModConfig
 
 	public function my_add_excerpts_to_pages() {
 
-		#$post_id = get_query_var( 'post' ); 
-		#$screen = get_current_screen(); 
-
-		#write_log( "my_add_excerpts_to_pages()");
-
-		#write_log( $screen );
-
-		//write_log ( get_page_template_slug( $post->ID ) ); 
-
 		add_post_type_support( 'page', 'excerpt' );
 
 	}

@@ -40,7 +40,7 @@ class Rules
 	
 	public function ba_metabox_add_for_top_level_posts_only( $display, $meta_box ) {
 
-	    print("ba_metabox_add_for_top_level_posts_only");
+	    //print("ba_metabox_add_for_top_level_posts_only");
 
 	    #print_html_r($meta_box );
 

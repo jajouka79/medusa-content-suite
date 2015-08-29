@@ -16,7 +16,7 @@ class TaxMetaConfig
 	public function getTaxMetaConfig()
 	{
 		$cb = new Callbacks();
-		#$cb = $cb->tester('ass');
+		#$cb = $cb->tester('testvar');
 	    
 	    $prefix = "_news_category_tax_fields_";
 	    $config[] = array(

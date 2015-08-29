@@ -17,7 +17,7 @@ class PostMetaConfig
 	{
 
 		$cb = new Callbacks();
-		#$cb = $cb->tester('ass');
+		#$cb = $cb->tester('testvar');
 
 		#page
 

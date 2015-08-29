@@ -1,6 +1,6 @@
 <?php
 namespace MedusaContentSuite\CMB\Meta;
-#use MedusaContentSuite as MedusaContentSuite;
+
 use MedusaContentSuite\Config\TaxMetaConfig as TaxMetaConfig;
 
 class TaxMeta
@@ -30,12 +30,6 @@ class TaxMeta
 			$box_config = $mc;
 			$box_fields = $mc['fields'];
 			unset( $box_config['fields'] );
-
-			/*print( "<br>box_config:<br>" );
-			print_r( $box_config );
-
-			print( "<br>box_fields:<br>" );
-			print_r( $box_fields );*/
 
 			$cmb_demo = new_cmb2_box( $box_config );
 
