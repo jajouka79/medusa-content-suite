@@ -13,6 +13,10 @@ class PostConfig
 
 	public function getPostConfig()
 	{
+
+		$config = array();
+
+		
 		//PT - News Article
 			$prefix = '_news_article_';
 			$labels = array(
@@ -32,7 +36,7 @@ class PostConfig
 			);
 
 			$rewrite = array(
-		        'slug'=>'news',
+		        'slug'=>'news_article',
 		        'with_front'=> true,
 		        'feed'=> true,
 		        'pages'=> true
@@ -48,41 +52,7 @@ class PostConfig
 					'image_size_display'=>'display-width-1000',
 				),
 				'fields'=>array(
-					array(
-						'name'=>'cb',
-						'display_name'=>'<input type="checkbox" />',
-						'order_by'=>false,
-						'function'=>false,
-					),
-					array(
-						'name'=>'title',
-						'display_name'=>'Title',
-						'order_by'=>false,
-						'function'=>false,
-					),
-					array(
-						'name'=>'_cmb_news_article_images',
-						'display_name'=>'Images',
-						'order_by'=>false,
-						'function'=>'medusa_admin_columns_show_images',
-					),
-					array(
-						'name'=>'_cmb_news_article_category',
-						'display_name'=>'News CategoriesXX',
-						'order_by'=>false,
-						'function'=>'medusa_admin_columns_show_terms_from_tax',
-						'function_data_type'=>'configcats_ddd',
-					),
-					array(
-						'name'=>'date',
-						'display_name'=>'Published Date',
-						'order_by'=>false,
-					),
-					array(
-						'name'=>'author',
-						'display_name'=>'Author',
-						'order_by'=>false,
-					),
+
 				),
 			);
 
@@ -107,7 +77,7 @@ class PostConfig
 				#'map_meta_cap' => null,
 				#'register_meta_box_cb' => null,
 				#'taxonomies' => null,
-				'query_var' => 'news_artiiiicle',
+				'query_var' => 'news_articlesXXX',
 				'can_export' => true,
 
 			);
@@ -141,30 +111,27 @@ class PostConfig
 
 
 
-
-
-
-
-
-		//PT - Events
+		
+		//PT - Service
+			$prefix = '_service_';
 			$labels = array(
-				'name'               => _x( 'Events', 'post type general name' ),
-				'singular_name'      => _x( 'Event', 'post type singular name' ),
-				'add_new'            => _x( 'Add New', 'Event' ),
-				'add_new_item'       => __( 'Add New Event' ),
-				'edit_item'          => __( 'Edit Event' ),
-				'new_item'           => __( 'New Event' ),
-				'all_items'          => __( 'All Events' ),
-				'view_item'          => __( 'View Event' ),
-				'search_items'       => __( 'Search Events' ),
-				'not_found'          => __( 'No events found' ),
-				'not_found_in_trash' => __( 'No events found in the Trash' ),
+				'name'               => _x( 'Services', 'post type general name' ),
+				'singular_name'      => _x( 'Service', 'post type singular name' ),
+				'add_new'            => _x( 'Add New', 'Service' ),
+				'add_new_item'       => __( 'Add New Service' ),
+				'edit_item'          => __( 'Edit Service' ),
+				'new_item'           => __( 'New Service' ),
+				'all_items'          => __( 'All Services' ),
+				'view_item'          => __( 'View Service' ),
+				'search_items'       => __( 'Search Services' ),
+				'not_found'          => __( 'No service found' ),
+				'not_found_in_trash' => __( 'No service found in the Trash' ),
 				'parent_item_colon'  => '',
-				'menu_name'          => 'Events',
+				'menu_name'          => 'Services',
 			);
 
 			$rewrite = array(
-		        'slug'=>'events',
+		        'slug'=>'service',
 		        'with_front'=> true,
 		        'feed'=> true,
 		        'pages'=> true
@@ -172,63 +139,16 @@ class PostConfig
 
 			$columns = array(
 				'config'=>array(
-					'pt'=>'event',
-					'image_src'=>'custom',
-					'image_custom_field'=>'_cmb_events_images',
-					'image_show_multiple'=>false,
-					'image_size_thumb'=>'thumb-square-80',
-					'image_size_display'=>'display-width-1000',
 				),
 				'fields'=>array(
-					array(
-						'name'=>'cb',
-						'display_name'=>'<input type="checkbox" />',
-						'order_by'=>false,
-						'function'=>false,
-					),
-					array(
-						'name'=>'title',
-						'display_name'=>'Title',
-						'order_by'=>false,
-						'function'=>false,
-					),
-					array(
-						'name'=>'_cmb_events_images',
-						'display_name'=>'Images',
-						'order_by'=>false,
-						'function'=>'medusa_admin_columns_show_images',
-					),
-					array(
-						'name'=>'_cmb_events_featured',
-						'display_name'=>'Featured Event?',
-						'order_by'=>false,
-						'function'=>'medusa_admin_columns_get_meta_value',
-						'function_data_type'=>'featured_event',
-					),
-					array(
-						'name'=>'_cmb_events_weblink',
-						'display_name'=>'Web Link',
-						'order_by'=>false,
-						'function'=>'medusa_admin_columns_get_meta_value',
-						'function_data_type'=>'weblink',
-					),
-					array(
-						'name'=>'date',
-						'display_name'=>'Published Date',
-						'order_by'=>false,
-					),
-					array(
-						'name'=>'author',
-						'display_name'=>'Author',
-						'order_by'=>false,
-					),
+
 				),
 			);
 
 			$args = array(
 				'labels'        => $labels,
 				'rewrite'        => $rewrite,
-				'description'   => 'Holds our event and event related data',
+				'description'   => 'Holds our services and service data',
 				'public'        => true,
 				'menu_position' => 20,
 				'supports'      => array( 'title', 'editor', 'attributes' ), //'excerpt', , 'comments', 'thumbnail', 'page-attributes'
@@ -246,15 +166,16 @@ class PostConfig
 				#'map_meta_cap' => null,
 				#'register_meta_box_cb' => null,
 				#'taxonomies' => null,
-				'query_var' => 'evvvvvvents',
+				'query_var' => 'servicesXXX',
 				'can_export' => true,
+
 			);
 
-			$types = 'event';
-
+			$types = 'service';
+			
 			$extras = array(
 				'sidebars'=>false,
-				'list_page'=>false,
+				'list_page'=>739,
 				'mu_main_site_only'=>false,
 				'sub_site_only'=>false,
 				'columns'=>$columns,
@@ -264,9 +185,20 @@ class PostConfig
 				'nav_menu_position'=>1,
 				'show_posts_in_nav_menu'=>true,
 				'create_dummy_posts'=>false,
+				'url_query_vars'=>array( 'page_id' ),
 			);
 
 			$config[] = array ( 'args' => $args, 'types' => $types, 'extras' => $extras );
+
+
+
+
+
+
+
+
+
+
 
 
 

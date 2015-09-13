@@ -62,6 +62,7 @@ class PostMeta
 							$columns = array( );
 
 							foreach ( $r['columns'] as $column ) :
+								echo $column[0] . "<br>";
 								$columns[] = $box_fields_named[ $column[0] ];
 							endforeach;
 
