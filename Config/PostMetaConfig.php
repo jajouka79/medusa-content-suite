@@ -10,7 +10,7 @@ class PostMetaConfig
 	public function init()
 	{
 		#print("<ul><li>PostMetaConfig > init</li></ul>");
-		add_action( 'init', array( $this, 'getPostMetaConfig' ), 1 );
+		#add_action( 'init', array( $this, 'getPostMetaConfig' ), 1 );
 	}
 
 	public function getPostMetaConfig()

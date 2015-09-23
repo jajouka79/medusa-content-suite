@@ -40,18 +40,18 @@ require_once '/var/www/bedrock/vendor/autoload.php';
 $MedusaContentSuite = new MedusaContentSuite;
 $MedusaContentSuite->init();
 
-
 class MedusaContentSuite
 {
 
   public function init()
   {
-    #print( "<ul><li>PostTypes > init</li></ul>" );
+    #print( "<ul><li>MedusaContentSuite > init</li></ul>" );
     add_action( 'init', array( $this, 'load' ), 1 );
   }
 
   public function load()
   {
+
 
     #require_once __DIR__ . '/vendor/autoload.php'; 
     //echo "DIR - " . __DIR__ . "<br>";
@@ -67,51 +67,53 @@ class MedusaContentSuite
     #$PackagesFieldTypes = new PackagesFieldTypes;
 
     $TaxTypes = new TaxTypes;
-    $TaxTypes->init();
+    #$TaxTypes->init();
     $TaxTypes = $TaxTypes->registerTaxTypes();
     
     $PostTypes = new PostTypes;
-    $PostTypes->init();
+    #$PostTypes->init();
     $PostTypes = $PostTypes->registerPostTypes();
 
     $Callbacks = new Callbacks;
-    $Callbacks->init();
+    #$Callbacks->init();
     $Callbacks = $Callbacks->getCallbacks();
 
     $MainConfig = new MainConfig;
-    $MainConfig->init();
+    #$MainConfig->init();
     $MainConfig = $MainConfig->getMainConfig();
 
     $MenuConfig = new MenuConfig;
-    $MenuConfig->init();
+    #$MenuConfig->init();
     $MenuConfig = $MenuConfig->getMenuConfig();
 
     $PostConfig = new PostConfig;
-    $PostConfig->init();
+    #$PostConfig->init();
     $PostConfig = $PostConfig->getPostConfig();
 
     $TaxConfig = new TaxConfig;
-    $TaxConfig->init();
+    #$TaxConfig->init();
     $TaxConfig = $TaxConfig->getTaxConfig();
 
     $PostMetaConfig = new PostMetaConfig;
-    $PostMetaConfig->init();
+    #$PostMetaConfig->init();
     $PostMetaConfig = $PostMetaConfig->getPostMetaConfig();
 
-
     $TaxMetaConfig = new TaxMetaConfig;
-    $TaxMetaConfig->init();
+    #$TaxMetaConfig->init();
     $TaxMetaConfig = $TaxMetaConfig->getTaxMetaConfig();
 
     $ModConfig = new ModConfig;
-    $ModConfig->init();
+    #$ModConfig->init();
     $ModConfig = $ModConfig->getModConfig();
 
     $PostMeta = new PostMeta;
-    $PostMeta->init();
+    #$PostMeta->init();
     
     $TaxMeta = new TaxMeta;
-    $TaxMeta->init();
+    #$TaxMeta->init();
+
+
+
 
     if ( ! is_admin( ) ) :
 

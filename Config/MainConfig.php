@@ -5,11 +5,11 @@ namespace MedusaContentSuite\Config;
 class MainConfig
 {
 
-  public function init()
-  {
-	#print("<ul><li>MainConfig > init</li></ul>");
-    add_action('init', array($this, 'getMainConfig'), 5);
-  }
+	public function init()
+	{
+		#print("<ul><li>MainConfig > init</li></ul>");
+		#add_action('init', array($this, 'getMainConfig'), 5);
+	}
 
 	public function getMainConfig()
 	{

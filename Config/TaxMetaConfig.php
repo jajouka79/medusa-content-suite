@@ -10,7 +10,7 @@ class TaxMetaConfig
 	public function init()
 	{
 		#print("<ul><li>TaxMetaConfig > init</li></ul>");
-		add_action( 'init', array( $this, 'getTaxMetaConfig' ), 1 );
+		#add_action( 'init', array( $this, 'getTaxMetaConfig' ), 1 );
 	}
 
 	public function getTaxMetaConfig()
