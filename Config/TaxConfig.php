@@ -16,7 +16,7 @@ class TaxConfig
 		$config = array();
 		
 		//TX - News Category
-			/*$labels=array(
+			$labels=array(
 				'name' => _x( 'News Category', 'taxonomy general name' ),
 				'singular_name' => _x( 'News Category', 'taxonomy singular name' ),
 				'search_items' =>  __( 'Search News Categories' ),
@@ -51,7 +51,7 @@ class TaxConfig
 				),
 			);
 
-			$config[] = array ( 'args' => $args, 'types' => $types, 'taxes' => $taxes );*/
+			$config[] = array ( 'args' => $args, 'types' => $types, 'taxes' => $taxes );
 
 
 			return $config;
