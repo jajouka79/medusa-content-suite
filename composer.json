@@ -1,6 +1,6 @@
 {
-  "name" : "jajouka/medusa_custom_meta_boxes",
-  "description" : "Medusa meta plugin.",
+  "name" : "jajouka/medusa_content_suite",
+  "description" : "Medusa content suite plugin for custom posts, tax, meta, config.",
   "type" : "wordpress-plugin",
   "keywords" : [ "wordpress" ],
   "license" : "GPL-2.0+",
