@@ -7,12 +7,15 @@ use MedusaContentSuite\Config\TaxConfig as TaxConfig;
 class TaxTypes
 {
 
-  public function init()
-  {
-    add_action( 'init', array( $this, 'getTaxConfig' ), 1 );
-    add_action( 'init', array( $this, 'registerTaxTypes' ), 2 );
-    #add_action( 'admin_init', array( $this, 'remove_taxonomy_boxes' ), 1 );
-  }
+	public $tax;
+	public $pt;
+
+	public function init()
+	{
+		add_action( 'init', array( $this, 'getTaxConfig' ), 1 );
+		add_action( 'init', array( $this, 'registerTaxTypes' ), 2 );
+		#add_action( 'admin_init', array( $this, 'remove_taxonomy_boxes' ), 1 );
+	}
 
 	public function getTaxConfig()
 	{
@@ -30,19 +33,42 @@ class TaxTypes
 		$TaxConfig =  $this->getTaxConfig();
 
 		foreach ( $TaxConfig as $tc ) :
+			
+			write_log( $tc['args']['show_ui'] );
 
-			if( ! empty ( $tc['types'] ) ) :
+			if( ! empty ( $tc['pt'] ) ) :
 
-				if( $tc['types'] ) :
+				$pt = array();
+				foreach ( $tc['pt'] as $t ) :
+					#write_log($t);
+					$pt[] = $t['id'];
+				endforeach;
 
-					$type_array = array();
-					foreach ( $tc['types'] as $t ) :
-						$type_array[] = $t['id'];
-					endforeach;
+				register_taxonomy( $tc['tax'], $pt, $tc['args'] );
 
-					register_taxonomy( $tc['taxes'], $type_array, $tc['args'] );
+				if ( ! empty( $tc['args_ext'] ) ) :
+
+					if ( ! empty( $tc['args_ext']['show_tax_meta'] ) ) :
+						if ( $tc['args_ext']['show_tax_meta'] == false ) :
+
+							$this->pt = $pt['id'];//here/!!!
+							$this->tax = $tc['tax'];
+
+							add_action( 'admin_menu', array( $this, 'remove_tax_metabox' ) );
+
+						endif;
+					endif;
 
 				endif;
+
+				/*foreach ( $tc['types'] as $type )://todo - check 
+					$this->pt = $type['id'];
+					$this->tax = $tc['tax'];//todo-loop
+					#add_action('add_meta_boxes', array( $this, 'meta_boxes_function' ) );					
+				endforeach;*/
+
+				/*$this->pt = $type['id'];
+				$this->tax = $tc['tax'];*/
 
 			endif;
 
@@ -51,6 +77,18 @@ class TaxTypes
 		return $TaxConfig;
 
 	}
+
+	public function remove_tax_metabox() {
+		$tax = $this->tax;
+		write_log( "xxxxxxx - remove_tax_metabox - ". $tax );
+		remove_meta_box( 'tagsdiv-'.$tax, 'post', 'side' );
+	}
+
+	/*public function meta_boxes_function() {
+		$tax = $this->tax;
+		write_log("xxxxxxx - ". $tax);
+    	\add_meta_box($tax.'divXXX', $tax, 'post_'.$tax.'_meta_box', 'blurb', 'side', null, array( 'taxonomy' => $tax ));
+	}*/
 
 
 
@@ -71,9 +109,9 @@ class TaxTypes
 					$tax_id='';
 
 					if($tx_data[$x]['args']['hierarchical']==true):
-						$tax_id=$tx_data[$x]['taxes'].'div';
+						$tax_id=$tx_data[$x]['tax'].'div';
 					else:
-						$tax_id='tagsdiv-'.$tx_data[$x]['taxes'];
+						$tax_id='tagsdiv-'.$tx_data[$x]['tax'];
 					endif;
 
 					for($y=0; $y<$num_types; $y++):

@@ -67,50 +67,39 @@ class MedusaContentSuite
     #$PackagesFieldTypes = new PackagesFieldTypes;
 
     $TaxTypes = new TaxTypes;
-    #$TaxTypes->init();
     $TaxTypes = $TaxTypes->registerTaxTypes();
     
     $PostTypes = new PostTypes;
-    #$PostTypes->init();
     $PostTypes = $PostTypes->registerPostTypes();
 
     $Callbacks = new Callbacks;
-    #$Callbacks->init();
     $Callbacks = $Callbacks->getCallbacks();
 
     $MainConfig = new MainConfig;
-    #$MainConfig->init();
     $MainConfig = $MainConfig->getMainConfig();
 
     $MenuConfig = new MenuConfig;
-    #$MenuConfig->init();
     $MenuConfig = $MenuConfig->getMenuConfig();
 
     $PostConfig = new PostConfig;
-    #$PostConfig->init();
     $PostConfig = $PostConfig->getPostConfig();
 
     $TaxConfig = new TaxConfig;
-    #$TaxConfig->init();
     $TaxConfig = $TaxConfig->getTaxConfig();
 
     $PostMetaConfig = new PostMetaConfig;
-    #$PostMetaConfig->init();
     $PostMetaConfig = $PostMetaConfig->getPostMetaConfig();
 
     $TaxMetaConfig = new TaxMetaConfig;
-    #$TaxMetaConfig->init();
     $TaxMetaConfig = $TaxMetaConfig->getTaxMetaConfig();
 
     $ModConfig = new ModConfig;
-    #$ModConfig->init();
     $ModConfig = $ModConfig->getModConfig();
 
     $PostMeta = new PostMeta;
-    #$PostMeta->init();
+    $PostMeta = $PostMeta->init();
     
     $TaxMeta = new TaxMeta;
-    #$TaxMeta->init();
 
 
 

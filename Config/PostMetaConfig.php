@@ -9,44 +9,34 @@ class PostMetaConfig
 
 	public function init()
 	{
-		#print("<ul><li>PostMetaConfig > init</li></ul>");
-		#add_action( 'init', array( $this, 'getPostMetaConfig' ), 1 );
+		#write_log("PostMetaConfig > init");
+		add_action( 'init', array( $this, 'getPostMetaConfig' ), 1 );
 	}
 
 	public function getPostMetaConfig()
 	{
+		#write_log("PostMetaConfig > getPostMetaConfig");
 
 		$cb = new Callbacks();
-		#$cb = $cb->tester('testvar');
 
-		#page
+		#promoter
 
-			$prefix = '_cmb_page_options_';
+			$prefix = '_cmb_promoter_options_';
 			$config[]=array(
-				'id' => 'metabox_page_options',
-				'title' => 'Page Options',
-				'object_types' => array( 'page' ), // post type
+				'id' => 'metabox_promoter_options',
+				'title' => 'Promoter Options',
+				'object_types' => array( 'promoter' ),
 				'context' => 'normal',
 				'priority' => 'low',
-				'show_names' => true, // Show field names on the left
+				'show_names' => true,
 				'fields' => array(
 
 					array(
-						'name'         => __( 'Images', 'cmb' ),
-						'desc'         => __( 'Upload or add multiple photos.', 'cmb' ),
-						'id'           => $prefix . 'images',
-						'type'         => 'file_list',
-						'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
-					),
-
-					array(
-					    'name'        => __( 'Related post' ),
-					    'id'          => 'prefix_related_post',
-					    'type'        => 'post_search_text', // This field type
-					    // post type also as array
-					    'post_type'   =>  'news_article',
-					    // or checkbox, used in the modal view to select the post type
-					    'select_type' => 'radio'
+						'name' => 'Web Address',
+						'desc' => 'Type the price info',
+						'id' => $prefix . 'web_address',
+						'type' => 'text',
+						'default' => 'http://',
 					),
 
 				),
@@ -72,8 +62,6 @@ class PostMetaConfig
 								),
 							),
 						),
-*/
-						/*
 
 						array(
 							'columns' => array(
@@ -132,6 +120,21 @@ class PostMetaConfig
 							'no' => __( 'No', 'cmb' ),
 							'yes'   => __( 'Yes', 'cmb' ),
 						),
+
+					array(
+						'name'         => __( 'Images', 'cmb' ),
+						'desc'         => __( 'Upload or add multiple photos.', 'cmb' ),
+						'id'           => $prefix . 'images',
+						'type'         => 'file_list',
+						'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
+					),
+
+					array(
+					    'name'        => __( 'Related post' ),
+					    'id'          => 'prefix_related_post',
+					    'type'        => 'post_search_text', // This field type
+					    'post_type'   =>  'news_article',
+					    'select_type' => 'radio',
 						'show_option_none' => false,
 					),
 					array(
@@ -146,49 +149,194 @@ class PostMetaConfig
 						//'default' => 'no',
 						'show_option_none' => false,
 					),
-					array(
-						'name'         => __( 'Images', 'cmb' ),
-						'desc'         => __( 'Upload or add multiple photos.', 'cmb' ),
-						'id'           => $prefix . 'images',
-						'type'         => 'file_list',
-						'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
-					),
+					
 
+				)
 				)
 			);
 
-		#_cmb_service_options_
-			$prefix = '_cmb_service_options_';
-			$config[]=array(
-				'id' => 'metabox_service_options',
-				'title' => 'Service Options',
-				'object_types' => array( 'service' ), //, 'ubs_service' post type
-				'context' => 'normal',
-				'priority' => 'high',
-				'show_names' => true, // Show field names on the left
-				'fields' => array(
-					array(
-						'name' => 'Featured Service?',
-						'desc' => 'Select featured service',
-						'id' => $prefix . 'featured_service',
-						'type'    => 'select',
-						'options' => array(
-							'no' => __( 'No', 'cmb' ),
-							'yes'   => __( 'Yes', 'cmb' ),
-						),
 
+		#_cmb_event_options_
+			$prefix = '_cmb_event_options_';
+			$config[]=array(
+				'id' => 'metabox_event_options',
+				'title' => 'Event Options',
+				'object_types' => array( 'event' ), 
+				'context' => 'normal',
+				'priority' => 'low',
+				'show_names' => true, 
+				'fields' => array(
+
+					array(
+					    'name'        => __( 'Promoter' ),
+					    'id'          => 'prefix_promoter',
+					    'type'        => 'post_search_text',
+					    'post_type'   =>  'promoter',
+					    'select_type' => 'radio',
+						'show_option_none' => false,
+					),
+					
+					array(
+						'name' => 'Start Date',
+						'desc' => 'Choose Start Date',
+						'id' => $prefix . 'start_date',
+						'type' => 'text_date_timestamp'
 					),
 
+					array(
+						'name' => 'End Date',
+						'desc' => 'Choose End Date',
+						'id' => $prefix . 'end_date',
+						'type' => 'text_date_timestamp'
+					),
+					array(
+						'name' => 'Start Time',
+						'desc' => 'Choose Start Time',
+						'id' => $prefix . 'start_time',
+						'type' => 'text_time'
+					),
+					array(
+						'name' => 'Finish Time',
+						'desc' => 'Choose Finish Time',
+						'id' => $prefix . 'finish_time',
+						'type' => 'text_time'
+					),
+					array(
+						'name' => 'Show Type',
+						'desc' => 'Select show type',
+						'id' => $prefix . 'show_type',
+						'taxonomy' => 'show_type',
+						'type' => 'taxonomy_multicheck',
+						'inline' => true,
+					),
+						
 					array(
 						'name'         => __( 'Images', 'cmb' ),
 						'desc'         => __( 'Upload or add multiple photos.', 'cmb' ),
 						'id'           => $prefix . 'images',
 						'type'         => 'file_list',
 						'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
-					),			
+					),
+
+					array(
+						'name' => 'Price',
+						'desc' => 'Type the price',
+						'id' => $prefix . 'price',
+						'type' => 'text',
+					),
+					array(
+						'name' => 'Web Address',
+						'desc' => 'Type the web address',
+						'id' => $prefix . 'web_address',
+						'type' => 'text',
+						'default' => 'http://',
+					),
+					array(
+						'name' => 'Wegottickets',
+						'desc' => 'Type the Wegottickets link',
+						'id' => $prefix . 'wegottickets',
+						'type' => 'text',
+						'default' => 'http://',
+					),
+
 
 				),
 			);
+
+
+
+
+
+
+
+		#_cmb_class_options_
+			$prefix = '_cmb_class_options_';
+			$config[]=array(
+				'id' => 'metabox_class_options',
+				'title' => 'Class Options',
+				'object_types' => array( 'class' ), 
+				'context' => 'normal',
+				'priority' => 'low',
+				'show_names' => true, 
+				'fields' => array(
+
+					array(
+					    'name'        => __( 'Related News' ),
+					    'id'          => 'prefix_promoter',
+					    'type'        => 'post_search_text',
+					    'post_type'   =>  'news_article',
+					    'select_type' => 'radio',
+						'show_option_none' => false,
+					),
+					
+					array(
+						'name' => 'Start Date',
+						'desc' => 'Choose Start Date',
+						'id' => $prefix . 'start_date',
+						'type' => 'text_date_timestamp'
+					),
+
+					array(
+						'name' => 'End Date',
+						'desc' => 'Choose End Date',
+						'id' => $prefix . 'end_date',
+						'type' => 'text_date_timestamp'
+					),
+					array(
+						'name' => 'Start Time',
+						'desc' => 'Choose Start Time',
+						'id' => $prefix . 'start_time',
+						'type' => 'text_time'
+					),
+					array(
+						'name' => 'Finish Time',
+						'desc' => 'Choose Finish Time',
+						'id' => $prefix . 'finish_time',
+						'type' => 'text_time'
+					),
+					array(
+						'name' => 'Class Type',
+						'desc' => 'Select class type',
+						'id' => $prefix . 'class_type',
+						'taxonomy' => 'class_type',
+						'type' => 'taxonomy_multicheck',
+						'inline' => true,
+					),
+						
+					array(
+						'name'         => __( 'Images', 'cmb' ),
+						'desc'         => __( 'Upload or add multiple photos.', 'cmb' ),
+						'id'           => $prefix . 'images',
+						'type'         => 'file_list',
+						'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
+					),
+
+					array(
+						'name' => 'Price',
+						'desc' => 'Type the price',
+						'id' => $prefix . 'price',
+						'type' => 'text',
+					),
+					array(
+						'name' => 'Web Address',
+						'desc' => 'Type the web address',
+						'id' => $prefix . 'web_address',
+						'type' => 'text',
+						'default' => 'http://',
+					),
+					array(
+						'name' => 'Wegottickets',
+						'desc' => 'Type the Wegottickets link',
+						'id' => $prefix . 'wegottickets',
+						'type' => 'text',
+						'default' => 'http://',
+					),
+
+
+				),
+			);
+
+
 
 		return $config;
 

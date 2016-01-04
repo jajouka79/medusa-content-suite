@@ -7,20 +7,22 @@ class PostMeta
 {
 	public function init( )
 	{
-		add_action( 'cmb2_init', array( $this, 'registerPostMeta' ) );
+		add_action( 'cmb2_init', array( $this, 'registerPostMeta' ), 100 );
 	}
 
 	public function getPostMetaConfig( )
 	{
+		write_log( "PostMeta - getPostMetaConfig" );
+
+		$PostMetaConfig = new PostMetaConfig;
 		$PostMetaConfig = new PostMetaConfig;
 		$PostMetaConfig = $PostMetaConfig->getPostMetaConfig( );
 		return $PostMetaConfig;
 	}
 
-
 	public function registerPostMeta( )
 	{		
-		#echo "registerPostMeta( )<br><br>";
+		write_log("PostMeta > registerPostMeta");
 		
 		$PostMetaConfig = $this->getPostMetaConfig( );
 		
@@ -34,7 +36,18 @@ class PostMeta
 					unset( $box_config[ 'fields' ] );
 					$box_fields = $mb[ 'fields' ];
 
-					$cmb_demo = new_cmb2_box( $box_config );
+					 if ( ! defined( 'CMB2_LOADED' ) ) :
+					 	write_log( "CMB2_LOADED - FALSE" );
+
+					 return;
+
+					 else:
+					 	write_log( "CMB2_LOADED" );
+
+					 endif;
+
+
+					$cmb_demo = \new_cmb2_box( $box_config );
 					$metabox_id = $box_config['id'];			
 					$box_fields_named = array();
 				
@@ -48,7 +61,7 @@ class PostMeta
 					    continue;
 					}
 
-					if ( ! empty ( $mb['grid'] ) ) :
+					/*if ( ! empty ( $mb['grid'] ) ) :
 	
 						$cmb2Grid = new \Cmb2Grid\Grid\Cmb2Grid( $cmb_demo );
 		
@@ -70,7 +83,7 @@ class PostMeta
 						endforeach;
 						
 
-					endif;
+					endif;*/
 		
 				endif;
 
