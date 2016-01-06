@@ -1,0 +1,203 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "313f930f06b4001d985e828a0779e5b4",
+    "content-hash": "cd08d0972cef82e7c6d1cdfe822b7abc",
+    "packages": [
+        {
+            "name": "WebDevStudios/CMB2",
+            "version": "2.1.2",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/WebDevStudios/CMB2/archive/v2.1.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0.12"
+            },
+            "type": "library"
+        },
+        {
+            "name": "WebDevStudios/CMB2-Post-Search-field",
+            "version": "0.2.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/WebDevStudios/CMB2-Post-Search-field/archive/v0.2.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0.12"
+            },
+            "type": "library"
+        },
+        {
+            "name": "WebDevStudios/cmb2-attached-posts",
+            "version": "1.2.2",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/WebDevStudios/cmb2-attached-posts/archive/v1.2.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0.12"
+            },
+            "type": "library"
+        },
+        {
+            "name": "composer/installers",
+            "version": "v1.0.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/bd9b14f094c89c8b5804a4e41edeb7853bb85046",
+                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "1.0.0"
+            },
+            "replace": {
+                "roundcube/plugin-installer": "*",
+                "shama/baton": "*"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev",
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Composer\\Installers\\Plugin",
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Composer\\Installers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "http://composer.github.com/installers/",
+            "keywords": [
+                "Craft",
+                "Dolibarr",
+                "Hurad",
+                "MODX Evo",
+                "OXID",
+                "SMF",
+                "Thelia",
+                "WolfCMS",
+                "agl",
+                "aimeos",
+                "annotatecms",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "codeigniter",
+                "concrete5",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "elgg",
+                "fuelphp",
+                "grav",
+                "installer",
+                "joomla",
+                "kohana",
+                "laravel",
+                "lithium",
+                "magento",
+                "mako",
+                "mediawiki",
+                "modulework",
+                "moodle",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "puppet",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "symfony",
+                "typo3",
+                "wordpress",
+                "zend",
+                "zikula"
+            ],
+            "time": "2015-10-29 23:28:48"
+        },
+        {
+            "name": "mustardBees/cmb-field-gallery",
+            "version": "2.0.2",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/mustardBees/cmb-field-gallery/archive/v2.0.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0.12"
+            },
+            "type": "library"
+        },
+        {
+            "name": "mustardBees/cmb-field-select2",
+            "version": "2.0.4",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/mustardBees/cmb-field-select2/archive/v2.0.4.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0.12"
+            },
+            "type": "library"
+        },
+        {
+            "name": "mustardBees/cmb_field_map",
+            "version": "2.1.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/mustardBees/cmb_field_map/archive/v2.1.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0.12"
+            },
+            "type": "library"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.3"
+    },
+    "platform-dev": []
+}
