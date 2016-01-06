@@ -35,7 +35,7 @@ use MedusaContentSuite\CMB\Meta\TaxMeta as TaxMeta;
 use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
 */
 
-require_once '/var/www/bedrock/vendor/autoload.php';
+//require_once '/var/www/bedrock/vendor/autoload.php';
 
 $MedusaContentSuite = new MedusaContentSuite;
 $MedusaContentSuite->init();
