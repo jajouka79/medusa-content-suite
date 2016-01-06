@@ -12,7 +12,7 @@ class PostMeta
 
 	public function getPostMetaConfig( )
 	{
-		write_log( "PostMeta - getPostMetaConfig" );
+		#write_log( "PostMeta - getPostMetaConfig" );
 
 		$PostMetaConfig = new PostMetaConfig;
 		$PostMetaConfig = new PostMetaConfig;
@@ -22,7 +22,7 @@ class PostMeta
 
 	public function registerPostMeta( )
 	{		
-		write_log("PostMeta > registerPostMeta");
+		//write_log("PostMeta > registerPostMeta");
 		
 		$PostMetaConfig = $this->getPostMetaConfig( );
 		
@@ -42,7 +42,7 @@ class PostMeta
 					 return;
 
 					 else:
-					 	write_log( "CMB2_LOADED" );
+					 	//write_log( "CMB2_LOADED" );
 
 					 endif;
 

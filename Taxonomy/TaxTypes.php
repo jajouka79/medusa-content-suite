@@ -14,7 +14,7 @@ class TaxTypes
 	{
 		add_action( 'init', array( $this, 'getTaxConfig' ), 1 );
 		add_action( 'init', array( $this, 'registerTaxTypes' ), 2 );
-		#add_action( 'admin_init', array( $this, 'remove_taxonomy_boxes' ), 1 );
+		add_action( 'admin_init', array( $this, 'remove_taxonomy_boxes' ), 1 );
 	}
 
 	public function getTaxConfig()
@@ -34,7 +34,7 @@ class TaxTypes
 
 		foreach ( $TaxConfig as $tc ) :
 			
-			write_log( $tc['args']['show_ui'] );
+			write_log( $tc);
 
 			if( ! empty ( $tc['pt'] ) ) :
 
@@ -47,9 +47,11 @@ class TaxTypes
 				register_taxonomy( $tc['tax'], $pt, $tc['args'] );
 
 				if ( ! empty( $tc['args_ext'] ) ) :
+							write_log("xxxxxxxxxxxxx");
 
 					if ( ! empty( $tc['args_ext']['show_tax_meta'] ) ) :
 						if ( $tc['args_ext']['show_tax_meta'] == false ) :
+
 
 							$this->pt = $pt['id'];//here/!!!
 							$this->tax = $tc['tax'];
@@ -79,8 +81,10 @@ class TaxTypes
 	}
 
 	public function remove_tax_metabox() {
+		$pt = $this->pt;
 		$tax = $this->tax;
-		write_log( "xxxxxxx - remove_tax_metabox - ". $tax );
+		write_log( "xxxxxxx - remove_tax_metabox - tax - ". $tax );
+		write_log( "xxxxxxx - remove_tax_metabox - pt - ". $pt );
 		remove_meta_box( 'tagsdiv-'.$tax, 'post', 'side' );
 	}
 

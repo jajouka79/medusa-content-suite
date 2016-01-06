@@ -1,46 +1,120 @@
 {
-  "name" : "jajouka/medusa_content_suite",
+  "name" : "jajouka/medusa-content-suite",
   "description" : "Medusa content suite plugin for custom posts, tax, meta, config.",
-  "type" : "wordpress-plugin",
-  "keywords" : [ "wordpress" ],
+  "type" : "library",
+  "keywords" : [ "medusa, wordpress, plugin" ],
   "license" : "GPL-2.0+",
   "authors" : [
     {
       "name" : "Simon Beasley",
-      "email" : "email@somewhere.com",
+      "email" : "sie@medusamediacreations.co.uk",
       "role" : "Lead Developer"
-    },
-    {
-      "name" : "DeveloperName",
-      "email" : "email@somewhere.com",
-      "role" : "Developer"
     }
   ],
   "repositories": [ 
     {
-      "type": "composer", 
-      "url": "http://toran.local/app.php/repo/private/"
+      "type": "package",
+      "package": {
+          "name": "mustardBees/cmb-field-select2",
+          "type": "library",
+          "version": "2.0.4",
+          "dist": {
+              "type": "zip",
+              "url": "https://github.com/mustardBees/cmb-field-select2/archive/v2.0.4.zip"
+          },
+          "require": {
+              "composer/installers": "~1.0.12"
+          }
+      }
     },
     {
-      "type": "composer", 
-      "url": "http://toran.local/app.php/repo/packagist/"
+      "type": "package",
+      "package": {
+          "name": "WebDevStudios/cmb2-attached-posts",
+          "type": "library",
+          "version": "1.2.2",
+          "dist": {
+              "type": "zip",
+              "url": "https://github.com/WebDevStudios/cmb2-attached-posts/archive/v1.2.2.zip"
+          },
+          "require": {
+              "composer/installers": "~1.0.12"
+          }
+      }
     },
     {
-      "packagist": false
+      "type": "package",
+      "package": {
+          "name": "WebDevStudios/CMB2-Post-Search-field",
+          "type": "library",
+          "version": "0.2.3",
+          "dist": {
+              "type": "zip",
+              "url": "https://github.com/WebDevStudios/CMB2-Post-Search-field/archive/v0.2.3.zip"
+          },
+          "require": {
+              "composer/installers": "~1.0.12"
+          }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+          "name": "mustardBees/cmb_field_map",
+          "type": "library",
+          "version": "2.1.1",
+          "dist": {
+              "type": "zip",
+              "url": "https://github.com/mustardBees/cmb_field_map/archive/v2.1.1.zip"
+          },
+          "require": {
+              "composer/installers": "~1.0.12"
+          }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+          "name": "mustardBees/cmb-field-gallery",
+          "type": "library",
+          "version": "2.0.2",
+          "dist": {
+              "type": "zip",
+              "url": "https://github.com/mustardBees/cmb-field-gallery/archive/v2.0.2.zip"
+          },
+          "require": {
+              "composer/installers": "~1.0.12"
+          }
+      }
+    },  
+    {
+      "type": "package",
+      "package": {
+          "name": "WebDevStudios/CMB2",
+          "type": "library",
+          "version": "2.1.2",
+          "dist": {
+              "type": "zip",
+              "url": "https://github.com/WebDevStudios/CMB2/archive/v2.1.2.zip"
+          },
+          "require": {
+              "composer/installers": "~1.0.12"
+          }
+      }
+
+      
     }
+
   ],
   "require" : {
-		"composer/installers": "~1.0.0",
+		"composer/installers": "~1.0.12",
 		"php": ">=5.3",
-    "webdevstudios/cmb2": "*",
-    "mustardBees/cmb-field-select2": "*",
-    "WebDevStudios/cmb2-attached-posts": "*",
-    "mustardBees/cmb-field-gallery": "*",
-    "WebDevStudios/CMB2-Date-Range-Field": "*",
-    "mattkrupnik/cmb2-field-slider": "*",
-    "mustardBees/cmb_field_map": "*",
-    "JayWood/CMB2_RGBa_Picker": "*",
-    "WebDevStudios/CMB2-Post-Search-field": "*"
+    "mustardBees/cmb-field-select2": "2.0.4",
+    "mustardBees/cmb-field-gallery": "2.0.2",
+    "WebDevStudios/cmb2-attached-posts": "1.2.2",
+    "WebDevStudios/CMB2-Post-Search-field": "0.2.3",
+    "mustardBees/cmb_field_map": "2.1.1",
+    "WebDevStudios/CMB2": "2.1.2"
   },
 
 	"autoload": {
