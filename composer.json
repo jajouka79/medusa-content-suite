@@ -30,6 +30,21 @@
     {
       "type": "package",
       "package": {
+          "name": "mustardBees/cmb_field_map",
+          "type": "library",
+          "version": "2.1.1",
+          "dist": {
+              "type": "zip",
+              "url": "https://github.com/mustardBees/cmb_field_map/archive/v2.1.1.zip"
+          },
+          "require": {
+              "composer/installers": "~1.0.12"
+          }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
           "name": "WebDevStudios/cmb2-attached-posts",
           "type": "library",
           "version": "1.2.2",
@@ -60,21 +75,6 @@
     {
       "type": "package",
       "package": {
-          "name": "mustardBees/cmb_field_map",
-          "type": "library",
-          "version": "2.1.1",
-          "dist": {
-              "type": "zip",
-              "url": "https://github.com/mustardBees/cmb_field_map/archive/v2.1.1.zip"
-          },
-          "require": {
-              "composer/installers": "~1.0.12"
-          }
-      }
-    },
-    {
-      "type": "package",
-      "package": {
           "name": "mustardBees/cmb-field-gallery",
           "type": "library",
           "version": "2.0.2",
@@ -86,23 +86,6 @@
               "composer/installers": "~1.0.12"
           }
       }
-    },  
-    {
-      "type": "package",
-      "package": {
-          "name": "WebDevStudios/CMB2",
-          "type": "library",
-          "version": "2.1.2",
-          "dist": {
-              "type": "zip",
-              "url": "https://github.com/WebDevStudios/CMB2/archive/v2.1.2.zip"
-          },
-          "require": {
-              "composer/installers": "~1.0.12"
-          }
-      }
-
-      
     }
 
   ],
