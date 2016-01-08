@@ -90,16 +90,13 @@
     {
       "type": "package",
       "package": {
-          "name": "WebDevStudiosXXX/CMB2",
-          "type": "library",
-          "version": "2.1.2",
-          "dist": {
-              "type": "zip",
-              "url": "https://github.com/WebDevStudios/CMB2/archive/v2.1.2.zip"
-          },
-          "require": {
-              "composer/installers": "~1.0.12"
-          }
+        "name": "WebDevStudiosXXX/CMB2",
+        "type": "library",
+        "version": "2.1.2",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/WebDevStudios/CMB2/archive/v2.1.2.zip"
+        }
       }
     }
 
