@@ -34,7 +34,7 @@ class TaxTypes
 
 		foreach ( $TaxConfig as $tc ) :
 			
-			write_log( $tc);
+			#write_log( $tc);
 
 			if( ! empty ( $tc['pt'] ) ) :
 
