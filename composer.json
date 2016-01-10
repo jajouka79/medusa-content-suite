@@ -116,13 +116,12 @@
 		"psr-4": {
       "Config\\": "Config",
       "CMB\\": "CMB",
-      "Functions\\": "Functions",
-      "Codecourse\\": "lib-test/Codecourse",
-      "xxx2\\": "lib-test/xxx2",
-      "CMB2_Bootstrap_212\\": "CMB2_Bootstrap_212"
+      "Functions\\": "Functions"
     },
 
-    "files": ["vendor/WebDevStudiosXXX/CMB2/init.php"]
+    "files": [
+
+    ]
 
 	}
 }
