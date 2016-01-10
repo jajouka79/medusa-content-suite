@@ -5,12 +5,32 @@ use MedusaContentSuite\Config\PostMetaConfig as PostMetaConfig;
 
 class PostMeta
 {
+	public $vendorPath;
+
 	public function init( )
 	{
-		write_log( "PostMeta - INIT" );
+		write_log( "PostMeta - init" );
+
+		$this->loaders();
+
+		if ( ! defined( 'CMB2_LOADED' ) ) :
+			write_log("CMB2 NOT LOADED");
+			$this->loaders();
+		else:
+			write_log("CMB2_LOADED");
+		endif;	
+
 		add_action( 'cmb2_init', array( $this, 'registerPostMeta' ), 100 );
 	}
 
+	public function loaders( ){
+
+		write_log( "PostMeta - loaders()" );
+
+		$this->vendorPath = "dir";
+
+	}
+	
 	public function getPostMetaConfig( )
 	{
 		write_log( "PostMeta - getPostMetaConfig" );
