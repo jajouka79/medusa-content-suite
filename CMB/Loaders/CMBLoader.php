@@ -3,18 +3,27 @@ namespace MedusaContentSuite\CMB\Loaders;
 
 class CMBLoader
 {
-	public $projectVendorPath = "/var/www/bedrock-test1/vendor";
+	#public $projectVendorPath = "/var/www/bedrock-test1/vendor";
+	#public $projectVendorPath = "/home/sbeasley/Sites/bedrock-test1/vendor";
+	public $projectVendorPath = "http://bedrock-test1.local/vendor";
+
+	
+
 	public $vendorPath;
 
 	public function init( )
 	{
 		#write_log( "CMBLoader - init" );
+/*	write_log ("ABSPATH - " . ABSPATH );
 
+
+		write_log( '\get_template_directory_uri() - ' . \get_template_directory_uri());
+*/
 		if ( ! defined( 'CMB2_LOADED' ) ) :
-			write_log("CMB2 NOT LOADED");
+			#write_log("CMB2 NOT LOADED");
 			$this->loadCMB();
 		else:
-			write_log("CMB2_LOADED");
+			#write_log("CMB2_LOADED");
 		endif;		
 	}
 
@@ -24,21 +33,19 @@ class CMBLoader
 
 		$this->setVendorPath( );
 		$vendorPath = $this->vendorPath;
-		
-		write_log( "vendorPath-------------" . $vendorPath );
+		#write_log ( "loadCMB - vendorPath - " . $vendorPath );
 
-		if ( file_exists(  $vendorPath . '/cmb2/init.php' ) ) :
-			write_log( "111" );
-			require_once  $vendorPath . '/cmb2/init.php';
-		elseif ( file_exists(  $vendorPath . '/CMB2/init.php' ) ) :
-			write_log( "222" );
-			require_once  $vendorPath . '/CMB2/init.php';
+
+		if ( file_exists( $vendorPath . '/WebDevStudiosXXX/cmb2/init.php' ) ) :
+			require_once  $vendorPath . '/WebDevStudiosXXX/cmb2/init.php';
+		elseif ( file_exists( $vendorPath . '/WebDevStudiosXXX/CMB2/init.php' ) ) :
+			require_once  $vendorPath . '/WebDevStudiosXXX/CMB2/init.php';
 		endif;
 
 		if ( ! defined( 'CMB2_LOADED' ) ) :
-			write_log("CMB2 NOT LOADED");
+			#write_log("CMB2 NOT LOADED");
 		else:
-			write_log("CMB2_LOADED");
+			#write_log("CMB2_LOADED");
 		endif;	
 	}
 
@@ -51,13 +58,15 @@ class CMBLoader
 		if( file_exists( $localVendorPath . "/WebDevStudiosXXX" ) ) :
 			$vendorPath = $localVendorPath;		
 		else :
-			write_log( $localVendorPath . "/WebDevStudiosXXX - DOES NOT EXIST" );
 			if( file_exists( $this->projectVendorPath ) ) :
 				$vendorPath = $this->projectVendorPath;
 			else :
 				$this->vendorPath = false;
 			endif;
 		endif;
+
+		write_log( $localVendorPath . "/WebDevStudiosXXX" );
+		write_log( $this->projectVendorPath . "/WebDevStudiosXXX" );
 
 		$this->vendorPath = $vendorPath;		
 	}

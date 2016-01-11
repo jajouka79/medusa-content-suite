@@ -18,13 +18,11 @@
 
 	*/
 
-echo "1111111111111111111111111111";
 // Prevent direct file access
 if ( ! defined ( 'ABSPATH' ) ) {
   exit;
 }
 
-echo "2222222222222222222222";
 
 
 function check_query_term($qvar, $query_terms){

@@ -65,6 +65,8 @@ class MedusaContentSuite
     $CMBLoader = new CMBLoader;
     $CMBLoader = $CMBLoader->init();
 
+    #write_log ( "vendorPath - " . $CMBLoader->vendorPath );
+
     #require_once __DIR__ . '/vendor/autoload.php'; 
     //echo "DIR - " . __DIR__ . "<br>";
 
