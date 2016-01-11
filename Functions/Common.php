@@ -14,13 +14,8 @@ class Common
 	public function getCommonFunctions()
 	{
 		print("<ul><li>Common > getCommonFunctions</li></ul>");
-		$config=array('NOWT'
-			
-		);
 
 		include "medusa_resources_common_functions.php";
-		//write_log( $config);
-		return $config;
 
 	}
 
