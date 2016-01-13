@@ -6,6 +6,15 @@ Plugin URI: http://www.medusamediacreations.co.uk
 Author: S. Beasley
 Version: 1.0
 Author URI: http://www.medusamediacreations.co.uk
+
+
+TODO :
+
+  - http://bedrock-test1.local/wp/home/sbeasley/Sites/bedrock-test1/vendor/WebDevStudiosXXX/CMB2/css/cmb2.css?ver=4.4.1
+  - http://bedrock-test1.local/app/plugins/medusa-content-suite/vendor/WebDevStudiosXXX/CMB2/css/cmb2.css?ver=4.4.1
+  -
+
+
 */
 
 namespace MedusaContentSuite;
