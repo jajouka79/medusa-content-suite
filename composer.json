@@ -175,6 +175,21 @@
       }
     },
 
+    {
+      "type": "package",
+      "package": {
+          "name": "jcchavezs/cmb2-conditionals",
+          "type": "library",
+          "version": "dev",
+          "dist": {
+              "type": "zip",
+              "url": "https://github.com/jcchavezs/cmb2-conditionals/archive/1.0.4.zip"
+          },
+          "require": {
+              "composer/installers": "~1.0.12"
+          }
+      }
+    },
     
     {
       "type": "package",
@@ -207,6 +222,7 @@
     "WebDevStudios/CMB2-Date-Range-Field": "dev",
     "WebDevStudios/CMB2-Remote-Image-Select-Field": "dev",
     "wpackagist-plugin/cmb-field-type-sorter": "1.0.0",
+    "jcchavezs/cmb2-conditionals": "1.0.4",
 
     "WebDevStudiosXXX/CMB2": "dev"
   },

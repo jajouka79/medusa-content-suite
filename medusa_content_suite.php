@@ -13,6 +13,7 @@ TODO :
   - http://bedrock-test1.local/app/plugins/medusa-content-suite/vendor/WebDevStudiosXXX/CMB2/css/cmb2.css?ver=4.4.1
   - make compatible with multi-site
   - WebDevStudiosXXX needs changing - look at package type priorities in composer
+  - global variables need - DRY - vendorPath and any other common vars
 */
 
 namespace MedusaContentSuite;
@@ -133,10 +134,11 @@ class MedusaContentSuite
 
     if ( $this->vendorDirExists ) :
 
-      #write_log( "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" );
-
       $CMBLoader = new CMBLoader;
       $CMBLoader = $CMBLoader->init( );
+
+      $FieldTypeLoader = new FieldTypeLoader;
+      $FieldTypeLoader = $FieldTypeLoader->init( );
 
     endif;
 

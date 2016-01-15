@@ -17,8 +17,6 @@ class FieldTypeLoader
 
 		else:
 			
-			write_log( "CMB2_LOADED" );
-
 			$this->setVendorPath( );
 
 			write_log( 'this->vendorPath : ' );
