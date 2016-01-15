@@ -103,6 +103,57 @@
       }
     },
 
+    {
+      "type": "package",
+      "package": {
+          "name": "JayWood/CMB2_RGBa_Picker",
+          "type": "library",
+          "version": "dev",
+          "dist": {
+              "type": "zip",
+              "url": "https://github.com/JayWood/CMB2_RGBa_Picker/archive/master.zip"
+          },
+          "require": {
+              "composer/installers": "~1.0.12"
+          }
+      }
+    },
+
+
+    {
+      "type": "package",
+      "package": {
+          "name": "mattkrupnik/cmb2-field-slider",
+          "type": "library",
+          "version": "dev",
+          "dist": {
+              "type": "zip",
+              "url": "https://github.com/mattkrupnik/cmb2-field-slider/archive/master.zip"
+          },
+          "require": {
+              "composer/installers": "~1.0.12"
+          }
+      }
+    },
+
+
+
+    {
+      "type": "package",
+      "package": {
+          "name": "WebDevStudios/CMB2-Date-Range-Field",
+          "type": "library",
+          "version": "dev",
+          "dist": {
+              "type": "zip",
+              "url": "https://github.com/WebDevStudios/CMB2-Date-Range-Field/archive/master.zip"
+          },
+          "require": {
+              "composer/installers": "~1.0.12"
+          }
+      }
+    },
+
     
     {
       "type": "package",
@@ -130,6 +181,12 @@
     "WebDevStudios/CMB2-Post-Search-field": "0.2.3",
     "mustardBees/cmb_field_map": "2.1.1",
     "Mte90/CMB2-User-Search-field": "dev",
+    "JayWood/CMB2_RGBa_Picker": "dev",
+    "mattkrupnik/cmb2-field-slider": "dev",
+    "WebDevStudios/CMB2-Date-Range-Field": "dev",
+    "WebDevStudios/CMB2-Remote-Image-Select-Field": "dev",
+    "wpackagist-plugin/cmb-field-type-sorter": "dev",
+
     "WebDevStudiosXXX/CMB2": "dev"
   },
 
