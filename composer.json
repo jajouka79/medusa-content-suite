@@ -13,11 +13,6 @@
   ],
   "repositories": [     
     {
-      "type":"composer",
-      "url":"http://wpackagist.org"
-    },
-
-    {
       "type": "package",
       "package": {
           "name": "mustardBees/cmb-field-select2",
@@ -180,7 +175,7 @@
       "package": {
           "name": "jcchavezs/cmb2-conditionals",
           "type": "library",
-          "version": "dev",
+          "version": "1.0.4",
           "dist": {
               "type": "zip",
               "url": "https://github.com/jcchavezs/cmb2-conditionals/archive/1.0.4.zip"
@@ -221,7 +216,6 @@
     "mattkrupnik/cmb2-field-slider": "dev",
     "WebDevStudios/CMB2-Date-Range-Field": "dev",
     "WebDevStudios/CMB2-Remote-Image-Select-Field": "dev",
-    "wpackagist-plugin/cmb-field-type-sorter": "1.0.0",
     "jcchavezs/cmb2-conditionals": "1.0.4",
 
     "WebDevStudiosXXX/CMB2": "dev"
