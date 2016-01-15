@@ -16,7 +16,7 @@
       "type":"composer",
       "url":"http://wpackagist.org"
     },
-    
+
     {
       "type": "package",
       "package": {
@@ -206,7 +206,7 @@
     "mattkrupnik/cmb2-field-slider": "dev",
     "WebDevStudios/CMB2-Date-Range-Field": "dev",
     "WebDevStudios/CMB2-Remote-Image-Select-Field": "dev",
-    "wpackagist-plugin/cmb-field-type-sorter": "dev",
+    "wpackagist-plugin/cmb-field-type-sorter": "1.0.0",
 
     "WebDevStudiosXXX/CMB2": "dev"
   },
