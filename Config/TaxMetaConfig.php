@@ -20,11 +20,16 @@ class TaxMetaConfig
 	    
 	    $prefix = "_news_category_tax_fields_";
 	    $config[] = array(
-	        'id'         => 'cat_options',
-	        // 'key' and 'value' should be exactly as follows
-	        'object_types'    => array( 'key' => 'options-page', 'value' => array( 'unknown', ), ),
-	        'tax_types'    => array( 'news_category' ),
-	        #'show_names' => true, // Show field names on the left
+
+	    	'box_config' => array(
+		        'id' => 'cat_options',
+		        'title' => __( 'Test Tax Metabox', 'cmb2' ),
+		        // 'key' and 'value' should be exactly as follows
+		        'object_types'    => array( 'term' ),
+		        'taxonomies'    => array( 'news_category' ),
+		        #'show_names' => true, // Show field names on the left
+	        ),
+
 	        'fields'     => array(
 				array(
 				    'name'    => 'Ingredients',
@@ -56,7 +61,9 @@ class TaxMetaConfig
 				    'default'     => '0', // start value
 				    'value_label' => 'Value:',
 				),
-				 /*array(
+
+				 /*
+				array(
 					'name'    => __( 'Attached Posts', 'cmb2' ),
 					'desc'    => __( 'Drag posts from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
 					'id'      => 'attached_cmb2_attached_posts',
@@ -66,11 +73,12 @@ class TaxMetaConfig
 						'filter_boxes'    => true, // Show a text box for filtering the results
 						'query_args'      => array( 'posts_per_page' => 10 ), // override the get_posts args
 					)
-				),*/
+				),
+				*/
 
 				array(
 				    'name'    => 'Test Color Picker',
-				    'id'      => 'wiki_test_colorpicker',
+				    'id'      => $prefix . 'test_colorpicker',
 				    'type'    => 'colorpicker',
 				    'default' => '#ffffff',
 				),
@@ -78,7 +86,7 @@ class TaxMetaConfig
 				array(
 				    'name'    => __( 'RGBa Colorpicker', 'cmb2' ),
 				    'desc'    => __( 'Field description (optional)', 'cmb2' ),
-				    'id'   => $prefix . 'test_colorpicker',
+				    'id'   => $prefix . 'rgba_colorpicker',
 				    'type' => 'rgba_colorpicker',
 				    'default'  => '#ffffff',
 				),
@@ -86,7 +94,7 @@ class TaxMetaConfig
 
 				array(
 				    'name'        => __( 'Related post' ),
-				    'id'          => 'prefix_related_post',
+				    'id'          => $prefix . 'related_post',
 				    'type'        => 'post_search_text', // This field type
 				    // post type also as array
 				    'post_type'   =>  'news_article',

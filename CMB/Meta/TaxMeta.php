@@ -7,8 +7,7 @@ class TaxMeta
 {
 	public function init( )
 	{
-		add_action( 'cmb2_init', array( $this, 'registerTaxMeta' ) );
-		#add_filter( 'manage_edit-news_category_columns', array( $this, 'jw_remove_taxonomy_description' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'registerTaxMeta' ), 110);
 	}
 
 	public function getTaxMetaConfig( )
@@ -18,17 +17,20 @@ class TaxMeta
 		return $TaxMetaConfig;
 	}
 
-
 	public function registerTaxMeta( )
 	{		
-		#echo "registerTaxMeta( )<br><br>";
+		write_log( "TaxMeta -> registerTaxMeta" );
 		
 		$TaxMetaConfig = $this->getTaxMetaConfig( );
-		
-		foreach ( $TaxMetaConfig as $mc ) :
 
-			$box_config = $mc;
+		foreach( $TaxMetaConfig as $mc ) :
+
+			$box_config = $mc['box_config'];
+
+			write_log( $box_config );
+
 			$box_fields = $mc['fields'];
+
 			unset( $box_config['fields'] );
 
 			$cmb_demo = new_cmb2_box( $box_config );
@@ -37,23 +39,30 @@ class TaxMeta
 				$cmb_demo->add_field( $f );
 			endforeach;
 
+		    /*
 		    $wlo_overrides = array(
 		        'get_option'    => 'wlo_get_option',
 		        'update_option' => 'wlo_update_option',
 		        'delete_option' => 'wlo_delete_option',
 		    );
+		    */
 
+		    /*
 		    $cats = new \Taxonomy_MetaData_CMB2( 
 		    	$box_config['tax_types'][0],
 		    	$box_config['id'],
 		    	__( 'Category Settings', 'taxonomy-metadata' ), 
 		    	$wlo_overrides 
 		    );
+		    */
+
+			//write_log( $cmb_demo );
 		
 		endforeach;
 
-	}
+		//add_action( 'cmb2_admin_init', 'yourprefix_register_taxonomy_metabox' );
 
+	}
 
 	/*public function jw_remove_taxonomy_description( $columns ){
 

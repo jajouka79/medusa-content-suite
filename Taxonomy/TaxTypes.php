@@ -13,7 +13,7 @@ class TaxTypes
 	public function init()
 	{
 		add_action( 'init', array( $this, 'getTaxConfig' ), 1 );
-		add_action( 'init', array( $this, 'registerTaxTypes' ), 2 );
+		add_action( 'init', array( $this, 'registerTaxTypes' ), 1 );
 		add_action( 'admin_init', array( $this, 'remove_taxonomy_boxes' ), 1 );
 	}
 

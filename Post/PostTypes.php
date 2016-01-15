@@ -9,7 +9,7 @@ class PostTypes
 
   public function init()
   {
-    add_action( 'init', array( $this, 'getPostConfig' ), 1 );
+    add_action( 'init', array( $this, 'getPostConfig' ), 2 );
     add_action( 'init', array( $this, 'registerPostTypes' ), 2 );
   }
 
@@ -24,33 +24,23 @@ class PostTypes
 	public function registerPostTypes()
 	{
 		#write_log("registerPostTypes()");
+
 		global $blog_id;
 
 		$PostConfig =  $this->getPostConfig();
-		/*print("<h1>this->PostConfig</h1>");
-		echo "<pre>";
-		print_r ( $PostConfig );
-		echo "</pre>";*/
 
+		#write_log( $PostConfig );		
 
-		if ( is_main_site($blog_id) ) {
-			#write_log( "yes, this is the main site" . "<br />" );
+		if ( is_main_site( $blog_id ) ) {
+			#write_log( "yes, this is the main site - blog_id : " . $blog_id );
 		}
 
 		if( ! empty ( $PostConfig ) ):
 
 			foreach ( $PostConfig as $p ):
-
-				/*
-				echo "<pre>";
-				print_r ( $p );
-				echo "</pre>";
-				*/
 				
+	
 				if ( ! is_main_site( $blog_id ) ) :
-
-					#echo "name - " . $p['args']['labels']['name'];
-					#write_log("name - " . $p['args']['labels']['name']);
 
 					if( ! isset($p['extras']['mu_main_site_only']) || $p['extras']['mu_main_site_only'] == false ):
 						register_post_type( $p['types'], $p['args'] );
@@ -60,7 +50,6 @@ class PostTypes
 					endif;
 
 				else:
-					#write_log( $p['types'] );				
 					if( ! isset( $p['extras']['sub_site_only']) || $p['extras']['sub_site_only'] == false ):
 						register_post_type( $p['types'], $p['args'] );
 					endif;
@@ -68,6 +57,7 @@ class PostTypes
 				endif;
 
 			endforeach;
+		return;
 
 			#add_theme_support('post-thumbnails');
 

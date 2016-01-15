@@ -7,14 +7,12 @@ Author: S. Beasley
 Version: 1.0
 Author URI: http://www.medusamediacreations.co.uk
 
-
 TODO :
 
   - http://bedrock-test1.local/wp/home/sbeasley/Sites/bedrock-test1/vendor/WebDevStudiosXXX/CMB2/css/cmb2.css?ver=4.4.1
   - http://bedrock-test1.local/app/plugins/medusa-content-suite/vendor/WebDevStudiosXXX/CMB2/css/cmb2.css?ver=4.4.1
-  -
-
-
+  - make compatible with multi-site
+  - 
 */
 
 namespace MedusaContentSuite;
@@ -49,113 +47,137 @@ use MedusaContentSuite\CMB\Meta\TaxMeta as TaxMeta;
 use MedusaContentSuite\CMB\FieldTypes\CustomFieldTypes as CustomFieldTypes;
 use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
 */
-require_once '/var/www/bedrock-test1/vendor/autoload.php';
 
+#require_once '/var/www/bedrock-test1/vendor/autoload.php';
 
 $MedusaContentSuite = new MedusaContentSuite;
-$MedusaContentSuite->init();
+$MedusaContentSuite->init( );
+
+$Common = new Common;
+$Common = $Common->getCommonFunctions( );
+
+
+$PostMetaConfig = new PostMetaConfig;
+$PostMetaConfig = $PostMetaConfig->getPostMetaConfig( );
+
+$PostConfig = new PostConfig;
+$PostConfig = $PostConfig->getPostConfig( );
+
+$PostTypes = new PostTypes;
+$PostTypes->init( );
+
+$PostMeta = new PostMeta;
+$PostMeta = $PostMeta->init( );
+
+$TaxTypes = new TaxTypes;
+$TaxTypes->init( );
+
+$TaxConfig = new TaxConfig;
+$TaxConfig = $TaxConfig->getTaxConfig( );
+
+$TaxMetaConfig = new TaxMetaConfig;
+$TaxMetaConfig = $TaxMetaConfig->getTaxMetaConfig( );
+
+$TaxMeta = new TaxMeta;
+$TaxMeta = $TaxMeta->init( );
+
+
+/*
+
+$PostMods = new PostMods;
+$TaxFormatters = new TaxFormatters;
+$TaxMods = new TaxMods;
+$Rules = new Rules;
+
+$Callbacks = new Callbacks;
+$Callbacks = $Callbacks->getCallbacks( );
+
+$MainConfig = new MainConfig;
+$MainConfig = $MainConfig->getMainConfig( );
+
+$MenuConfig = new MenuConfig;
+$MenuConfig = $MenuConfig->getMenuConfig( );
+
+$ModConfig = new ModConfig;
+$ModConfig = $ModConfig->getModConfig( );
+
+*/
+
+#$CustomFieldTypes = new CustomFieldTypes;
+#$PackagesFieldTypes = new PackagesFieldTypes;
+
 
 class MedusaContentSuite
 {
+  public $vendorDirExists = false;
+  public $vendorPath;
+  public $cmbLoaded = false;
 
-  public function init()
+  public function init( )
   {
     add_action( 'init', array( $this, 'load' ), 1 );
   }
 
-  public function load()
+  public function load( )
   {
-
-    $Common = new Common;
-    $Common = $Common->getCommonFunctions();
 
     write_log( "MedusaContentSuite > load" );
 
-    $CMBLoader = new CMBLoader;
-    $CMBLoader = $CMBLoader->init();
+    $this->setVendorPath( );
+
+    #write_log( "this->vendorPath - " . $this->vendorPath );
+
+    $this->checkVendorDirExists( );
+
+    #write_log("vendorDirExists - " . $this->vendorDirExists );
+
+    if ( $this->vendorDirExists ) :
+
+      #write_log( "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" );
+
+      $CMBLoader = new CMBLoader;
+      $CMBLoader = $CMBLoader->init( );
+
+    endif;
+
+    if ( ! defined( 'CMB2_LOADED' ) ) :
+      #write_log( "CMB2 NOT LOADED" );
+    else:
+      #write_log( "CMB2_LOADED" );
+    endif;
+
+    /*$FieldTypeLoader = new FieldTypeLoader;
+    $FieldTypeLoader = $FieldTypeLoader->init( );*/
 
     #write_log ( "vendorPath - " . $CMBLoader->vendorPath );
 
     #require_once __DIR__ . '/vendor/autoload.php'; 
     //echo "DIR - " . __DIR__ . "<br>";
 
-    #$authFilter = new AuthFilter;
-    #$XaddressUk = new AddressUk;
-    $PostMods = new PostMods;
-    $TaxFormatters = new TaxFormatters;
-    $TaxMods = new TaxMods;
-    $Rules = new Rules;
 
-    #$TaxMeta = new TaxMeta;
-    #$CustomFieldTypes = new CustomFieldTypes;
-    #$PackagesFieldTypes = new PackagesFieldTypes;
-
-    $TaxTypes = new TaxTypes;
-    $TaxTypes = $TaxTypes->registerTaxTypes();
-    
-    $PostTypes = new PostTypes;
-    $PostTypes = $PostTypes->registerPostTypes();
-
-    $Callbacks = new Callbacks;
-    $Callbacks = $Callbacks->getCallbacks();
-
-    $MainConfig = new MainConfig;
-    $MainConfig = $MainConfig->getMainConfig();
-
-    $MenuConfig = new MenuConfig;
-    $MenuConfig = $MenuConfig->getMenuConfig();
-
-    $PostConfig = new PostConfig;
-    $PostConfig = $PostConfig->getPostConfig();
-
-    $TaxConfig = new TaxConfig;
-    $TaxConfig = $TaxConfig->getTaxConfig();
-
-    $PostMetaConfig = new PostMetaConfig;
-    $PostMetaConfig = $PostMetaConfig->getPostMetaConfig();
-
-    $TaxMetaConfig = new TaxMetaConfig;
-    $TaxMetaConfig = $TaxMetaConfig->getTaxMetaConfig();
-
-    $ModConfig = new ModConfig;
-    $ModConfig = $ModConfig->getModConfig();
-
-    $PostMeta = new PostMeta;
-    $PostMeta = $PostMeta->init();
-
-    
-    
-    $TaxMeta = new TaxMeta;
-
-
-
-
-    if ( ! is_admin( ) ) :
-
-      /*print("<br><b>Callbacks</b><br>");
-      print_r($Callbacks);
-      print("<br><b>MainConfig</b><br>");
-      print_r($MainConfig);
-      print("<br><b>MenuConfig</b><br>");
-      print_r($MenuConfig);
-      print("<br><b>PostConfig</b><br>");
-      print_r($PostConfig);
-      print("<br><b>TaxConfig</b><br>");
-      print_r($TaxConfig);      
-      print("<br><b>PostMetaConfig</b><br>");
-      print_r($PostMetaConfig);
-      print("<br><b>ModConfig</b><br>");
-      print_r($ModConfig);
-      print( "<br><b>PostTypes</b><br>" );
-      print_r( $PostTypes );
-      print( "<br><b>TaxTypes</b><br>" );
-      print_r( $TaxTypes );
-      print( "<br><b>PostMeta</b><br>" );
-      print_r( $PostMeta );*/
-
-    endif;
 
   }
+
+  public function setVendorPath( )
+  {
+    $filePath = plugin_dir_path( __FILE__ );
+    $packageVendorPath = $filePath . "vendor";
+    $this->vendorPath = $packageVendorPath;
+  }
+
+  public function checkVendorDirExists( )
+  {
+    if ( file_exists( $this->vendorPath ) ) :
+      $this->vendorDirExists = true;
+    else :
+      throw new \Exception( "Medusa Content Suite - can't find vendor directory" );
+    endif;
+  }
+
+
+
+
+
 }
 
 ?>

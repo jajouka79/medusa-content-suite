@@ -11,31 +11,29 @@ class CMBLoader
 	public function init( )
 	{
 		#write_log( "CMBLoader - init" );
-/*	write_log ("ABSPATH - " . ABSPATH );
+		#write_log( $MedusaContentSuite->$vendorPath );
 
+		$this->setCmbPath( );
 
-		write_log( '\get_template_directory_uri() - ' . \get_template_directory_uri());
-*/
 		if ( ! defined( 'CMB2_LOADED' ) ) :
 			#write_log("CMB2 NOT LOADED");
 			$this->loadCMB( );
-			write_log( "init - this->vendorPath : " . $this->vendorPath );
 		else:
-			write_log("CMB2_LOADED");
-		endif;	
+			#write_log("CMB2_LOADED");
+		endif;			
 
 		if ( ! defined( 'CMB2_LOADED' ) ) :
-			write_log( "CMB2 NOT LOADED" );
+			#write_log( "CMB2 NOT LOADED" );
 		else:
-			write_log( "CMB2_LOADED" );
+			#write_log( "CMB2_LOADED" );
 		endif;
+
 	}
 
 	public function loadCMB( )
 	{		
 		#write_log("CMB2Loader > loadCMB");
-
-		$this->setVendorPath( );
+		
 		$vendorPath = $this->vendorPath;
 		#write_log ( "loadCMB - vendorPath - " . $vendorPath );
 
@@ -44,29 +42,30 @@ class CMBLoader
 		elseif ( file_exists( $vendorPath . '/WebDevStudiosXXX/CMB2/init.php' ) ) :
 			require_once  $vendorPath . '/WebDevStudiosXXX/CMB2/init.php';
 		endif;
-
-
 	}
 
-	public function setVendorPath( )
+	public function setCmbPath( )
 	{
 		$filePath = plugin_dir_path( __FILE__ );
 		$pluginPath = str_replace( "/CMB/Loaders", "", $filePath );
-		$localVendorPath = $pluginPath . "vendor";
+		$packageVendorPath = $pluginPath . "vendor";
 
 		$vendorPath = false;
 		
-		if( file_exists( $localVendorPath . "/WebDevStudiosXXX" ) ) :
-			$vendorPath = $localVendorPath;		
+		if( file_exists( $packageVendorPath . "/WebDevStudiosXXX" ) ) :
+			$vendorPath = $packageVendorPath;		
 		else :
-			if( file_exists( $this->projectVendorPath ) ) :
+			$this->vendorPath = false;
+		    write_log("Medusa Content Suite - local vendor path not available");
+			#TODO
+			/*if( file_exists( $this->projectVendorPath ) ) :
 				$vendorPath = $this->projectVendorPath;
 			else :
 				$this->vendorPath = false;
-			endif;
+			endif;*/
 		endif;
 
-		#write_log( $localVendorPath . "/WebDevStudiosXXX" );
+		#write_log( $packageVendorPath . "/WebDevStudiosXXX" );
 		#write_log( $this->projectVendorPath . "/WebDevStudiosXXX" );
 
 		$this->vendorPath = $vendorPath;		
