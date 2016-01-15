@@ -90,6 +90,23 @@
     {
       "type": "package",
       "package": {
+          "name": "Mte90/CMB2-User-Search-field",
+          "type": "library",
+          "version": "dev",
+          "dist": {
+              "type": "zip",
+              "url": "https://github.com/Mte90/CMB2-User-Search-field/archive/master.zip"
+          },
+          "require": {
+              "composer/installers": "~1.0.12"
+          }
+      }
+    },
+
+    
+    {
+      "type": "package",
+      "package": {
         "name": "WebDevStudiosXXX/CMB2",
         "type": "library",
         "version": "dev",
@@ -112,6 +129,7 @@
     "WebDevStudios/cmb2-attached-posts": "1.2.2",
     "WebDevStudios/CMB2-Post-Search-field": "0.2.3",
     "mustardBees/cmb_field_map": "2.1.1",
+    "Mte90/CMB2-User-Search-field": "dev",
     "WebDevStudiosXXX/CMB2": "dev"
   },
 

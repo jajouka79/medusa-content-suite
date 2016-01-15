@@ -12,7 +12,7 @@ TODO :
   - http://bedrock-test1.local/wp/home/sbeasley/Sites/bedrock-test1/vendor/WebDevStudiosXXX/CMB2/css/cmb2.css?ver=4.4.1
   - http://bedrock-test1.local/app/plugins/medusa-content-suite/vendor/WebDevStudiosXXX/CMB2/css/cmb2.css?ver=4.4.1
   - make compatible with multi-site
-  - 
+  - WebDevStudiosXXX needs changing - look at package type priorities in composer
 */
 
 namespace MedusaContentSuite;

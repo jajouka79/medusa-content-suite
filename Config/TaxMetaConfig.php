@@ -45,12 +45,13 @@ class TaxMetaConfig
 				    ),
 				),
 				
-				/*array(
+				array(
 				    'name'       => __( 'Test Date Range', 'cmb2' ),
 				    'desc'       => __( 'field description (optional)', 'cmb2' ),
 				    'id'         => $prefix . 'date_range',
 				    'type'       => 'date_range',
-				),*/
+				),
+
 				array(
 				    'name'        => 'Slider Field',
 				    'desc'        => 'Set your value.',
@@ -61,20 +62,6 @@ class TaxMetaConfig
 				    'default'     => '0', // start value
 				    'value_label' => 'Value:',
 				),
-
-				 /*
-				array(
-					'name'    => __( 'Attached Posts', 'cmb2' ),
-					'desc'    => __( 'Drag posts from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
-					'id'      => 'attached_cmb2_attached_posts',
-					'type'    => 'custom_attached_posts',
-					'options' => array(
-						'show_thumbnails' => true, // Show thumbnails on the left
-						'filter_boxes'    => true, // Show a text box for filtering the results
-						'query_args'      => array( 'posts_per_page' => 10 ), // override the get_posts args
-					)
-				),
-				*/
 
 				array(
 				    'name'    => 'Test Color Picker',

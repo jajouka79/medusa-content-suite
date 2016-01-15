@@ -6,7 +6,7 @@ class CMBLoader
 	#public $projectVendorPath = "/var/www/bedrock-test1/vendor";
 	public $projectVendorPath = "/home/sbeasley/Sites/bedrock-test1/vendor";
 	#public $projectVendorPath = "http://bedrock-test1.local/vendor";
-	public $vendorPath;
+	public $vendorPath = false;
 
 	public function init( )
 	{
@@ -55,14 +55,15 @@ class CMBLoader
 		if( file_exists( $packageVendorPath . "/WebDevStudiosXXX" ) ) :
 			$vendorPath = $packageVendorPath;		
 		else :
-			$this->vendorPath = false;
-		    write_log("Medusa Content Suite - local vendor path not available");
+		    write_log("Medusa Content Suite - packageVendorPath path not available");
 			#TODO
-			/*if( file_exists( $this->projectVendorPath ) ) :
+			/*
+			if( file_exists( $this->projectVendorPath ) ) :
 				$vendorPath = $this->projectVendorPath;
 			else :
 				$this->vendorPath = false;
-			endif;*/
+			endif;
+			*/
 		endif;
 
 		#write_log( $packageVendorPath . "/WebDevStudiosXXX" );
