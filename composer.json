@@ -11,7 +11,12 @@
       "role" : "Lead Developer"
     }
   ],
-  "repositories": [ 
+  "repositories": [     
+    {
+      "type":"composer",
+      "url":"http://wpackagist.org"
+    },
+    
     {
       "type": "package",
       "package": {
