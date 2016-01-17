@@ -6,48 +6,39 @@ use MedusaContentSuite\Config\PostMetaConfig as PostMetaConfig;
 class PostMeta
 {
 	public $vendorPath;
+	public $postMetaConfig;
 
 	public function init( )
 	{
 		#write_log( "PostMeta - init" );
 		add_action( 'cmb2_init', array( $this, 'registerPostMeta' ), 100 );
+		$this->setPostMetaConfig( );
 	}
 
-	public function getPostMetaConfig( )
+	public function setPostMetaConfig( )
 	{
-		#write_log( "PostMeta - getPostMetaConfig" );
+		#write_log( "PostMeta - setPostMetaConfig" );
 
-		$PostMetaConfig = new PostMetaConfig;
-		$PostMetaConfig = $PostMetaConfig->getPostMetaConfig( );
-		return $PostMetaConfig;
+		$postMetaConfig = new PostMetaConfig;
+		$postMetaConfig->init( );
+		$postMetaConfig = $postMetaConfig->postMetaConfig;
+		$this->postMetaConfig = $postMetaConfig;
 	}
 
 	public function registerPostMeta( )
 	{		
 		#write_log("PostMeta > registerPostMeta");
+		#write_log( $this->postMetaConfig );
 		
-		$PostMetaConfig = $this->getPostMetaConfig( );
-		
-		if ( ! empty ( $PostMetaConfig ) ) :
+		if ( ! empty ( $this->postMetaConfig ) ) :
 
-			foreach ( $PostMetaConfig as $mb ) :
+			foreach ( $this->postMetaConfig as $mb ) :
 
 				if ( ! empty ( $mb ) ) :
 
 					$box_config = $mb;
 					unset( $box_config[ 'fields' ] );
 					$box_fields = $mb[ 'fields' ];
-
-					 if ( ! defined( 'CMB2_LOADED' ) ) :
-					 	write_log( "CMB2_LOADED - FALSE" );
-
-					 return;
-
-					 else:
-					 	//write_log( "CMB2_LOADED" );
-
-					 endif;
-
 
 					$cmb_demo = \new_cmb2_box( $box_config );
 					$metabox_id = $box_config['id'];			

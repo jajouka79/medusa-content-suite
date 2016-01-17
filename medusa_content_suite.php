@@ -14,14 +14,19 @@ TODO :
   - make compatible with multi-site
   - WebDevStudiosXXX needs changing - look at package type priorities in composer
   - global variables need - DRY - vendorPath and any other common vars
+  - sort out constructors
+  - config tests - error notices
+    - check all metabox ids are unique!
+  - Linkage class for vendordir and package dirs, calling new Checker class with config tests
+  - cmb2 field types config needs moving or automating
+  - add bootstrap ! check integration with cmb2 grid - probably not needed
+  - php validation needed - zend, respect validation, yii ?? 
+    - tpl needed for 
 */
 
 namespace MedusaContentSuite;
 
 use MedusaContentSuite\Functions\Common as Common;
-
-use MedusaContentSuite\CMB\Loaders\CMBLoader as CMBLoader;
-use MedusaContentSuite\CMB\Loaders\FieldTypeLoader as FieldTypeLoader;
 
 use MedusaContentSuite\Taxonomy\TaxFormatters as TaxFormatters;
 use MedusaContentSuite\Taxonomy\TaxTypes as TaxTypes;
@@ -35,14 +40,19 @@ use MedusaContentSuite\Functions\Rules as Rules;
 
 use MedusaContentSuite\Config\MainConfig as MainConfig;
 use MedusaContentSuite\Config\MenuConfig as MenuConfig;
-use MedusaContentSuite\Config\PostMetaConfig as PostMetaConfig;
-use MedusaContentSuite\Config\TaxMetaConfig as TaxMetaConfig;
+
 use MedusaContentSuite\Config\PostConfig as PostConfig;
 use MedusaContentSuite\Config\TaxConfig as TaxConfig;
 use MedusaContentSuite\Config\ModConfig as ModConfig;
 
 use MedusaContentSuite\CMB\Meta\PostMeta as PostMeta;
 use MedusaContentSuite\CMB\Meta\TaxMeta as TaxMeta;
+
+use Respect\Validation\Validator as v;
+
+use MedusaContentSuite\CMB\Validators\Validator as Validator;
+
+
 
 /*
 use MedusaContentSuite\CMB\FieldTypes\CustomFieldTypes as CustomFieldTypes;
@@ -51,15 +61,32 @@ use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
 
 #require_once '/var/www/bedrock-test1/vendor/autoload.php';
 
+$autoload_path = __DIR__ . '/vendor/autoload.php';
+
+if ( file_exists( $autoload_path ) ) :
+  require_once( $autoload_path );
+endif;
+
+
+
+#TODO - sort out validation classes
+#///////////////////////////////////////////////////////
+
+$number = 123;
+$xx = v::numeric( )->validate( $number ); // true
+
+#print($xx);
+
+///////////////////////////////////////////////////////
+
+
+
 $MedusaContentSuite = new MedusaContentSuite;
 $MedusaContentSuite->init( );
 
 $Common = new Common;
 $Common = $Common->getCommonFunctions( );
 
-
-$PostMetaConfig = new PostMetaConfig;
-$PostMetaConfig = $PostMetaConfig->getPostMetaConfig( );
 
 $PostConfig = new PostConfig;
 $PostConfig = $PostConfig->getPostConfig( );
@@ -76,11 +103,11 @@ $TaxTypes->init( );
 $TaxConfig = new TaxConfig;
 $TaxConfig = $TaxConfig->getTaxConfig( );
 
-$TaxMetaConfig = new TaxMetaConfig;
-$TaxMetaConfig = $TaxMetaConfig->getTaxMetaConfig( );
 
 $TaxMeta = new TaxMeta;
 $TaxMeta = $TaxMeta->init( );
+
+$Validator = new Validator;
 
 
 /*
@@ -122,7 +149,7 @@ class MedusaContentSuite
   public function load( )
   {
 
-    write_log( "MedusaContentSuite > load" );
+   # write_log( "MedusaContentSuite > load" );
 
     $this->setVendorPath( );
 
@@ -131,32 +158,6 @@ class MedusaContentSuite
     $this->checkVendorDirExists( );
 
     #write_log("vendorDirExists - " . $this->vendorDirExists );
-
-    if ( $this->vendorDirExists ) :
-
-      $CMBLoader = new CMBLoader;
-      $CMBLoader = $CMBLoader->init( );
-
-      $FieldTypeLoader = new FieldTypeLoader;
-      $FieldTypeLoader = $FieldTypeLoader->init( );
-
-    endif;
-
-    if ( ! defined( 'CMB2_LOADED' ) ) :
-      #write_log( "CMB2 NOT LOADED" );
-    else:
-      #write_log( "CMB2_LOADED" );
-    endif;
-
-    /*$FieldTypeLoader = new FieldTypeLoader;
-    $FieldTypeLoader = $FieldTypeLoader->init( );*/
-
-    #write_log ( "vendorPath - " . $CMBLoader->vendorPath );
-
-    #require_once __DIR__ . '/vendor/autoload.php'; 
-    //echo "DIR - " . __DIR__ . "<br>";
-
-
 
   }
 

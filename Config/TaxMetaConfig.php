@@ -7,13 +7,16 @@ use MedusaContentSuite\Functions\Callbacks as Callbacks;
 class TaxMetaConfig
 {
 
+	public $taxMetaConfig;
+
 	public function init()
 	{
-		#print("<ul><li>TaxMetaConfig > init</li></ul>");
-		#add_action( 'init', array( $this, 'getTaxMetaConfig' ), 1 );
+		#write_log( "TaxMetaConfig > init" );
+		add_action( 'init', array( $this, 'setTaxMetaConfig' ), 1 );
+		$this->setTaxMetaConfig( );
 	}
 
-	public function getTaxMetaConfig()
+	public function setTaxMetaConfig()
 	{
 		$cb = new Callbacks();
 		#$cb = $cb->tester('testvar');
@@ -22,8 +25,8 @@ class TaxMetaConfig
 	    $config[] = array(
 
 	    	'box_config' => array(
-		        'id' => 'cat_options',
-		        'title' => __( 'Test Tax Metabox', 'cmb2' ),
+		        'id' => 'news_cat_tax_metabox',
+		        'title' => __( 'Test news cat Metabox', 'cmb2' ),
 		        // 'key' and 'value' should be exactly as follows
 		        'object_types'    => array( 'term' ),
 		        'taxonomies'    => array( 'news_category' ),
@@ -159,7 +162,99 @@ class TaxMetaConfig
 
 
 
-		return $config;
+
+	    $prefix = "_class_type_tax_fields_";
+
+	    $config[] = array(
+
+	    	'box_config' => array(
+		        'id' => 'class_type_tax_metabox',
+		        'title' => __( 'Test class type tax Metabox 2', 'cmb2' ),
+		        // 'key' and 'value' should be exactly as follows
+		        'object_types'    => array( 'term' ),
+		        'taxonomies'    => array( 'class_type' ),
+		        #'show_names' => true, // Show field names on the left
+	        ),
+
+	        'fields'     => array(
+				array(
+				    'name'    => 'Ingredients',
+				    'id'      => $prefix . 'ingredients',
+				    'desc'    => 'Select ingredients. Drag to reorder.',
+				    'type'    => 'pw_select',
+				    'options' => array(
+				        'flour'  => 'Flour',
+				        'salt'   => 'Salt',
+				        'eggs'   => 'Eggs',
+				        'milk'   => 'Milk',
+				        'butter' => 'Butter',
+				    ),
+				),
+				
+				array(
+				    'name'       => __( 'Test Date Range', 'cmb2' ),
+				    'desc'       => __( 'field description (optional)', 'cmb2' ),
+				    'id'         => $prefix . 'date_range',
+				    'type'       => 'date_range',
+				),
+
+				array(
+				    'name'        => 'Slider Field',
+				    'desc'        => 'Set your value.',
+				    'id'          => $prefix . 'slider',
+				    'type'        => 'own_slider',
+				    'min'         => '0',
+				    'max'         => '200',
+				    'default'     => '0', // start value
+				    'value_label' => 'Value:',
+				),
+
+				array(
+				    'name'    => 'Test Color Picker',
+				    'id'      => $prefix . 'test_colorpicker',
+				    'type'    => 'colorpicker',
+				    'default' => '#ffffff',
+				),
+
+				array(
+				    'name'    => __( 'RGBa Colorpicker', 'cmb2' ),
+				    'desc'    => __( 'Field description (optional)', 'cmb2' ),
+				    'id'   => $prefix . 'rgba_colorpicker',
+				    'type' => 'rgba_colorpicker',
+				    'default'  => '#ffffff',
+				),
+
+
+				array(
+				    'name'        => __( 'Related post' ),
+				    'id'          => $prefix . 'related_post',
+				    'type'        => 'post_search_text', // This field type
+				    // post type also as array
+				    'post_type'   =>  'news_article',
+				    // or checkbox, used in the modal view to select the post type
+				    'select_type' => 'radio'
+				),
+
+				array(
+				    'name' => 'Location',
+				    'desc' => 'Drag the marker to set the exact location',
+				    'id' => $prefix . 'location',
+				    'type' => 'pw_map',
+				    // 'split_values' => true, // Save latitude and longitude as two separate fields
+				),
+
+
+
+
+
+	        )
+	    );
+
+
+
+
+		$this->taxMetaConfig = $config;
+
 
 	}
 

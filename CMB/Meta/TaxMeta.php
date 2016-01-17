@@ -5,64 +5,68 @@ use MedusaContentSuite\Config\TaxMetaConfig as TaxMetaConfig;
 
 class TaxMeta
 {
+	public $taxMetaConfig;
+
 	public function init( )
 	{
 		add_action( 'cmb2_admin_init', array( $this, 'registerTaxMeta' ), 110);
+		$this->setTaxMetaConfig( );
 	}
 
-	public function getTaxMetaConfig( )
+	public function setTaxMetaConfig( )
 	{
-		$TaxMetaConfig = new TaxMetaConfig;
-		$TaxMetaConfig = $TaxMetaConfig->getTaxMetaConfig( );
-		return $TaxMetaConfig;
+		#write_log( "TaxMeta -> setTaxMetaConfig" );
+
+		$taxMetaConfig = new TaxMetaConfig;
+		$taxMetaConfig->init( );
+		$taxMetaConfig = $taxMetaConfig->taxMetaConfig;
+		$this->taxMetaConfig = $taxMetaConfig;
+
 	}
 
 	public function registerTaxMeta( )
 	{		
-		write_log( "TaxMeta -> registerTaxMeta" );
+		#write_log( "TaxMeta -> registerTaxMeta" );
+		#write_log( $this->taxMetaConfig );
 		
-		$TaxMetaConfig = $this->getTaxMetaConfig( );
+		$x = 0;
+		if ( ! empty ( $this->taxMetaConfig ) ) :
 
-		foreach( $TaxMetaConfig as $mc ) :
+			foreach( $this->taxMetaConfig as $mc ) :
 
-			$box_config = $mc['box_config'];
+				if ( ! empty ( $mc ) ) :
 
-			write_log( $box_config );
+					$box_config = $mc['box_config'];
 
-			$box_fields = $mc['fields'];
+					#write_log( $box_config );
 
-			unset( $box_config['fields'] );
+					$box_fields = $mc['fields'];
 
-			$cmb_demo = new_cmb2_box( $box_config );
+					#write_log( "dddddddd" );
+					#write_log( count ( $box_fields ) );
 
-			foreach ( $box_fields as $f ) :
-				$cmb_demo->add_field( $f );
+					//unset( $box_config['fields'] );
+					
+					#${"cmb_tax_metabox_" . $x} = new_cmb2_box( $box_config );
+					#new_cmb2_box( $box_config );
+					$cmb_tax_metabox = \new_cmb2_box( $box_config );
+					#write_log ( ${"cmb_tax_metabox_" . $x} );
+
+					foreach ( $box_fields as $f ) :
+						#${"cmb_tax_metabox_" . $x}->add_field( $f );
+						$cmb_tax_metabox->add_field( $f );
+					endforeach;
+					
+					$x++;
+
+				endif;
+
 			endforeach;
 
-		    /*
-		    $wlo_overrides = array(
-		        'get_option'    => 'wlo_get_option',
-		        'update_option' => 'wlo_update_option',
-		        'delete_option' => 'wlo_delete_option',
-		    );
-		    */
-
-		    /*
-		    $cats = new \Taxonomy_MetaData_CMB2( 
-		    	$box_config['tax_types'][0],
-		    	$box_config['id'],
-		    	__( 'Category Settings', 'taxonomy-metadata' ), 
-		    	$wlo_overrides 
-		    );
-		    */
-
-			//write_log( $cmb_demo );
-		
-		endforeach;
-
-		//add_action( 'cmb2_admin_init', 'yourprefix_register_taxonomy_metabox' );
+		endif;
 
 	}
+
 
 	/*public function jw_remove_taxonomy_description( $columns ){
 

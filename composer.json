@@ -218,19 +218,30 @@
     "WebDevStudios/CMB2-Remote-Image-Select-Field": "dev",
     "jcchavezs/cmb2-conditionals": "1.0.4",
 
-    "WebDevStudiosXXX/CMB2": "dev"
+    "WebDevStudiosXXX/CMB2": "dev",
+    "respect/validation": "^1.0"
   },
 
 	"autoload": {
 		"psr-4": {
-      "Config\\": "Config",
-      "CMB\\": "CMB",
-      "Functions\\": "Functions"
+
     },
 
     "files": [
+      "vendor/WebDevStudiosXXX/CMB2/init.php",
+      "vendor/JayWood/CMB2_RGBa_Picker/jw-cmb2-rgba-colorpicker.php",
+      "vendor/mattkrupnik/cmb2-field-slider/cmb2_field_slider.php",
+      "vendor/Mte90/CMB2-User-Search-field/cmb2_user_search_field.php",
+      "vendor/mustardBees/cmb_field_map/cmb-field-map.php",
+      "vendor/mustardBees/cmb-field-select2/cmb-field-select2.php",
+      "vendor/mustardBees/cmb-field-gallery/cmb-field-gallery.php",
+      "vendor/WebDevStudios/cmb2-attached-posts/cmb2-attached-posts-field.php",
+      "vendor/WebDevStudios/CMB2-Date-Range-Field/wds-cmb2-date-range-field.php",
+      "vendor/WebDevStudios/CMB2-Post-Search-field/cmb2_post_search_field.php",
+      "vendor/WebDevStudios/CMB2-Remote-Image-Select-Field/cmb2-remote-img-sel.php"
+    ],
 
-    ]
+    "classmap": [""]
 
 	}
 }

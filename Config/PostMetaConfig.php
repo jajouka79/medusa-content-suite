@@ -6,16 +6,35 @@ use MedusaContentSuite\Functions\Callbacks as Callbacks;
 
 class PostMetaConfig
 {
+	public $postMetaConfig;
+	public $postMetaConfigByType;
 
 	public function init()
 	{
 		#write_log("PostMetaConfig > init");
-		add_action( 'init', array( $this, 'getPostMetaConfig' ), 1 );
+		add_action( 'init', array( $this, 'setPostMetaConfig' ), 1 );
+		$this->setPostMetaConfig( );
 	}
 
-	public function getPostMetaConfig()
+	public function getPostMetaConfig( $type )
+	{	
+		write_log("PostMetaConfig > getPostMetaConfig");
+
+		if( ! empty( $this->postMetaConfig ) ) : 
+			foreach(  $this->postMetaConfig as $pmc) :  
+				if( ! empty(  $pmc ) ) :
+					write_log( "pmc" );
+					write_log( $pmc );
+					/*$postMetaConfigByType = $postMetaConfig;
+					$this->postMetaConfigByType = $postMetaConfigByType;*/
+				endif;
+			endforeach;
+		endif;
+	}
+
+	public function setPostMetaConfig()
 	{
-		#write_log("PostMetaConfig > getPostMetaConfig");
+		#write_log("PostMetaConfig > setPostMetaConfig");
 
 		$cb = new Callbacks();
 
@@ -120,6 +139,7 @@ class PostMetaConfig
 							'no' => __( 'No', 'cmb' ),
 							'yes'   => __( 'Yes', 'cmb' ),
 						),
+					),
 
 					array(
 						'name'         => __( 'Images', 'cmb' ),
@@ -150,8 +170,21 @@ class PostMetaConfig
 						'show_option_none' => false,
 					),
 					
+					
+    array(
+        'name'       => __( 'Test Date Range', 'cmb2' ),
+        'desc'       => __( 'field description (optional)', 'cmb2' ),
+        'id'         => $prefix . 'date_rangeqwertyui',
+        'type'       => 'date_range',
+    ),
+    
+					array(
+					    'name'       => __( 'Test Date Range', 'cmb2' ),
+					    'desc'       => __( 'field description (optional)', 'cmb2' ),
+					    'id'         => $prefix . 'date_range',
+					    'type'       => 'date_range',
+					),
 
-				)
 				)
 			);
 
@@ -338,7 +371,8 @@ class PostMetaConfig
 
 
 
-		return $config;
+		$this->postMetaConfig = $config;
+
 
 
 	}
