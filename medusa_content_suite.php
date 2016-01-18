@@ -149,7 +149,7 @@ class MedusaContentSuite
   public function load( )
   {
 
-   # write_log( "MedusaContentSuite > load" );
+    write_log( "MedusaContentSuite > load" );
 
     $this->setVendorPath( );
 
