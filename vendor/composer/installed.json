@@ -1,0 +1,360 @@
+[
+    {
+        "name": "composer/installers",
+        "version": "v1.0.22",
+        "version_normalized": "1.0.22.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/composer/installers.git",
+            "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/composer/installers/zipball/bd9b14f094c89c8b5804a4e41edeb7853bb85046",
+            "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046",
+            "shasum": ""
+        },
+        "require": {
+            "composer-plugin-api": "1.0.0"
+        },
+        "replace": {
+            "roundcube/plugin-installer": "*",
+            "shama/baton": "*"
+        },
+        "require-dev": {
+            "composer/composer": "1.0.*@dev",
+            "phpunit/phpunit": "4.1.*"
+        },
+        "time": "2015-10-29 23:28:48",
+        "type": "composer-plugin",
+        "extra": {
+            "class": "Composer\\Installers\\Plugin",
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Composer\\Installers\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Kyle Robinson Young",
+                "email": "kyle@dontkry.com",
+                "homepage": "https://github.com/shama"
+            }
+        ],
+        "description": "A multi-framework Composer library installer",
+        "homepage": "http://composer.github.com/installers/",
+        "keywords": [
+            "Craft",
+            "Dolibarr",
+            "Hurad",
+            "MODX Evo",
+            "OXID",
+            "SMF",
+            "Thelia",
+            "WolfCMS",
+            "agl",
+            "aimeos",
+            "annotatecms",
+            "bitrix",
+            "cakephp",
+            "chef",
+            "codeigniter",
+            "concrete5",
+            "croogo",
+            "dokuwiki",
+            "drupal",
+            "elgg",
+            "fuelphp",
+            "grav",
+            "installer",
+            "joomla",
+            "kohana",
+            "laravel",
+            "lithium",
+            "magento",
+            "mako",
+            "mediawiki",
+            "modulework",
+            "moodle",
+            "phpbb",
+            "piwik",
+            "ppi",
+            "puppet",
+            "roundcube",
+            "shopware",
+            "silverstripe",
+            "symfony",
+            "typo3",
+            "wordpress",
+            "zend",
+            "zikula"
+        ]
+    },
+    {
+        "name": "mustardBees/cmb-field-select2",
+        "version": "2.0.4",
+        "version_normalized": "2.0.4.0",
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/mustardBees/cmb-field-select2/archive/v2.0.4.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "composer/installers": "~1.0.12"
+        },
+        "type": "library",
+        "installation-source": "dist"
+    },
+    {
+        "name": "mustardBees/cmb-field-gallery",
+        "version": "2.0.2",
+        "version_normalized": "2.0.2.0",
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/mustardBees/cmb-field-gallery/archive/v2.0.2.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "composer/installers": "~1.0.12"
+        },
+        "type": "library",
+        "installation-source": "dist"
+    },
+    {
+        "name": "WebDevStudios/cmb2-attached-posts",
+        "version": "1.2.2",
+        "version_normalized": "1.2.2.0",
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/WebDevStudios/cmb2-attached-posts/archive/v1.2.2.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "composer/installers": "~1.0.12"
+        },
+        "type": "library",
+        "installation-source": "dist"
+    },
+    {
+        "name": "WebDevStudios/CMB2-Post-Search-field",
+        "version": "0.2.3",
+        "version_normalized": "0.2.3.0",
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/WebDevStudios/CMB2-Post-Search-field/archive/v0.2.3.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "composer/installers": "~1.0.12"
+        },
+        "type": "library",
+        "installation-source": "dist"
+    },
+    {
+        "name": "mustardBees/cmb_field_map",
+        "version": "2.1.1",
+        "version_normalized": "2.1.1.0",
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/mustardBees/cmb_field_map/archive/v2.1.1.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "composer/installers": "~1.0.12"
+        },
+        "type": "library",
+        "installation-source": "dist"
+    },
+    {
+        "name": "Mte90/CMB2-User-Search-field",
+        "version": "dev",
+        "version_normalized": "dev-",
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/Mte90/CMB2-User-Search-field/archive/master.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "composer/installers": "~1.0.12"
+        },
+        "type": "library",
+        "installation-source": "dist"
+    },
+    {
+        "name": "JayWood/CMB2_RGBa_Picker",
+        "version": "dev",
+        "version_normalized": "dev-",
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/JayWood/CMB2_RGBa_Picker/archive/master.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "composer/installers": "~1.0.12"
+        },
+        "type": "library",
+        "installation-source": "dist"
+    },
+    {
+        "name": "mattkrupnik/cmb2-field-slider",
+        "version": "dev",
+        "version_normalized": "dev-",
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/mattkrupnik/cmb2-field-slider/archive/master.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "composer/installers": "~1.0.12"
+        },
+        "type": "library",
+        "installation-source": "dist"
+    },
+    {
+        "name": "WebDevStudios/CMB2-Date-Range-Field",
+        "version": "dev",
+        "version_normalized": "dev-",
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/WebDevStudios/CMB2-Date-Range-Field/archive/master.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "composer/installers": "~1.0.12"
+        },
+        "type": "library",
+        "installation-source": "dist"
+    },
+    {
+        "name": "WebDevStudios/CMB2-Remote-Image-Select-Field",
+        "version": "dev",
+        "version_normalized": "dev-",
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/WebDevStudios/CMB2-Remote-Image-Select-Field/archive/master.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "composer/installers": "~1.0.12"
+        },
+        "type": "library",
+        "installation-source": "dist"
+    },
+    {
+        "name": "jcchavezs/cmb2-conditionals",
+        "version": "1.0.4",
+        "version_normalized": "1.0.4.0",
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/jcchavezs/cmb2-conditionals/archive/1.0.4.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "composer/installers": "~1.0.12"
+        },
+        "type": "library",
+        "installation-source": "dist"
+    },
+    {
+        "name": "WebDevStudiosXXX/CMB2",
+        "version": "dev",
+        "version_normalized": "dev-",
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/WebDevStudios/CMB2/archive/trunk.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "composer/installers": "~1.0.12"
+        },
+        "type": "library",
+        "installation-source": "dist"
+    },
+    {
+        "name": "respect/validation",
+        "version": "1.0.3",
+        "version_normalized": "1.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Respect/Validation.git",
+            "reference": "0c536453114987b7e0f6f72369d3be0af8dd1109"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Respect/Validation/zipball/0c536453114987b7e0f6f72369d3be0af8dd1109",
+            "reference": "0c536453114987b7e0f6f72369d3be0af8dd1109",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4"
+        },
+        "require-dev": {
+            "egulias/email-validator": "~1.2",
+            "malkusch/bav": "~1.0",
+            "mikey179/vfsstream": "^1.5",
+            "phpunit/phpunit": "~4.0",
+            "symfony/validator": "~2.6.9",
+            "zendframework/zend-validator": "~2.3"
+        },
+        "suggest": {
+            "egulias/email-validator": "Strict (RFC compliant) email validation",
+            "ext-bcmath": "Arbitrary Precision Mathematics",
+            "ext-mbstring": "Multibyte String Functions",
+            "fabpot/php-cs-fixer": "Fix PSR2 and other coding style issues",
+            "malkusch/bav": "German bank account validation",
+            "symfony/validator": "Use Symfony validator through Respect\\Validation",
+            "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation"
+        },
+        "time": "2015-11-25 20:03:11",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Respect\\Validation\\": "library/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD Style"
+        ],
+        "authors": [
+            {
+                "name": "Respect/Validation Contributors",
+                "homepage": "https://github.com/Respect/Validation/graphs/contributors"
+            }
+        ],
+        "description": "The most awesome validation engine ever created for PHP",
+        "homepage": "http://respect.li",
+        "keywords": [
+            "respect",
+            "validation",
+            "validator"
+        ]
+    }
+]
