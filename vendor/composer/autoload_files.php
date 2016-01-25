@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '9400cb7388f9c2f39c25eab15f56c2d2' => $vendorDir . '/WebDevStudiosXXX/CMB2/init.php',
     '978aed330c9454e50fcb030be2228101' => $vendorDir . '/JayWood/CMB2_RGBa_Picker/jw-cmb2-rgba-colorpicker.php',
     '0f0a42dbd6c2166a802f41188c677c36' => $vendorDir . '/mattkrupnik/cmb2-field-slider/cmb2_field_slider.php',
     'ec6648c63af936cfaa81aa0052940063' => $vendorDir . '/Mte90/CMB2-User-Search-field/cmb2_user_search_field.php',
