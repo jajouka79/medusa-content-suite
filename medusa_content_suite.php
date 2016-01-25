@@ -165,7 +165,7 @@ class MedusaContentSuite
 
     #write_log( "this->vendorPath - " . $this->vendorPath );
 
-    $this->checkVendorDirExists( );
+    $this->checkProjectVendorDirExists( );
 
     #write_log("vendorDirExists - " . $this->vendorDirExists );
 
@@ -178,7 +178,7 @@ class MedusaContentSuite
     $this->vendorPath = $packageVendorPath;
   }
 
-  public function checkVendorDirExists( )
+  public function checkProjectVendorDirExists( )
   {
     if ( file_exists( $this->vendorPath ) ) :
       $this->vendorDirExists = true;
