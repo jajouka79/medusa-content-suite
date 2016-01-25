@@ -61,11 +61,18 @@ use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
 
 #require_once '/var/www/bedrock-test1/vendor/autoload.php';
 
-$autoload_path = __DIR__ . '/vendor/autoload.php';
 
-if ( file_exists( $autoload_path ) ) :
-  require_once( $autoload_path );
-endif;
+add_action( 'init', function(){
+  $autoload_path =  dirname( __FILE__ ) . '/vendor/autoload.php';
+  if ( file_exists( $autoload_path ) ) :
+    require_once( $autoload_path );
+  endif;
+  #new calderawp\twitter_core\core();
+  
+});
+
+
+
 
 
 
