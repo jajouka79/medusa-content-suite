@@ -91,7 +91,7 @@ class MedusaContentSuite
   public $vendorPath;
   public $cmbLoaded = false;
 
-  public function __construct{
+  public function __construct(){
 
     write_log( "MedusaContentSuite > __construct" );
 
