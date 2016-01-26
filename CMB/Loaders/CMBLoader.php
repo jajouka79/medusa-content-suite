@@ -24,7 +24,7 @@ class CMBLoader
 
 	public function loadCMB( )
 	{		
-		#write_log("CMB2Loader > loadCMB");
+		write_log("CMB2Loader > loadCMB");
 		
 		$vendorPath = $this->vendorPath;
 		#write_log ( "loadCMB - vendorPath - " . $vendorPath );

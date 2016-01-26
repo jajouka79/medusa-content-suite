@@ -52,15 +52,12 @@ use Respect\Validation\Validator as v;
 
 use MedusaContentSuite\CMB\Validators\Validator as Validator;
 
-
-
 /*
 use MedusaContentSuite\CMB\FieldTypes\CustomFieldTypes as CustomFieldTypes;
 use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
 */
 
 #require_once '/var/www/bedrock-test1/vendor/autoload.php';
-
 
 add_action( 'init', function(){
   $autoload_path =  dirname( __FILE__ ) . '/vendor/autoload.php';
@@ -75,10 +72,6 @@ add_action( 'init', function(){
 });
 
 
-
-
-
-
 #TODO - sort out validation classes
 #///////////////////////////////////////////////////////
 
@@ -89,14 +82,11 @@ $xx = v::numeric( )->validate( $number ); // true
 
 ///////////////////////////////////////////////////////
 
-
-
 $MedusaContentSuite = new MedusaContentSuite;
 $MedusaContentSuite->init( );
 
 $Common = new Common;
 $Common = $Common->getCommonFunctions( );
-
 
 $PostConfig = new PostConfig;
 $PostConfig = $PostConfig->getPostConfig( );
@@ -113,7 +103,6 @@ $TaxTypes->init( );
 $TaxConfig = new TaxConfig;
 $TaxConfig = $TaxConfig->getTaxConfig( );
 
-
 $TaxMeta = new TaxMeta;
 $TaxMeta = $TaxMeta->init( );
 
@@ -121,7 +110,6 @@ $Validator = new Validator;
 
 
 /*
-
 $PostMods = new PostMods;
 $TaxFormatters = new TaxFormatters;
 $TaxMods = new TaxMods;
@@ -138,12 +126,10 @@ $MenuConfig = $MenuConfig->getMenuConfig( );
 
 $ModConfig = new ModConfig;
 $ModConfig = $ModConfig->getModConfig( );
-
 */
 
 #$CustomFieldTypes = new CustomFieldTypes;
 #$PackagesFieldTypes = new PackagesFieldTypes;
-
 
 class MedusaContentSuite
 {
@@ -158,38 +144,13 @@ class MedusaContentSuite
 
   public function load( )
   {
-
     write_log( "MedusaContentSuite > load" );
-
-    $this->setVendorPath( );
-
+    #$this->setVendorPath( );
     #write_log( "this->vendorPath - " . $this->vendorPath );
-
-    $this->checkProjectVendorDirExists( );
-
+    #$this->checkPackageVendorDirExists( );
     #write_log("vendorDirExists - " . $this->vendorDirExists );
-
+    
   }
-
-  public function setVendorPath( )
-  {
-    $filePath = plugin_dir_path( __FILE__ );
-    $packageVendorPath = $filePath . "vendor";
-    $this->vendorPath = $packageVendorPath;
-  }
-
-  public function checkProjectVendorDirExists( )
-  {
-    if ( file_exists( $this->vendorPath ) ) :
-      $this->vendorDirExists = true;
-    else :
-      throw new \Exception( "Medusa Content Suite - can't find vendor directory" );
-    endif;
-  }
-
-
-
-
 
 }
 
