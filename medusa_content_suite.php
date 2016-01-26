@@ -93,7 +93,7 @@ class MedusaContentSuite
 
   public function __construct(){
 
-    write_log( "MedusaContentSuite > __construct" );
+    print( "MedusaContentSuite > __construct" );
 
 
     $Common = new Common;
