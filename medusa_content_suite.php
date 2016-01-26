@@ -62,10 +62,10 @@ use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
 add_action( 'init', function(){
   $autoload_path =  dirname( __FILE__ ) . '/vendor/autoload.php';
   if ( file_exists( $autoload_path ) ) :
-    print "autoload exists";
+    write_log( "autoload exists" );
     require_once( $autoload_path );
   else:
-    print "autoload does not exist";
+    write_log( "autoload does not exist" );
   endif;
   #new calderawp\twitter_core\core();
   
@@ -149,7 +149,7 @@ class MedusaContentSuite
     #write_log( "this->vendorPath - " . $this->vendorPath );
     #$this->checkPackageVendorDirExists( );
     #write_log("vendorDirExists - " . $this->vendorDirExists );
-    
+
   }
 
 }
