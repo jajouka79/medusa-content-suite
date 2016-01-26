@@ -7,6 +7,8 @@ class Common
 
 	public function init()
 	{
+		write_log( "Common > init" );
+
 		add_action('init', array($this, 'getCommonFunctions'), 5);
 	}
 
