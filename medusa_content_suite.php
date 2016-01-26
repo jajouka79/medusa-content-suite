@@ -85,57 +85,65 @@ $xx = v::numeric( )->validate( $number ); // true
 $MedusaContentSuite = new MedusaContentSuite;
 $MedusaContentSuite->init( );
 
-$Common = new Common;
-$Common = $Common->getCommonFunctions( );
-
-$PostConfig = new PostConfig;
-$PostConfig = $PostConfig->getPostConfig( );
-
-$PostTypes = new PostTypes;
-$PostTypes->init( );
-
-$PostMeta = new PostMeta;
-$PostMeta = $PostMeta->init( );
-
-$TaxTypes = new TaxTypes;
-$TaxTypes->init( );
-
-$TaxConfig = new TaxConfig;
-$TaxConfig = $TaxConfig->getTaxConfig( );
-
-$TaxMeta = new TaxMeta;
-$TaxMeta = $TaxMeta->init( );
-
-$Validator = new Validator;
-
-
-/*
-$PostMods = new PostMods;
-$TaxFormatters = new TaxFormatters;
-$TaxMods = new TaxMods;
-$Rules = new Rules;
-
-$Callbacks = new Callbacks;
-$Callbacks = $Callbacks->getCallbacks( );
-
-$MainConfig = new MainConfig;
-$MainConfig = $MainConfig->getMainConfig( );
-
-$MenuConfig = new MenuConfig;
-$MenuConfig = $MenuConfig->getMenuConfig( );
-
-$ModConfig = new ModConfig;
-$ModConfig = $ModConfig->getModConfig( );
-*/
-
-#$CustomFieldTypes = new CustomFieldTypes;
-#$PackagesFieldTypes = new PackagesFieldTypes;
-
 class MedusaContentSuite
 {
   public $vendorDirExists = false;
   public $vendorPath;
   public $cmbLoaded = false;
+
+  public function __construct{
+
+    write_log( "MedusaContentSuite > __construct" );
+
+
+    $Common = new Common;
+    $Common = $Common->getCommonFunctions( );
+
+    $PostConfig = new PostConfig;
+    $PostConfig = $PostConfig->getPostConfig( );
+
+    $PostTypes = new PostTypes;
+    $PostTypes->init( );
+
+    $PostMeta = new PostMeta;
+    $PostMeta = $PostMeta->init( );
+
+    $TaxTypes = new TaxTypes;
+    $TaxTypes->init( );
+
+    $TaxConfig = new TaxConfig;
+    $TaxConfig = $TaxConfig->getTaxConfig( );
+
+    $TaxMeta = new TaxMeta;
+    $TaxMeta = $TaxMeta->init( );
+
+    $Validator = new Validator;
+
+
+    /*
+    $PostMods = new PostMods;
+    $TaxFormatters = new TaxFormatters;
+    $TaxMods = new TaxMods;
+    $Rules = new Rules;
+
+    $Callbacks = new Callbacks;
+    $Callbacks = $Callbacks->getCallbacks( );
+
+    $MainConfig = new MainConfig;
+    $MainConfig = $MainConfig->getMainConfig( );
+
+    $MenuConfig = new MenuConfig;
+    $MenuConfig = $MenuConfig->getMenuConfig( );
+
+    $ModConfig = new ModConfig;
+    $ModConfig = $ModConfig->getModConfig( );
+    */
+
+    #$CustomFieldTypes = new CustomFieldTypes;
+    #$PackagesFieldTypes = new PackagesFieldTypes;
+
+
+  }
 
   public function init( )
   {
