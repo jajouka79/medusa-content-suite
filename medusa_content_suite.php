@@ -83,7 +83,7 @@ $xx = v::numeric( )->validate( $number ); // true
 ///////////////////////////////////////////////////////
 
 $MedusaContentSuite = new MedusaContentSuite;
-$MedusaContentSuite->init( );
+#$MedusaContentSuite->init( );
 
 class MedusaContentSuite
 {
