@@ -97,7 +97,6 @@ $MedusaContentSuite->init( );
 $Common = new Common;
 $Common = $Common->getCommonFunctions( );
 
-
 $PostConfig = new PostConfig;
 $PostConfig = $PostConfig->getPostConfig( );
 
@@ -165,7 +164,7 @@ class MedusaContentSuite
 
     #write_log( "this->vendorPath - " . $this->vendorPath );
 
-    $this->checkProjectVendorDirExists( );
+    $this->checkPackageVendorDirExists( );
 
     #write_log("vendorDirExists - " . $this->vendorDirExists );
 
@@ -178,7 +177,7 @@ class MedusaContentSuite
     $this->vendorPath = $packageVendorPath;
   }
 
-  public function checkProjectVendorDirExists( )
+  public function checkPackageVendorDirExists( )
   {
     if ( file_exists( $this->vendorPath ) ) :
       $this->vendorDirExists = true;
