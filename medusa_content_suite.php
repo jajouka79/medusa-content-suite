@@ -137,7 +137,7 @@ $ModConfig = $ModConfig->getModConfig( );
 class MedusaContentSuite
 {
   public $vendorDirExists = false;
-  public $packageVendorPath = plugin_dir_path( __FILE__ ) . "vendor";
+  public $vendorPaths =  "vendor";
   public $projectVendorPath = "../../../vendor";
   public $cmbLoaded = false;
   #$packageVendorPath;
@@ -161,6 +161,10 @@ class MedusaContentSuite
 
   }
 
+ # public function setVendorPath( $path, $name )
+##plugin_dir_path( __FILE__ ) . "vendor"
+
+
 
   public function checkPackageVendorDirExists( )
   {
@@ -170,7 +174,7 @@ class MedusaContentSuite
       throw new \Exception( "Medusa Content Suite - can't find package vendor directory" );
     endif;
   }
-  public function checkProjectVendorDirExists( )
+  public function checkProjectcd siVendorDirExists( )
   {
     if ( file_exists( $this->projectVendorPath ) ) :
       $this->vendorDirExists = true;
