@@ -13,7 +13,7 @@ TODO :
   - http://bedrock-test1.local/app/plugins/medusa-content-suite/vendor/WebDevStudiosXXX/CMB2/css/cmb2.css?ver=4.4.1
   - make compatible with multi-site
   - WebDevStudiosXXX needs changing - look at package type priorities in composer
-  - global variables need - DRY - vendorPath and any other common vars
+  - global variables need - DRY - packageVendorPath and any other common vars
   - sort out constructors
   - config tests - error notices
     - check all metabox ids are unique!
@@ -52,15 +52,12 @@ use Respect\Validation\Validator as v;
 
 use MedusaContentSuite\CMB\Validators\Validator as Validator;
 
-
-
 /*
 use MedusaContentSuite\CMB\FieldTypes\CustomFieldTypes as CustomFieldTypes;
 use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
 */
 
 #require_once '/var/www/bedrock-test1/vendor/autoload.php';
-
 
 add_action( 'init', function(){
   $autoload_path =  dirname( __FILE__ ) . '/vendor/autoload.php';
@@ -76,9 +73,6 @@ add_action( 'init', function(){
 
 
 
-
-
-
 #TODO - sort out validation classes
 #///////////////////////////////////////////////////////
 
@@ -88,8 +82,6 @@ $xx = v::numeric( )->validate( $number ); // true
 #print($xx);
 
 ///////////////////////////////////////////////////////
-
-
 
 $MedusaContentSuite = new MedusaContentSuite;
 $MedusaContentSuite->init( );
@@ -112,12 +104,10 @@ $TaxTypes->init( );
 $TaxConfig = new TaxConfig;
 $TaxConfig = $TaxConfig->getTaxConfig( );
 
-
 $TaxMeta = new TaxMeta;
 $TaxMeta = $TaxMeta->init( );
 
 $Validator = new Validator;
-
 
 /*
 
@@ -147,8 +137,10 @@ $ModConfig = $ModConfig->getModConfig( );
 class MedusaContentSuite
 {
   public $vendorDirExists = false;
-  public $vendorPath;
+  public $packageVendorPath = plugin_dir_path( __FILE__ ) . "vendor";
+  public $projectVendorPath = "../../../vendor";
   public $cmbLoaded = false;
+  #$packageVendorPath;
 
   public function init( )
   {
@@ -159,30 +151,31 @@ class MedusaContentSuite
   {
 
     write_log( "MedusaContentSuite > load" );
-
-    $this->setVendorPath( );
-
-    #write_log( "this->vendorPath - " . $this->vendorPath );
+    write_log( "this->packageVendorPath - " . $this->packageVendorPath );
+    write_log( "this->projectVendorPath - " . $this->projectVendorPath );
 
     $this->checkPackageVendorDirExists( );
+    $this->checkProjectVendorDirExists( );
 
-    #write_log("vendorDirExists - " . $this->vendorDirExists );
+    write_log("vendorDirExists - " . $this->vendorDirExists );
 
   }
 
-  public function setVendorPath( )
-  {
-    $filePath = plugin_dir_path( __FILE__ );
-    $packageVendorPath = $filePath . "vendor";
-    $this->vendorPath = $packageVendorPath;
-  }
 
   public function checkPackageVendorDirExists( )
   {
-    if ( file_exists( $this->vendorPath ) ) :
+    if ( file_exists( $this->packageVendorPath ) ) :
       $this->vendorDirExists = true;
     else :
-      throw new \Exception( "Medusa Content Suite - can't find vendor directory" );
+      throw new \Exception( "Medusa Content Suite - can't find package vendor directory" );
+    endif;
+  }
+  public function checkProjectVendorDirExists( )
+  {
+    if ( file_exists( $this->projectVendorPath ) ) :
+      $this->vendorDirExists = true;
+    else :
+      throw new \Exception( "Medusa Content Suite - can't find project vendor directory" );
     endif;
   }
 
