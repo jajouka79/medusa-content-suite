@@ -2,6 +2,8 @@
 
 namespace MedusaContentSuite\CMB\Loaders;
 
+use MedusaContentSuite\MedusaContentSuite as MedusaContentSuite;
+
 class FieldTypeLoader
 {
 	public $vendorPath;
@@ -9,79 +11,49 @@ class FieldTypeLoader
 
 	public function init( )
 	{
-		write_log( "FieldTypeLoader - init" );
+		$this->setVendorPath( );
+		$fieldTypes = $this->setFieldTypes( );
 
-		if ( ! defined( 'CMB2_LOADED' ) ) :
-			
-			throw new Exception( "Medusa Content Suite - FieldTypeLoader - CMB2 NOT LOADED" );
+		foreach( $this->fieldTypes as $ft ) :
+			$fieldTypePackagePath = $this->vendorPath . '/'  . $ft['vendor'] . '/' . $ft['name'] . '/' . $ft['file'];
 
-		else:
-			
-			$this->setVendorPath( );
+			#write_log( $fieldTypePackagePath );
 
-			write_log( 'this->vendorPath : ' );
-			write_log( $this->vendorPath );
-
-			if ( file_exists( $this->vendorPath ) ) :
-
-				$fieldTypes = $this->setFieldTypes( );
-
-				write_log( 'this->fieldTypes : ' );
-				write_log( $this->fieldTypes );
-
-				//foreach( $fieldTypes as $ft ) :				
-
-					/*
-					if ( file_exists( $ft[''] ) ) :
-						require_once  $vendorPath . '/WebDevStudiosXXX/cmb2/init.php';
-					elseif ( file_exists( $vendorPath . '/WebDevStudiosXXX/CMB2/init.php' ) ) :
-						require_once  $vendorPath . '/WebDevStudiosXXX/CMB2/init.php';
-					endif;
-					*/
-
-				//endforeach;
-
-			else : 
-				throw new Exception( "Medusa Content Suite - FieldTypeLoader - can't find vendor directory" );
+			if ( file_exists( $fieldTypePackagePath ) ) :
+				#require_once $fieldTypePackagePath;
 			endif;
 
-
-
-
-
-
-			$this->loadFieldTypes( );
-
-
-		endif;		
-	}
-
-	public function loadFieldTypes( )
-	{		
-		write_log( "FieldTypeLoader > loadFieldTypes" );
-
-
-
+		endforeach;
 
 	}
+
 
 	public function setVendorPath( )
 	{
-		$filePath = plugin_dir_path( __FILE__ );
-		$pluginPath = str_replace( "/CMB/Loaders", "", $filePath );
-		$packageVendorPath = $pluginPath . "vendor";
-
-		#TODO
-		/*
-			project vendor path needs setting up
-		*/
-
-		$this->vendorPath = $packageVendorPath;		
+		$this->vendorPath = MedusaContentSuite::getVendorPath();		
 	}
 
 	public function setFieldTypes( ){
 
 		$fieldTypes = array(
+
+			array(
+				'vendor' => 'JayWood',
+				'name' => 'CMB2_RGBa_Picker',
+				'file' => 'jw-cmb2-rgba-colorpicker.php',
+			),
+
+			array(
+				'vendor' => 'Mte90',
+				'name' => 'CMB2-User-Search-field',
+				'file' => 'cmb2_user_search_field.php',
+			),
+
+			array(
+				'vendor' => 'WebDevStudios',
+				'name' => 'CMB2-Date-Range-Field',
+				'file' => 'wds-cmb2-date-range-field.php',
+			),	
 
 			array(
 				'vendor' => 'WebDevStudios',
@@ -93,6 +65,18 @@ class FieldTypeLoader
 				'vendor' => 'WebDevStudios',
 				'name' => 'cmb2-attached-posts',
 				'file' => 'cmb2-attached-posts-field.php',
+			),
+
+			array(
+				'vendor' => 'jcchavezs',
+				'name' => 'cmb2-conditionals',
+				'file' => 'cmb2-conditionals.php',
+			),
+
+			array(
+				'vendor' => 'mattkrupnik',
+				'name' => 'cmb2-field-slider',
+				'file' => 'cmb2_field_slider.php',
 			),
 
 			array(

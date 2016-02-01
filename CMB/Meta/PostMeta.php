@@ -5,19 +5,20 @@ use MedusaContentSuite\Config\PostMetaConfig as PostMetaConfig;
 
 class PostMeta
 {
-	public $vendorPath;
 	public $postMetaConfig;
 
 	public function init( )
 	{
 		#write_log( "PostMeta - init" );
+		#write_log( "PostMeta - init" );
 		add_action( 'cmb2_init', array( $this, 'registerPostMeta' ), 100 );
 		$this->setPostMetaConfig( );
+		#$this->registerPostMeta( );
 	}
 
 	public function setPostMetaConfig( )
 	{
-		#write_log( "PostMeta - setPostMetaConfig" );
+		write_log( "PostMeta - setPostMetaConfig" );
 
 		$postMetaConfig = new PostMetaConfig;
 		$postMetaConfig->init( );

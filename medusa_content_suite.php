@@ -52,6 +52,11 @@ use Respect\Validation\Validator as v;
 
 use MedusaContentSuite\CMB\Validators\Validator as Validator;
 
+use MedusaContentSuite\CMB\Loaders\CMBLoader as CMBLoader;
+
+use MedusaContentSuite\CMB\Loaders\FieldTypeLoader as FieldTypeLoader;
+
+
 /*
 use MedusaContentSuite\CMB\FieldTypes\CustomFieldTypes as CustomFieldTypes;
 use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
@@ -62,10 +67,10 @@ use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
 add_action( 'init', function(){
   $autoload_path =  dirname( __FILE__ ) . '/vendor/autoload.php';
   if ( file_exists( $autoload_path ) ) :
-    print "autoload exists";
+    write_log ( "autoload exists" );
     require_once( $autoload_path );
   else:
-    print "autoload does not exist";
+    write_log( "autoload does not exist" );
   endif;
   #new calderawp\twitter_core\core();
   
@@ -136,50 +141,88 @@ $ModConfig = $ModConfig->getModConfig( );
 
 class MedusaContentSuite
 {
-  public $vendorDirExists = false;
-  public $vendorPaths =  "vendor";
-  public $projectVendorPath = "../../../vendor";
+  public $activeVendorPath = false;
+  public $projectVendorPath = ROOT_DIR."/vendor";
+  public static $projectVendorPath2 = ROOT_DIR."/vendor";
+  public $packageVendorPath;
+  public $projectVendorPathExists = false;
+  public $packageVendorPathExists = false;
   public $cmbLoaded = false;
-  #$packageVendorPath;
+
+  public static function getVendorPath(){
+    $path = ROOT_DIR."/vendor";
+    $path = $projectVendorPath2;
+    write_log( 'getVendorPath( ) ---' . $path );
+    write_log( 'projectVendorPath2 ---' . $projectVendorPath2 );
+    return $path;
+  }
 
   public function init( )
   {
     add_action( 'init', array( $this, 'load' ), 1 );
   }
 
-  public function load( )
-  {
+  public function getActiveVendorPath( ){
 
-    write_log( "MedusaContentSuite > load" );
-    write_log( "this->packageVendorPath - " . $this->packageVendorPath );
-    write_log( "this->projectVendorPath - " . $this->projectVendorPath );
-
+    $this->packageVendorPath = plugin_dir_path( __FILE__ ) . "vendor";
     $this->checkPackageVendorDirExists( );
     $this->checkProjectVendorDirExists( );
 
-    write_log("vendorDirExists - " . $this->vendorDirExists );
+    if ( $this->packageVendorPathExists ) :
+      $this->activeVendorPath = $this->packageVendorPath;
+    elseif ( $this->projectVendorPathExists ) :
+      $this->activeVendorPath = $this->projectVendorPath;
+    else :
+      throw new \Exception( "Medusa Content Suite - can't find vendor directory" );
+    endif;
+
+    #write_log( "this->projectVendorPath - " . $this->projectVendorPath );
+    #write_log( "this->packageVendorPath - " . $this->packageVendorPath );
+    #write_log( "activeVendorPath - " . $this->activeVendorPath );
+
+    return $this->activeVendorPath;
 
   }
 
- # public function setVendorPath( $path, $name )
-##plugin_dir_path( __FILE__ ) . "vendor"
+  public function load( )
+  {
 
+    #write_log( "MedusaContentSuite > load" );
+    $activeVendorPath = $this->getActiveVendorPath( );
+
+    if ( ! defined( 'CMB2_LOADED' ) ) :
+      if ( $activeVendorPath ) :
+
+        $CMBLoader = new CMBLoader;
+        $CMBLoader = $CMBLoader->init( );
+
+       /* $FieldTypeLoader = new FieldTypeLoader;
+        $FieldTypeLoader = $FieldTypeLoader->init( );*/
+
+      endif;
+    endif;
+
+    if ( ! defined( 'CMB2_LOADED' ) ) :
+      #write_log( "CMB2 NOT LOADED" );
+    else:
+      #write_log( "CMB2_LOADED" );
+    endif;
+
+  }
 
 
   public function checkPackageVendorDirExists( )
   {
     if ( file_exists( $this->packageVendorPath ) ) :
-      $this->vendorDirExists = true;
-    else :
-      throw new \Exception( "Medusa Content Suite - can't find package vendor directory" );
+      $this->packageVendorPathExists = true;
     endif;
   }
-  public function checkProjectcd siVendorDirExists( )
+
+
+  public function checkProjectVendorDirExists( )
   {
     if ( file_exists( $this->projectVendorPath ) ) :
-      $this->vendorDirExists = true;
-    else :
-      throw new \Exception( "Medusa Content Suite - can't find project vendor directory" );
+      $this->projectVendorPathExists = true;
     endif;
   }
 
