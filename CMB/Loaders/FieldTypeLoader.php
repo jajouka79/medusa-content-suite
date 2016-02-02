@@ -27,7 +27,6 @@ class FieldTypeLoader
 
 	}
 
-
 	public function setVendorPath( )
 	{
 		$this->vendorPath = MedusaContentSuite::getVendorPath();		

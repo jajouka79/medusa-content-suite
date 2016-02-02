@@ -3,6 +3,8 @@ namespace MedusaContentSuite\CMB\Loaders;
 
 use MedusaContentSuite\MedusaContentSuite as MedusaContentSuite;
 
+
+
 class CMBLoader
 {
 	public $vendorPath = false;
@@ -30,6 +32,8 @@ class CMBLoader
 	{		
 		write_log("CMB2Loader > loadCMB");		
 		require_once( $this->cmbPath );
+
+		#wp_dequeue_script( 'cmb2-scripts' );
 	}
 
 	public function setCmbPath( $vendorPath )

@@ -57,6 +57,15 @@ use MedusaContentSuite\CMB\Loaders\CMBLoader as CMBLoader;
 use MedusaContentSuite\CMB\Loaders\FieldTypeLoader as FieldTypeLoader;
 
 
+function wpa54064_inspect_scripts() {
+    global $wp_scripts;
+    foreach( $wp_scripts->queue as $handle ) :
+        echo $handle . ' | ';
+    endforeach;
+}
+#add_action( 'wp_print_scripts', 'wpa54064_inspect_scripts' );
+
+
 /*
 use MedusaContentSuite\CMB\FieldTypes\CustomFieldTypes as CustomFieldTypes;
 use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
@@ -75,6 +84,12 @@ add_action( 'init', function(){
   #new calderawp\twitter_core\core();
   
 });
+
+
+add_action('wp_print_scripts','example_dequeue_myscript');
+function example_dequeue_myscript() {
+   wp_dequeue_script( 'cmb2-scripts' );
+}
 
 
 
@@ -190,11 +205,35 @@ class MedusaContentSuite
     #write_log( "MedusaContentSuite > load" );
     $activeVendorPath = $this->getActiveVendorPath( );
 
+
+
+
     if ( ! defined( 'CMB2_LOADED' ) ) :
       if ( $activeVendorPath ) :
 
+/*
+$url = home_url();
+echo $url;
+require_once( $url . '/vendor/WebDevStudiosXXX/CMB2/init.php');*/
+
         $CMBLoader = new CMBLoader;
         $CMBLoader = $CMBLoader->init( );
+
+/*
+global $wp_scripts; 
+echo "xxxxxxx";
+echo "<div style='position:absolute; width:800px; height 450px; background:#ffffff; border:red 1px dotted; right:0px; overflow:scroll; z-index:999999999999999999999'>";
+    foreach( $wp_scripts->registered as $handle ) :
+
+
+print_html_r($handle);
+
+
+
+    endforeach; 
+
+echo "</div>";*/
+
 
        /* $FieldTypeLoader = new FieldTypeLoader;
         $FieldTypeLoader = $FieldTypeLoader->init( );*/
