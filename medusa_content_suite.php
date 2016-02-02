@@ -52,29 +52,24 @@ use Respect\Validation\Validator as v;
 
 use MedusaContentSuite\CMB\Validators\Validator as Validator;
 
-<<<<<<< HEAD
-=======
+
 use MedusaContentSuite\CMB\Loaders\CMBLoader as CMBLoader;
 
 use MedusaContentSuite\CMB\Loaders\FieldTypeLoader as FieldTypeLoader;
 
 
->>>>>>> 186cce8e2d89936926c5776fb3504f86c880b0fa
-/*
 use MedusaContentSuite\CMB\FieldTypes\CustomFieldTypes as CustomFieldTypes;
 use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
-*/
+
 
 #require_once '/var/www/bedrock-test1/vendor/autoload.php';
 
 add_action( 'init', function(){
   $autoload_path =  dirname( __FILE__ ) . '/vendor/autoload.php';
   if ( file_exists( $autoload_path ) ) :
-<<<<<<< HEAD
+
     write_log( "autoload exists" );
-=======
-    write_log ( "autoload exists" );
->>>>>>> 186cce8e2d89936926c5776fb3504f86c880b0fa
+
     require_once( $autoload_path );
   else:
     write_log( "autoload does not exist" );
@@ -84,10 +79,7 @@ add_action( 'init', function(){
 });
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 186cce8e2d89936926c5776fb3504f86c880b0fa
 #TODO - sort out validation classes
 #///////////////////////////////////////////////////////
 
@@ -106,15 +98,20 @@ class MedusaContentSuite
   public $vendorDirExists = false;
   public $vendorPath;
   public $cmbLoaded = false;
+  public $activeVendorPath = false;
+  public $projectVendorPath = ROOT_DIR . "/vendor";
+  public static $projectVendorPath2 = ROOT_DIR."/vendor";
+  public $packageVendorPath;
+  public $projectVendorPathExists = false;
+  public $packageVendorPathExists = false;
 
-<<<<<<< HEAD
+
   public function __construct(){
 
     print( "MedusaContentSuite > __construct" );
-=======
-$PostConfig = new PostConfig;
-$PostConfig = $PostConfig->getPostConfig( );
->>>>>>> 186cce8e2d89936926c5776fb3504f86c880b0fa
+
+    $PostConfig = new PostConfig;
+    $PostConfig = $PostConfig->getPostConfig( );
 
 
     $Common = new Common;
@@ -126,28 +123,20 @@ $PostConfig = $PostConfig->getPostConfig( );
     $PostTypes = new PostTypes;
     $PostTypes->init( );
 
-<<<<<<< HEAD
     $PostMeta = new PostMeta;
     $PostMeta = $PostMeta->init( );
 
     $TaxTypes = new TaxTypes;
     $TaxTypes->init( );
-=======
-$TaxMeta = new TaxMeta;
-$TaxMeta = $TaxMeta->init( );
->>>>>>> 186cce8e2d89936926c5776fb3504f86c880b0fa
+
+    $TaxMeta = new TaxMeta;
+    $TaxMeta = $TaxMeta->init( );
 
     $TaxConfig = new TaxConfig;
     $TaxConfig = $TaxConfig->getTaxConfig( );
 
-<<<<<<< HEAD
-    $TaxMeta = new TaxMeta;
-    $TaxMeta = $TaxMeta->init( );
-
     $Validator = new Validator;
-=======
-/*
->>>>>>> 186cce8e2d89936926c5776fb3504f86c880b0fa
+
 
 
     /*
@@ -173,19 +162,8 @@ $TaxMeta = $TaxMeta->init( );
     #$PackagesFieldTypes = new PackagesFieldTypes;
 
 
-<<<<<<< HEAD
   }
-=======
-class MedusaContentSuite
-{
-  public $activeVendorPath = false;
-  public $projectVendorPath = ROOT_DIR."/vendor";
-  public static $projectVendorPath2 = ROOT_DIR."/vendor";
-  public $packageVendorPath;
-  public $projectVendorPathExists = false;
-  public $packageVendorPathExists = false;
-  public $cmbLoaded = false;
->>>>>>> 186cce8e2d89936926c5776fb3504f86c880b0fa
+
 
   public static function getVendorPath(){
     $path = ROOT_DIR."/vendor";
@@ -224,19 +202,11 @@ class MedusaContentSuite
 
   public function load( )
   {
-<<<<<<< HEAD
     write_log( "MedusaContentSuite > load" );
     #$this->setVendorPath( );
     #write_log( "this->vendorPath - " . $this->vendorPath );
     #$this->checkPackageVendorDirExists( );
     #write_log("vendorDirExists - " . $this->vendorDirExists );
-
-  }
-
-=======
-
-    #write_log( "MedusaContentSuite > load" );
-    $activeVendorPath = $this->getActiveVendorPath( );
 
     if ( ! defined( 'CMB2_LOADED' ) ) :
       if ( $activeVendorPath ) :
@@ -258,14 +228,12 @@ class MedusaContentSuite
 
   }
 
-
   public function checkPackageVendorDirExists( )
   {
     if ( file_exists( $this->packageVendorPath ) ) :
       $this->packageVendorPathExists = true;
     endif;
   }
-
 
   public function checkProjectVendorDirExists( )
   {
@@ -274,11 +242,6 @@ class MedusaContentSuite
     endif;
   }
 
-
-
-
-
->>>>>>> 186cce8e2d89936926c5776fb3504f86c880b0fa
 }
 
 ?>
