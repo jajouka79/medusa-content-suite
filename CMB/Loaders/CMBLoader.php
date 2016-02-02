@@ -1,25 +1,29 @@
 <?php
 namespace MedusaContentSuite\CMB\Loaders;
 
+use MedusaContentSuite\MedusaContentSuite as MedusaContentSuite;
+
 class CMBLoader
 {
-	#public $projectVendorPath = "/var/www/bedrock-test1/vendor";
-	public $projectVendorPath = "/home/sbeasley/Sites/bedrock-test1/vendor";
-	#public $projectVendorPath = "http://bedrock-test1.local/vendor";
 	public $vendorPath = false;
+	public $cmbPath = false;
 
 	public function init( )
 	{
-		#write_log( "CMBLoader - init" );
-		#write_log( $MedusaContentSuite->$vendorPath );
+		write_log( "CMBLoader - init" );
+		#$this->setCmbPath( MedusaContentSuite::getVendorPath() );
+		$MedusaContentSuite = new MedusaContentSuite;
+		$activeVendorPath = $MedusaContentSuite->getActiveVendorPath();
 
-		$this->setCmbPath( );
+		write_log( "activeVendorPath - " . $activeVendorPath );
+		
+		$this->setCmbPath( $activeVendorPath );
 
 		if ( ! defined( 'CMB2_LOADED' ) ) :
 			#write_log("CMB2 NOT LOADED");
 			$this->loadCMB( );
-		endif;			
-
+			write_log( $this->vendorPath );
+		endif;
 	}
 
 	public function loadCMB( )
@@ -29,39 +33,20 @@ class CMBLoader
 		$vendorPath = $this->vendorPath;
 		#write_log ( "loadCMB - vendorPath - " . $vendorPath );
 
-		if ( file_exists( $vendorPath . '/WebDevStudiosXXX/cmb2/init.php' ) ) :
-			require_once  $vendorPath . '/WebDevStudiosXXX/cmb2/init.php';
-		elseif ( file_exists( $vendorPath . '/WebDevStudiosXXX/CMB2/init.php' ) ) :
-			require_once  $vendorPath . '/WebDevStudiosXXX/CMB2/init.php';
-		endif;
+		write_log("CMB2Loader > loadCMB");		
+		require_once( $this->cmbPath );
+
 	}
 
-	public function setCmbPath( )
+	public function setCmbPath( $vendorPath )
 	{
-		$filePath = plugin_dir_path( __FILE__ );
-		$pluginPath = str_replace( "/CMB/Loaders", "", $filePath );
-		$packageVendorPath = $pluginPath . "vendor";
-
-		$vendorPath = false;
-		
-		if( file_exists( $packageVendorPath . "/WebDevStudiosXXX" ) ) :
-			$vendorPath = $packageVendorPath;		
-		else :
-		    write_log("Medusa Content Suite - packageVendorPath path not available");
-			#TODO
-			/*
-			if( file_exists( $this->projectVendorPath ) ) :
-				$vendorPath = $this->projectVendorPath;
-			else :
-				$this->vendorPath = false;
-			endif;
-			*/
+		if ( file_exists( $vendorPath . '/WebDevStudiosXXX/CMB2/init.php' ) ) :
+			#$cmbPath = $vendorPath . '/WebDevStudiosXXX/CMB2/init.php';
+			write_log( "vendorPath - " . $vendorPath );
+			$cmbPath = $vendorPath . '/WebDevStudiosXXX/CMB2/init.php';
+			$this->cmbPath = $cmbPath;
+			write_log( "cmb path - " . $cmbPath );
 		endif;
-
-		#write_log( $packageVendorPath . "/WebDevStudiosXXX" );
-		#write_log( $this->projectVendorPath . "/WebDevStudiosXXX" );
-
-		$this->vendorPath = $vendorPath;		
 	}
 }
 
