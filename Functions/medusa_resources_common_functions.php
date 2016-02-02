@@ -25,7 +25,7 @@ if ( ! defined ( 'ABSPATH' ) ) {
 
 
 
-function check_query_term($qvar, $query_terms){
+function Xcheck_query_term($qvar, $query_terms){
   foreach($query_terms as $qt):
     if($qvar==$qt->qvar) return true;
   endforeach;

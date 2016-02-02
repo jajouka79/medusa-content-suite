@@ -10,7 +10,7 @@ class CMBLoader
 	public $vendorPath = false;
 	public $cmbPath = false;
 
-	public function init( )
+	public function __construct( )
 	{
 		write_log( "CMBLoader - init" );
 		#$this->setCmbPath( MedusaContentSuite::getVendorPath() );
@@ -30,10 +30,16 @@ class CMBLoader
 
 	public function loadCMB( )
 	{		
+		write_log("CMB2Loader > loadCMB");
+		
+		$vendorPath = $this->vendorPath;
+		#write_log ( "loadCMB - vendorPath - " . $vendorPath );
+
 		write_log("CMB2Loader > loadCMB");		
 		require_once( $this->cmbPath );
 
 		#wp_dequeue_script( 'cmb2-scripts' );
+
 	}
 
 	public function setCmbPath( $vendorPath )

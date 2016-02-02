@@ -53,30 +53,20 @@ use Respect\Validation\Validator as v;
 use MedusaContentSuite\CMB\Validators\Validator as Validator;
 
 use MedusaContentSuite\CMB\Loaders\CMBLoader as CMBLoader;
-
 use MedusaContentSuite\CMB\Loaders\FieldTypeLoader as FieldTypeLoader;
 
-
-function wpa54064_inspect_scripts() {
-    global $wp_scripts;
-    foreach( $wp_scripts->queue as $handle ) :
-        echo $handle . ' | ';
-    endforeach;
-}
-#add_action( 'wp_print_scripts', 'wpa54064_inspect_scripts' );
-
-
-/*
 use MedusaContentSuite\CMB\FieldTypes\CustomFieldTypes as CustomFieldTypes;
 use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
-*/
+
 
 #require_once '/var/www/bedrock-test1/vendor/autoload.php';
 
 add_action( 'init', function(){
   $autoload_path =  dirname( __FILE__ ) . '/vendor/autoload.php';
   if ( file_exists( $autoload_path ) ) :
-    write_log ( "autoload exists" );
+
+    write_log( "autoload exists" );
+
     require_once( $autoload_path );
   else:
     write_log( "autoload does not exist" );
@@ -86,10 +76,13 @@ add_action( 'init', function(){
 });
 
 
-add_action('wp_print_scripts','example_dequeue_myscript');
-function example_dequeue_myscript() {
-   wp_dequeue_script( 'cmb2-scripts' );
-}
+
+
+add_action( 'wp_print_scripts',function(){
+
+   #wp_dequeue_script( 'cmb2-scripts' );
+});
+
 
 
 
@@ -104,106 +97,94 @@ $xx = v::numeric( )->validate( $number ); // true
 ///////////////////////////////////////////////////////
 
 $MedusaContentSuite = new MedusaContentSuite;
-$MedusaContentSuite->init( );
-
-$Common = new Common;
-$Common = $Common->getCommonFunctions( );
-
-$PostConfig = new PostConfig;
-$PostConfig = $PostConfig->getPostConfig( );
-
-$PostTypes = new PostTypes;
-$PostTypes->init( );
-
-$PostMeta = new PostMeta;
-$PostMeta = $PostMeta->init( );
-
-$TaxTypes = new TaxTypes;
-$TaxTypes->init( );
-
-$TaxConfig = new TaxConfig;
-$TaxConfig = $TaxConfig->getTaxConfig( );
-
-$TaxMeta = new TaxMeta;
-$TaxMeta = $TaxMeta->init( );
-
-$Validator = new Validator;
-
-/*
-
-$PostMods = new PostMods;
-$TaxFormatters = new TaxFormatters;
-$TaxMods = new TaxMods;
-$Rules = new Rules;
-
-$Callbacks = new Callbacks;
-$Callbacks = $Callbacks->getCallbacks( );
-
-$MainConfig = new MainConfig;
-$MainConfig = $MainConfig->getMainConfig( );
-
-$MenuConfig = new MenuConfig;
-$MenuConfig = $MenuConfig->getMenuConfig( );
-
-$ModConfig = new ModConfig;
-$ModConfig = $ModConfig->getModConfig( );
-
-*/
-
-#$CustomFieldTypes = new CustomFieldTypes;
-#$PackagesFieldTypes = new PackagesFieldTypes;
-
 
 class MedusaContentSuite
 {
+  public $vendorDirExists = false;
+  public $vendorPath;
+  public $cmbLoaded = false;
   public $activeVendorPath = false;
-  public $projectVendorPath = ROOT_DIR."/vendor";
+  public $projectVendorPath = ROOT_DIR . "/vendor";
   public static $projectVendorPath2 = ROOT_DIR."/vendor";
   public $packageVendorPath;
   public $projectVendorPathExists = false;
   public $packageVendorPathExists = false;
-  public $cmbLoaded = false;
 
-  public static function getVendorPath(){
-    $path = ROOT_DIR."/vendor";
-    $path = $projectVendorPath2;
-    write_log( 'getVendorPath( ) ---' . $path );
-    write_log( 'projectVendorPath2 ---' . $projectVendorPath2 );
-    return $path;
+
+  public function __construct(){
+
+    #print( "MedusaContentSuite > __construct" );
+
+    $PostConfig = new PostConfig;
+    $PostConfig = $PostConfig->getPostConfig( );
+
+
+    $Common = new Common;
+    $Common = $Common->getCommonFunctions( );
+
+    $PostConfig = new PostConfig;
+    $PostConfig = $PostConfig->getPostConfig( );
+
+    $PostTypes = new PostTypes;
+    $PostTypes->init( );
+
+    $PostMeta = new PostMeta;
+    $PostMeta = $PostMeta->init( );
+
+    $TaxTypes = new TaxTypes;
+    $TaxTypes->init( );
+
+    $TaxMeta = new TaxMeta;
+    $TaxMeta = $TaxMeta->init( );
+
+    $TaxConfig = new TaxConfig;
+    $TaxConfig = $TaxConfig->getTaxConfig( );
+
+    $Validator = new Validator;
+    $CMBLoader = new CMBLoader;
+
+
+
+    /*
+    $PostMods = new PostMods;
+    $TaxFormatters = new TaxFormatters;
+    $TaxMods = new TaxMods;
+    $Rules = new Rules;
+
+    $Callbacks = new Callbacks;
+    $Callbacks = $Callbacks->getCallbacks( );
+
+    $MainConfig = new MainConfig;
+    $MainConfig = $MainConfig->getMainConfig( );
+
+    $MenuConfig = new MenuConfig;
+    $MenuConfig = $MenuConfig->getMenuConfig( );
+
+    $ModConfig = new ModConfig;
+    $ModConfig = $ModConfig->getModConfig( );
+    */
+
+    #$CustomFieldTypes = new CustomFieldTypes;
+    #$PackagesFieldTypes = new PackagesFieldTypes;
+
+
   }
 
-  public function init( )
+
+  public function __construct__( )
   {
     add_action( 'init', array( $this, 'load' ), 1 );
   }
 
-  public function getActiveVendorPath( ){
-
-    $this->packageVendorPath = plugin_dir_path( __FILE__ ) . "vendor";
-    $this->checkPackageVendorDirExists( );
-    $this->checkProjectVendorDirExists( );
-
-    if ( $this->packageVendorPathExists ) :
-      $this->activeVendorPath = $this->packageVendorPath;
-    elseif ( $this->projectVendorPathExists ) :
-      $this->activeVendorPath = $this->projectVendorPath;
-    else :
-      throw new \Exception( "Medusa Content Suite - can't find vendor directory" );
-    endif;
-
-    #write_log( "this->projectVendorPath - " . $this->projectVendorPath );
-    #write_log( "this->packageVendorPath - " . $this->packageVendorPath );
-    #write_log( "activeVendorPath - " . $this->activeVendorPath );
-
-    return $this->activeVendorPath;
-
-  }
 
   public function load( )
   {
-
-    #write_log( "MedusaContentSuite > load" );
-    $activeVendorPath = $this->getActiveVendorPath( );
+    write_log( "MedusaContentSuite > load" );
+    #$this->setVendorPath( );
+    #write_log( "this->vendorPath - " . $this->vendorPath );
+    #$this->checkPackageVendorDirExists( );
+    #write_log("vendorDirExists - " . $this->vendorDirExists );
+    write_log("activeVendorPath - " . $activeVendorPath );
 
 
 
@@ -249,7 +230,35 @@ echo "</div>";*/
 
   }
 
+  public static function getVendorPath(){
+    $path = ROOT_DIR."/vendor";
+    $path = $projectVendorPath2;
+    write_log( 'getVendorPath( ) ---' . $path );
+    write_log( 'projectVendorPath2 ---' . $projectVendorPath2 );
+    return $path;
+  }
 
+  public function getActiveVendorPath( ){
+
+    $this->packageVendorPath = plugin_dir_path( __FILE__ ) . "vendor";
+    $this->checkPackageVendorDirExists( );
+    $this->checkProjectVendorDirExists( );
+
+    if ( $this->packageVendorPathExists ) :
+      $this->activeVendorPath = $this->packageVendorPath;
+    elseif ( $this->projectVendorPathExists ) :
+      $this->activeVendorPath = $this->projectVendorPath;
+    else :
+      throw new \Exception( "Medusa Content Suite - can't find vendor directory" );
+    endif;
+
+    #write_log( "this->projectVendorPath - " . $this->projectVendorPath );
+    #write_log( "this->packageVendorPath - " . $this->packageVendorPath );
+    #write_log( "activeVendorPath - " . $this->activeVendorPath );
+
+    return $this->activeVendorPath;
+
+  }
   public function checkPackageVendorDirExists( )
   {
     if ( file_exists( $this->packageVendorPath ) ) :
@@ -257,17 +266,12 @@ echo "</div>";*/
     endif;
   }
 
-
   public function checkProjectVendorDirExists( )
   {
     if ( file_exists( $this->projectVendorPath ) ) :
       $this->projectVendorPathExists = true;
     endif;
   }
-
-
-
-
 
 }
 
