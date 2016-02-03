@@ -7,18 +7,15 @@ class PostMeta
 {
 	public $postMetaConfig;
 
-	public function init( )
+	public function __construct( )
 	{
-		#write_log( "PostMeta - init" );
-		#write_log( "PostMeta - init" );
 		add_action( 'cmb2_init', array( $this, 'registerPostMeta' ), 100 );
-		$this->setPostMetaConfig( );
-		#$this->registerPostMeta( );
+		add_action( 'init', array( $this, 'setPostMetaConfig' ), 10 );
 	}
 
 	public function setPostMetaConfig( )
 	{
-		write_log( "PostMeta - setPostMetaConfig" );
+		#write_log( "PostMeta - setPostMetaConfig" );
 
 		$postMetaConfig = new PostMetaConfig;
 		$postMetaConfig->init( );

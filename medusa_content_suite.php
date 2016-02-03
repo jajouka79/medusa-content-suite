@@ -61,6 +61,9 @@ use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
 
 #require_once '/var/www/bedrock-test1/vendor/autoload.php';
 
+$Common = new Common; #call this first
+
+
 add_action( 'init', function(){
   $autoload_path =  dirname( __FILE__ ) . '/vendor/autoload.php';
   if ( file_exists( $autoload_path ) ) :
@@ -104,8 +107,8 @@ class MedusaContentSuite
   public $vendorPath;
   public $cmbLoaded = false;
   public $activeVendorPath = false;
-  public $projectVendorPath = ROOT_DIR . "/vendor";
-  public static $projectVendorPath2 = ROOT_DIR."/vendor";
+  public $projectVendorPath = "/var/www/bedrock-test1/vendor";
+  public static $projectVendorPath2 = "/var/www/bedrock-test1/vendor";
   public $packageVendorPath;
   public $projectVendorPathExists = false;
   public $packageVendorPathExists = false;
@@ -116,33 +119,22 @@ class MedusaContentSuite
     #print( "MedusaContentSuite > __construct" );
 
     $PostConfig = new PostConfig;
-    $PostConfig = $PostConfig->getPostConfig( );
-
-
-    $Common = new Common;
-    $Common = $Common->getCommonFunctions( );
-
-    $PostConfig = new PostConfig;
-    $PostConfig = $PostConfig->getPostConfig( );
 
     $PostTypes = new PostTypes;
-    $PostTypes->init( );
 
     $PostMeta = new PostMeta;
-    $PostMeta = $PostMeta->init( );
 
     $TaxTypes = new TaxTypes;
-    $TaxTypes->init( );
 
     $TaxMeta = new TaxMeta;
-    $TaxMeta = $TaxMeta->init( );
 
     $TaxConfig = new TaxConfig;
-    $TaxConfig = $TaxConfig->getTaxConfig( );
 
     $Validator = new Validator;
+
     $CMBLoader = new CMBLoader;
 
+    $FieldTypeLoader = new FieldTypeLoader;
 
 
     /*
@@ -176,15 +168,21 @@ class MedusaContentSuite
     add_action( 'init', array( $this, 'load' ), 1 );
   }
 
+  public static function getVendorPath(){
+    $path = plugin_dir_url( __FILE__ ) . "vendor";
+    write_log( 'getVendorPath( ) ---' . $path );
+    return $path;
+  }
+
 
   public function load( )
   {
-    write_log( "MedusaContentSuite > load" );
+    #rite_log( "MedusaContentSuite > load" );
     #$this->setVendorPath( );
     #write_log( "this->vendorPath - " . $this->vendorPath );
     #$this->checkPackageVendorDirExists( );
     #write_log("vendorDirExists - " . $this->vendorDirExists );
-    write_log("activeVendorPath - " . $activeVendorPath );
+    #write_log("activeVendorPath - " . $activeVendorPath );
 
 
 
@@ -228,14 +226,6 @@ echo "</div>";*/
       #write_log( "CMB2_LOADED" );
     endif;
 
-  }
-
-  public static function getVendorPath(){
-    $path = ROOT_DIR."/vendor";
-    $path = $projectVendorPath2;
-    write_log( 'getVendorPath( ) ---' . $path );
-    write_log( 'projectVendorPath2 ---' . $projectVendorPath2 );
-    return $path;
   }
 
   public function getActiveVendorPath( ){

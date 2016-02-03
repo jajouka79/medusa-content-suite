@@ -4,9 +4,8 @@ namespace MedusaContentSuite\Functions;
 
 class Common
 {
-	public function init()
+	public function __construct()
 	{
-		write_log( "Common > init" );
 		add_action('init', array($this, 'getCommonFunctions'), 5);
 	}
 

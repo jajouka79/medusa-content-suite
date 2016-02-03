@@ -151,7 +151,7 @@ class PostMetaConfig
 
 					array(
 					    'name'        => __( 'Related post' ),
-					    'id'          => 'prefix_related_post',
+					    'id'          => $prefix .'related_post',
 					    'type'        => 'post_search_text', // This field type
 					    'post_type'   =>  'news_article',
 					    'select_type' => 'radio',
@@ -170,20 +170,76 @@ class PostMetaConfig
 						'show_option_none' => false,
 					),
 					
-					
-    array(
-        'name'       => __( 'Test Date Range', 'cmb2' ),
-        'desc'       => __( 'field description (optional)', 'cmb2' ),
-        'id'         => $prefix . 'date_rangeqwertyui',
-        'type'       => 'date_range',
-    ),
-    
+
 					array(
 					    'name'       => __( 'Test Date Range', 'cmb2' ),
 					    'desc'       => __( 'field description (optional)', 'cmb2' ),
 					    'id'         => $prefix . 'date_range',
 					    'type'       => 'date_range',
 					),
+
+					array(
+					    'name' => 'Location',
+					    'desc' => 'Drag the marker to set the exact location',
+					    'id' => $prefix . 'location',
+					    'type' => 'pw_map',
+					    // 'split_values' => true, // Save latitude and longitude as two separate fields
+					),
+
+					 array(
+					    'name' => __( 'User(s)' ),
+					    'id' => $prefix . 'user',
+					    'type' => 'user_search_text',
+					    'roles' => array( 'administrator', 'author', 'editor' )
+					),
+
+					array(
+					    'name'    => __( 'RGBa Colorpicker', 'cmb2' ),
+					    'desc'    => __( 'Field description (optional)', 'cmb2' ),
+					    'id'   => $prefix . 'test_colorpicker',
+					    'type' => 'rgba_colorpicker',
+					    'default'  => '#ffffff',
+					),
+
+					array(
+					    'name'        => 'Slider Field',
+					    'desc'        => 'Set your value.',
+					    'id'          => $prefix . 'slider',
+					    'type'        => 'own_slider',
+					    'min'         => '0',
+					    'max'         => '200',
+					    'default'     => '0', // start value
+					    'value_label' => 'Value:',
+					),
+
+					array(
+					    'name' => 'Gallery Images',
+					    'desc' => 'Upload and manage gallery images',
+					    'button' => 'Manage gallery', // Optionally set button label
+					    'id'   => $prefix . 'gallery_images',
+					    'type' => 'pw_gallery',
+					    'sanitization_cb' => 'pw_gallery_field_sanitise',
+					),
+
+					array(
+					    'name'    => 'Cooking time',
+					    'id'      => $prefix . 'cooking_time',
+					    'desc'    => 'Cooking time',
+					    'type'    => 'pw_select',
+					    'options' => array(
+					        '5'  => '5 minutes',
+					        '10' => '10 minutes',
+					        '30' => 'Half an hour',
+					        '60' => '1 hour',
+					    ),
+					),
+
+					array(
+					    'name'    => __( 'Select an Image', 'textdomain' ),
+					    'id'      => $prefix . 'gallery',
+					    'type'    => 'remote_image_select',
+					),
+
 
 				)
 			);

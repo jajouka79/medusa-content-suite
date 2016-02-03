@@ -6,11 +6,10 @@ use MedusaContentSuite\Config\TaxConfig as TaxConfig;
 
 class TaxTypes
 {
-
 	public $tax;
 	public $pt;
 
-	public function init()
+	public function __construct()
 	{
 		add_action( 'init', array( $this, 'getTaxConfig' ), 1 );
 		add_action( 'init', array( $this, 'registerTaxTypes' ), 1 );
@@ -21,7 +20,6 @@ class TaxTypes
 	{
 		$TaxConfig = new TaxConfig();
 		$TaxConfig = $TaxConfig->getTaxConfig();
-
 		return $TaxConfig;
 	}
 
@@ -38,7 +36,8 @@ class TaxTypes
 
 			if( ! empty ( $tc['pt'] ) ) :
 
-				$pt = array();
+				$pt = array( );
+
 				foreach ( $tc['pt'] as $t ) :
 					#write_log($t);
 					$pt[] = $t['id'];

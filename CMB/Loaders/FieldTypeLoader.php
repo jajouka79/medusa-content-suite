@@ -9,27 +9,31 @@ class FieldTypeLoader
 	public $vendorPath;
 	public $fieldTypes;
 
-	public function init( )
+	public function __construct( )
 	{
-		$this->setVendorPath( );
+		add_action( 'init', array( $this, 'loadFieldTypes' ), 10 );
+	}
+
+	public function loadFieldTypes( )
+	{
+		$MedusaContentSuite = new MedusaContentSuite;
+		$this->vendorPath = $MedusaContentSuite->getActiveVendorPath();		
+
 		$fieldTypes = $this->setFieldTypes( );
 
 		foreach( $this->fieldTypes as $ft ) :
 			$fieldTypePackagePath = $this->vendorPath . '/'  . $ft['vendor'] . '/' . $ft['name'] . '/' . $ft['file'];
 
-			#write_log( $fieldTypePackagePath );
+			write_log( $fieldTypePackagePath );
 
 			if ( file_exists( $fieldTypePackagePath ) ) :
-				#require_once $fieldTypePackagePath;
+				write_log ("file exists");
+				require_once $fieldTypePackagePath;
+			else:
+				write_log("*****************FILE MISSING");
 			endif;
 
 		endforeach;
-
-	}
-
-	public function setVendorPath( )
-	{
-		$this->vendorPath = MedusaContentSuite::getVendorPath();		
 	}
 
 	public function setFieldTypes( ){
@@ -59,12 +63,6 @@ class FieldTypeLoader
 				'name' => 'CMB2-Post-Search-field',
 				'file' => 'cmb2_post_search_field.php',
 			),	
-
-			array(
-				'vendor' => 'WebDevStudios',
-				'name' => 'cmb2-attached-posts',
-				'file' => 'cmb2-attached-posts-field.php',
-			),
 
 			array(
 				'vendor' => 'jcchavezs',

@@ -5,10 +5,9 @@ namespace MedusaContentSuite\Config;
 class TaxConfig
 {
 
-	public function init()
+	public function __construct()
 	{
-		#print( "<ul><li>TaxConfig > init</li></ul>" );
-		#add_action( 'init', array( $this, 'getTaxConfig' ), 1 );
+		add_action( 'init', array( $this, 'getTaxConfig' ), 1 );
 	}
 
 	public function getTaxConfig()

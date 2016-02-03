@@ -7,7 +7,7 @@ use MedusaContentSuite\Config\PostConfig as PostConfig;
 class PostTypes
 {
 
-	public function init()
+	public function __construct()
 	{
 		add_action( 'init', array( $this, 'getPostConfig' ), 2 );
 		add_action( 'init', array( $this, 'registerPostTypes' ), 2 );

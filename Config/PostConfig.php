@@ -5,10 +5,9 @@ namespace MedusaContentSuite\Config;
 class PostConfig
 {
 
-	public function init()
+	public function __construct()
 	{
-		#print( "<ul><li>PostConfig > init</li></ul>" );
-		#add_action( 'init', array( $this, 'getPostConfig' ), 1 );
+		add_action( 'init', array( $this, 'getPostConfig' ), 1 );
 	}
 
 	public function getPostConfig()
