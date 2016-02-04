@@ -9,11 +9,9 @@ class PostMetaConfig
 	public $postMetaConfig;
 	public $postMetaConfigByType;
 
-	public function init()
+	public function __construct()
 	{
-		#write_log("PostMetaConfig > init");
 		add_action( 'init', array( $this, 'setPostMetaConfig' ), 1 );
-		$this->setPostMetaConfig( );
 	}
 
 	public function getPostMetaConfig( $type )
@@ -34,9 +32,9 @@ class PostMetaConfig
 
 	public function setPostMetaConfig()
 	{
-		#write_log("PostMetaConfig > setPostMetaConfig");
+		write_log("PostMetaConfig > setPostMetaConfig");
 
-		$cb = new Callbacks();
+		$Callbacks = new Callbacks();
 
 		#promoter
 
@@ -428,6 +426,11 @@ class PostMetaConfig
 
 
 		$this->postMetaConfig = $config;
+
+
+
+
+
 
 
 

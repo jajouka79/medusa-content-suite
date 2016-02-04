@@ -18,7 +18,6 @@ class PostMeta
 		#write_log( "PostMeta - setPostMetaConfig" );
 
 		$postMetaConfig = new PostMetaConfig;
-		$postMetaConfig->init( );
 		$postMetaConfig = $postMetaConfig->postMetaConfig;
 		$this->postMetaConfig = $postMetaConfig;
 	}

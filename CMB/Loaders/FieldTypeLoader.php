@@ -24,13 +24,16 @@ class FieldTypeLoader
 		foreach( $this->fieldTypes as $ft ) :
 			$fieldTypePackagePath = $this->vendorPath . '/'  . $ft['vendor'] . '/' . $ft['name'] . '/' . $ft['file'];
 
-			write_log( $fieldTypePackagePath );
+			#write_log( $fieldTypePackagePath );
 
 			if ( file_exists( $fieldTypePackagePath ) ) :
-				write_log ("file exists");
+				#write_log ("file exists");
 				require_once $fieldTypePackagePath;
+
+				#add_action( 'init', array( $this, 'loadFieldTypes' ), 10 );
+
 			else:
-				write_log("*****************FILE MISSING");
+				write_log( "*****************FILE MISSING" );
 			endif;
 
 		endforeach;
@@ -52,11 +55,12 @@ class FieldTypeLoader
 				'file' => 'cmb2_user_search_field.php',
 			),
 
-			array(
+			#not working - load as wp plugin instead for now
+			/*array(
 				'vendor' => 'WebDevStudios',
 				'name' => 'CMB2-Date-Range-Field',
 				'file' => 'wds-cmb2-date-range-field.php',
-			),	
+			),*/	
 
 			array(
 				'vendor' => 'WebDevStudios',
@@ -91,7 +95,13 @@ class FieldTypeLoader
 			array(
 				'vendor' => 'mustardBees',
 				'name' => 'cmb_field_map',
-				'file' => 'cmb_field_map.php',
+				'file' => 'cmb-field-map.php',
+			),
+
+			array(
+				'vendor' => 'WebDevStudios',
+				'name' => 'CMB2-Remote-Image-Select-Field',
+				'file' => 'cmb2-remote-img-sel.php',
 			),
 		);
 
