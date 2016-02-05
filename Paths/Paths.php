@@ -4,21 +4,22 @@ namespace MedusaContentSuite\Paths;
 
 class Paths{
 
-  public function load( )
-  {
+	public static function getThisPluginPath( $excPath = "/CMB/Meta" ){
 
-  }
+		write_log( $excPath );
 
-  public function setVendorPath( )
-  {
+		$path = plugin_dir_path( __FILE__ );
+		$path = str_replace( $excPath, '', $path );		
+		return $path;
+	}
 
-  }
+	public static function checkThisPluginPath( ){
 
-  public function checkPackageVendorDirExists( )
-  {
-
-  }
-
-
+		if( file_exists ( self::getThisPluginPath() ) ) :
+			return true;
+		else:
+			return false;
+		endif;
+	}
 
 }

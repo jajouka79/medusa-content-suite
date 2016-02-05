@@ -203,7 +203,8 @@
     "WebDevStudios/CMB2-Remote-Image-Select-Field": "dev",
     "jcchavezs/cmb2-conditionals": "1.0.4",
     "WebDevStudiosXXX/CMB2": "dev",
-    "respect/validation": "^1.0"
+    "respect/validation": "^1.0",
+    "symfony/yaml": "^3.0"
   },
 
 	"autoload": {

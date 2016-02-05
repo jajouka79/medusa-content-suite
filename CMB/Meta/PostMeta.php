@@ -2,6 +2,8 @@
 namespace MedusaContentSuite\CMB\Meta;
 
 use MedusaContentSuite\Config\PostMetaConfig as PostMetaConfig;
+use MedusaContentSuite\Paths\Paths as Paths;
+use Symfony\Component\Yaml\Yaml;
 
 class PostMeta
 {
@@ -14,17 +16,42 @@ class PostMeta
 	}
 
 	public function setPostMetaConfig( )
-	{
-		#write_log( "PostMeta - setPostMetaConfig" );
+	{		
+		write_log( "PostMeta - setPostMetaConfig" );
 
 		$postMetaConfig = new PostMetaConfig;
+		$postMetaConfig->setPostMetaConfig();
 		$postMetaConfig = $postMetaConfig->postMetaConfig;
+		
+		write_log( $postMetaConfig );
+
 		$this->postMetaConfig = $postMetaConfig;
+
+		$path = Paths::getThisPluginPath( "/Paths" ) . '/PostMetaConfig.yml';
+
+		if( file_exists ( $path ) ) :
+
+			write_log( '--------------' );
+			write_log( $path );
+			$contents = file_get_contents( $path ) ;
+
+			if ( ! empty( $contents ) ) :
+				#write_log( 'contents--------------'.$contents );
+				$array = Yaml::parse( $contents );
+
+				write_log( Yaml::dump( $array ) );
+
+				write_log( $array );
+
+			endif;
+
+		endif;
+
 	}
 
 	public function registerPostMeta( )
 	{		
-		#write_log("PostMeta > registerPostMeta");
+		write_log("PostMeta > registerPostMeta");
 		#write_log( $this->postMetaConfig );
 		
 		if ( ! empty ( $this->postMetaConfig ) ) :

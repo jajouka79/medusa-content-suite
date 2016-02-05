@@ -7,32 +7,16 @@ use MedusaContentSuite\Functions\Callbacks as Callbacks;
 class PostMetaConfig
 {
 	public $postMetaConfig;
-	public $postMetaConfigByType;
+	#public $postMetaConfigByType;
 
 	public function __construct()
 	{
-		add_action( 'init', array( $this, 'setPostMetaConfig' ), 1 );
-	}
 
-	public function getPostMetaConfig( $type )
-	{	
-		write_log("PostMetaConfig > getPostMetaConfig");
-
-		if( ! empty( $this->postMetaConfig ) ) : 
-			foreach(  $this->postMetaConfig as $pmc) :  
-				if( ! empty(  $pmc ) ) :
-					write_log( "pmc" );
-					write_log( $pmc );
-					/*$postMetaConfigByType = $postMetaConfig;
-					$this->postMetaConfigByType = $postMetaConfigByType;*/
-				endif;
-			endforeach;
-		endif;
 	}
 
 	public function setPostMetaConfig()
 	{
-		write_log("PostMetaConfig > setPostMetaConfig");
+		write_log( "PostMetaConfig > setPostMetaConfig" );
 
 		$Callbacks = new Callbacks();
 
@@ -426,12 +410,6 @@ class PostMetaConfig
 
 
 		$this->postMetaConfig = $config;
-
-
-
-
-
-
 
 
 	}

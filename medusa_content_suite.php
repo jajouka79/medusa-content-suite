@@ -28,6 +28,7 @@ namespace MedusaContentSuite;
 
 use MedusaContentSuite\Functions\Common as Common;
 
+
 use MedusaContentSuite\Taxonomy\TaxFormatters as TaxFormatters;
 use MedusaContentSuite\Taxonomy\TaxTypes as TaxTypes;
 use MedusaContentSuite\Taxonomy\TaxMods as TaxMods;
@@ -117,6 +118,8 @@ class MedusaContentSuite
   public function __construct(){
 
     #print( "MedusaContentSuite > __construct" );
+
+
 
     $PostConfig = new PostConfig;
 

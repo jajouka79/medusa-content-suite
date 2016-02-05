@@ -1,0 +1,145 @@
+    section1:
+      foo: { bar: foo }
+      bar: [1, 2]
+      foobar:
+        - 'a string'
+        - 'another one'
+        
+
+
+    [section1] => Array
+        (
+            [foo] => Array
+                (
+                    [bar] => foo
+                )
+
+            [bar] => Array
+                (
+                    [0] => 1
+                    [1] => 2
+                )
+
+            [foobar] => Array
+                (
+                    [0] => a string
+                    [1] => another one
+                )
+
+        )
+
+
+
+
+
+
+
+    [3] => Array
+        (
+            [id] => metabox_class_options
+            [title] => Class Options
+            [object_types] => Array
+                (
+                    [0] => class
+                )
+
+            [context] => normal
+            [priority] => low
+            [show_names] => 1
+            [fields] => Array
+                (
+                    [0] => Array
+                        (
+                            [name] => Related News
+                            [id] => prefix_promoter
+                            [type] => post_search_text
+                            [post_type] => news_article
+                            [select_type] => radio
+                            [show_option_none] => 
+                        )
+
+                    [1] => Array
+                        (
+                            [name] => Start Date
+                            [desc] => Choose Start Date
+                            [id] => _cmb_class_options_start_date
+                            [type] => text_date_timestamp
+                        )
+
+                    [2] => Array
+                        (
+                            [name] => End Date
+                            [desc] => Choose End Date
+                            [id] => _cmb_class_options_end_date
+                            [type] => text_date_timestamp
+                        )
+
+                    [3] => Array
+                        (
+                            [name] => Start Time
+                            [desc] => Choose Start Time
+                            [id] => _cmb_class_options_start_time
+                            [type] => text_time
+                        )
+
+                    [4] => Array
+                        (
+                            [name] => Finish Time
+                            [desc] => Choose Finish Time
+                            [id] => _cmb_class_options_finish_time
+                            [type] => text_time
+                        )
+
+                    [5] => Array
+                        (
+                            [name] => Class Type
+                            [desc] => Select class type
+                            [id] => _cmb_class_options_class_type
+                            [taxonomy] => class_type
+                            [type] => taxonomy_multicheck
+                            [inline] => 1
+                        )
+
+                    [6] => Array
+                        (
+                            [name] => Images
+                            [desc] => Upload or add multiple photos.
+                            [id] => _cmb_class_options_images
+                            [type] => file_list
+                            [preview_size] => Array
+                                (
+                                    [0] => 100
+                                    [1] => 100
+                                )
+
+                        )
+
+                    [7] => Array
+                        (
+                            [name] => Price
+                            [desc] => Type the price
+                            [id] => _cmb_class_options_price
+                            [type] => text
+                        )
+
+                    [8] => Array
+                        (
+                            [name] => Web Address
+                            [desc] => Type the web address
+                            [id] => _cmb_class_options_web_address
+                            [type] => text
+                            [default] => http://
+                        )
+
+                    [9] => Array
+                        (
+                            [name] => Wegottickets
+                            [desc] => Type the Wegottickets link
+                            [id] => _cmb_class_options_wegottickets
+                            [type] => text
+                            [default] => http://
+                        )
+
+                )
+
+        )

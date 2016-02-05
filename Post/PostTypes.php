@@ -3,6 +3,7 @@
 namespace MedusaContentSuite\Post;
 
 use MedusaContentSuite\Config\PostConfig as PostConfig;
+use MedusaContentSuite\Functions\Common as Common;
 
 class PostTypes
 {
@@ -13,10 +14,13 @@ class PostTypes
 		add_action( 'init', array( $this, 'registerPostTypes' ), 2 );
 	}
 
+
 	public function getPostConfig()
 	{
 		$PostConfig = new PostConfig();
 		$PostConfig = $PostConfig->getPostConfig();
+
+
 
 		return $PostConfig;
 	}
@@ -24,7 +28,6 @@ class PostTypes
 	public function registerPostTypes()
 	{
 		#write_log("registerPostTypes()");
-
 		global $blog_id;
 
 		$PostConfig =  $this->getPostConfig();
