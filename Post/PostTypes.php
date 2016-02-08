@@ -12,23 +12,35 @@ class PostTypes
 	{
 		add_action( 'init', array( $this, 'getPostConfig' ), 2 );
 		add_action( 'init', array( $this, 'registerPostTypes' ), 2 );
+		
 	}
 
+	public function postConfig( $PostConfig )
+	  {
+	    write_log( "!!!!!--postConfig" );
+	    write_log( $PostConfig );
+	    
+	    #return false;
+	    return $PostConfig;
+	  }
 
-	public function getPostConfig()
+
+	public function getPostConfig( )
 	{
 		$PostConfig = new PostConfig();
 		$PostConfig = $PostConfig->getPostConfig();
+		$PostConfig .= array('qwerty');
 
 		#return $PostConfig;
-		write_log( apply_filters( 'postConfig', $PostConfig ) );
-		#return apply_filters( array( $this, 'postConfig' ), $PostConfig );
-		return apply_filters( 'postConfig', $PostConfig );
+		#write_log( apply_filters( 'postConfig', $PostConfig ) );
+
+		return apply_filters( 'PostConfigHook', $PostConfig );
+
 	}
 
-	public function registerPostTypes()
+	public function registerPostTypes(  )
 	{
-		#write_log("registerPostTypes()");
+		#write_log("registerPostTypes(  )");
 		global $blog_id;
 
 		$PostConfig =  $this->getPostConfig();
