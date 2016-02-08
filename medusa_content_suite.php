@@ -62,22 +62,21 @@ use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
 
 #require_once '/var/www/bedrock-test1/vendor/autoload.php';
 
+
+#add_action( 'init', function(){
+  $autoload_path =  dirname( __FILE__ ) . '/vendor/autoload.php';
+
+  #print( "autoload_path - " . $autoload_path );
+
+  if ( file_exists( $autoload_path ) ) :
+    require_once( $autoload_path );
+  endif;
+  
+#});
+
 $Common = new Common; #call this first
 
 
-add_action( 'init', function(){
-  $autoload_path =  dirname( __FILE__ ) . '/vendor/autoload.php';
-  if ( file_exists( $autoload_path ) ) :
-
-    write_log( "autoload exists" );
-
-    require_once( $autoload_path );
-  else:
-    write_log( "autoload does not exist" );
-  endif;
-  #new calderawp\twitter_core\core();
-  
-});
 
 
 
@@ -267,5 +266,3 @@ echo "</div>";*/
   }
 
 }
-
-?>

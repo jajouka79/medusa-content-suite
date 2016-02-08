@@ -16,7 +16,7 @@ class PostMetaConfig
 
 	public function setPostMetaConfig()
 	{
-		write_log( "PostMetaConfig > setPostMetaConfig" );
+		#write_log( "PostMetaConfig > setPostMetaConfig" );
 
 		$Callbacks = new Callbacks();
 

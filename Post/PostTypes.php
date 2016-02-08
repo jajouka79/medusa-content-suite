@@ -14,15 +14,21 @@ class PostTypes
 		add_action( 'init', array( $this, 'registerPostTypes' ), 2 );
 	}
 
+	public function postConfig( $PostConfig )
+	{
+		write_log( "!!!!!--postConfig" );
+		return $PostConfig;
+	}
 
 	public function getPostConfig()
 	{
 		$PostConfig = new PostConfig();
 		$PostConfig = $PostConfig->getPostConfig();
 
-
-
-		return $PostConfig;
+		#return $PostConfig;
+		#write_log( apply_filters( array( $this, 'postConfig' ), $PostConfig ) );
+		#return apply_filters( array( $this, 'postConfig' ), $PostConfig );
+		return apply_filters( 'postConfig', $PostConfig );
 	}
 
 	public function registerPostTypes()
@@ -31,7 +37,6 @@ class PostTypes
 		global $blog_id;
 
 		$PostConfig =  $this->getPostConfig();
-
 		#write_log( $PostConfig );		
 
 		if ( is_main_site( $blog_id ) ) {
@@ -41,11 +46,10 @@ class PostTypes
 		if( ! empty ( $PostConfig ) ):
 
 			foreach ( $PostConfig as $p ):
-				
 	
 				if ( ! is_main_site( $blog_id ) ) :
 
-					if( ! isset($p['extras']['mu_main_site_only']) || $p['extras']['mu_main_site_only'] == false ):
+					if( ! isset( $p['extras']['mu_main_site_only'] ) || $p['extras']['mu_main_site_only'] == false ):
 						register_post_type( $p['types'], $p['args'] );
 
 					else:
@@ -54,13 +58,17 @@ class PostTypes
 
 				else:
 					if( ! isset( $p['extras']['sub_site_only']) || $p['extras']['sub_site_only'] == false ):
+
+						#\write_log( $p['args'] );
+
 						register_post_type( $p['types'], $p['args'] );
+
 					endif;
 
 				endif;
 
 			endforeach;
-		return;
+
 
 			#add_theme_support('post-thumbnails');
 
@@ -69,7 +77,7 @@ class PostTypes
 
 		endif;
 
-		return $PostConfig;
+		return ;
 
 	}
 

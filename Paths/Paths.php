@@ -6,7 +6,7 @@ class Paths{
 
 	public static function getThisPluginPath( $excPath = "/CMB/Meta" ){
 
-		write_log( $excPath );
+		#write_log( $excPath );
 
 		$path = plugin_dir_path( __FILE__ );
 		$path = str_replace( $excPath, '', $path );		
