@@ -14,11 +14,6 @@ class PostTypes
 		add_action( 'init', array( $this, 'registerPostTypes' ), 2 );
 	}
 
-	public function postConfig( $PostConfig )
-	{
-		write_log( "!!!!!--postConfig" );
-		return $PostConfig;
-	}
 
 	public function getPostConfig()
 	{
@@ -26,7 +21,7 @@ class PostTypes
 		$PostConfig = $PostConfig->getPostConfig();
 
 		#return $PostConfig;
-		#write_log( apply_filters( array( $this, 'postConfig' ), $PostConfig ) );
+		write_log( apply_filters( 'postConfig', $PostConfig ) );
 		#return apply_filters( array( $this, 'postConfig' ), $PostConfig );
 		return apply_filters( 'postConfig', $PostConfig );
 	}

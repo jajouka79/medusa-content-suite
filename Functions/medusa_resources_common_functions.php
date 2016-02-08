@@ -23,6 +23,12 @@ if ( ! defined ( 'ABSPATH' ) ) {
   exit;
 }
 
+function postConfig( $PostConfig )
+  {
+    write_log( "!!!!!--postConfig" );
+    return false;
+    return $PostConfig;
+  }
 
 
 function Xcheck_query_term($qvar, $query_terms){
