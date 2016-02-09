@@ -39,11 +39,9 @@ class PostMeta
 			if ( ! empty( $contents ) ) :
 				#write_log( 'contents--------------'.$contents );
 				$array = Yaml::parse( $contents );
-
 				#write_log( Yaml::dump( $array ) );
-
 				#write_log( $array );
-
+			
 			endif;
 
 		endif;

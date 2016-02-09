@@ -29,12 +29,12 @@ class PostTypes
 	{
 		$PostConfig = new PostConfig();
 		$PostConfig = $PostConfig->getPostConfig();
-		$PostConfig .= array('qwerty');
+		
 
 		#return $PostConfig;
-		#write_log( apply_filters( 'postConfig', $PostConfig ) );
+		write_log( apply_filters( 'PostConfigHook', $PostConfig ) );
 
-		return apply_filters( 'PostConfigHook', $PostConfig );
+		return apply_filters( 'PostConfigHook', $PostConfig, $newPt );
 
 	}
 
