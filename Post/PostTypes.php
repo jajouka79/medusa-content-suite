@@ -7,32 +7,32 @@ use MedusaContentSuite\Functions\Common as Common;
 
 class PostTypes
 {
+	public $newPt;
 
 	public function __construct()
 	{
 		add_action( 'init', array( $this, 'getPostConfig' ), 2 );
-		add_action( 'init', array( $this, 'registerPostTypes' ), 2 );
-		
+		add_action( 'init', array( $this, 'registerPostTypes' ), 2 );		
 	}
 
 	public function postConfig( $PostConfig )
-	  {
-	    write_log( "!!!!!--postConfig" );
-	    write_log( $PostConfig );
-	    
-	    #return false;
-	    return $PostConfig;
-	  }
+	{
+		write_log( "!!!!!--postConfig" );
+		write_log( $PostConfig );
+
+		#return false;
+		return $PostConfig;
+	}
 
 
-	public function getPostConfig( )
+	public function getPostConfig(  )
 	{
 		$PostConfig = new PostConfig();
 		$PostConfig = $PostConfig->getPostConfig();
 		
-
 		#return $PostConfig;
-		write_log( apply_filters( 'PostConfigHook', $PostConfig ) );
+		$newPt = array();
+		//write_log( apply_filters( 'PostConfigHook', $PostConfig, $newPt ) );
 
 		return apply_filters( 'PostConfigHook', $PostConfig, $newPt );
 
@@ -44,7 +44,7 @@ class PostTypes
 		global $blog_id;
 
 		$PostConfig =  $this->getPostConfig();
-		#write_log( $PostConfig );		
+		write_log( $PostConfig );		
 
 		if ( is_main_site( $blog_id ) ) {
 			#write_log( "yes, this is the main site - blog_id : " . $blog_id );
