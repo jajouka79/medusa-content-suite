@@ -120,7 +120,7 @@ class MedusaContentSuite
 
 
 
-    $PostConfig = new PostConfig;
+    #$PostConfig = new PostConfig;
 
     $PostTypes = new PostTypes;
 

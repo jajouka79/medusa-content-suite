@@ -4,18 +4,16 @@ namespace MedusaContentSuite\Config;
 
 class PostConfig
 {
-
-	public function __construct()
+	public function __construct( )
 	{
 		add_action( 'init', array( $this, 'getPostConfig' ), 1 );
+		#do_action( 'init', $newPt );
 	}
 
-	public function getPostConfig()
+	public function getPostConfig(  )
 	{
-
 		$config = array();
 
-		
 		//PT - News Article
 			$prefix = '_news_article_';
 			$labels = array(
@@ -373,12 +371,13 @@ class PostConfig
 
 
 
+			$newPt = array('arse');
 
+			#write_log( apply_filters( 'PostConfigHook', $PostConfig, $newPt ) );
 
+			return apply_filters( 'PostConfigHook', $config, $newPt );
 
-
-
-			return $config;
+			#return $config;
 
 	}
 
