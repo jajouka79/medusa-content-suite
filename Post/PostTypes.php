@@ -21,7 +21,6 @@ class PostTypes
 		$PostConfig = new PostConfig(  );
 		$PostConfig = $PostConfig->getPostConfig( );
 
-
 		if ( is_main_site( $blog_id ) ) {
 			#write_log( "yes, this is the main site - blog_id : " . $blog_id );
 		}
@@ -52,8 +51,6 @@ class PostTypes
 			#foreach ( $post_types as $post_type ){ write_log( $post_type ); }
 
 		endif;
-
-		return ;
 
 	}
 

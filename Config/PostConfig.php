@@ -367,17 +367,24 @@ class PostConfig
 			$config[] = array ( 'args' => $args, 'types' => $types, 'extras' => $extras );
 
 
-
-
-
-
 			$newPt = array('arse');
 
 			#write_log( apply_filters( 'PostConfigHook', $PostConfig, $newPt ) );
 
-			return apply_filters( 'PostConfigHook', $config, $newPt );
+			#return apply_filters( 'PostConfigHook', $config, $newPt );
 
-			#return $config;
+
+			#if( has_filter( 'pippin_add_fruits' ) ) :
+
+
+				$config = apply_filters( 'pippin_add_fruits', $config );
+				
+
+				write_log("1111");
+			#endif;
+
+
+			return $config;
 
 	}
 

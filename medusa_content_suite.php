@@ -22,12 +22,12 @@ TODO :
   - add bootstrap ! check integration with cmb2 grid - probably not needed
   - php validation needed - zend, respect validation, yii ?? 
     - tpl needed for 
+  - prevent direct file access
 */
 
 namespace MedusaContentSuite;
 
 use MedusaContentSuite\Functions\Common as Common;
-
 
 use MedusaContentSuite\Taxonomy\TaxFormatters as TaxFormatters;
 use MedusaContentSuite\Taxonomy\TaxTypes as TaxTypes;
@@ -42,7 +42,6 @@ use MedusaContentSuite\Functions\Rules as Rules;
 use MedusaContentSuite\Config\MainConfig as MainConfig;
 use MedusaContentSuite\Config\MenuConfig as MenuConfig;
 
-use MedusaContentSuite\Config\PostConfig as PostConfig;
 use MedusaContentSuite\Config\TaxConfig as TaxConfig;
 use MedusaContentSuite\Config\ModConfig as ModConfig;
 
@@ -75,9 +74,6 @@ use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
 #});
 
 $Common = new Common; #call this first
-
-
-
 
 
 
@@ -118,9 +114,6 @@ class MedusaContentSuite
 
     #print( "MedusaContentSuite > __construct" );
 
-
-
-    #$PostConfig = new PostConfig;
 
     $PostTypes = new PostTypes;
 
@@ -195,7 +188,8 @@ class MedusaContentSuite
 /*
 $url = home_url();
 echo $url;
-require_once( $url . '/vendor/WebDevStudiosXXX/CMB2/init.php');*/
+require_once( $url . '/vendor/WebDevStudiosXXX/CMB2/init.php');
+*/
 
         $CMBLoader = new CMBLoader;
         $CMBLoader = $CMBLoader->init( );
@@ -205,15 +199,10 @@ global $wp_scripts;
 echo "xxxxxxx";
 echo "<div style='position:absolute; width:800px; height 450px; background:#ffffff; border:red 1px dotted; right:0px; overflow:scroll; z-index:999999999999999999999'>";
     foreach( $wp_scripts->registered as $handle ) :
-
-
-print_html_r($handle);
-
-
-
-    endforeach; 
-
-echo "</div>";*/
+      print_html_r($handle);
+    endforeach;
+echo "</div>";
+*/
 
 
        /* $FieldTypeLoader = new FieldTypeLoader;
