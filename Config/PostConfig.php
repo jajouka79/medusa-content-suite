@@ -377,10 +377,10 @@ class PostConfig
 			#if( has_filter( 'pippin_add_fruits' ) ) :
 
 
-				$config = apply_filters( 'pippin_add_fruits', $config );
-				
+				#$config = apply_filters( 'pippin_add_fruits', $config );
 
-				write_log("1111");
+
+				#write_log("1111");
 			#endif;
 
 

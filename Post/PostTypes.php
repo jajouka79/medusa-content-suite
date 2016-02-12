@@ -21,6 +21,11 @@ class PostTypes
 		$PostConfig = new PostConfig(  );
 		$PostConfig = $PostConfig->getPostConfig( );
 
+		print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+
+		$PostConfig = apply_filters( 'pippin_add_fruits', $PostConfig );
+
+
 		if ( is_main_site( $blog_id ) ) {
 			#write_log( "yes, this is the main site - blog_id : " . $blog_id );
 		}
