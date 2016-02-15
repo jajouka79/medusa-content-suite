@@ -27,35 +27,18 @@ class PostMeta
 
 		$this->postMetaConfig = $postMetaConfig;
 
-		$path = Paths::getThisPluginPath( "/Paths" ) . '/PostMetaConfig.yml';
-		$path = false;
-
-		if( file_exists ( $path ) ) :
-
-			#write_log( '--------------' );
-			#write_log( $path );
-			$contents = file_get_contents( $path ) ;
-
-			if ( ! empty( $contents ) ) :
-				#write_log( 'contents--------------'.$contents );
-				$array = Yaml::parse( $contents );
-				#write_log( Yaml::dump( $array ) );
-				#write_log( $array );
-			
-			endif;
-
-		endif;
-
 	}
 
 	public function registerPostMeta( )
 	{		
 		#write_log("PostMeta > registerPostMeta");
 		#write_log( $this->postMetaConfig );
-		
-		if ( ! empty ( $this->postMetaConfig ) ) :
 
-			foreach ( $this->postMetaConfig as $mb ) :
+		$PostMetaConfig = apply_filters( 'PostMetaConfigHook', $this->postMetaConfig, array( ) );
+	
+		if ( ! empty ( $PostMetaConfig ) ) :
+
+			foreach ( $PostMetaConfig as $mb ) :
 
 				if ( ! empty ( $mb ) ) :
 
@@ -63,14 +46,14 @@ class PostMeta
 					unset( $box_config[ 'fields' ] );
 					$box_fields = $mb[ 'fields' ];
 
-					$cmb_demo = \new_cmb2_box( $box_config );
+					$cmb2Box = \new_cmb2_box( $box_config );
 					$metabox_id = $box_config['id'];			
 					$box_fields_named = array();
 				
 					foreach ( $box_fields as $f ) :
 						$f['metabox_id'] = $metabox_id;
-						$xxx = $cmb_demo->add_field( $f );
-						$box_fields_named[$f['id']] = $xxx;
+						$tmp = $cmb2Box->add_field( $f );
+						$box_fields_named[$f['id']] = $tmp;
 					endforeach;
 					
 					if ( ! is_admin() ){
@@ -79,7 +62,7 @@ class PostMeta
 
 					/*if ( ! empty ( $mb['grid'] ) ) :
 	
-						$cmb2Grid = new \Cmb2Grid\Grid\Cmb2Grid( $cmb_demo );
+						$cmb2Grid = new \Cmb2Grid\Grid\Cmb2Grid( $cmb2Box );
 		
 						$box_grid = $mb[ 'grid' ];
 
@@ -102,14 +85,32 @@ class PostMeta
 					endif;*/
 		
 				endif;
-
 			endforeach;
-
 		endif;
-
 	}
-
-
-
 }
 
+
+/*
+
+	YAML stuff :-
+
+	$path = Paths::getThisPluginPath( "/Paths" ) . '/PostMetaConfig.yml';
+	$path = false;
+
+	if( file_exists ( $path ) ) :
+
+		#write_log( '--------------' );
+		#write_log( $path );
+		$contents = file_get_contents( $path ) ;
+
+		if ( ! empty( $contents ) ) :
+			#write_log( 'contents--------------'.$contents );
+			$array = Yaml::parse( $contents );
+			#write_log( Yaml::dump( $array ) );
+			#write_log( $array );
+		
+		endif;
+
+	endif;
+*/

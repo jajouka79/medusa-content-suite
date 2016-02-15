@@ -58,9 +58,7 @@ use MedusaContentSuite\CMB\Loaders\FieldTypeLoader as FieldTypeLoader;
 use MedusaContentSuite\CMB\FieldTypes\CustomFieldTypes as CustomFieldTypes;
 use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
 
-
 #require_once '/var/www/bedrock-test1/vendor/autoload.php';
-
 
 #add_action( 'init', function(){
   $autoload_path =  dirname( __FILE__ ) . '/vendor/autoload.php';
@@ -77,7 +75,7 @@ $Common = new Common; #call this first
 
 
 
-add_action( 'wp_print_scripts',function(){
+add_action( 'wp_print_scripts', function( ){
 
    #wp_dequeue_script( 'cmb2-scripts' );
 });

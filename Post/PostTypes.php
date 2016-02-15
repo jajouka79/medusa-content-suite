@@ -20,11 +20,8 @@ class PostTypes
 
 		$PostConfig = new PostConfig(  );
 		$PostConfig = $PostConfig->getPostConfig( );
-
-		print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-
-		$PostConfig = apply_filters( 'pippin_add_fruits', $PostConfig );
-
+		
+		$PostConfig = apply_filters( 'PostConfigHook', $PostConfig, array( ) );
 
 		if ( is_main_site( $blog_id ) ) {
 			#write_log( "yes, this is the main site - blog_id : " . $blog_id );
@@ -33,7 +30,8 @@ class PostTypes
 		if( ! empty ( $PostConfig ) ) :
 
 			foreach ( $PostConfig as $p ) :
-	
+
+
 				if ( ! is_main_site( $blog_id ) ) :
 					if( ! isset( $p['extras']['mu_main_site_only'] ) || $p['extras']['mu_main_site_only'] == false ):
 						register_post_type( $p['types'], $p['args'] );
@@ -58,5 +56,6 @@ class PostTypes
 		endif;
 
 	}
+
 
 }
