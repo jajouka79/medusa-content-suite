@@ -23,6 +23,7 @@ TODO :
   - php validation needed - zend, respect validation, yii ?? 
     - tpl needed for 
   - prevent direct file access
+  - fix yaml functions
 */
 
 namespace MedusaContentSuite;

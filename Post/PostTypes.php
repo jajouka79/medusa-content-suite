@@ -15,7 +15,6 @@ class PostTypes
 
 	public function registerPostTypes(  )
 	{
-		#write_log("registerPostTypes(  )");
 		global $blog_id;
 
 		$PostConfig = new PostConfig(  );
@@ -23,14 +22,13 @@ class PostTypes
 		
 		$PostConfig = apply_filters( 'PostConfigHook', $PostConfig, array( ) );
 
-		if ( is_main_site( $blog_id ) ) {
+		if ( is_main_site( $blog_id ) ) :
 			#write_log( "yes, this is the main site - blog_id : " . $blog_id );
-		}
+		endif;
 
 		if( ! empty ( $PostConfig ) ) :
 
 			foreach ( $PostConfig as $p ) :
-
 
 				if ( ! is_main_site( $blog_id ) ) :
 					if( ! isset( $p['extras']['mu_main_site_only'] ) || $p['extras']['mu_main_site_only'] == false ):
@@ -47,15 +45,11 @@ class PostTypes
 
 			endforeach;
 
-
 			#add_theme_support('post-thumbnails');
 
 			#$post_types = get_post_types( '', 'names' );
 			#foreach ( $post_types as $post_type ){ write_log( $post_type ); }
 
 		endif;
-
 	}
-
-
 }
