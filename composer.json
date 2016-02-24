@@ -188,7 +188,10 @@
       }
     }
 
-  ],
+  ],  
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+
   "require" : {
 		"composer/installers": "~1.0.12",
 		"php": ">=5.3",
