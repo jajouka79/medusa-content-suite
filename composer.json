@@ -122,24 +122,6 @@
       }
     },
 
-
-
-    {
-      "type": "package",
-      "package": {
-          "name": "WebDevStudios/CMB2-Date-Range-Field",
-          "type": "library",
-          "version": "dev-master",
-          "dist": {
-              "type": "zip",
-              "url": "https://github.com/WebDevStudios/CMB2-Date-Range-Field/archive/master.zip"
-          },
-          "require": {
-              "composer/installers": "~1.0.12"
-          }
-      }
-    },
-
     {
       "type": "package",
       "package": {
@@ -188,7 +170,8 @@
       }
     }
 
-  ],  
+  ],
+
   "minimum-stability": "dev",
   "prefer-stable": true,
 
