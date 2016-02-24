@@ -78,7 +78,7 @@
       "package": {
           "name": "Mte90/CMB2-User-Search-field",
           "type": "library",
-          "version": "dev",
+          "version": "dev-master",
           "dist": {
               "type": "zip",
               "url": "https://github.com/Mte90/CMB2-User-Search-field/archive/master.zip"
@@ -94,7 +94,7 @@
       "package": {
           "name": "JayWood/CMB2_RGBa_Picker",
           "type": "library",
-          "version": "dev",
+          "version": "dev-master",
           "dist": {
               "type": "zip",
               "url": "https://github.com/JayWood/CMB2_RGBa_Picker/archive/master.zip"
@@ -111,7 +111,7 @@
       "package": {
           "name": "mattkrupnik/cmb2-field-slider",
           "type": "library",
-          "version": "dev",
+          "version": "dev-master",
           "dist": {
               "type": "zip",
               "url": "https://github.com/mattkrupnik/cmb2-field-slider/archive/master.zip"
@@ -129,7 +129,7 @@
       "package": {
           "name": "WebDevStudios/CMB2-Date-Range-Field",
           "type": "library",
-          "version": "dev",
+          "version": "dev-master",
           "dist": {
               "type": "zip",
               "url": "https://github.com/WebDevStudios/CMB2-Date-Range-Field/archive/master.zip"
@@ -145,7 +145,7 @@
       "package": {
           "name": "WebDevStudios/CMB2-Remote-Image-Select-Field",
           "type": "library",
-          "version": "dev",
+          "version": "dev-master",
           "dist": {
               "type": "zip",
               "url": "https://github.com/WebDevStudios/CMB2-Remote-Image-Select-Field/archive/master.zip"
@@ -177,7 +177,7 @@
       "package": {
         "name": "WebDevStudiosXXX/CMB2",
         "type": "library",
-        "version": "dev",
+        "version": "dev-master",
         "dist": {
           "type": "zip",
           "url": "https://github.com/WebDevStudios/CMB2/archive/trunk.zip"
@@ -196,13 +196,12 @@
     "mustardBees/cmb-field-gallery": "2.0.2",
     "WebDevStudios/CMB2-Post-Search-field": "0.2.3",
     "mustardBees/cmb_field_map": "2.1.1",
-    "Mte90/CMB2-User-Search-field": "dev",
-    "JayWood/CMB2_RGBa_Picker": "dev",
-    "mattkrupnik/cmb2-field-slider": "dev",
-    "WebDevStudios/CMB2-Date-Range-Field": "dev",
-    "WebDevStudios/CMB2-Remote-Image-Select-Field": "dev",
+    "JayWood/CMB2_RGBa_Picker": "dev-master",
+    "mattkrupnik/cmb2-field-slider": "dev-master",
+    "WebDevStudios/CMB2-Date-Range-Field": "dev-master",
+    "WebDevStudios/CMB2-Remote-Image-Select-Field": "dev-master",
     "jcchavezs/cmb2-conditionals": "1.0.4",
-    "WebDevStudiosXXX/CMB2": "dev",
+    "WebDevStudiosXXX/CMB2": "dev-master",
     "respect/validation": "^1.0",
     "symfony/yaml": "^3.0"
   },
