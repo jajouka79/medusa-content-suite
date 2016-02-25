@@ -388,5 +388,9 @@ class PostConfig
 
 	}
 
+	static function test(){
+		return "test valid";
+	}
+
 
 }
