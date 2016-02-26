@@ -16,3 +16,4 @@ TODO :
     - tpl needed for 
   - prevent direct file access
   - fix yaml functions
+  - flush_rewrite_rules(); on pt registration - http://solislab.com/blog/plugin-activation-checklist/

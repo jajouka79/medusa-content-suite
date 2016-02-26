@@ -33,7 +33,7 @@ class FieldTypeLoader
 				#add_action( 'init', array( $this, 'loadFieldTypes' ), 10 );
 
 			else:
-				write_log( "*****************FILE MISSING" );
+				#write_log( "*****************FILE MISSING" );
 			endif;
 
 		endforeach;
