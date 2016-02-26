@@ -6,7 +6,10 @@ class Common
 {
 	public function __construct()
 	{
-		add_action('init', array($this, 'getCommonFunctions'), 1);##very early priority
+		add_action('init', array( $this, 'getCommonFunctions'), 1);##very early priority
+		add_action( 'plugins_loaded', array( $this, 'checkPluginActive'), 1, 1 );
+
+		#do_action( 'plugins_loaded', $param1, $param2 );
 	}
 
 
@@ -26,11 +29,8 @@ class Common
 			if ( ! empty( $contents ) ) :
 				#write_log( 'contents--------------'.$contents );
 				$array = Yaml::parse( $contents );
-
 				#write_log( Yaml::dump( $array ) );
-
 				#write_log( $array );
-
 			endif;
 
 		endif;
@@ -56,12 +56,13 @@ class Common
 	}
 
 
-	static function checkPluginActive( $plugin, $class )
+	static function checkPluginActive( $plugin_const )
 	{
-
-		
-
+		if( defined( $plugin_const ) ) :
+			self::write_log( $plugin_const );
+			return true;
+		else:
+			return false;
+		endif;
 	}
-
-
 }

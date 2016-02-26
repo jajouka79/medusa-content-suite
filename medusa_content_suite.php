@@ -28,6 +28,8 @@ TODO :
 
 namespace MedusaContentSuite;
 
+define( "MEDUSACONTENTSUITE", 1 );
+
 use MedusaContentSuite\Functions\Common as Common;
 
 use MedusaContentSuite\Taxonomy\TaxFormatters as TaxFormatters;
@@ -154,13 +156,9 @@ class MedusaContentSuite
     #$PackagesFieldTypes = new PackagesFieldTypes;
 
 
-  }
-
-
-  public function __construct__( )
-  {
     add_action( 'init', array( $this, 'load' ), 1 );
   }
+
 
   public static function getVendorPath(){
     $path = plugin_dir_url( __FILE__ ) . "vendor";
@@ -178,34 +176,33 @@ class MedusaContentSuite
     #write_log("vendorDirExists - " . $this->vendorDirExists );
     #write_log("activeVendorPath - " . $activeVendorPath );
 
-
-
-
     if ( ! defined( 'CMB2_LOADED' ) ) :
-      if ( $activeVendorPath ) :
+      if ( $this->activeVendorPath ) :
 
-/*
-$url = home_url();
-echo $url;
-require_once( $url . '/vendor/WebDevStudiosXXX/CMB2/init.php');
-*/
+        /*
+        $url = home_url();
+        echo $url;
+        require_once( $url . '/vendor/WebDevStudiosXXX/CMB2/init.php');
+        */
 
         $CMBLoader = new CMBLoader;
         $CMBLoader = $CMBLoader->init( );
 
-/*
-global $wp_scripts; 
-echo "xxxxxxx";
-echo "<div style='position:absolute; width:800px; height 450px; background:#ffffff; border:red 1px dotted; right:0px; overflow:scroll; z-index:999999999999999999999'>";
-    foreach( $wp_scripts->registered as $handle ) :
-      print_html_r($handle);
-    endforeach;
-echo "</div>";
-*/
+        /*
+        global $wp_scripts; 
+        echo "xxxxxxx";
+        echo "<div style='position:absolute; width:800px; height 450px; background:#ffffff; border:red 1px dotted; right:0px; overflow:scroll; z-index:999999999999999999999'>";
+            foreach( $wp_scripts->registered as $handle ) :
+              print_html_r($handle);
+            endforeach;
+        echo "</div>";
+        */
 
 
-       /* $FieldTypeLoader = new FieldTypeLoader;
-        $FieldTypeLoader = $FieldTypeLoader->init( );*/
+        /*
+        $FieldTypeLoader = new FieldTypeLoader;
+        $FieldTypeLoader = $FieldTypeLoader->init( );
+        */
 
       endif;
     endif;
