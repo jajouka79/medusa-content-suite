@@ -11,9 +11,11 @@ TODO :
     - check all metabox ids are unique!
   - Linkage class for vendordir and package dirs, calling new Checker class with config tests
   - cmb2 field types config needs moving or automating
-  - add bootstrap ! check integration with cmb2 grid - probably not needed
+  - add bootstrap! check integration with cmb2 grid - probably not needed
   - php validation needed - zend, respect validation, yii ?? 
     - tpl needed for 
   - prevent direct file access
   - fix yaml functions
   - flush_rewrite_rules(); on pt registration - http://solislab.com/blog/plugin-activation-checklist/
+  - test pt hook thoroughly
+  - fix date range field type

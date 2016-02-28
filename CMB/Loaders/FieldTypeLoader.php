@@ -24,7 +24,7 @@ class FieldTypeLoader
 		foreach( $this->fieldTypes as $ft ) :
 			$fieldTypePackagePath = $this->vendorPath . '/'  . $ft['vendor'] . '/' . $ft['name'] . '/' . $ft['file'];
 
-			#write_log( $fieldTypePackagePath );
+			write_log( $fieldTypePackagePath );
 
 			if ( file_exists( $fieldTypePackagePath ) ) :
 				#write_log ("file exists");
