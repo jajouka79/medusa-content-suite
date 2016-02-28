@@ -243,11 +243,7 @@ class TaxMetaConfig
 				    // 'split_values' => true, // Save latitude and longitude as two separate fields
 				),
 
-
-
-
-
-	        )
+            )
 	    );
 
 

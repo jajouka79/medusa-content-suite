@@ -98,6 +98,9 @@ class MedusaContentSuite
 
     #print( "MedusaContentSuite > __construct" );
 
+    $TaxConfig = new TaxConfig;
+
+    $MenuConfig = new MenuConfig;
 
     $PostTypes = new PostTypes;
 
@@ -106,8 +109,6 @@ class MedusaContentSuite
     $TaxTypes = new TaxTypes;
 
     $TaxMeta = new TaxMeta;
-
-    $TaxConfig = new TaxConfig;
 
     $Validator = new Validator;
 
@@ -128,8 +129,6 @@ class MedusaContentSuite
     $MainConfig = new MainConfig;
     $MainConfig = $MainConfig->getMainConfig( );
 
-    $MenuConfig = new MenuConfig;
-    $MenuConfig = $MenuConfig->getMenuConfig( );
 
     $ModConfig = new ModConfig;
     $ModConfig = $ModConfig->getModConfig( );

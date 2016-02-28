@@ -112,6 +112,7 @@ class PostMetaConfig
 				'priority' => 'low',
 				'show_names' => true, // Show field names on the left
 				'fields' => array(
+
 					array(
 						'name' => 'Featured News Article?',
 						'desc' => 'Select featured news article',
@@ -139,6 +140,7 @@ class PostMetaConfig
 					    'select_type' => 'radio',
 						'show_option_none' => false,
 					),
+
 					array(
 						'name' => 'Featured on Front Page?',
 						'desc' => 'Select if news article featured on front page',
@@ -152,7 +154,6 @@ class PostMetaConfig
 						'show_option_none' => false,
 					),
 					
-
 					array(
 					    'name'       => __( 'Test Date Range', 'cmb2' ),
 					    'desc'       => __( 'field description (optional)', 'cmb2' ),
@@ -166,13 +167,6 @@ class PostMetaConfig
 					    'id' => $prefix . 'location',
 					    'type' => 'pw_map',
 					    // 'split_values' => true, // Save latitude and longitude as two separate fields
-					),
-
-					 array(
-					    'name' => __( 'User(s)' ),
-					    'id' => $prefix . 'user',
-					    'type' => 'user_search_text',
-					    'roles' => array( 'administrator', 'author', 'editor' )
 					),
 
 					array(
@@ -260,18 +254,21 @@ class PostMetaConfig
 						'id' => $prefix . 'end_date',
 						'type' => 'text_date_timestamp'
 					),
+
 					array(
 						'name' => 'Start Time',
 						'desc' => 'Choose Start Time',
 						'id' => $prefix . 'start_time',
 						'type' => 'text_time'
 					),
+
 					array(
 						'name' => 'Finish Time',
 						'desc' => 'Choose Finish Time',
 						'id' => $prefix . 'finish_time',
 						'type' => 'text_time'
 					),
+
 					array(
 						'name' => 'Show Type',
 						'desc' => 'Select show type',
@@ -295,6 +292,7 @@ class PostMetaConfig
 						'id' => $prefix . 'price',
 						'type' => 'text',
 					),
+
 					array(
 						'name' => 'Web Address',
 						'desc' => 'Type the web address',
@@ -302,6 +300,7 @@ class PostMetaConfig
 						'type' => 'text',
 						'default' => 'http://',
 					),
+
 					array(
 						'name' => 'Wegottickets',
 						'desc' => 'Type the Wegottickets link',
@@ -353,18 +352,21 @@ class PostMetaConfig
 						'id' => $prefix . 'end_date',
 						'type' => 'text_date_timestamp'
 					),
+
 					array(
 						'name' => 'Start Time',
 						'desc' => 'Choose Start Time',
 						'id' => $prefix . 'start_time',
 						'type' => 'text_time'
 					),
+
 					array(
 						'name' => 'Finish Time',
 						'desc' => 'Choose Finish Time',
 						'id' => $prefix . 'finish_time',
 						'type' => 'text_time'
 					),
+
 					array(
 						'name' => 'Class Type',
 						'desc' => 'Select class type',
@@ -388,6 +390,7 @@ class PostMetaConfig
 						'id' => $prefix . 'price',
 						'type' => 'text',
 					),
+
 					array(
 						'name' => 'Web Address',
 						'desc' => 'Type the web address',
@@ -395,6 +398,7 @@ class PostMetaConfig
 						'type' => 'text',
 						'default' => 'http://',
 					),
+
 					array(
 						'name' => 'Wegottickets',
 						'desc' => 'Type the Wegottickets link',
@@ -406,7 +410,6 @@ class PostMetaConfig
 
 				),
 			);
-
 
 
 		$this->postMetaConfig = $config;

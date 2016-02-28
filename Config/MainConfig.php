@@ -13,7 +13,7 @@ class MainConfig
 
 	public function getMainConfig()
 	{
-		$config=array(
+		$config = array(
 			'posts_enabled' => false,
 			//'pages_enabled' => true,
 			'has_products' => false,
@@ -21,9 +21,10 @@ class MainConfig
 			'copy_home_page_for_sub_sites' => true,
 			'show_home_in_nav_menu' => true,
 			'error_page_id' => 8,
-
 		);
-		//write_log( $config);
+
+		//write_log( $config );
+
 		return $config;
 
 	}

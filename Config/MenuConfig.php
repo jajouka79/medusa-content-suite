@@ -5,13 +5,12 @@ namespace MedusaContentSuite\Config;
 class MenuConfig
 {
 
-	public function init()
+	public function __construct()
 	{
-		print("<ul><li>--------------------------------->---------------------------------MenuConfig > init</li></ul>");
 		#add_action('init', array($this, 'getMenuConfig'), 1);
 	}
 
-	public function getMenuConfig()
+	static function getMenuConfig()
 	{
 		$config = array(
 			'menus'=>array(
@@ -39,9 +38,9 @@ class MenuConfig
 			'main_menu_name' => 'Main Menu',
 		);
 		//write_log( $MenuConfig);
+
 		return $config;
 
 	}
-
 
 }
