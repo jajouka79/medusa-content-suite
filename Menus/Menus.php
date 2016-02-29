@@ -44,9 +44,7 @@ class Menus{
 	    if( $menus ) :
 	        foreach( $menus as $menu ):
 
-
 	            $menu_exists = wp_get_nav_menu_object( $menu['name'] );
-
 
 	            if(!$menu_exists):
 
