@@ -31,6 +31,10 @@ class MenuConfig
 					'footer-menu' => array(
 						'name'=>__( 'Footer Menu' ),
 						'location'=>__( 'footer-menu-location' ),
+					),					
+					'my-account-menu' => array(
+						'name'=>__( 'My Account Menu' ),
+						'location'=>__( 'top-menu-location' ),
 					),
 				)
 			),

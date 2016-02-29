@@ -44,6 +44,8 @@ use MedusaContentSuite\CMB\Loaders\FieldTypeLoader as FieldTypeLoader;
 use MedusaContentSuite\CMB\FieldTypes\CustomFieldTypes as CustomFieldTypes;
 use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
 
+use MedusaContentSuite\Config\Menus as Menus;
+
 #require_once '/var/www/bedrock-test1/vendor/autoload.php';
 
 #add_action( 'init', function(){
@@ -115,6 +117,8 @@ class MedusaContentSuite
     $CMBLoader = new CMBLoader;
 
     $FieldTypeLoader = new FieldTypeLoader;
+
+    $Menus = new Menus;
 
 
     /*
