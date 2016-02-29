@@ -19,3 +19,16 @@ TODO :
   - flush_rewrite_rules(); on pt registration - http://solislab.com/blog/plugin-activation-checklist/
   - test pt hook thoroughly
   - fix date range field type
+  - admin toolbar - http://premium.wpmudev.org/blog/wordpress-admin-toolbar/
+  - maybe divide some functions into medusa wp admin extender/enhancer plugin
+  - see medusa admin plugin for extra jobs : 
+      - widgets config
+      - admin menu config
+      - admin toolbar config
+      - dashboard config
+      - custom admin theme?
+      - text editor config - permission integration
+      - media library config
+      - 
+  - remove post pt function, urls not removed, clean it up preventing direct url access 
+  - integrate images plugin - images config needed see medusa admin plugin

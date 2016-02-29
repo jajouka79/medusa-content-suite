@@ -17,7 +17,7 @@ class PostTypes
 	{
 		global $blog_id;
 
-		$PostConfig = new PostConfig(  );
+		$PostConfig = new PostConfig;
 		$PostConfig = $PostConfig->getPostConfig( );
 		
 		$PostConfig = apply_filters( 'PostConfigHook', $PostConfig, array( ) );

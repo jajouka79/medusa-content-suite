@@ -13,12 +13,11 @@ class Menus{
 		add_action( 'init', array( $this, 'registerMenuLocations' ), 10 );
 	}
 
+	public function registerMenuLocations( )
+	{
+	    #write_log('registerMenuLocations( )');
 
-
-	public function registerMenuLocations() {
-	    #write_log('registerMenuLocations()');
-
-	    #if(!is_main_site()): return; endif;
+	    #if( !is_main_site( ) ): return; endif;
 
 		$config = MenuConfig::getMenuConfig( );
 		#Common::write_log( $config );
@@ -33,8 +32,9 @@ class Menus{
 	}
 
 
-	public function registerMenus() {
-	    #write_log('registerMenus()');
+	public function registerMenus( )
+	{
+	    #write_log('registerMenus( )');
 
 		$config = MenuConfig::getMenuConfig( );
 	    $menus = $config['menus']['menus'];
@@ -43,20 +43,16 @@ class Menus{
 
 	    if( $menus ) :
 	        foreach( $menus as $menu ):
-
 	            $menu_exists = wp_get_nav_menu_object( $menu['name'] );
 
 	            if(!$menu_exists):
-
 	                $menu_id=wp_create_nav_menu( $menu['name'] );
-
 	            else:
 	                $menu_id=$menu_exists->term_id;
 	            endif;
 
 	            $location[$menu['location']] = $menu_id;
 	            set_theme_mod('nav_menu_locations', $location );
-
 	        endforeach;
 	    endif;
 

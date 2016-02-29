@@ -15,7 +15,8 @@ class MainConfig
 	{
 		$config = array(
 			'posts_enabled' => false,
-			//'pages_enabled' => true,
+			'pages_enabled' => true,
+			'pages_excerpt' => false,
 			'has_products' => false,
 			'product_base_page_id' => false,
 			'copy_home_page_for_sub_sites' => true,

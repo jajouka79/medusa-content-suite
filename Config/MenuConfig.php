@@ -5,10 +5,6 @@ namespace MedusaContentSuite\Config;
 class MenuConfig
 {
 
-	public function __construct()
-	{
-		#add_action('init', array($this, 'getMenuConfig'), 1);
-	}
 
 	static function getMenuConfig()
 	{
