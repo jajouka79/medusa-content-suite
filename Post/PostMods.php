@@ -14,7 +14,7 @@ class PostMods
 
 		add_filter( 'gettext', array( $this, 'custom_enter_title' ), 1 );
 		add_filter( 'getdecsription', array( $this, 'custom_enter_desc' ), 1 );
-		add_action( 'init', array( $this, 'my_add_excerpts_to_pages' ), 1 );
+		add_action( 'init', array( $this, 'addExcerptsToPages' ), 1 );
 		add_action( 'admin_menu', array( $this, 'removeDefaultPostType' ), 1 );
 		add_action( 'admin_bar_menu', array( $this, 'removePostAdminToolbarMenuLinks' ), 999  );
 
@@ -24,11 +24,31 @@ class PostMods
 	{
 		global $post;
 
-		#Common::write_log( 'custom_enter_title()' );
+		$PostConfig = new PostConfig;
+		$PostConfig = $PostConfig->getPostConfig( );
 
-		if ( ! empty( $post ) ) :
-			if ( is_admin( ) && 'Enter title here' == $input )
-				$input = 'Enter ' . $post->post_type . ' title';
+		Common::write_log( $PostConfig['pages_excerpt'] );
+
+		#Common::write_log( 'custom_enter_title( )' );
+
+		require_once( ABSPATH . 'wp-admin/includes/screen.php' );
+		$screen = \get_current_screen( );
+
+		if( is_admin( ) ) :
+			if( ! empty( $screen ) ) :
+				if( $screen->parent_base == 'edit' ) :
+					if ( ! empty( $post ) ) :
+						$pt = get_post_type_object( $post->post_type );
+						$label = $pt->labels->singular_name;
+
+						Common::write_log( $label );
+
+						if ( 'Enter title here' == $input ) :
+							$input = 'Enter ' . strtolower( $label ) . ' title';
+						endif;
+					endif;
+				endif;
+			endif;
 		endif;
 
 		return $input;
@@ -38,13 +58,13 @@ class PostMods
 	{
 		global $post_type;
 		//if( is_admin() && 'Enter title here' == $input && 'job' == $post_type )
-		$input = 'Enter ' . $post->post_type . ' title';
+		$input = 'Enter ' . $post->post_type . ' title xxxxxxx';
 		return $input;
 	}
 
-	public function my_add_excerpts_to_pages( )
+	public function addExcerptsToPages( )
 	{
-		#Common::write_log( "my_add_excerpts_to_pages" );
+		#Common::write_log( "addExcerptsToPages" );
 
 		$MainConfig = new MainConfig;
 		$MainConfig = $MainConfig->getMainConfig( );

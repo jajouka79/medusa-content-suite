@@ -388,9 +388,16 @@ class PostConfig
 
 	}
 
-	static function test(){
-		return "test valid";
+	static function getConfigByPt( $pt )
+	{
+		
+		
+		
+		return $ptConfig;
+
 	}
+
+
 
 
 }
