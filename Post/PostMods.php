@@ -2,6 +2,7 @@
 
 namespace MedusaContentSuite\Post;
 
+use MedusaContentSuite\Config\PostConfig as PostConfig;
 use MedusaContentSuite\Config\MainConfig as MainConfig;
 use MedusaContentSuite\Functions\Common as Common;
 
@@ -24,11 +25,20 @@ class PostMods
 	{
 		global $post;
 
+
 		$PostConfig = new PostConfig;
+
+
+		Common::write_log ( 'PostConfig' );
+		Common::write_log ( $PostConfig );
+
+
 		$PostConfig = $PostConfig->getPostConfig( );
 
-		Common::write_log( $PostConfig['pages_excerpt'] );
 
+		/*
+
+		#Common::write_log( $PostConfig['pages_excerpt'] );
 		#Common::write_log( 'custom_enter_title( )' );
 
 		require_once( ABSPATH . 'wp-admin/includes/screen.php' );
@@ -41,7 +51,8 @@ class PostMods
 						$pt = get_post_type_object( $post->post_type );
 						$label = $pt->labels->singular_name;
 
-						Common::write_log( $label );
+						#Common::write_log( 'label' );
+						#Common::write_log( $label );
 
 						if ( 'Enter title here' == $input ) :
 							$input = 'Enter ' . strtolower( $label ) . ' title';
@@ -50,6 +61,8 @@ class PostMods
 				endif;
 			endif;
 		endif;
+
+		*/
 
 		return $input;
 	}
@@ -68,7 +81,7 @@ class PostMods
 
 		$MainConfig = new MainConfig;
 		$MainConfig = $MainConfig->getMainConfig( );
-		Common::write_log( $MainConfig['pages_excerpt'] );
+		#Common::write_log( $MainConfig['pages_excerpt'] );
 
 		if( $MainConfig['pages_excerpt']  ) :
 			add_post_type_support( 'page', 'excerpt' );

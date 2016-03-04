@@ -25,6 +25,8 @@ use MedusaContentSuite\Post\PostMods as PostMods;
 use MedusaContentSuite\Functions\Callbacks as Callbacks;
 use MedusaContentSuite\Functions\Rules as Rules;
 
+use MedusaContentSuite\Config\PostConfig as PostConfig;
+
 use MedusaContentSuite\Config\MainConfig as MainConfig;
 use MedusaContentSuite\Config\MenuConfig as MenuConfig;
 

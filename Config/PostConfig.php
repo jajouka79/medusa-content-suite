@@ -10,7 +10,7 @@ class PostConfig
 		#do_action( 'init', $newPt );
 	}
 
-	public function getPostConfig(  )
+	public function getPostConfig( )
 	{
 		$config = array();
 
