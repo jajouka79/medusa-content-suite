@@ -188,7 +188,7 @@
     "jcchavezs/cmb2-conditionals": "1.0.4",
     "WebDevStudiosXXX/CMB2": "dev-master",
     "respect/validation": "^1.0",
-    "symfony/yaml": "^3.0"
+    "symfony/yaml": "2.7.*"
   },
 
 	"autoload": {

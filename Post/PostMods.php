@@ -2,6 +2,7 @@
 
 namespace MedusaContentSuite\Post;
 
+#use MedusaContentSuite\Config\PostConfig as PostConfig;
 use MedusaContentSuite\Config\MainConfig as MainConfig;
 use MedusaContentSuite\Functions\Common as Common;
 
@@ -24,10 +25,10 @@ class PostMods
 	{
 		global $post;
 
-		$PostConfig = new PostConfig;
-		$PostConfig = $PostConfig->getPostConfig( );
+		#$PostConfig = new PostConfig;
+		#$PostConfig = $PostConfig->getPostConfig( );
 
-		Common::write_log( $PostConfig['pages_excerpt'] );
+		#Common::write_log( $PostConfig['pages_excerpt'] );
 
 		#Common::write_log( 'custom_enter_title( )' );
 
