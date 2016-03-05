@@ -15,7 +15,7 @@ class PostMods
 	{
 		#Common::write_log( " PostMods > __construct " );
 
-		\add_filter( 'gettext', array( $this, 'custom_enter_title' ), 1 );
+		#add_filter( 'gettext', array( $this, 'custom_enter_title' ), 1 );
 		add_filter( 'getdecsription', array( $this, 'custom_enter_desc' ), 1 );
 		add_action( 'init', array( $this, 'addExcerptsToPages' ), 1 );
 		add_action( 'admin_menu', array( $this, 'removeDefaultPostType' ), 1 );
@@ -29,18 +29,11 @@ class PostMods
 
 		#Common::write_log( $PostConfig['pages_excerpt'] );
 
-
-		$PostConfig = new PostConfig;
-
-
+		/*$PostConfig = new PostConfig;
 		Common::write_log ( 'PostConfig' );
 		Common::write_log ( $PostConfig );
-
-
-		$PostConfig = $PostConfig->getPostConfig( );
-
-
-
+		$PostConfig = $PostConfig->getPostConfig( );/*
+		
 		/*
 
 		#Common::write_log( $PostConfig['pages_excerpt'] );
