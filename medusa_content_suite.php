@@ -171,7 +171,7 @@ class MedusaContentSuite
 
   public function getActiveVendorPath( )
   {
-    #Common::write_log( ' getActiveVendorPath ' );
+    Common::write_log( ' getActiveVendorPath ' );
 
     $this->packageVendorPath = plugin_dir_path( __FILE__ ) . "vendor";
     $this->checkPackageVendorDirExists( );
