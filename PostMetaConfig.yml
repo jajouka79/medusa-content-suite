@@ -1,6 +1,0 @@
-section1:
-  foo: { bar: foo }
-  bar: [1, 2]
-  foobar:
-    - 'a string'
-    - 'another one'

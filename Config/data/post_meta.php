@@ -1,53 +1,8 @@
 <?php
 
-namespace MedusaContentSuite\Config;
-
-use MedusaContentSuite\Functions\Callbacks as Callbacks;
-use MedusaContentSuite\Functions\Common as Common;
-
-
-#convertYML
-
-class PostMetaConfig
-{
-	public $postMetaConfig;
-	#public $postMetaConfigByType;
-	public $postMetaConfigLoc = "";
-
-	public function __construct()
-	{
-		$this->postMetaConfigLoc = $this->getPostMetaConfigLoc( );
-		write_log( $this->postMetaConfigLoc );
-	}
-
-	public function getPostMetaConfigLoc()
-	{
-		$loc = plugin_dir_path( __FILE__ ) . '/' . $this->postMetaConfigLoc . '/' . 'post_meta.php';
-		return $loc;
-	}
-
-	public function setPostMetaConfig()
 	{
 		#write_log( "PostMetaConfig > setPostMetaConfig" );
 
-		$Callbacks = new Callbacks();
-
-		$Common = new Common;
-
-		$config = $Common::convertYML( $this->postMetaConfigLoc );
-
-		write_log( $config );
-
-		$this->postMetaConfig = $config;
-
-	}
-
-
-
-	/*public function setPostMetaConfig()
-	{
-
-		$Callbacks = new Callbacks();
 
 		#promoter
 
@@ -76,54 +31,6 @@ class PostMetaConfig
 
 					'rows' => array(
 
-						// array(
-						// 	'columns' => array(
-						// 		array(
-						// 			$prefix . 'images', 
-						// 			'class' => 'col-md-6 '
-						// 		),
-						// 		array(
-						// 			$prefix . 'start_date', 
-						// 			'class' => 'col-md-3 '
-						// 		),
-						// 		array(
-						// 			$prefix . 'end_date', 
-						// 			'class' => 'col-md-3 '
-						// 		),
-						// 	),
-						// ),
-
-						// array(
-						// 	'columns' => array(
-						// 		array(
-						// 			'wiki_test_colorpicker', 
-						// 			'class' => 'col-md-2 '
-						// 		),
-						// 		array(
-						// 			$prefix . 'test_colorpicker', 
-						// 			'class' => 'col-md-2 '
-						// 		),
-						// 		array(
-						// 			$prefix . 'images', 
-						// 			'class' => 'col-md-6
-						// 		'),															
-						// 	),
-						// ),
-
-
-						// array(
-						// 	'columns' => array(
-
-						// 		array(
-						// 			$prefix . 'featured_news_article', 
-						// 			'class' => 'col-md-2'
-						// 		),
-						// 		array(
-						// 			$prefix . 'featured_on_front', 
-						// 			'class' => 'col-md-2'
-						// 		),
-						// 	),
-						// ),
 					),
 				),
 			);
@@ -444,9 +351,4 @@ class PostMetaConfig
 		$this->postMetaConfig = $config;
 
 
-	}*/
-
-
-
-
-}
+	}

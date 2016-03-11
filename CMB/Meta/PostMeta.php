@@ -21,11 +21,10 @@ class PostMeta
 
 		$postMetaConfig = new PostMetaConfig;
 		$postMetaConfig->setPostMetaConfig();
-		$postMetaConfig = $postMetaConfig->postMetaConfig;
-		
+
 		#write_log( $postMetaConfig );
 
-		$this->postMetaConfig = $postMetaConfig;
+		$this->postMetaConfig = $postMetaConfig->postMetaConfig;
 
 	}
 

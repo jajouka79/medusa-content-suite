@@ -44,7 +44,7 @@ class Common
 		include "medusa_resources_common_functions.php";
 	}	
 
-	static function write_log( $log ){
+	public static function write_log( $log ){
 
 		if ( true === WP_DEBUG ) {
 			if ( is_array( $log ) || is_object( $log ) ) {
@@ -56,7 +56,7 @@ class Common
 	}
 
 
-	static function checkPluginActive( $plugin_const )
+	public static function checkPluginActive( $plugin_const )
 	{
 		if( defined( $plugin_const ) ) :
 			self::write_log( $plugin_const );
