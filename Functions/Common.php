@@ -1,6 +1,9 @@
 <?php
 
-namespace MedusaContentSuite\Functions;
+namespace MedusaContentSuite\\Functions;
+
+use MedusaContentSuite\Paths as Paths;
+
 
 class Common
 {
