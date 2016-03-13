@@ -348,7 +348,7 @@
 			);
 
 
-		$this->postMetaConfig = $config;
+		#$this->postMetaConfig = $config;
 
 
 	}

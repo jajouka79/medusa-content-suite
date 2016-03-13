@@ -1,9 +1,8 @@
 <?php
 
-namespace MedusaContentSuite\\Functions;
+namespace MedusaContentSuite\Functions;
 
 use MedusaContentSuite\Paths as Paths;
-
 
 class Common
 {
@@ -16,12 +15,14 @@ class Common
 	}
 
 
-	public static function convertYML( $file )
+	public static function convertYML( $path )
 	{
 		//$PostConfig = new PostConfig();
 		//$PostConfig = $PostConfig->getPostConfig();
 			
-		$path = Paths::getThisPluginPath( "/Paths" ) . '/PostMetaConfig.yml';
+		#$path = Paths::getThisPluginPath( "/Paths" ) . '/PostMetaConfig.yml';
+
+		#return;
 
 		if( file_exists ( $path ) ) :
 
@@ -45,7 +46,8 @@ class Common
 	public function getCommonFunctions()
 	{
 		include "medusa_resources_common_functions.php";
-	}	
+	}
+
 
 	public static function write_log( $log ){
 

@@ -114,6 +114,8 @@ class MedusaContentSuite
     $Menus = new Menus;
     $PostMods = new PostMods;
 
+    //$Yaml = new Yaml;
+
 
     /*
     $TaxFormatters = new TaxFormatters;

@@ -22,7 +22,7 @@ class PostMetaConfig
 
 	public function getPostMetaConfigLoc()
 	{
-		$loc = plugin_dir_path( __FILE__ ) . '/' . $this->postMetaConfigLoc . '/' . 'post_meta.php';
+		$loc = plugin_dir_path( __FILE__ ) . 'data' . '/' . 'post_meta.php';
 		return $loc;
 	}
 
@@ -33,6 +33,8 @@ class PostMetaConfig
 		$Callbacks = new Callbacks();
 
 		$Common = new Common;
+
+		write_log( "loc - " . $this->postMetaConfigLoc );
 
 		$config = $Common::convertYML( $this->postMetaConfigLoc );
 

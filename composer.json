@@ -194,7 +194,8 @@
 	"autoload": {
     "psr-4": {
 
-      "MedusaContentSuite\\": ""
+      "MedusaContentSuite\\": "",
+      "Symfony\\Component\\Yaml\\": "vendor/symfony/yaml"
 
     },
 
