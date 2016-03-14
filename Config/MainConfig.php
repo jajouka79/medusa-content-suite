@@ -4,31 +4,44 @@ namespace MedusaContentSuite\Config;
  
 class MainConfig
 {
+	public $mainConfigLoc = "";
+	public $mainConfig;
 
-	public function init()
+	public function __construct()
 	{
-		#print("<ul><li>MainConfig > init</li></ul>");
-		#add_action('init', array($this, 'getMainConfig'), 5);
+		$this->mainConfigLoc = $this->getMainConfigLoc( );
+		#write_log( "---------------MainConfig - __construct - this->mainConfigLoc - " );
+		#write_log( $this->mainConfigLoc );
 	}
 
-	public function getMainConfig()
+
+
+	public function getMainConfig( )
 	{
-		$config = array(
-			'posts_enabled' => false,
-			'pages_enabled' => true,
-			'pages_excerpt' => false,
-			'has_products' => false,
-			'product_base_page_id' => false,
-			'copy_home_page_for_sub_sites' => true,
-			'show_home_in_nav_menu' => true,
-			'error_page_id' => 8,
-		);
+		#write_log( "getMainConfig() - loc - " );
 
-		//write_log( $config );
+		#write_log( $this->mainConfigLoc );
+		
+		if( file_exists( $this->mainConfigLoc ) ) :
 
-		return $config;
+			$config = require_once( $this->mainConfigLoc );
+
+			#Common::write_log( $config );
+
+			$this->mainConfig = $config;
+
+			/*write_log( 'config:' );
+			write_log( $config );*/
+
+		endif;
 
 	}
 
+
+	public function getMainConfigLoc()
+	{
+		$loc = plugin_dir_path( __FILE__ ) . 'data' . '/' . 'main.php';
+		return $loc;
+	}
 
 }

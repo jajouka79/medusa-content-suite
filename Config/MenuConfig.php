@@ -2,45 +2,43 @@
 
 namespace MedusaContentSuite\Config;
 
+use MedusaContentSuite\Functions\Common as Common;
+
 class MenuConfig
 {
+	public $menuConfig;
+	public $menuConfigLoc = "";
 
-
-	static function getMenuConfig()
+	public function __construct( )
 	{
-		$config = array(
-			'menus'=>array(
-				'locations' => array(
-					'top-menu-location' => __( 'Top Menu Location' ),
-					'main-menu-location' => __( 'Main Menu Location' ),
-					'footer-menu-location' => __( 'Footer Menu Location' ),
-				),
-				'menus'=>array(
-					'top-menu' => array(
-						'name'=>__( 'Top Menu' ),
-						'location'=>__( 'top-menu-location' ),
-					),
-					'main-menu' => array(
-						'name'=>__( 'Main Menu' ),
-						'location'=>__( 'main-menu-location' ),
-					),
-					'footer-menu' => array(
-						'name'=>__( 'Footer Menu' ),
-						'location'=>__( 'footer-menu-location' ),
-					),					
-					'my-account-menu' => array(
-						'name'=>__( 'My Account Menu' ),
-						'location'=>__( 'top-menu-location' ),
-					),
-				)
-			),
-			'main_menu_id' => 13,
-			'main_menu_name' => 'Main Menu',
-		);
-		//write_log( $MenuConfig);
-
-		return $config;
-
+		#add_action( 'init', array( $this, 'getMenuConfig' ), 1 );
+		$this->menuConfigLoc = $this->getMenuConfigLoc( );
+		$this->menuConfig = $this->setMenuConfig( );
 	}
+
+	public function getMenuConfigLoc()
+	{
+		$loc = plugin_dir_path( __FILE__ ) . 'data' . '/' . 'menu.php';
+		return $loc;
+	}
+
+	public function setMenuConfig( )
+	{
+		#Common::write_log( $this->menuConfigLoc  ) ;
+
+		if( file_exists( $this->menuConfigLoc ) ) :
+			$config = require_once( $this->menuConfigLoc );
+			#Common::write_log ( $config );  
+			$this->menuConfig = $config;
+		endif;
+
+		#Common::write_log( $this->menuConfig );
+	}
+
+/*	public function getMenuConfig()
+	{		
+		Common::write_log( $this->menuConfig );
+		return $this->menuConfig;
+	}*/
 
 }

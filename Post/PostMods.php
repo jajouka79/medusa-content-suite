@@ -2,7 +2,6 @@
 
 namespace MedusaContentSuite\Post;
 
-
 #use MedusaContentSuite\Config\PostConfig as PostConfig;
 
 use MedusaContentSuite\Config\MainConfig as MainConfig;
@@ -11,16 +10,18 @@ use MedusaContentSuite\Functions\Common as Common;
 class PostMods
 {
 
-	public function __construct()
+	public function __construct(  )
 	{
-		#Common::write_log( " PostMods > __construct " );
+		#Common::write_log( " PostMods > __construct : " );
+
+		#Common::write_log( $config );
 
 		#add_filter( 'gettext', array( $this, 'custom_enter_title' ), 1 );
-		add_filter( 'getdecsription', array( $this, 'custom_enter_desc' ), 1 );
+		
+		#add_filter( 'getdecsription', array( $this, 'custom_enter_desc' ), 1 );
 		add_action( 'init', array( $this, 'addExcerptsToPages' ), 1 );
 		add_action( 'admin_menu', array( $this, 'removeDefaultPostType' ), 1 );
-		add_action( 'admin_bar_menu', array( $this, 'removePostAdminToolbarMenuLinks' ), 999  );
-
+		#add_action( 'admin_bar_menu', array( $this, 'removePostAdminToolbarMenuLinks' ), 999  );
 	}
 
 	public function custom_enter_title( $input )
@@ -78,34 +79,38 @@ class PostMods
 		#Common::write_log( "addExcerptsToPages" );
 
 		$MainConfig = new MainConfig;
-		$MainConfig = $MainConfig->getMainConfig( );
-		#Common::write_log( $MainConfig['pages_excerpt'] );
+		$MainConfig->getMainConfig( );
+		$MainConfig = $MainConfig->mainConfig;
 
 		if( $MainConfig['pages_excerpt']  ) :
 			add_post_type_support( 'page', 'excerpt' );
 		endif;
-
 	}
 
     
     public function removeDefaultPostType( ) 
     {
+		#Common::write_log( 'removeDefaultPostType' );
+
 		$MainConfig = new MainConfig;
-		$MainConfig = $MainConfig->getMainConfig( );
+		$MainConfig->getMainConfig( );
+		$MainConfig = $MainConfig->mainConfig;
 
 		if( ! $MainConfig['posts_enabled'] ) :
-
         	remove_menu_page('edit.php');
-
     	endif;
-
     }
+
 
 	public function removePostAdminToolbarMenuLinks( ) 
 	{
+		#Common::write_log( "removePostAdminToolbarMenuLinks" );
+
 	    global $wp_admin_bar;   
+
 		$MainConfig = new MainConfig;
-		$MainConfig = $MainConfig->getMainConfig( );
+		$MainConfig->getMainConfig( );
+		$MainConfig = $MainConfig->mainConfig;
 
 		if( ! $MainConfig['posts_enabled'] ) :
 

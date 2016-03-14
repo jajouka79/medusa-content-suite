@@ -1,7 +1,7 @@
 <?php
 
-	{
-		#write_log( "PostMetaConfig > setPostMetaConfig" );
+
+$config = array();
 
 
 		#promoter
@@ -348,7 +348,9 @@
 			);
 
 
-		#$this->postMetaConfig = $config;
 
 
-	}
+
+return $config;
+
+

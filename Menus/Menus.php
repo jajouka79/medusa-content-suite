@@ -7,36 +7,56 @@ use MedusaContentSuite\Functions\Common as Common;
 
 class Menus{
 
+	public $menuConfig;
+
 	public function __construct()
 	{
+
+		$MenuConfig = new MenuConfig;
+		$MenuConfig->setMenuConfig( );
+		$this->menuConfig = $MenuConfig->menuConfig;
+
+		Common::write_log( 'this->menuConfig' );
+	    Common::write_log( $this->menuConfig );
+
+
 		add_action( 'init', array( $this, 'registerMenus' ), 20 );
 		add_action( 'init', array( $this, 'registerMenuLocations' ), 10 );
 	}
 
 	public function registerMenuLocations( )
 	{
-	    #write_log('registerMenuLocations( )');
+	    Common::write_log( "registerMenuLocations()" );
 
 	    #if( !is_main_site( ) ): return; endif;
+		$config = $this->menuConfig;
 
-		$config = MenuConfig::getMenuConfig( );
-		#Common::write_log( $config );
+	    /*Common::write_log( 'config' );
+	    Common::write_log( $config );*/
 
 	    if( ! $config ) :
+	    	#Common::write_log( "return false!!!" );
 	        return false;
 	    endif;
 
 	    $locations = $config['menus']['locations'];
 
-	    register_nav_menus( $locations );
+	    Common::write_log( "registerMenuLocations() - END" );
+
+	    #register_nav_menus( $locations );
 	}
 
 
 	public function registerMenus( )
 	{
-	    #write_log('registerMenus( )');
+	    write_log('registerMenus( )');
 
-		$config = MenuConfig::getMenuConfig( );
+
+		$config = $this->menuConfig;
+
+	    /*Common::write_log( 'config' );
+	    Common::write_log( $config );*/
+
 	    $menus = $config['menus']['menus'];
 
 	    if( ! $config ) : return false; endif;
@@ -56,6 +76,7 @@ class Menus{
 	        endforeach;
 	    endif;
 
+	    write_log( 'registerMenus - END' );
 
 
 	}

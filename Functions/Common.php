@@ -3,6 +3,7 @@
 namespace MedusaContentSuite\Functions;
 
 use MedusaContentSuite\Paths as Paths;
+#use Symfony\Component\Yaml as Yaml;
 
 class Common
 {

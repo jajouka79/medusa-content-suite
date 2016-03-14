@@ -92,7 +92,7 @@ class MedusaContentSuite
   public $cmbLoaded = false;
   public $activeVendorPath = false;
   public $projectVendorPath;
-  public static $projectVendorPath2;
+  public static $projectVendorPath2;                                                  
   public $packageVendorPath;
   public $projectVendorPathExists = false;
   public $packageVendorPathExists = false;
@@ -102,7 +102,6 @@ class MedusaContentSuite
   {
 
     #Common::write_log( "MedusaContentSuite > __construct" );
-
 
     $PostTypes = new PostTypes;
     $PostMeta = new PostMeta;
@@ -114,8 +113,8 @@ class MedusaContentSuite
     $Menus = new Menus;
     $PostMods = new PostMods;
 
-    //$Yaml = new Yaml;
 
+    //$Yaml = new Yaml;#test
 
     /*
     $TaxFormatters = new TaxFormatters;
@@ -173,7 +172,7 @@ class MedusaContentSuite
 
   public function getActiveVendorPath( )
   {
-    Common::write_log( ' getActiveVendorPath ' );
+    #Common::write_log( ' getActiveVendorPath ' );
 
     $this->packageVendorPath = plugin_dir_path( __FILE__ ) . "vendor";
     $this->checkPackageVendorDirExists( );

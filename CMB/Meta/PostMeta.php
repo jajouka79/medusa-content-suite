@@ -13,6 +13,7 @@ class PostMeta
 	{
 		add_action( 'cmb2_init', array( $this, 'registerPostMeta' ), 100 );
 		add_action( 'init', array( $this, 'setPostMetaConfig' ), 10 );
+		//$this->setPostMetaConfig( );
 	}
 
 	public function setPostMetaConfig( )
@@ -20,12 +21,11 @@ class PostMeta
 		#write_log( "PostMeta - setPostMetaConfig" );
 
 		$postMetaConfig = new PostMetaConfig;
-		$postMetaConfig->setPostMetaConfig();
+		$postMetaConfig->setPostMetaConfig( );
 
 		#write_log( $postMetaConfig );
 
 		$this->postMetaConfig = $postMetaConfig->postMetaConfig;
-
 	}
 
 	public function registerPostMeta( )
