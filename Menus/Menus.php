@@ -16,8 +16,8 @@ class Menus{
 		$MenuConfig->setMenuConfig( );
 		$this->menuConfig = $MenuConfig->menuConfig;
 
-		Common::write_log( 'this->menuConfig' );
-	    Common::write_log( $this->menuConfig );
+		#Common::write_log( 'this->menuConfig' );
+	    #Common::write_log( $this->menuConfig );
 
 
 		add_action( 'init', array( $this, 'registerMenus' ), 20 );
@@ -26,7 +26,7 @@ class Menus{
 
 	public function registerMenuLocations( )
 	{
-	    Common::write_log( "registerMenuLocations()" );
+	    #Common::write_log( "registerMenuLocations()" );
 
 	    #if( !is_main_site( ) ): return; endif;
 		$config = $this->menuConfig;
@@ -41,7 +41,7 @@ class Menus{
 
 	    $locations = $config['menus']['locations'];
 
-	    Common::write_log( "registerMenuLocations() - END" );
+	    #Common::write_log( "registerMenuLocations() - END" );
 
 	    #register_nav_menus( $locations );
 	}
@@ -49,7 +49,7 @@ class Menus{
 
 	public function registerMenus( )
 	{
-	    write_log('registerMenus( )');
+	    #write_log('registerMenus( )');
 
 
 		$config = $this->menuConfig;
@@ -76,7 +76,7 @@ class Menus{
 	        endforeach;
 	    endif;
 
-	    write_log( 'registerMenus - END' );
+	    #write_log( 'registerMenus - END' );
 
 
 	}

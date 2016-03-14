@@ -21,7 +21,7 @@ class CMBLoader
 		if ( ! defined( 'CMB2_LOADED' ) ) :
 			#write_log("CMB2 NOT LOADED");
 			
-			$MedusaContentSuite = new MedusaContentSuite;
+			$MedusaContentSuite = new MedusaContentSuite(NULL);
 			$activeVendorPath = $MedusaContentSuite->getActiveVendorPath();
 			$this->setCmbPath( $activeVendorPath );
 

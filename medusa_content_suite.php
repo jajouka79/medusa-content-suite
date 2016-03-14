@@ -15,6 +15,8 @@ define( "MEDUSACONTENTSUITE", 1 );
 
 use MedusaContentSuite\Functions\Common as Common;
 
+use MedusaContentSuite\Config\Globals as Globals;
+
 use MedusaContentSuite\Taxonomy\TaxFormatters as TaxFormatters;
 use MedusaContentSuite\Taxonomy\TaxTypes as TaxTypes;
 use MedusaContentSuite\Taxonomy\TaxMods as TaxMods;
@@ -61,7 +63,8 @@ use MedusaContentSuite\Config\Menus as Menus;
   
 #});
 
-$Common = new Common; #call this first
+
+
 
 
 
@@ -83,10 +86,17 @@ $xx = v::numeric( )->validate( $number ); // true
 
 ///////////////////////////////////////////////////////
 
-$MedusaContentSuite = new MedusaContentSuite;
+
+$Globals = new Globals;
+
+
+
+$MedusaContentSuite = new MedusaContentSuite( $Globals );
 
 class MedusaContentSuite
 {
+  public $rootConfigLoc;
+  public $configLoc;
   public $vendorDirExists = false;
   public $vendorPath;
   public $cmbLoaded = false;
@@ -98,20 +108,43 @@ class MedusaContentSuite
   public $packageVendorPathExists = false;
 
 
-  public function __construct()
+  public function __construct( $Globals )
   {
+    $Globals->configLoc = $this->setConfigLoc( );
+    $Globals->rootConfigLoc = $this->setRootConfigLoc( );
+
+    if( ! empty( $this->rootConfigLoc ) ) : 
+      if( $this->checkRootConfigLocExists( ) ) : 
+
+        Common::write_log( "checkRootConfigLocExists( )!!!!!!!!" );
+
+      endif;
+    endif;
 
     #Common::write_log( "MedusaContentSuite > __construct" );
 
-    $PostTypes = new PostTypes;
-    $PostMeta = new PostMeta;
+    $Common = new Common; #call this first
+
+    $PostTypes = new PostTypes( $Globals );
+
+    $Globals->postConfig = $Globals->postConfig ;
+
+    Common::write_log( "PostTypes - Globals - " );
+    Common::write_log( $Globals );
+
+
     $TaxTypes = new TaxTypes;
+
+    /*$PostMeta = new PostMeta;
     $TaxMeta = new TaxMeta;
     #$Validator = new Validator;
     $CMBLoader = new CMBLoader;
     $FieldTypeLoader = new FieldTypeLoader;
     $Menus = new Menus;
-    $PostMods = new PostMods;
+    $PostMods = new PostMods;*/
+
+
+
 
 
     //$Yaml = new Yaml;#test
@@ -123,22 +156,55 @@ class MedusaContentSuite
 
     $Callbacks = new Callbacks;
     $Callbacks = $Callbacks->getCallbacks( );
-
     */
 
     #$CustomFieldTypes = new CustomFieldTypes;
     #$PackagesFieldTypes = new PackagesFieldTypes;
 
+
     add_action( 'init', array( $this, 'load' ), 1 );
+
 
   }
 
-  public static function getVendorPath()
+
+  public function setConfigLoc( )
+  {
+    $loc = plugin_dir_path( __FILE__ ) . 'data';
+    //$Globals->configLoc = $loc;
+    return $loc;
+  }
+
+
+  public function setRootConfigLoc( )
+  {
+    if( defined( 'ROOT_DIR' ) ) :    
+      if( ! empty( ROOT_DIR ) ) :
+        $loc = ROOT_DIR . '/mcs-config';
+        $this->rootConfigLoc = $loc;
+        return $loc;
+      endif;
+    endif;
+  }
+
+
+  public function checkRootConfigLocExists( )
+  {
+    if( file_exists( $this->rootConfigLoc ) ) :
+      return true;
+    else:
+      return false;
+    endif;
+  }
+
+
+  public static function getVendorPath( )
   {
     $path = plugin_dir_url( __FILE__ ) . "vendor";
     #write_log( 'getVendorPath( ) ---' . $path );
     return $path;
   }
+
 
   public function load( )
   {
@@ -170,6 +236,7 @@ class MedusaContentSuite
     endif;
   }
 
+
   public function getActiveVendorPath( )
   {
     #Common::write_log( ' getActiveVendorPath ' );
@@ -189,12 +256,14 @@ class MedusaContentSuite
     return $this->activeVendorPath;
   }
 
+
   public function checkPackageVendorDirExists( )
   {
     if ( file_exists( $this->packageVendorPath ) ) :
       $this->packageVendorPathExists = true;
     endif;
   }
+
 
   public function checkProjectVendorDirExists( )
   {

@@ -7,26 +7,40 @@ use MedusaContentSuite\Functions\Common as Common;
 
 class PostTypes
 {
+	public $Globals;
 
-	public function __construct()
+	public function __construct( $Globals )
 	{
-		add_action( 'init', array( $this, 'registerPostTypes' ), 2 );		
+		add_action( 'init', array( $this, 'registerPostTypes' ), 2, 1 );
+		$this->Globals = $Globals;
 	}
 
 	public function registerPostTypes(  )
 	{
+
+		/*Common::write_log( "PostTypes - Globals - " );
+		Common::write_log( $this->Globals );*/
+
 		global $blog_id;
 
 		$PostConfig = new PostConfig;
 		$PostConfig->setPostConfig( );
-
-		$PostConfig = $PostConfig->postConfig;
-		
+		$PostConfig = $PostConfig->postConfig;		
 		$PostConfig = apply_filters( 'PostConfigHook', $PostConfig, array( ) );
+
+
+		Common::write_log( $this->Globals->postConfig );
+
+
+		//$this->Globals->postConfig = $PostConfig->postConfig;
+
+		/*Common::write_log( "PostTypes - Globals - " );
+		Common::write_log( $this->Globals );*/
 
 		if ( is_main_site( $blog_id ) ) :
 			#write_log( "yes, this is the main site - blog_id : " . $blog_id );
 		endif;
+
 
 		if( ! empty ( $PostConfig ) ) :
 

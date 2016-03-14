@@ -16,7 +16,7 @@ class FieldTypeLoader
 
 	public function loadFieldTypes( )
 	{
-		$MedusaContentSuite = new MedusaContentSuite;
+		$MedusaContentSuite = new MedusaContentSuite(NULL);
 		$this->vendorPath = $MedusaContentSuite->getActiveVendorPath();		
 
 		$fieldTypes = $this->setFieldTypes( );
