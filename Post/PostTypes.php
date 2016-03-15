@@ -11,36 +11,25 @@ class PostTypes
 
 	public function __construct( $Globals )
 	{
-		add_action( 'init', array( $this, 'registerPostTypes' ), 2, 1 );
+		add_action( 'init', array( $this, 'registerPostTypes' ), 2 );
 		$this->Globals = $Globals;
 	}
 
 	public function registerPostTypes(  )
 	{
-
-		/*Common::write_log( "PostTypes - Globals - " );
-		Common::write_log( $this->Globals );*/
-
 		global $blog_id;
+		/*Common::write_log( "registerPostTypes()" );*/
 
-		$PostConfig = new PostConfig;
-		$PostConfig->setPostConfig( );
-		$PostConfig = $PostConfig->postConfig;		
+		$PostConfig = $this->Globals->postConfig;
 		$PostConfig = apply_filters( 'PostConfigHook', $PostConfig, array( ) );
 
 
-		Common::write_log( $this->Globals->postConfig );
-
-
-		//$this->Globals->postConfig = $PostConfig->postConfig;
-
-		/*Common::write_log( "PostTypes - Globals - " );
-		Common::write_log( $this->Globals );*/
+		/*Common::write_log( "PostTypes - PostConfig - " );
+		Common::write_log( $PostConfig );*/
 
 		if ( is_main_site( $blog_id ) ) :
 			#write_log( "yes, this is the main site - blog_id : " . $blog_id );
 		endif;
-
 
 		if( ! empty ( $PostConfig ) ) :
 
@@ -52,10 +41,11 @@ class PostTypes
 					else:
 						#write_log (" -- mu_main_site_only - not set". "<br />");
 					endif;
-				else:
+				else :
 					if( ! isset( $p['extras']['sub_site_only']) || $p['extras']['sub_site_only'] == false ) :
-						#write_log( $p['args'] );
+					
 						register_post_type( $p['types'], $p['args'] );
+					
 					endif;
 				endif;
 

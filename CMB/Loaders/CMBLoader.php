@@ -1,49 +1,34 @@
 <?php
 namespace MedusaContentSuite\CMB\Loaders;
 
-use MedusaContentSuite\MedusaContentSuite as MedusaContentSuite;
-
-
+use MedusaContentSuite\Functions\Common as Common;
 
 class CMBLoader
 {
 	public $vendorPath = false;
 	public $cmbPath = false;
+	public $Globals;
 
-	public function __construct( )
+
+	public function __construct( $Globals )
 	{		
-		add_action( 'init', array( $this, 'loadCMB' ), 20 );
+		$this->Globals = $Globals;
+		$this->loadCMB( );
 	}
+
 
 	public function loadCMB( )
-	{		
-		#write_log("CMB2Loader > loadCMB");
+	{	
 		if ( ! defined( 'CMB2_LOADED' ) ) :
-			#write_log("CMB2 NOT LOADED");
-			
-			$MedusaContentSuite = new MedusaContentSuite(NULL);
-			$activeVendorPath = $MedusaContentSuite->getActiveVendorPath();
-			$this->setCmbPath( $activeVendorPath );
-
-			$vendorPath = $this->vendorPath;
-			#write_log ( "loadCMB - vendorPath - " . $vendorPath );
-
-			require_once( $this->cmbPath );
-
-			#wp_dequeue_script( 'cmb2-scripts' );
+			require_once( $Globals->cmbPath );
+			Common::write_log( );
 		endif;
-
 	}
 
-	public function setCmbPath( $vendorPath )
+
+	public function getCmbPath()
 	{
-		if ( file_exists( $vendorPath . '/WebDevStudiosXXX/CMB2/init.php' ) ) :
-			#$cmbPath = $vendorPath . '/WebDevStudiosXXX/CMB2/init.php';
-			#write_log( "vendorPath - " . $vendorPath );
-			$cmbPath = $vendorPath . '/WebDevStudiosXXX/CMB2/init.php';
-			$this->cmbPath = $cmbPath;
-			#write_log( "cmb path - " . $cmbPath );
-		endif;
+		return $this->cmbPath;
 	}
-}
 
+}

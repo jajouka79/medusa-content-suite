@@ -4,34 +4,28 @@ namespace MedusaContentSuite\CMB\Meta;
 use MedusaContentSuite\Config\PostMetaConfig as PostMetaConfig;
 use MedusaContentSuite\Paths\Paths as Paths;
 use Symfony\Component\Yaml\Yaml;
+use MedusaContentSuite\Functions\Common as Common;
 
 class PostMeta
 {
-	public $postMetaConfig;
+	public $Globals;
 
-	public function __construct( )
-	{
-		add_action( 'cmb2_init', array( $this, 'registerPostMeta' ), 100 );
-		add_action( 'init', array( $this, 'setPostMetaConfig' ), 10 );
-		//$this->setPostMetaConfig( );
-	}
-
-	public function setPostMetaConfig( )
+	public function __construct( $Globals )
 	{		
-		#write_log( "PostMeta - setPostMetaConfig" );
-
-		$postMetaConfig = new PostMetaConfig;
-		$postMetaConfig->setPostMetaConfig( );
-
-		#write_log( $postMetaConfig );
-
-		$this->postMetaConfig = $postMetaConfig->postMetaConfig;
+		Common::write_log( "PostMeta - __construct" );
+		add_action( 'cmb2_init', array( $this, 'registerPostMeta' ), 100 );
+		$this->Globals = $Globals;
 	}
+
 
 	public function registerPostMeta( )
 	{		
-		#write_log("PostMeta > registerPostMeta");
-		#write_log( $this->postMetaConfig );
+		/*
+		Common::write_log( "registerPostMeta()" );
+		Common::write_log( $PostMetaConfig );
+		*/
+
+		$PostMetaConfig = $this->Globals->postMetaConfig;
 
 		$PostMetaConfig = apply_filters( 'PostMetaConfigHook', $this->postMetaConfig, array( ) );
 	

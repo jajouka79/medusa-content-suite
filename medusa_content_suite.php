@@ -69,7 +69,6 @@ use MedusaContentSuite\Config\Menus as Menus;
 
 
 add_action( 'wp_print_scripts', function( ){
-
    #wp_dequeue_script( 'cmb2-scripts' );
 });
 
@@ -78,148 +77,99 @@ add_action( 'wp_print_scripts', function( ){
 
 #TODO - sort out validation classes
 #///////////////////////////////////////////////////////
-
 $number = 123;
 $xx = v::numeric( )->validate( $number ); // true
 
 #print($xx);
-
 ///////////////////////////////////////////////////////
 
 
+
+$Common = new Common; #call this first
 $Globals = new Globals;
 
-
+#Common::write_log( $Globals );
 
 $MedusaContentSuite = new MedusaContentSuite( $Globals );
 
 class MedusaContentSuite
 {
-  public $rootConfigLoc;
-  public $configLoc;
-  public $vendorDirExists = false;
-  public $vendorPath;
-  public $cmbLoaded = false;
-  public $activeVendorPath = false;
-  public $projectVendorPath;
-  public static $projectVendorPath2;                                                  
-  public $packageVendorPath;
-  public $projectVendorPathExists = false;
-  public $packageVendorPathExists = false;
-
+  public $Globals;
 
   public function __construct( $Globals )
   {
-    $Globals->configLoc = $this->setConfigLoc( );
-    $Globals->rootConfigLoc = $this->setRootConfigLoc( );
 
-    if( ! empty( $this->rootConfigLoc ) ) : 
-      if( $this->checkRootConfigLocExists( ) ) : 
+    if( ! empty( $Globals->rootConfigLoc ) ) : 
+
+      if( $Globals->checkRootConfigLocExists( ) ) :
 
         Common::write_log( "checkRootConfigLocExists( )!!!!!!!!" );
 
+        #Common::write_log( $Globals );
+       
+        $PostTypes = new PostTypes( $Globals );
+
+        #$FieldTypeLoader = new FieldTypeLoader;
+        #$PostMeta = new PostMeta( $Globals );
+
       endif;
-    endif;
+
+    endif;  
 
     #Common::write_log( "MedusaContentSuite > __construct" );
 
-    $Common = new Common; #call this first
-
-    $PostTypes = new PostTypes( $Globals );
+   /* 
 
     $Globals->postConfig = $Globals->postConfig ;
 
     Common::write_log( "PostTypes - Globals - " );
-    Common::write_log( $Globals );
+    Common::write_log( $Globals );*/
 
 
-    $TaxTypes = new TaxTypes;
+    #$TaxTypes = new TaxTypes;
 
-    /*$PostMeta = new PostMeta;
+    /*
     $TaxMeta = new TaxMeta;
     #$Validator = new Validator;
-    $CMBLoader = new CMBLoader;
-    $FieldTypeLoader = new FieldTypeLoader;
+
     $Menus = new Menus;
     $PostMods = new PostMods;*/
-
-
-
 
 
     //$Yaml = new Yaml;#test
 
     /*
+
     $TaxFormatters = new TaxFormatters;
     $TaxMods = new TaxMods;
     $Rules = new Rules;
 
     $Callbacks = new Callbacks;
     $Callbacks = $Callbacks->getCallbacks( );
+
     */
 
     #$CustomFieldTypes = new CustomFieldTypes;
     #$PackagesFieldTypes = new PackagesFieldTypes;
 
 
-    add_action( 'init', array( $this, 'load' ), 1 );
 
 
-  }
 
 
-  public function setConfigLoc( )
-  {
-    $loc = plugin_dir_path( __FILE__ ) . 'data';
-    //$Globals->configLoc = $loc;
-    return $loc;
-  }
 
 
-  public function setRootConfigLoc( )
-  {
-    if( defined( 'ROOT_DIR' ) ) :    
-      if( ! empty( ROOT_DIR ) ) :
-        $loc = ROOT_DIR . '/mcs-config';
-        $this->rootConfigLoc = $loc;
-        return $loc;
-      endif;
-    endif;
-  }
-
-
-  public function checkRootConfigLocExists( )
-  {
-    if( file_exists( $this->rootConfigLoc ) ) :
-      return true;
-    else:
-      return false;
-    endif;
-  }
-
-
-  public static function getVendorPath( )
-  {
-    $path = plugin_dir_url( __FILE__ ) . "vendor";
-    #write_log( 'getVendorPath( ) ---' . $path );
-    return $path;
-  }
-
-
-  public function load( )
-  {
-    #write_log( "MedusaContentSuite > load" );
-    #$this->setVendorPath( );
-    #write_log( "this->vendorPath - " . $this->vendorPath );
-    #$this->checkPackageVendorDirExists( );
-    #write_log("vendorDirExists - " . $this->vendorDirExists );
-    #write_log("activeVendorPath - " . $activeVendorPath );
+    #write_log( $this->Globals );
 
     if ( ! defined( 'CMB2_LOADED' ) ) :
-      if ( $this->activeVendorPath ) :
+        
+        Common::write_log( "1111111111111" );
 
-        $CMBLoader = new CMBLoader;
-        $CMBLoader = $CMBLoader->init( );
+      if ( ! empty( $Globals->activeVendorPath ) ) :
+
+        Common::write_log( "2222222222222" );
+
+        $CMBLoader = new CMBLoader( $this->Globals );
 
         /*
         $FieldTypeLoader = new FieldTypeLoader;
@@ -227,49 +177,52 @@ class MedusaContentSuite
         */
 
       endif;
+
     endif;
 
     if ( ! defined( 'CMB2_LOADED' ) ) :
+
       #write_log( "CMB2 NOT LOADED" );
+
     else:
+
       #write_log( "CMB2_LOADED" );
+
     endif;
+
+
+
+
+
+
+    #$this->Globals = $Globals;
+
+    #Common::write_log( $this->Globals );
+
+    #add_action( 'init', array( $this, 'loadCMB' ), 1 );
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
 
-  public function getActiveVendorPath( )
+
+  public function loadCMB( )
   {
-    #Common::write_log( ' getActiveVendorPath ' );
+    write_log( "MedusaContentSuite > loadCMB" );
 
-    $this->packageVendorPath = plugin_dir_path( __FILE__ ) . "vendor";
-    $this->checkPackageVendorDirExists( );
-    $this->checkProjectVendorDirExists( );
 
-    if ( $this->packageVendorPathExists ) :
-      $this->activeVendorPath = $this->packageVendorPath;
-    elseif ( $this->projectVendorPathExists ) :
-      $this->activeVendorPath = $this->projectVendorPath;
-    else :
-      throw new \Exception( "Medusa Content Suite - can't find vendor directory" );
-    endif;
-
-    return $this->activeVendorPath;
   }
 
-
-  public function checkPackageVendorDirExists( )
-  {
-    if ( file_exists( $this->packageVendorPath ) ) :
-      $this->packageVendorPathExists = true;
-    endif;
-  }
-
-
-  public function checkProjectVendorDirExists( )
-  {
-    if ( file_exists( $this->projectVendorPath ) ) :
-      $this->projectVendorPathExists = true;
-    endif;
-  }
 
 }
