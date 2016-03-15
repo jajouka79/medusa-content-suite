@@ -109,8 +109,10 @@ class MedusaContentSuite
        
         $PostTypes = new PostTypes( $Globals );
 
+        $PostMeta = new PostMeta( $Globals );
+
+        
         #$FieldTypeLoader = new FieldTypeLoader;
-        #$PostMeta = new PostMeta( $Globals );
 
       endif;
 
@@ -163,13 +165,9 @@ class MedusaContentSuite
 
     if ( ! defined( 'CMB2_LOADED' ) ) :
         
-        Common::write_log( "1111111111111" );
-
       if ( ! empty( $Globals->activeVendorPath ) ) :
 
-        Common::write_log( "2222222222222" );
-
-        $CMBLoader = new CMBLoader( $this->Globals );
+        $CMBLoader = new CMBLoader( $Globals );
 
         /*
         $FieldTypeLoader = new FieldTypeLoader;

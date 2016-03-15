@@ -11,6 +11,8 @@ class PostTypes
 
 	public function __construct( $Globals )
 	{
+		Common::write_log( "PostTypes - __construct" );
+
 		add_action( 'init', array( $this, 'registerPostTypes' ), 2 );
 		$this->Globals = $Globals;
 	}
@@ -18,7 +20,7 @@ class PostTypes
 	public function registerPostTypes(  )
 	{
 		global $blog_id;
-		/*Common::write_log( "registerPostTypes()" );*/
+		Common::write_log( "registerPostTypes()" );
 
 		$PostConfig = $this->Globals->postConfig;
 		$PostConfig = apply_filters( 'PostConfigHook', $PostConfig, array( ) );
@@ -34,6 +36,8 @@ class PostTypes
 		if( ! empty ( $PostConfig ) ) :
 
 			foreach ( $PostConfig as $p ) :
+
+				Common::write_log( $p );
 
 				if ( ! is_main_site( $blog_id ) ) :
 					if( ! isset( $p['extras']['mu_main_site_only'] ) || $p['extras']['mu_main_site_only'] == false ):

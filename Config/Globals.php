@@ -22,13 +22,13 @@ class Globals{
 	public function __construct( )
 	{
 		Common::write_log( "GLOBALS - __construct");
+		$this->setStaticVariables( );
+	}
 
-	    /*$this->configLoc = $Globals->setConfigLoc( );
-	    $this->rootConfigLoc = $Globals->setRootConfigLoc( );*/
-	    
+	public function setStaticVariables()
+	{
 	    $this->setConfigLoc( );
 	    $this->setRootConfigLoc( );
-
     	$this->setPostConfig( );
 		$this->setPackageVendorPath( );
 		$this->setActiveVendorPath( );
