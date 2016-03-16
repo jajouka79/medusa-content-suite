@@ -2,32 +2,25 @@
 namespace MedusaContentSuite\CMB\Meta;
 
 use MedusaContentSuite\Config\PostMetaConfig as PostMetaConfig;
-use MedusaContentSuite\Paths\Paths as Paths;
-use Symfony\Component\Yaml\Yaml;
 use MedusaContentSuite\Functions\Common as Common;
+#use MedusaContentSuite\Paths\Paths as Paths;
+#use Symfony\Component\Yaml\Yaml;
 
-class PostMeta
+class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 {
-	public $Globals;
+	public static $Globals;
 
-	public function __construct( $Globals )
-	{		
-		Common::write_log( "PostMeta - __construct" );
+	public function __construct(  )
+	{				
+		self::$Globals = parent::getGlobals( );
 		add_action( 'cmb2_init', array( $this, 'registerPostMeta' ), 100 );
-		$this->Globals = $Globals;
 	}
 
 
 	public function registerPostMeta( )
-	{		
-		/*
-		Common::write_log( "registerPostMeta()" );
-		Common::write_log( $PostMetaConfig );
-		*/
-
-		$PostMetaConfig = $this->Globals->postMetaConfig;
-
-		$PostMetaConfig = apply_filters( 'PostMetaConfigHook', $this->postMetaConfig, array( ) );
+	{
+		$PostMetaConfig = self::$Globals->postMetaConfig;
+		$PostMetaConfig = apply_filters( 'PostMetaConfigHook', $PostMetaConfig, array( ) );
 	
 		if ( ! empty ( $PostMetaConfig ) ) :
 

@@ -3,25 +3,29 @@
 namespace MedusaContentSuite\Taxonomy;
 
 use MedusaContentSuite\Config\TaxConfig as TaxConfig;
+use MedusaContentSuite\Functions\Common as Common;
 
-class TaxTypes
+class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 {
 	public $tax;
 	public $pt;
 
+	public static $Globals;
+
 	public function __construct()
 	{
+		self::$Globals = parent::getGlobals( );
+
+		Common::write_log( self::$Globals );
+
+		return;
+
 		add_action( 'init', array( $this, 'getTaxConfig' ), 1 );
 		add_action( 'init', array( $this, 'registerTaxTypes' ), 1 );
 		add_action( 'admin_init', array( $this, 'remove_taxonomy_boxes' ), 1 );
 	}
 
-	public function getTaxConfig()
-	{
-		$TaxConfig = new TaxConfig();
-		$TaxConfig = $TaxConfig->getTaxConfig();
-		return $TaxConfig;
-	}
+
 
 	public function registerTaxTypes()
 	{

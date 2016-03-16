@@ -6,31 +6,30 @@ use MedusaContentSuite\MedusaContentSuite as MedusaContentSuite;
 
 class FieldTypeLoader
 {
-	public $vendorPath;
 	public $fieldTypes;
+	public $Globals;
 
-	public function __construct( )
-	{
-		add_action( 'init', array( $this, 'loadFieldTypes' ), 10 );
+	public function __construct( $Globals )
+	{		
+		$this->Globals = $Globals;
+		$this->loadFieldTypes();
+		#add_action( 'init', array( $this, 'loadFieldTypes' ), 10 );
 	}
 
 	public function loadFieldTypes( )
 	{
-		$MedusaContentSuite = new MedusaContentSuite(NULL);
-		$this->vendorPath = $MedusaContentSuite->getActiveVendorPath();		
+		$vendorPath = $this->Globals->getActiveVendorPath();		
 
 		$fieldTypes = $this->setFieldTypes( );
 
 		foreach( $this->fieldTypes as $ft ) :
-			$fieldTypePackagePath = $this->vendorPath . '/'  . $ft['vendor'] . '/' . $ft['name'] . '/' . $ft['file'];
+			$fieldTypePackagePath = $vendorPath . '/'  . $ft['vendor'] . '/' . $ft['name'] . '/' . $ft['file'];
 
 			#write_log( $fieldTypePackagePath );
 
 			if ( file_exists( $fieldTypePackagePath ) ) :
 				#write_log ("file exists");
 				require_once $fieldTypePackagePath;
-
-				#add_action( 'init', array( $this, 'loadFieldTypes' ), 10 );
 
 			else:
 				#write_log( "*****************FILE MISSING" );

@@ -4,12 +4,14 @@ namespace MedusaContentSuite\Config;
 
 use MedusaContentSuite\Functions\Common as Common;
 
-class Globals{
+class Globals extends \MedusaContentSuite\MedusaContentSuite{
 
 	public $rootConfigLoc;
 	public $configLoc;
 	public $postConfig;
 	public $postMetaConfig;
+	public $taxConfig;
+	public $taxMetaConfig;
 
 	public $cmbLoaded = false;
 
@@ -21,7 +23,7 @@ class Globals{
 
 	public function __construct( )
 	{
-		Common::write_log( "GLOBALS - __construct");
+		#Common::write_log( "GLOBALS - __construct");
 		$this->setStaticVariables( );
 	}
 
@@ -30,6 +32,7 @@ class Globals{
 	    $this->setConfigLoc( );
 	    $this->setRootConfigLoc( );
     	$this->setPostConfig( );
+    	$this->setPostMetaConfig( );
 		$this->setPackageVendorPath( );
 		$this->setActiveVendorPath( );
 		$this->setCmbPath( );
@@ -61,11 +64,29 @@ class Globals{
 		$this->postConfig = $PostConfig;
 	}
 
-
 	public function getPostConfig( )
 	{
-
 		return $this->postConfig;
+	}
+
+	public function setPostMetaConfig( )
+	{
+		$PostMetaConfig = new PostMetaConfig;
+		$PostMetaConfig->setPostMetaConfig( );
+		$PostMetaConfig = $PostMetaConfig->postMetaConfig;
+		$this->postMetaConfig = $PostMetaConfig;
+	}
+
+	public function getPostMetaConfig( )
+	{
+		return $this->postMetaConfig;
+	}
+
+	public function getTaxConfig()
+	{
+		$TaxConfig = new TaxConfig;
+		$TaxConfig = $TaxConfig->getTaxConfig();
+		return $TaxConfig;
 	}
 
 

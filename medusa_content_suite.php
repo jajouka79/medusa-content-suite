@@ -87,48 +87,28 @@ $xx = v::numeric( )->validate( $number ); // true
 
 $Common = new Common; #call this first
 $Globals = new Globals;
-
-#Common::write_log( $Globals );
-
 $MedusaContentSuite = new MedusaContentSuite( $Globals );
+$MedusaContentSuite->loadCMB( );
 
 class MedusaContentSuite
 {
-  public $Globals;
+  public static $Globals;
 
   public function __construct( $Globals )
   {
+    self::$Globals = $Globals;
 
     if( ! empty( $Globals->rootConfigLoc ) ) : 
-
-      if( $Globals->checkRootConfigLocExists( ) ) :
-
-        Common::write_log( "checkRootConfigLocExists( )!!!!!!!!" );
-
-        #Common::write_log( $Globals );
-       
-        $PostTypes = new PostTypes( $Globals );
-
-        $PostMeta = new PostMeta( $Globals );
-
-        
-        #$FieldTypeLoader = new FieldTypeLoader;
-
+      if( $Globals->checkRootConfigLocExists( ) ) :       
+        $PostTypes = new PostTypes;
+        $PostMeta = new PostMeta;
+        $TaxTypes = new TaxTypes;
       endif;
-
     endif;  
-
-    #Common::write_log( "MedusaContentSuite > __construct" );
 
    /* 
 
-    $Globals->postConfig = $Globals->postConfig ;
-
-    Common::write_log( "PostTypes - Globals - " );
-    Common::write_log( $Globals );*/
-
-
-    #$TaxTypes = new TaxTypes;
+    #
 
     /*
     $TaxMeta = new TaxMeta;
@@ -141,85 +121,42 @@ class MedusaContentSuite
     //$Yaml = new Yaml;#test
 
     /*
-
     $TaxFormatters = new TaxFormatters;
     $TaxMods = new TaxMods;
     $Rules = new Rules;
 
     $Callbacks = new Callbacks;
     $Callbacks = $Callbacks->getCallbacks( );
-
     */
 
     #$CustomFieldTypes = new CustomFieldTypes;
     #$PackagesFieldTypes = new PackagesFieldTypes;
 
 
-
-
-
-
-
-
-    #write_log( $this->Globals );
-
-    if ( ! defined( 'CMB2_LOADED' ) ) :
-        
-      if ( ! empty( $Globals->activeVendorPath ) ) :
-
-        $CMBLoader = new CMBLoader( $Globals );
-
-        /*
-        $FieldTypeLoader = new FieldTypeLoader;
-        $FieldTypeLoader = $FieldTypeLoader->init( );
-        */
-
-      endif;
-
-    endif;
-
-    if ( ! defined( 'CMB2_LOADED' ) ) :
-
-      #write_log( "CMB2 NOT LOADED" );
-
-    else:
-
-      #write_log( "CMB2_LOADED" );
-
-    endif;
-
-
-
-
-
-
-    #$this->Globals = $Globals;
-
-    #Common::write_log( $this->Globals );
-
-    #add_action( 'init', array( $this, 'loadCMB' ), 1 );
-
-
-
-
-
-
-
-
-
-
-
-
-
   }
-
 
 
   public function loadCMB( )
   {
-    write_log( "MedusaContentSuite > loadCMB" );
+    if ( ! defined( 'CMB2_LOADED' ) ) :        
+      if ( ! empty( self::$Globals->activeVendorPath ) ) :
+        $CMBLoader = new CMBLoader( self::$Globals );
+        $FieldTypeLoader = new FieldTypeLoader( self::$Globals );
+      endif;
+    endif;
+
+    if ( ! defined( 'CMB2_LOADED' ) ) :
+      #write_log( "CMB2 NOT LOADED" );
+    else :
+      #write_log( "CMB2_LOADED" );
+    endif;
+  }
 
 
+
+  public static function getGlobals( )
+  {
+    return self::$Globals;
   }
 
 
