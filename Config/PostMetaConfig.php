@@ -5,7 +5,6 @@ namespace MedusaContentSuite\Config;
 use MedusaContentSuite\Functions\Callbacks as Callbacks;
 use MedusaContentSuite\Functions\Common as Common;
 
-
 #convertYML
 
 class PostMetaConfig

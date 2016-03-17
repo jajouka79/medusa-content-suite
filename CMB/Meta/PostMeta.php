@@ -1,4 +1,5 @@
 <?php
+
 namespace MedusaContentSuite\CMB\Meta;
 
 use MedusaContentSuite\Config\PostMetaConfig as PostMetaConfig;

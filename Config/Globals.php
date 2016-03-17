@@ -2,7 +2,11 @@
 
 namespace MedusaContentSuite\Config;
 
+##names space includes needed?
 use MedusaContentSuite\Functions\Common as Common;
+use MedusaContentSuite\Config\Paths as Paths;
+use MedusaContentSuite\Config\MenuConfig as MenuConfig;
+use MedusaContentSuite\CMB\Loaders\FieldTypeLoader as FieldTypeLoader;
 
 class Globals extends \MedusaContentSuite\MedusaContentSuite{
 
@@ -13,48 +17,67 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite{
 	public $taxConfig;
 	public $taxMetaConfig;
 
-	public $cmbLoaded = false;
+	public $menuConfig;
+
+	#public $cmbLoaded = false;
 
 	public $activeVendorPath;
 	#public $projectVendorPath;
 	public $packageVendorPath;
-
 	public $cmbPath;
+	public $fieldTypes;
 
 	public function __construct( )
 	{
 		#Common::write_log( "GLOBALS - __construct");
-		$this->setStaticVariables( );
+		$this->callSetters( );
 	}
 
-	public function setStaticVariables()
+
+	public function callSetters()
 	{
-	    $this->setConfigLoc( );
-	    $this->setRootConfigLoc( );
+
+	    #Content config
     	$this->setPostConfig( );
     	$this->setPostMetaConfig( );
-		$this->setPackageVendorPath( );
-		$this->setActiveVendorPath( );
-		$this->setCmbPath( );
+
+    	$this->setTaxConfig( );
+    	$this->setTaxMetaConfig( );
+
+
+    	$this->setMenuConfig( );
+
+
+		$this->setPaths( );
+
+		$this->setFieldTypes( );
 	}
 
 
-	/*
-	public static function getVendorPath( )
+	public function setFieldTypes( )
 	{
-		$path = plugin_dir_url( __FILE__ ) . "vendor";
-		#write_log( 'getVendorPath( ) ---' . $path );
-		return $path;
+		$FieldTypes = new FieldTypeLoader( $this );##FieldTypeLoader class called 2 times? coupling?
+		$FieldTypes->setFieldTypes( );
+		$FieldTypes = $FieldTypes->fieldTypes;
+		$this->fieldTypes = $FieldTypes;
 	}
-	*/
 
 
-	public function setCmbPath( )
+	public function getFieldTypes( )
 	{
-		if ( file_exists( $this->activeVendorPath . '/WebDevStudiosXXX/CMB2/init.php' ) ) :
-			$this->cmbPath = $this->activeVendorPath . '/WebDevStudiosXXX/CMB2/init.php';
-		endif;
+		#$this->fieldTypes = FieldTypeLoader::$fieldTypes;
 	}
+
+	public function setMenuConfig()
+	{
+		$MenuConfig = new MenuConfig;
+	    $MenuConfig->setMenuConfig( );
+	    $this->menuConfig = $MenuConfig->menuConfig;
+
+	    Common::write_log( $this->menuConfig );
+	}
+
+################POST
 
 	public function setPostConfig( )
 	{
@@ -64,10 +87,13 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite{
 		$this->postConfig = $PostConfig;
 	}
 
+
 	public function getPostConfig( )
 	{
+
 		return $this->postConfig;
 	}
+
 
 	public function setPostMetaConfig( )
 	{
@@ -77,80 +103,67 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite{
 		$this->postMetaConfig = $PostMetaConfig;
 	}
 
+
 	public function getPostMetaConfig( )
 	{
 		return $this->postMetaConfig;
 	}
 
-	public function getTaxConfig()
+#####################
+
+
+
+#############TAXOMONY
+
+	public function setTaxConfig( )
 	{
 		$TaxConfig = new TaxConfig;
-		$TaxConfig = $TaxConfig->getTaxConfig();
-		return $TaxConfig;
+		$TaxConfig->setTaxConfig( );
+		$TaxConfig = $TaxConfig->taxConfig;
+		$this->taxConfig = $TaxConfig;
 	}
 
 
-	public function setConfigLoc( )
+	public function getTaxConfig( )
 	{
-		$loc = plugin_dir_path( __FILE__ ) . 'data';
-		$this->configLoc = $loc;
-
+		return $this->taxConfig;
 	}
 
 
-	public function setRootConfigLoc( )
+	public function setTaxMetaConfig( )
 	{
-		if( defined( 'ROOT_DIR' ) ) :    
-			if( ! empty( ROOT_DIR ) ) :
-				$loc = ROOT_DIR . '/mcs-config';
-				$this->rootConfigLoc = $loc;
-			endif;
-		endif;
+		$TaxMetaConfig = new TaxMetaConfig;
+		$TaxMetaConfig->setTaxMetaConfig( );
+		$TaxMetaConfig = $TaxMetaConfig->taxMetaConfig;
+		$this->taxMetaConfig = $TaxMetaConfig;
 	}
 
 
-	public function checkRootConfigLocExists( )
+	public function getTaxMetaConfig( )
 	{
-		if( file_exists( $this->rootConfigLoc ) ) :
-			return true;
-		else:
-			return false;
-		endif;
+		return $this->taxMetaConfig;
 	}
 
+#####################
 
-	public function setPackageVendorPath( )
+
+
+
+#############PATHS
+
+
+
+	public function setPaths( )
 	{
-		$path = plugin_dir_path( __FILE__ ) . "vendor";
-		$path = str_replace( "/Config", "", $path );
-		$this->packageVendorPath = $path;
-	}
 
-	public function checkPackageVendorPath( )
-	{
-		Common::write_log( "this->packageVendorPath" );
+		$Paths = new Paths( $this );
 
-		Common::write_log( $this->packageVendorPath );
-
-		if( ! file_exists( $this->packageVendorPath ) ) : 
-			throw new \Exception( "Medusa Content Suite - can't find vendor directory" );
-		else :
-			$this->packageVendorPathExists = true;				
-		endif;		
 	}
 
 
-	public function setActiveVendorPath( )
-	{
-		$this->activeVendorPath = $this->packageVendorPath;
-	}
 
 
-	public function getActiveVendorPath( )
-	{
-		return $this->activeVendorPath;
-	}
-
+	#####################
 
 
 }

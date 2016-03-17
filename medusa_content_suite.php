@@ -17,6 +17,8 @@ use MedusaContentSuite\Functions\Common as Common;
 
 use MedusaContentSuite\Config\Globals as Globals;
 
+use MedusaContentSuite\Config\Paths as Paths;
+
 use MedusaContentSuite\Taxonomy\TaxFormatters as TaxFormatters;
 use MedusaContentSuite\Taxonomy\TaxTypes as TaxTypes;
 use MedusaContentSuite\Taxonomy\TaxMods as TaxMods;
@@ -84,11 +86,20 @@ $xx = v::numeric( )->validate( $number ); // true
 ///////////////////////////////////////////////////////
 
 
-
 $Common = new Common; #call this first
 $Globals = new Globals;
+
+
+/*
+Common::write_log( "Globals" );
+Common::write_log( $Globals );*/
+
+
 $MedusaContentSuite = new MedusaContentSuite( $Globals );
-$MedusaContentSuite->loadCMB( );
+
+
+    
+
 
 class MedusaContentSuite
 {
@@ -98,46 +109,70 @@ class MedusaContentSuite
   {
     self::$Globals = $Globals;
 
+    #Common::write_log( self::$Globals );
+
     if( ! empty( $Globals->rootConfigLoc ) ) : 
-      if( $Globals->checkRootConfigLocExists( ) ) :       
+
+      if( Paths::checkRootConfigLocExists( ) ) :    
+
         $PostTypes = new PostTypes;
         $PostMeta = new PostMeta;
         $TaxTypes = new TaxTypes;
+        $TaxMeta = new TaxMeta;
+
+        $this->loadCMB( );
+
       endif;
+
     endif;  
 
-   /* 
 
-    #
+    
+
 
     /*
-    $TaxMeta = new TaxMeta;
-    #$Validator = new Validator;
 
-    $Menus = new Menus;
-    $PostMods = new PostMods;*/
+      #$Validator = new Validator;
+
+      #$Menus = new Menus;
+      #$PostMods = new PostMods;
 
 
-    //$Yaml = new Yaml;#test
+      #$Yaml = new Yaml;#test
 
-    /*
-    $TaxFormatters = new TaxFormatters;
-    $TaxMods = new TaxMods;
-    $Rules = new Rules;
+      #$TaxFormatters = new TaxFormatters;
+      #$TaxMods = new TaxMods;
+      #$Rules = new Rules;
 
-    $Callbacks = new Callbacks;
-    $Callbacks = $Callbacks->getCallbacks( );
+      #$Callbacks = new Callbacks;
+      #$Callbacks = $Callbacks->getCallbacks( );
+
+      #$CustomFieldTypes = new CustomFieldTypes;
+      #$PackagesFieldTypes = new PackagesFieldTypes;
+
     */
 
-    #$CustomFieldTypes = new CustomFieldTypes;
-    #$PackagesFieldTypes = new PackagesFieldTypes;
+
+
+
+
 
 
   }
 
 
   public function loadCMB( )
-  {
+  {    
+
+    /*
+    if ( ! defined( 'CMB2_LOADED' ) ) :
+      Common::write_log( "CMB2 NOT LOADED" );
+    else :
+      Common::write_log( "CMB2_LOADED" );
+    endif;
+    */
+
+
     if ( ! defined( 'CMB2_LOADED' ) ) :        
       if ( ! empty( self::$Globals->activeVendorPath ) ) :
         $CMBLoader = new CMBLoader( self::$Globals );
@@ -145,11 +180,17 @@ class MedusaContentSuite
       endif;
     endif;
 
+
+
+    /*
     if ( ! defined( 'CMB2_LOADED' ) ) :
-      #write_log( "CMB2 NOT LOADED" );
+      Common::write_log( "CMB2 NOT LOADED" );
     else :
-      #write_log( "CMB2_LOADED" );
+      Common::write_log( "CMB2_LOADED" );
     endif;
+    */
+
+
   }
 
 

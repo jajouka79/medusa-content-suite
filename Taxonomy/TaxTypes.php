@@ -16,11 +16,10 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 	{
 		self::$Globals = parent::getGlobals( );
 
-		Common::write_log( self::$Globals );
+		#Common::write_log( self::$Globals );
 
-		return;
+		#return;
 
-		add_action( 'init', array( $this, 'getTaxConfig' ), 1 );
 		add_action( 'init', array( $this, 'registerTaxTypes' ), 1 );
 		add_action( 'admin_init', array( $this, 'remove_taxonomy_boxes' ), 1 );
 	}
@@ -32,7 +31,10 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 		#write_log("registerTaxTypes()");
 		global $blog_id;
 
-		$TaxConfig =  $this->getTaxConfig();
+		//$TaxConfig =  $this->getTaxConfig();
+		$TaxConfig = self::$Globals->taxConfig;
+
+		#Common::write_log( $TaxConfig );
 
 		foreach ( $TaxConfig as $tc ) :
 			

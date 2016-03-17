@@ -3,6 +3,7 @@
 namespace MedusaContentSuite\CMB\Loaders;
 
 use MedusaContentSuite\MedusaContentSuite as MedusaContentSuite;
+use MedusaContentSuite\Config\Paths as Paths;
 
 class FieldTypeLoader
 {
@@ -13,24 +14,20 @@ class FieldTypeLoader
 	{		
 		$this->Globals = $Globals;
 		$this->loadFieldTypes();
-		#add_action( 'init', array( $this, 'loadFieldTypes' ), 10 );
 	}
+
 
 	public function loadFieldTypes( )
 	{
-		$vendorPath = $this->Globals->getActiveVendorPath();		
+		$vendorPath = $this->Globals->activeVendorPath;		
 
 		$fieldTypes = $this->setFieldTypes( );
 
 		foreach( $this->fieldTypes as $ft ) :
 			$fieldTypePackagePath = $vendorPath . '/'  . $ft['vendor'] . '/' . $ft['name'] . '/' . $ft['file'];
 
-			#write_log( $fieldTypePackagePath );
-
 			if ( file_exists( $fieldTypePackagePath ) ) :
-				#write_log ("file exists");
 				require_once $fieldTypePackagePath;
-
 			else:
 				#write_log( "*****************FILE MISSING" );
 			endif;
@@ -38,7 +35,16 @@ class FieldTypeLoader
 		endforeach;
 	}
 
-	public function setFieldTypes( ){
+	/*
+	public static function getFieldTypes( )
+	{
+		return self::$fieldTypes;
+	}
+	*/
+
+	public function setFieldTypes( )
+	{
+
 
 		$fieldTypes = array(
 

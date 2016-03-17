@@ -5,16 +5,16 @@ namespace MedusaContentSuite\Config;
 use MedusaContentSuite\Config\MenuConfig as MenuConfig;
 use MedusaContentSuite\Functions\Common as Common;
 
-class Menus{
+class Menus extends \MedusaContentSuite\MedusaContentSuite{
 
 	public $menuConfig;
 
 	public function __construct()
 	{
+		Common::write_log( 'Menus -> __construct' );
+		
+		self::$Globals = parent::getGlobals( );
 
-		$MenuConfig = new MenuConfig;
-		$MenuConfig->setMenuConfig( );
-		$this->menuConfig = $MenuConfig->menuConfig;
 
 		#Common::write_log( 'this->menuConfig' );
 	    #Common::write_log( $this->menuConfig );

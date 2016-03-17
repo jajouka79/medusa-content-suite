@@ -1,13 +1,13 @@
 <?php
 
 namespace MedusaContentSuite\Config;
+
 use MedusaContentSuite\Functions\Common as Common;
 
 class PostConfig
 {	
 	public $postConfig;
 	public $postConfigLoc = "";
-
 
 	public function __construct( )
 	{

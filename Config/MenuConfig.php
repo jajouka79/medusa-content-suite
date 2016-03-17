@@ -11,15 +11,15 @@ class MenuConfig
 
 	public function __construct( )
 	{
-		#add_action( 'init', array( $this, 'getMenuConfig' ), 1 );
-		$this->menuConfigLoc = $this->getMenuConfigLoc( );
-		$this->menuConfig = $this->setMenuConfig( );
+		$this->getMenuConfigLoc( );
+		$this->setMenuConfig( );
 	}
 
 	public function getMenuConfigLoc()
 	{
 		$loc = plugin_dir_path( __FILE__ ) . 'data' . '/' . 'menu.php';
-		return $loc;
+		$this->menuConfigLoc = $loc;
+		#return $loc;
 	}
 
 	public function setMenuConfig( )
@@ -27,18 +27,19 @@ class MenuConfig
 		#Common::write_log( $this->menuConfigLoc  ) ;
 
 		if( file_exists( $this->menuConfigLoc ) ) :
-			$config = require_once( $this->menuConfigLoc );
-			#Common::write_log ( $config );  
+			$config = require_once( $this->menuConfigLoc );  
 			$this->menuConfig = $config;
 		endif;
 
 		#Common::write_log( $this->menuConfig );
 	}
 
-/*	public function getMenuConfig()
+	/*
+	public function getMenuConfig()
 	{		
 		Common::write_log( $this->menuConfig );
 		return $this->menuConfig;
-	}*/
+	}
+	*/
 
 }

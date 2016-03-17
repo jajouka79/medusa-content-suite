@@ -1,38 +1,28 @@
 <?php
+
 namespace MedusaContentSuite\CMB\Meta;
 
 use MedusaContentSuite\Config\TaxMetaConfig as TaxMetaConfig;
+use MedusaContentSuite\Functions\Common as Common;
 
-class TaxMeta
+class TaxMeta extends \MedusaContentSuite\MedusaContentSuite
 {
-	public $taxMetaConfig;
 
 	public function __construct( )
 	{
+		self::$Globals = parent::getGlobals( );
 		add_action( 'cmb2_admin_init', array( $this, 'registerTaxMeta' ), 110);
-		$this->setTaxMetaConfig( );
-	}
-
-	public function setTaxMetaConfig( )
-	{
-		#write_log( "TaxMeta -> setTaxMetaConfig" );
-
-		$taxMetaConfig = new TaxMetaConfig;
-		$taxMetaConfig->init( );
-		$taxMetaConfig = $taxMetaConfig->taxMetaConfig;
-		$this->taxMetaConfig = $taxMetaConfig;
-
 	}
 
 	public function registerTaxMeta( )
 	{		
-		#write_log( "TaxMeta -> registerTaxMeta" );
-		#write_log( $this->taxMetaConfig );
-		
-		$x = 0;
-		if ( ! empty ( $this->taxMetaConfig ) ) :
+		$TaxMetaConfig = self::$Globals->taxMetaConfig;
+		$TaxMetaConfig = apply_filters( 'TaxMetaConfigHook', $TaxMetaConfig, array( ) );
 
-			foreach( $this->taxMetaConfig as $mc ) :
+		$x = 0;
+		if ( ! empty ( $TaxMetaConfig ) ) :
+
+			foreach( $TaxMetaConfig as $mc ) :
 
 				if ( ! empty ( $mc ) ) :
 
