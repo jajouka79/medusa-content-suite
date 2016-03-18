@@ -2,21 +2,21 @@
 namespace MedusaContentSuite\CMB\Loaders;
 
 use MedusaContentSuite\Functions\Common as Common;
+use MedusaContentSuite\Config\Globals as Globals;
+use MedusaContentSuite\Config\Paths as Paths;
 
 class CMBLoader
 {
-	public $cmbPath = false;
-	public $Globals;
 
-	public function __construct( $Globals )
-	{		
-		$this->Globals = $Globals;
+	public function __construct( )
+	{				
 		$this->loadCMB( );
 	}
 
+
 	public function checkCmbPathExists( )
 	{
-		if ( file_exists( $this->Globals->cmbPath ) ) :
+		if ( file_exists( Paths::getCmbPath( ) ) ) :
 			return true;
 		endif;
 	}
@@ -26,23 +26,14 @@ class CMBLoader
 	{	
 		if ( ! defined( 'CMB2_LOADED' ) ) :
 
-			if( $this->checkCmbPathExists( $this->Globals->cmbPath ) ) : # && ( 2 == 4 )
-				require_once( $this->Globals->cmbPath );
-				$this->Globals->cmbLoaded = 1;
+			if( $this->checkCmbPathExists( Paths::getCmbPath( ) ) ) : # && ( 2 == 4 )
+				require_once( Paths::getCmbPath() );
+				#$this->Globals->cmbLoaded = 1;
 			endif;
 
 		endif;
 	}
 
-	public function getCmbLoaded( )
-	{
-		return true;
-	}
 
-
-	public function getCmbPath()
-	{
-		return $this->cmbPath;
-	}
 
 }

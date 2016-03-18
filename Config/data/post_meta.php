@@ -22,6 +22,7 @@ $config = array();
 						'id' => $prefix . 'web_address',
 						'type' => 'text',
 						'default' => 'http://',
+						'data-validation' => 'required',
 					),
 
 				),

@@ -22,7 +22,8 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 	{
 		$PostMetaConfig = self::$Globals->postMetaConfig;
 		$PostMetaConfig = apply_filters( 'PostMetaConfigHook', $PostMetaConfig, array( ) );
-	
+
+
 		if ( ! empty ( $PostMetaConfig ) ) :
 
 			foreach ( $PostMetaConfig as $mb ) :

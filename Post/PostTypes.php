@@ -2,20 +2,13 @@
 
 namespace MedusaContentSuite\Post;
 
-use MedusaContentSuite\Config\PostConfig as PostConfig;
 use MedusaContentSuite\Functions\Common as Common;
 
 class PostTypes extends \MedusaContentSuite\MedusaContentSuite
 {
-	public static $Globals;
 
 	public function __construct(  )
 	{
-		self::$Globals = parent::getGlobals( );
-
-		Common::write_log( "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" );
-		Common::write_log( self::$Globals );
-
 		add_action( 'init', array( $this, 'registerPostTypes' ), 2 );
 	}
 
@@ -23,8 +16,9 @@ class PostTypes extends \MedusaContentSuite\MedusaContentSuite
 	{
 		global $blog_id;
 
-		$PostConfig = self::$Globals->postConfig;
+		$PostConfig = parent::$Globals->postConfig;
 		$PostConfig = apply_filters( 'PostConfigHook', $PostConfig, array( ) );
+
 
 		if ( is_main_site( $blog_id ) ) :
 			#write_log( "yes, this is the main site - blog_id : " . $blog_id );

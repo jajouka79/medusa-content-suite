@@ -1,7 +1,10 @@
 <?php
 
 namespace MedusaContentSuite\Config;
- 
+
+use MedusaContentSuite\Functions\Common as Common;
+use MedusaContentSuite\Config\Globals as Globals;
+
 class MainConfig
 {
 	public $mainConfigLoc = "";
@@ -9,39 +12,36 @@ class MainConfig
 
 	public function __construct()
 	{
-		$this->mainConfigLoc = $this->getMainConfigLoc( );
-		#write_log( "---------------MainConfig - __construct - this->mainConfigLoc - " );
-		#write_log( $this->mainConfigLoc );
+		$this->setMainConfigLoc( );
+		$this->setMainConfig( );
 	}
 
 
-
-	public function getMainConfig( )
+	public function setMainConfigLoc()
 	{
-		#write_log( "getMainConfig() - loc - " );
+		$loc = Globals::$configLoc . '/' . 'main.php';
+		$this->mainConfigLoc = $loc;	
+	}
 
-		#write_log( $this->mainConfigLoc );
-		
+
+	public function setMainConfig( )
+	{
 		if( file_exists( $this->mainConfigLoc ) ) :
-
-			$config = require_once( $this->mainConfigLoc );
-
-			#Common::write_log( $config );
-
+			$config = require_once( $this->getMainConfigLoc( ) );
 			$this->mainConfig = $config;
-
-			/*write_log( 'config:' );
-			write_log( $config );*/
-
 		endif;
-
 	}
 
-
-	public function getMainConfigLoc()
-	{
-		$loc = plugin_dir_path( __FILE__ ) . 'data' . '/' . 'main.php';
-		return $loc;
+	
+	public function getMainConfig( )
+	{		
+		return $this->mainConfig;
 	}
 
+		
+	public function getMainConfigLoc( )
+	{		
+		return $this->mainConfigLoc;
+	}
+	
 }

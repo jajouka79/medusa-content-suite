@@ -4,6 +4,7 @@ namespace MedusaContentSuite\Config;
 
 use MedusaContentSuite\Functions\Callbacks as Callbacks;
 use MedusaContentSuite\Functions\Common as Common;
+use MedusaContentSuite\Config\Globals as Globals;
 
 
 #convertYML
@@ -22,7 +23,7 @@ class TaxMetaConfig
 
 	public function getTaxMetaConfigLoc()
 	{
-		$loc = plugin_dir_path( __FILE__ ) . 'data' . '/' . 'tax_meta.php';
+		$loc = Globals::$configLoc . '/' . 'tax_meta.php';
 		return $loc;
 	}
 

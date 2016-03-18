@@ -3,6 +3,7 @@
 namespace MedusaContentSuite\Config;
 
 use MedusaContentSuite\Functions\Common as Common;
+use MedusaContentSuite\Config\Globals as Globals;
 
 class PostConfig
 {	
@@ -15,9 +16,9 @@ class PostConfig
 	}
 
 
-	public function getPostConfigLoc()
+	public function getPostConfigLoc( )
 	{
-		$loc = plugin_dir_path( __FILE__ ) . 'data' . '/' . 'post.php';
+		$loc = Globals::$configLoc . '/' . 'post.php';
 		return $loc;
 	}
 

@@ -2,25 +2,23 @@
 
 namespace MedusaContentSuite\CMB\Loaders;
 
+use MedusaContentSuite\Functions\Common as Common;
 use MedusaContentSuite\MedusaContentSuite as MedusaContentSuite;
 use MedusaContentSuite\Config\Paths as Paths;
 
 class FieldTypeLoader
 {
 	public $fieldTypes;
-	public $Globals;
 
-	public function __construct( $Globals )
+	public function __construct( )
 	{		
-		$this->Globals = $Globals;
-		#$this->loadFieldTypes();
+		$this->loadFieldTypes( );
 	}
 
 
 	public function loadFieldTypes( )
 	{
-		$vendorPath = $this->Globals->activeVendorPath;		
-
+		$vendorPath = Paths::$activeVendorPath;
 		$fieldTypes = $this->setFieldTypes( );
 
 		foreach( $this->fieldTypes as $ft ) :

@@ -29,26 +29,14 @@ use MedusaContentSuite\Post\PostMods as PostMods;
 use MedusaContentSuite\Functions\Callbacks as Callbacks;
 use MedusaContentSuite\Functions\Rules as Rules;
 
-use MedusaContentSuite\Config\PostConfig as PostConfig;
-
-use MedusaContentSuite\Config\MainConfig as MainConfig;
-use MedusaContentSuite\Config\MenuConfig as MenuConfig;
-
-use MedusaContentSuite\Config\TaxConfig as TaxConfig;
-use MedusaContentSuite\Config\ModConfig as ModConfig;
 
 use MedusaContentSuite\CMB\Meta\PostMeta as PostMeta;
 use MedusaContentSuite\CMB\Meta\TaxMeta as TaxMeta;
 
 use Respect\Validation\Validator as v;
-
 use MedusaContentSuite\CMB\Validators\Validator as Validator;
 
-use MedusaContentSuite\CMB\Loaders\CMBLoader as CMBLoader;
-use MedusaContentSuite\CMB\Loaders\FieldTypeLoader as FieldTypeLoader;
 
-use MedusaContentSuite\CMB\FieldTypes\CustomFieldTypes as CustomFieldTypes;
-use MedusaContentSuite\CMB\FieldTypes\PackagesFieldTypes as PackagesFieldTypes;
 
 use MedusaContentSuite\Config\Menus as Menus;
 
@@ -64,6 +52,7 @@ use MedusaContentSuite\Config\Menus as Menus;
   endif;
   
 #});
+
 
 
 
@@ -89,17 +78,11 @@ $xx = v::numeric( )->validate( $number ); // true
 $Common = new Common; #call this first
 $Globals = new Globals;
 
-
-
 /*Common::write_log( "Globals" );
 Common::write_log( $Globals );*/
 
 
 $MedusaContentSuite = new MedusaContentSuite( $Globals );
-
-
-    
-
 
 class MedusaContentSuite
 {
@@ -109,21 +92,22 @@ class MedusaContentSuite
   {
     self::$Globals = $Globals;
 
-    Common::write_log( self::$Globals );
 
+    #Common::write_log( $Globals );
 
     if( ! empty( $Globals::$rootConfigLoc ) ) : 
     
-      Common::write_log( "---------------------------------" ); 
-
-      if( Paths::checkRootConfigLocExists( ) ) :   
+      if( Paths::checkRootConfigLocExists( ) ) :  
 
         $PostTypes = new PostTypes;
         $PostMeta = new PostMeta;
         $TaxTypes = new TaxTypes;
         $TaxMeta = new TaxMeta;
+        $Menus = new Menus;
+        $PostMods = new PostMods;
 
-        $this->loadCMB( );
+        Paths::loadCMB( );
+        
 
       endif;
 
@@ -159,39 +143,6 @@ class MedusaContentSuite
 
 
 
-
-
-  }
-
-
-  public function loadCMB( )
-  {    
-
-    /*
-    if ( ! defined( 'CMB2_LOADED' ) ) :
-      Common::write_log( "CMB2 NOT LOADED" );
-    else :
-      Common::write_log( "CMB2_LOADED" );
-    endif;
-    */
-
-
-    if ( ! defined( 'CMB2_LOADED' ) ) :        
-      if ( ! empty( self::$Globals->activeVendorPath ) ) :
-        $CMBLoader = new CMBLoader( self::$Globals );
-        $FieldTypeLoader = new FieldTypeLoader( self::$Globals );
-      endif;
-    endif;
-
-
-
-    /*
-    if ( ! defined( 'CMB2_LOADED' ) ) :
-      Common::write_log( "CMB2 NOT LOADED" );
-    else :
-      Common::write_log( "CMB2_LOADED" );
-    endif;
-    */
 
 
   }

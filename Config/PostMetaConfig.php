@@ -4,6 +4,7 @@ namespace MedusaContentSuite\Config;
 
 use MedusaContentSuite\Functions\Callbacks as Callbacks;
 use MedusaContentSuite\Functions\Common as Common;
+use MedusaContentSuite\Config\Globals as Globals;
 
 #convertYML
 
@@ -21,7 +22,7 @@ class PostMetaConfig
 
 	public function getPostMetaConfigLoc()
 	{
-		$loc = plugin_dir_path( __FILE__ ) . 'data' . '/' . 'post_meta.php';
+		$loc = Globals::$configLoc . '/' . 'post_meta.php';
 		return $loc;
 	}
 

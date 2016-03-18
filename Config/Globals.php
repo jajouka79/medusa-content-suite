@@ -7,17 +7,12 @@ use MedusaContentSuite\Functions\Common as Common;
 use MedusaContentSuite\Config\Paths as Paths;
 use MedusaContentSuite\Config\MenuConfig as MenuConfig;
 use MedusaContentSuite\CMB\Loaders\FieldTypeLoader as FieldTypeLoader;
+use MedusaContentSuite\CMB\Loaders\CMBLoader as CMBLoader;
 
 class Globals extends \MedusaContentSuite\MedusaContentSuite
 {
 
-
 	public $postConfig;
-
-
-	public static $postConfigStatic;
-
-
 	public $postMetaConfig;
 	public $taxConfig;
 	public $taxMetaConfig;
@@ -35,7 +30,9 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 
 	public static $rootConfigLoc;
 	public static $configLoc;
-	
+
+	public static $activeConfigLoc;
+
 
 	public function __construct( )
 	{
@@ -48,6 +45,8 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 	{
 		$this->setPaths( );
 
+    	$this->setMainConfig( );
+
 	    #Content config
     	$this->setPostConfig( );
     	$this->setPostMetaConfig( );
@@ -55,12 +54,26 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
     	$this->setTaxConfig( );
     	$this->setTaxMetaConfig( );
 
-
-    	#$this->setMenuConfig( );
-
-
-
+    	$this->setMenuConfig( );
 		$this->setFieldTypes( );
+	}
+
+
+	public static function loadCMB( )
+	{    
+
+		/*if ( ! defined( 'CMB2_LOADED' ) ) :
+		Common::write_log( "CMB2 NOT LOADED" );
+		else :
+		Common::write_log( "CMB2_LOADED" );
+		endif;*/
+
+		if ( ! defined( 'CMB2_LOADED' ) ) :        
+			if ( ! empty( Paths::getActiveVendorPath( ) ) ) :
+				$CMBLoader = new CMBLoader( );
+				$FieldTypeLoader = new FieldTypeLoader(  );
+			endif;
+		endif;
 	}
 
 
@@ -78,14 +91,34 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 		#$this->fieldTypes = FieldTypeLoader::$fieldTypes;
 	}
 
+
+	public function setMainConfig()
+	{
+		$MainConfig = new MainConfig;
+	    $this->mainConfig = $MainConfig->getMainConfig( );
+	    #Common::write_log( $this->getMainConfig( ) );
+	}
+
+
+	public function getMainConfig( )
+	{
+	    return $this->mainConfig;
+	}
+
+
 	public function setMenuConfig()
 	{
-		/*$MenuConfig = new MenuConfig;
-	    $MenuConfig->setMenuConfig( );
-	    $this->menuConfig = $MenuConfig->menuConfig;
-
-	    Common::write_log( $MenuConfig->menuConfig );*/
+		$MenuConfig = new MenuConfig;
+	    $this->menuConfig = $MenuConfig->getMenuConfig( );
 	}
+
+
+	public function getMenuConfig( )
+	{
+	    return $this->menuConfig;
+	}
+
+
 
 ################POST
 
@@ -96,16 +129,11 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 		$PostConfig = $PostConfig->postConfig;
 		$this->postConfig = $PostConfig;
 
-
-
-		self::$postConfigStatic = $PostConfig;
-
 	}
 
 
 	public function getPostConfig( )
 	{
-
 		return $this->postConfig;
 	}
 
@@ -179,8 +207,6 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 
 
 
-
-	#####################
 
 
 }

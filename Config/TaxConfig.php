@@ -3,6 +3,7 @@
 namespace MedusaContentSuite\Config;
 
 use MedusaContentSuite\Functions\Common as Common;
+use MedusaContentSuite\Config\Globals as Globals;
 
 class TaxConfig
 {	
@@ -17,7 +18,7 @@ class TaxConfig
 
 	public function getTaxConfigLoc()
 	{
-		$loc = plugin_dir_path( __FILE__ ) . 'data' . '/' . 'tax.php';
+		$loc = Globals::$configLoc . '/' . 'tax.php';
 		return $loc;
 	}
 

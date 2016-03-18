@@ -5,20 +5,12 @@ namespace MedusaContentSuite\Config;
 use MedusaContentSuite\Config\MenuConfig as MenuConfig;
 use MedusaContentSuite\Functions\Common as Common;
 
-class Menus extends \MedusaContentSuite\MedusaContentSuite{
-
-	public $menuConfig;
+class Menus extends \MedusaContentSuite\MedusaContentSuite
+{
 
 	public function __construct()
 	{
-		Common::write_log( 'Menus -> __construct' );
-		
 		self::$Globals = parent::getGlobals( );
-
-
-		#Common::write_log( 'this->menuConfig' );
-	    #Common::write_log( $this->menuConfig );
-
 
 		add_action( 'init', array( $this, 'registerMenus' ), 20 );
 		add_action( 'init', array( $this, 'registerMenuLocations' ), 10 );
@@ -26,24 +18,15 @@ class Menus extends \MedusaContentSuite\MedusaContentSuite{
 
 	public function registerMenuLocations( )
 	{
-	    #Common::write_log( "registerMenuLocations()" );
-
-	    #if( !is_main_site( ) ): return; endif;
-		$config = $this->menuConfig;
-
-	    /*Common::write_log( 'config' );
-	    Common::write_log( $config );*/
+		$config = parent::$Globals->getMenuConfig( );
 
 	    if( ! $config ) :
-	    	#Common::write_log( "return false!!!" );
 	        return false;
 	    endif;
 
 	    $locations = $config['menus']['locations'];
 
-	    #Common::write_log( "registerMenuLocations() - END" );
-
-	    #register_nav_menus( $locations );
+	    register_nav_menus( $locations );
 	}
 
 
@@ -52,10 +35,7 @@ class Menus extends \MedusaContentSuite\MedusaContentSuite{
 	    #write_log('registerMenus( )');
 
 
-		$config = $this->menuConfig;
-
-	    /*Common::write_log( 'config' );
-	    Common::write_log( $config );*/
+		$config = parent::$Globals->menuConfig;
 
 	    $menus = $config['menus']['menus'];
 

@@ -2,27 +2,27 @@
 
 namespace MedusaContentSuite\Post;
 
-#use MedusaContentSuite\Config\PostConfig as PostConfig;
-
 use MedusaContentSuite\Config\MainConfig as MainConfig;
 use MedusaContentSuite\Functions\Common as Common;
 
-class PostMods
+class PostMods extends \MedusaContentSuite\MedusaContentSuite
 {
 
 	public function __construct(  )
 	{
 		#Common::write_log( " PostMods > __construct : " );
 
-		#Common::write_log( $config );
+		self::$Globals = parent::getGlobals( );
+
 
 		#add_filter( 'gettext', array( $this, 'custom_enter_title' ), 1 );
 		
 		#add_filter( 'getdecsription', array( $this, 'custom_enter_desc' ), 1 );
 		add_action( 'init', array( $this, 'addExcerptsToPages' ), 1 );
 		add_action( 'admin_menu', array( $this, 'removeDefaultPostType' ), 1 );
-		#add_action( 'admin_bar_menu', array( $this, 'removePostAdminToolbarMenuLinks' ), 999  );
+		add_action( 'admin_bar_menu', array( $this, 'removePostAdminToolbarMenuLinks' ), 999  );
 	}
+
 
 	public function custom_enter_title( $input )
 	{
@@ -66,6 +66,7 @@ class PostMods
 		return $input;
 	}
 
+
 	public function custom_enter_desc( $input )
 	{
 		global $post_type;
@@ -74,15 +75,11 @@ class PostMods
 		return $input;
 	}
 
+
 	public function addExcerptsToPages( )
 	{
-		#Common::write_log( "addExcerptsToPages" );
-
-		$MainConfig = new MainConfig;
-		$MainConfig->getMainConfig( );
-		$MainConfig = $MainConfig->mainConfig;
-
-		if( $MainConfig['pages_excerpt']  ) :
+		$config = parent::$Globals->mainConfig;
+		if( $config['pages_excerpt']  ) :
 			add_post_type_support( 'page', 'excerpt' );
 		endif;
 	}
@@ -90,13 +87,8 @@ class PostMods
     
     public function removeDefaultPostType( ) 
     {
-		#Common::write_log( 'removeDefaultPostType' );
-
-		$MainConfig = new MainConfig;
-		$MainConfig->getMainConfig( );
-		$MainConfig = $MainConfig->mainConfig;
-
-		if( ! $MainConfig['posts_enabled'] ) :
+		$config = parent::$Globals->mainConfig;
+		if( ! $config['posts_enabled'] ) :
         	remove_menu_page('edit.php');
     	endif;
     }
@@ -104,15 +96,12 @@ class PostMods
 
 	public function removePostAdminToolbarMenuLinks( ) 
 	{
-		#Common::write_log( "removePostAdminToolbarMenuLinks" );
 
 	    global $wp_admin_bar;   
 
-		$MainConfig = new MainConfig;
-		$MainConfig->getMainConfig( );
-		$MainConfig = $MainConfig->mainConfig;
+		$config = parent::$Globals->mainConfig;
 
-		if( ! $MainConfig['posts_enabled'] ) :
+		if( ! $config['posts_enabled'] ) :
 
 		    $wp_admin_bar->remove_node( 'new-post' );
 		    #$wp_admin_bar->remove_node( 'new-link' );
