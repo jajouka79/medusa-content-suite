@@ -4,44 +4,64 @@ namespace MedusaContentSuite\Config;
 
 use MedusaContentSuite\Functions\Common as Common;
 
-class Paths
+class Paths extends \MedusaContentSuite\Config\Globals
 {
 
-	public static $Globals;
 
-	public function __construct( $Globals )
+	public function __construct( )
 	{
-		self::$Globals = $Globals;
-		#Common::write_log( "Paths - Globals" );
-		#Common::write_log( self::$Globals );
+
+		Common::write_log( "Paths - __construct - parent -----" );
+
+		/*self::testfunk();
+		
+		return;*/
 
 		#Paths config first
-		$this->setPackageVendorPath( );
-		$this->setActiveVendorPath( );
-		$this->setCmbPath( );
+		self::setPackageVendorPath( );
+		self::setActiveVendorPath( );
+		self::setCmbPath( );
 
-	    $this->setConfigLoc( );
-	    $this->setRootConfigLoc( );
+	    self::setConfigLoc( );
+	    self::setRootConfigLoc( );
 
 		#Common::write_log( self::$Globals );
 		
 	}
 
-
 	public function setConfigLoc( )
 	{
-		$loc = self::$Globals->activeVendorPath . 'data';
-		self::$Globals->configLoc = $loc;
-		#Common::write_log( self::$Globals->configLoc );
+
+		$path = plugin_dir_path( __FILE__ ) . 'data';
+		#$path = str_replace( "/Config", "", $path );
+		#parent::$packageVendorPath = $path;
+
+		/*Common::write_log( "setConfigLoc( )" );
+		Common::write_log( "path - " . $path );*/
+
+		parent::$configLoc = $path;
+
+		/*
+		$loc = getcwd() . '/data';
+
+		if( file_exists( $loc ) ) :
+			parent::$configLoc = $loc;
+			Common::write_log( parent::$configLoc );
+		else:
+			throw new  \Exception("configLoc path missing", 1);
+		endif;
+		*/
+
+
 	}
 
 
-	public function setRootConfigLoc( )
+	public function setRootConfigLoc( ) #ROOT_DIR is custom constant in bedrock
 	{
 		if( defined( 'ROOT_DIR' ) ) :    
 			if( ! empty( ROOT_DIR ) ) :
 				$loc = ROOT_DIR . '/mcs-config';
-				self::$Globals->rootConfigLoc = $loc;
+				parent::$rootConfigLoc = $loc;
 			endif;
 		endif;
 	}
@@ -49,15 +69,15 @@ class Paths
 
 	public function setCmbPath( )
 	{
-		if ( file_exists( self::$Globals->activeVendorPath . '/WebDevStudiosXXX/CMB2/init.php' ) ) :
-			self::$Globals->cmbPath = self::$Globals->activeVendorPath . '/WebDevStudiosXXX/CMB2/init.php';
+		if ( file_exists( parent::$activeVendorPath . '/WebDevStudiosXXX/CMB2/init.php' ) ) :
+			parent::$cmbPath = parent::$activeVendorPath . '/WebDevStudiosXXX/CMB2/init.php';
 		endif;
 	}
 
 
 	public static function checkRootConfigLocExists( )
 	{
-		if( file_exists( self::$Globals->rootConfigLoc ) ) :
+		if( file_exists( parent::$rootConfigLoc ) ) :
 			return true;
 		else:
 			return false;
@@ -67,34 +87,38 @@ class Paths
 
 	public function setPackageVendorPath( )
 	{
+		#Common::write_log( "setPackageVendorPath( )" );
+
+		#Common::write_log( self::$Globals );
+
 		$path = plugin_dir_path( __FILE__ ) . "vendor";
 		$path = str_replace( "/Config", "", $path );
-		self::$Globals->packageVendorPath = $path;
+		parent::$packageVendorPath = $path;
 	}
 
 
 	public function checkPackageVendorPath( )
 	{
 		/*Common::write_log( "self::Globals->packageVendorPath" );
-		Common::write_log( self::$Globals->packageVendorPath );*/
+		Common::write_log( parent::$packageVendorPath );*/
 
-		if( ! file_exists( self::$Globals->packageVendorPath ) ) : 
+		if( ! file_exists( parent::$packageVendorPath ) ) : 
 			throw new \Exception( "Medusa Content Suite - can't find vendor directory" );
 		else :
-			self::$Globals->packageVendorPathExists = true;				
+			parent::$packageVendorPathExists = true;				
 		endif;		
 	}
 
 
 	public function setActiveVendorPath( )
 	{
-		self::$Globals->activeVendorPath = self::$Globals->packageVendorPath;
+		parent::$activeVendorPath = parent::$packageVendorPath;
 	}
 
 
 	public function getActiveVendorPath( )
 	{
-		return self::$Globals->activeVendorPath;
+		return parent::$activeVendorPath;
 	}
 
 

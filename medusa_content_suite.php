@@ -90,8 +90,8 @@ $Common = new Common; #call this first
 $Globals = new Globals;
 
 
-/*
-Common::write_log( "Globals" );
+
+/*Common::write_log( "Globals" );
 Common::write_log( $Globals );*/
 
 
@@ -109,11 +109,14 @@ class MedusaContentSuite
   {
     self::$Globals = $Globals;
 
-    #Common::write_log( self::$Globals );
+    Common::write_log( self::$Globals );
 
-    if( ! empty( $Globals->rootConfigLoc ) ) : 
 
-      if( Paths::checkRootConfigLocExists( ) ) :    
+    if( ! empty( $Globals::$rootConfigLoc ) ) : 
+    
+      Common::write_log( "---------------------------------" ); 
+
+      if( Paths::checkRootConfigLocExists( ) ) :   
 
         $PostTypes = new PostTypes;
         $PostMeta = new PostMeta;

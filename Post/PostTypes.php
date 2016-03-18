@@ -12,6 +12,10 @@ class PostTypes extends \MedusaContentSuite\MedusaContentSuite
 	public function __construct(  )
 	{
 		self::$Globals = parent::getGlobals( );
+
+		Common::write_log( "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" );
+		Common::write_log( self::$Globals );
+
 		add_action( 'init', array( $this, 'registerPostTypes' ), 2 );
 	}
 
@@ -19,7 +23,6 @@ class PostTypes extends \MedusaContentSuite\MedusaContentSuite
 	{
 		global $blog_id;
 
-		#$Globals = parent::getGlobals( );
 		$PostConfig = self::$Globals->postConfig;
 		$PostConfig = apply_filters( 'PostConfigHook', $PostConfig, array( ) );
 

@@ -27,6 +27,7 @@ class MenuConfig
 		#Common::write_log( $this->menuConfigLoc  ) ;
 
 		if( file_exists( $this->menuConfigLoc ) ) :
+			Common::write_log( "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" ) ;
 			$config = require_once( $this->menuConfigLoc );  
 			$this->menuConfig = $config;
 		endif;

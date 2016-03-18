@@ -8,24 +8,34 @@ use MedusaContentSuite\Config\Paths as Paths;
 use MedusaContentSuite\Config\MenuConfig as MenuConfig;
 use MedusaContentSuite\CMB\Loaders\FieldTypeLoader as FieldTypeLoader;
 
-class Globals extends \MedusaContentSuite\MedusaContentSuite{
+class Globals extends \MedusaContentSuite\MedusaContentSuite
+{
 
-	public $rootConfigLoc;
-	public $configLoc;
+
 	public $postConfig;
+
+
+	public static $postConfigStatic;
+
+
 	public $postMetaConfig;
 	public $taxConfig;
 	public $taxMetaConfig;
 
+	public $fieldTypes;
 	public $menuConfig;
 
 	#public $cmbLoaded = false;
 
-	public $activeVendorPath;
+	public static $activeVendorPath;
 	#public $projectVendorPath;
-	public $packageVendorPath;
-	public $cmbPath;
-	public $fieldTypes;
+	public static $packageVendorPath;
+	public static $cmbPath;
+
+
+	public static $rootConfigLoc;
+	public static $configLoc;
+	
 
 	public function __construct( )
 	{
@@ -36,6 +46,7 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite{
 
 	public function callSetters()
 	{
+		$this->setPaths( );
 
 	    #Content config
     	$this->setPostConfig( );
@@ -45,10 +56,9 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite{
     	$this->setTaxMetaConfig( );
 
 
-    	$this->setMenuConfig( );
+    	#$this->setMenuConfig( );
 
 
-		$this->setPaths( );
 
 		$this->setFieldTypes( );
 	}
@@ -70,11 +80,11 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite{
 
 	public function setMenuConfig()
 	{
-		$MenuConfig = new MenuConfig;
+		/*$MenuConfig = new MenuConfig;
 	    $MenuConfig->setMenuConfig( );
 	    $this->menuConfig = $MenuConfig->menuConfig;
 
-	    Common::write_log( $this->menuConfig );
+	    Common::write_log( $MenuConfig->menuConfig );*/
 	}
 
 ################POST
@@ -85,6 +95,11 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite{
 		$PostConfig->setPostConfig( );
 		$PostConfig = $PostConfig->postConfig;
 		$this->postConfig = $PostConfig;
+
+
+
+		self::$postConfigStatic = $PostConfig;
+
 	}
 
 
@@ -155,8 +170,10 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite{
 
 	public function setPaths( )
 	{
+		#Common::write_log( "Globals - setPaths()" );
+		#Common::write_log( $this );
+		$Paths = new Paths( );
 
-		$Paths = new Paths( $this );
 
 	}
 

@@ -13,7 +13,7 @@ class FieldTypeLoader
 	public function __construct( $Globals )
 	{		
 		$this->Globals = $Globals;
-		$this->loadFieldTypes();
+		#$this->loadFieldTypes();
 	}
 
 
