@@ -23,7 +23,7 @@ class TaxMetaConfig
 
 	public function getTaxMetaConfigLoc()
 	{
-		$loc = Globals::$configLoc . '/' . 'tax_meta.php';
+		$loc = Globals::$activeConfigLoc . '/' . 'tax_meta.php';
 		return $loc;
 	}
 

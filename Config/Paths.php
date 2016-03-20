@@ -20,6 +20,7 @@ class Paths extends \MedusaContentSuite\Config\Globals
 
 	    self::setConfigLoc( );
 	    self::setRootConfigLoc( );
+	    self::setActiveConfigLoc( );
 
 		#Common::write_log( self::$Globals );
 		
@@ -44,23 +45,18 @@ class Paths extends \MedusaContentSuite\Config\Globals
 		if( defined( 'ROOT_DIR' ) ) :    
 			if( ! empty( ROOT_DIR ) ) :
 				$loc = ROOT_DIR . '/mcs-config';
+
 				if( file_exists( $loc ) ) : 
-					Common::write_log( "mcs-config EXISTS!!!!" );
+
+					#Common::write_log( "mcs-config EXISTS!!!!" );
 					parent::$rootConfigLoc = $loc;
 
 				endif;
 			endif;
+		else :
+			Common::write_log( "MCS Error :: ROOT_DIR constant missing");
 		endif;
 	}
-
-
-
-
-	public function setActiveConfigLoc( )
-	{
-		#parent::$activeVendorPath = parent::$packageVendorPath;
-	}
-
 
 
 
@@ -68,6 +64,15 @@ class Paths extends \MedusaContentSuite\Config\Globals
 	{
 		return parent::$rootConfigLoc;
 	}
+
+
+
+	public function setActiveConfigLoc( )
+	{
+		parent::$activeConfigLoc = parent::$rootConfigLoc;
+	}
+
+
 
 
 	public function setCmbPath( )

@@ -92,27 +92,32 @@ class MedusaContentSuite
   {
     self::$Globals = $Globals;
 
-
     #Common::write_log( $Globals );
+  
+    if( Paths::checkRootConfigLocExists( ) ) :  
 
-    if( ! empty( $Globals::$rootConfigLoc ) ) : 
+      $this->init( );
+      
+    else :
+
+      Common::write_log( "MCS Error :: root config folder missing" );
     
-      if( Paths::checkRootConfigLocExists( ) ) :  
-
-        $PostTypes = new PostTypes;
-        $PostMeta = new PostMeta;
-        $TaxTypes = new TaxTypes;
-        $TaxMeta = new TaxMeta;
-        $Menus = new Menus;
-        $PostMods = new PostMods;
-
-        Paths::loadCMB( );
-        
-
-      endif;
-
     endif;  
 
+  }
+
+
+  public function init( )
+  {
+
+      $PostTypes = new PostTypes;
+      $PostMeta = new PostMeta;
+      $TaxTypes = new TaxTypes;
+      $TaxMeta = new TaxMeta;
+      $Menus = new Menus;
+      $PostMods = new PostMods;
+
+      Paths::loadCMB( );
 
     
 
@@ -139,15 +144,7 @@ class MedusaContentSuite
 
     */
 
-
-
-
-
-
-
   }
-
-
 
   public static function getGlobals( )
   {

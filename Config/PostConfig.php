@@ -18,7 +18,7 @@ class PostConfig
 
 	public function getPostConfigLoc( )
 	{
-		$loc = Globals::$configLoc . '/' . 'post.php';
+		$loc = Globals::$activeConfigLoc . '/' . 'post.php';
 		return $loc;
 	}
 

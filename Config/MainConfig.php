@@ -19,7 +19,7 @@ class MainConfig
 
 	public function setMainConfigLoc()
 	{
-		$loc = Globals::$configLoc . '/' . 'main.php';
+		$loc = Globals::$activeConfigLoc . '/' . 'main.php';
 		$this->mainConfigLoc = $loc;	
 	}
 

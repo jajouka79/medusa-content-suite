@@ -13,7 +13,9 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 {
 
 	public $postConfig;
+	public static $postConfigStatic;
 	public $postMetaConfig;
+	public static $postMetaConfigStatic;
 	public $taxConfig;
 	public $taxMetaConfig;
 
@@ -128,6 +130,7 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 		$PostConfig->setPostConfig( );
 		$PostConfig = $PostConfig->postConfig;
 		$this->postConfig = $PostConfig;
+		self::$postConfigStatic = $PostConfig;
 
 	}
 
@@ -138,12 +141,19 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 	}
 
 
+	public static function getPostConfigStatic( )
+	{
+		return self::$postConfigStatic;
+	}
+
+
 	public function setPostMetaConfig( )
 	{
 		$PostMetaConfig = new PostMetaConfig;
 		$PostMetaConfig->setPostMetaConfig( );
 		$PostMetaConfig = $PostMetaConfig->postMetaConfig;
 		$this->postMetaConfig = $PostMetaConfig;
+		self::$postMetaConfigStatic = $PostMetaConfig;
 	}
 
 
@@ -151,6 +161,36 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 	{
 		return $this->postMetaConfig;
 	}
+
+	public static function getPostMetaConfigStatic( )
+	{
+		return self::$postMetaConfigStatic;
+	}
+
+
+	public static function getPostMetaPrefixByPostType( $postType )
+	{
+		Common::write_log( 'getPostMetaPrefixByPostType( '.$postType.' )');
+
+		foreach( self::$postMetaConfigStatic as $mb ) :
+
+			Common::write_log( 'object_types : ' );
+
+			Common::write_log( $mb['object_types'] );
+
+			if( in_array( $postType, $mb['object_types'] ) ) :
+
+				Common::write_log( '!!!MATCH' );
+				Common::write_log( $mb['prefix'] );
+
+				#return $mb['prefix'];
+
+			endif;
+
+		endforeach;
+
+	}
+
 
 #####################
 

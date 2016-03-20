@@ -22,7 +22,7 @@ class PostMetaConfig
 
 	public function getPostMetaConfigLoc()
 	{
-		$loc = Globals::$configLoc . '/' . 'post_meta.php';
+		$loc = Globals::$activeConfigLoc . '/' . 'post_meta.php';
 		return $loc;
 	}
 

@@ -18,7 +18,7 @@ class TaxConfig
 
 	public function getTaxConfigLoc()
 	{
-		$loc = Globals::$configLoc . '/' . 'tax.php';
+		$loc = Globals::$activeConfigLoc . '/' . 'tax.php';
 		return $loc;
 	}
 

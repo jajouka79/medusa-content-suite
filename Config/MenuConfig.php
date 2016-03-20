@@ -19,7 +19,7 @@ class MenuConfig
 
 	public function setMenuConfigLoc( )
 	{
-		$loc = Globals::$configLoc . '/' . 'menu.php';
+		$loc = Globals::$activeConfigLoc . '/' . 'menu.php';
 		$this->menuConfigLoc = $loc;
 	}
 
