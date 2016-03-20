@@ -11,7 +11,6 @@ use MedusaContentSuite\CMB\Loaders\CMBLoader as CMBLoader;
 
 class Globals extends \MedusaContentSuite\MedusaContentSuite
 {
-
 	public $postConfig;
 	public static $postConfigStatic;
 	public $postMetaConfig;
@@ -29,12 +28,10 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 	public static $packageVendorPath;
 	public static $cmbPath;
 
-
 	public static $rootConfigLoc;
 	public static $configLoc;
 
 	public static $activeConfigLoc;
-
 
 	public function __construct( )
 	{
@@ -46,7 +43,6 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 	public function callSetters()
 	{
 		$this->setPaths( );
-
     	$this->setMainConfig( );
 
 	    #Content config
@@ -62,8 +58,7 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 
 
 	public static function loadCMB( )
-	{    
-
+	{
 		/*if ( ! defined( 'CMB2_LOADED' ) ) :
 		Common::write_log( "CMB2 NOT LOADED" );
 		else :
@@ -108,7 +103,7 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 	}
 
 
-	public function setMenuConfig()
+	public function setMenuConfig( )
 	{
 		$MenuConfig = new MenuConfig;
 	    $this->menuConfig = $MenuConfig->getMenuConfig( );
@@ -162,13 +157,14 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 		return $this->postMetaConfig;
 	}
 
+
 	public static function getPostMetaConfigStatic( )
 	{
 		return self::$postMetaConfigStatic;
 	}
 
 
-	public static function getPostMetaPrefixByPostType( $postType )
+	/*public static function getPostMetaPrefixByPostType( $postType )
 	{
 		Common::write_log( 'getPostMetaPrefixByPostType( '.$postType.' )');
 
@@ -189,7 +185,7 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 
 		endforeach;
 
-	}
+	}*/
 
 
 #####################
@@ -235,16 +231,12 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 #############PATHS
 
 
-
 	public function setPaths( )
 	{
 		#Common::write_log( "Globals - setPaths()" );
 		#Common::write_log( $this );
 		$Paths = new Paths( );
-
-
 	}
-
 
 
 

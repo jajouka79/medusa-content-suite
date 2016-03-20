@@ -19,6 +19,9 @@ use MedusaContentSuite\Config\Globals as Globals;
 
 use MedusaContentSuite\Config\Paths as Paths;
 
+use MedusaContentSuite\TimberMods\TimberPostMod as TimberPostMod;
+
+
 use MedusaContentSuite\Taxonomy\TaxFormatters as TaxFormatters;
 use MedusaContentSuite\Taxonomy\TaxTypes as TaxTypes;
 use MedusaContentSuite\Taxonomy\TaxMods as TaxMods;
