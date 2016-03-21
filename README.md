@@ -30,3 +30,5 @@ TODO :
     - custom admin theme?
     - text editor config - permission integration
     - media library config
+
+  - TaxTypes.php - 
