@@ -19,6 +19,7 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 		#Common::write_log( self::$Globals );
 		add_action( 'init', array( $this, 'registerTaxTypes' ), 1 );
 		add_action( 'admin_menu', array( $this, 'removeTaxonomyMetaBox' ), 1 );
+		add_action( 'admin_menu', array( $this, 'removeTaxonomyMetaBox' ), 1 );
 	}
 
 	public function getTaxTypesForPt( )
@@ -78,7 +79,7 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 				
 				$tax = $this->tax;
 				Common::write_log( "tax  - " . $tax );
-				remove_meta_box( 'tagsdiv-'.$tax, 'post', 'side' );
+				\remove_meta_box( 'tagsdiv-'.$tax, 'post', 'side' );
 
 			endif;
 
