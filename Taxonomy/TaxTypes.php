@@ -17,9 +17,9 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 		self::$Globals = parent::getGlobals( );
 
 		#Common::write_log( self::$Globals );
+		#Common::write_log( "TaxTypes __construct" );
 		add_action( 'init', array( $this, 'registerTaxTypes' ), 1 );
-		add_action( 'admin_menu', array( $this, 'removeTaxonomyMetaBox' ), 1 );
-		add_action( 'admin_menu', array( $this, 'removeTaxonomyMetaBox' ), 1 );
+		#add_action( 'admin_menu', array( $this, 'removeTaxonomyMetaBox' ), 1 );
 	}
 
 	public function getTaxTypesForPt( )
@@ -36,26 +36,24 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 			
 			#Common::write_log( $tc );
 
+			Common::write_log( $tc['tax'] );
+
 			if( ! empty ( $tc['pt'] ) ) :
 
-				$pt = array( );
+				$pts = array( );
 
-				foreach ( $tc['pt'] as $t ) :
-					#write_log($t);
-					if ( ! empty ( $t ) ) : 
-						$pt[] = $t['id'];
+				foreach ( $tc['pt'] as $pt ) :
+					Common::write_log( $pt );
+
+					if ( ! empty ( $pt ) ) : 
+						$pts[] = $pt['id'];
 					endif;
 
 				endforeach;
 
-				register_taxonomy( $tc['tax'], $pt, $tc['args'] );
+				Common::write_log(  $tc['tax'], $pts, $tc['args'] );
 
-				/*if( $t['show_tax_meta'] ) :
-					Common::write_log($tc['tax'] . " - TRUE");
-
-					$this->tax = $tc['tax'];
-					add_action( 'admin_menu', array( $this, 'removeTaxonomyMetaBox' ) );
-				endif;*/
+				register_taxonomy( $tc['tax'], $pts, $tc['args'] );
 
 			endif;
 
@@ -65,21 +63,44 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 
 	}
 
+
 	public function removeTaxonomyMetaBox( )
 	{
-		Common::write_log( "removeTaxonomyMetaBox( )" );
+		#Common::write_log( "removeTaxonomyMetaBox( )" );
 
 		$TaxConfig = self::$Globals->taxConfig;
 
-		foreach ( $TaxConfig as $tc ) :
+		foreach( $TaxConfig as $tc ) :
 			
-			Common::write_log( $tc );
+			#Common::write_log( $tc );
+
+			$tax = $tc['tax'];
 
 			if( ! empty ( $tc['pt'] ) ) :
 				
-				$tax = $this->tax;
-				Common::write_log( "tax  - " . $tax );
-				\remove_meta_box( 'tagsdiv-'.$tax, 'post', 'side' );
+				Common::write_log( "tax (tc) - " . $tax );
+
+				foreach( $tc['pt'] as $pt ) : 
+
+					Common::write_log( $pt );
+					Common::write_log( "" );
+
+					if( ! empty ( $pt ) ) :
+
+						#Common::write_log(  $pt );
+						#Common::write_log(  $pt['id'] . " - " . $pt['show_tax_meta'] );
+
+						#Common::write_log( $pt['show_tax_meta'] );
+						
+						if( ! $pt['show_tax_meta'] ) :
+
+							Common::write_log( "removing " . $tax . " meta box from post type : " . $pt['id'] ) ;
+							\remove_meta_box( 'tagsdiv-'.$tax, $pt, 'side' );
+
+						endif;
+
+					endif;
+				endforeach;
 
 			endif;
 
@@ -91,6 +112,7 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 		$tax = $this->tax;
 		write_log("xxxxxxx - ". $tax);
     	\add_meta_box($tax.'divXXX', $tax, 'post_'.$tax.'_meta_box', 'blurb', 'side', null, array( 'taxonomy' => $tax ));
+	
 	}*/
 
 
@@ -132,6 +154,7 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 
 		endfor;
 
-	}	*/
+	}	
+	*/
 
 }
