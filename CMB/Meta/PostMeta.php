@@ -85,7 +85,7 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 	}
 
 
-	public static function getPostMetaTypeConfigByPostType( $type )
+	public static function getPostMetaConfigByPostType( $type )
 	{
 		$config = array( );
 		$PostMetaConfig = self::$Globals->postMetaConfig;

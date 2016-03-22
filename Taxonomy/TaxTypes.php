@@ -5,6 +5,7 @@ namespace MedusaContentSuite\Taxonomy;
 use MedusaContentSuite\Config\TaxConfig as TaxConfig;
 use MedusaContentSuite\Functions\Common as Common;
 use MedusaContentSuite\Post\PostTypes as PostTypes;
+use MedusaContentSuite\Post\PostMeta as PostMeta;
 
 class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 {
@@ -63,7 +64,7 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 
 		foreach( $TaxConfig as $tc ) :
 
-			
+
 			$tax = $tc['tax'];
 
 			if( ! empty ( $tc['pt'] ) ) :
@@ -75,10 +76,11 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 						#Common::write_log( $pt['id'] . " - " . $pt['show_tax_meta'] );
 						#Common::write_log( $pt['show_tax_meta'] );
 
-						$test = PostTypes::getConfigByPt( $pt['id'] );
+						$test = PostTypes::getPostConfigByPostType( $pt['id'] );
+						$test2 = PostMeta::getPostMetaConfigByPostType( $pt['id'] );
 
-						Common::write_log( 'test' );
-						Common::write_log( $test );
+						Common::write_log( 'test2' );
+						Common::write_log( $test2 );
 
 						if( ! $pt['show_tax_meta'] ) :
 							#Common::write_log( "removing " . $tax . " meta box from post type : " . $pt['id'] );

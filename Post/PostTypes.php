@@ -47,7 +47,7 @@ class PostTypes extends \MedusaContentSuite\MedusaContentSuite
 	}
 
 
-	public static function getConfigByPt( $type )
+	public static function getPostConfigByPostType( $type )
 	{
 		$ptConfig = array( );
 		$PostConfig = parent::$Globals->postConfig;
