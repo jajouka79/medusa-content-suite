@@ -19,7 +19,6 @@ class PostTypes extends \MedusaContentSuite\MedusaContentSuite
 		$PostConfig = parent::$Globals->postConfig;
 		$PostConfig = apply_filters( 'PostConfigHook', $PostConfig, array( ) );
 
-
 		if ( is_main_site( $blog_id ) ) :
 			#write_log( "yes, this is the main site - blog_id : " . $blog_id );
 		endif;

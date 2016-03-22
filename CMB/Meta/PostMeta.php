@@ -76,6 +76,13 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 			endforeach;
 		endif;
 	}
+
+	public function getPosMetaConfigByPt()
+	{
+
+		$PostMetaConfig = self::$Globals->postMetaConfig;
+
+	}
 }
 
 

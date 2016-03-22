@@ -17,6 +17,7 @@ class Globals extends \MedusaContentSuite\MedusaContentSuite
 	public static $postMetaConfigStatic;
 	public $taxConfig;
 	public $taxMetaConfig;
+	public static $taxMetaConfigStatic;
 
 	public $fieldTypes;
 	public $menuConfig;

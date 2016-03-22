@@ -23,6 +23,14 @@ class TaxConfig
 	}
 
 
+	public function getTaxConfigLocByTaxName()
+	{
+		$taxConfig = Globals::
+		#$config = Globals::$activeConfigLoc . '/' . 'tax.php';
+		return $config;
+	}
+
+
 	public function setTaxConfig( )
 	{
 		if( file_exists( $this->taxConfigLoc ) ) :		
