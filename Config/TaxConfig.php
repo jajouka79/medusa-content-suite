@@ -15,21 +15,20 @@ class TaxConfig
 		$this->taxConfigLoc = $this->getTaxConfigLoc( );
 	}
 
-
 	public function getTaxConfigLoc()
 	{
 		$loc = Globals::$activeConfigLoc . '/' . 'tax.php';
 		return $loc;
 	}
 
-
+	/*
 	public function getTaxConfigLocByTaxName()
 	{
 		$taxConfig = Globals::
 		#$config = Globals::$activeConfigLoc . '/' . 'tax.php';
 		return $config;
 	}
-
+	*/
 
 	public function setTaxConfig( )
 	{

@@ -7,7 +7,7 @@ use MedusaContentSuite\Functions\Common as Common;
 class PostTypes extends \MedusaContentSuite\MedusaContentSuite
 {
 
-	public function __construct(  )
+	public function __construct( )
 	{
 		add_action( 'init', array( $this, 'registerPostTypes' ), 2 );
 	}
@@ -45,4 +45,24 @@ class PostTypes extends \MedusaContentSuite\MedusaContentSuite
 
 		endif;
 	}
+
+
+	public static function getConfigByPt( $type )
+	{
+		$ptConfig = array( );
+		$PostConfig = parent::$Globals->postConfig;
+
+		foreach( $PostConfig as $pt ) :
+			if( $type == $pt['types']  ) :
+				Common::write_log( $pt );
+				$ptConfig = $pt;
+				break;
+			endif;
+		endforeach;
+
+		return $ptConfig;
+
+	}
+
+
 }

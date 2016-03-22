@@ -32,9 +32,5 @@ class PostConfig
 	}
 
 
-	static function getConfigByPt( $pt )
-	{		
-		return $ptConfig;
-	}
 
 }
