@@ -83,7 +83,6 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 						if( $pt['id'] == "class" ) : #tmp
 						
 							#$this->checkPostMetaFieldsTaxonomy( $pt['id'], $tax );
-
 							Common::write_log( 'postMetaConfig :' );
 							Common::write_log( $postMetaConfig );						
 
