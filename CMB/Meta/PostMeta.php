@@ -87,22 +87,26 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 
 	public static function getPostMetaConfigByPostType( $type )
 	{
-		$config = array( );
+		$metaConfig = array( );
 		$PostMetaConfig = self::$Globals->postMetaConfig;
 
 		foreach( $PostMetaConfig as $meta ) :
 
 			#$meta['object_types']
 
-			if( $type == $meta['types']  ) :
-				Common::write_log( $meta );
-				$metaConfig = $meta;
-				break;
-			endif;
+			foreach( $meta['object_types'] as $pt) :
+
+				if( $type == $pt ) :
+					#Common::write_log( "type = meta object types" );
+					#Common::write_log( $meta );
+					$metaConfig[] = $meta;
+				endif;
+
+			endforeach;
 
 		endforeach;
 
-		return $config;
+		return $metaConfig;
 	}
 
 

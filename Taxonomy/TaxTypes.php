@@ -5,7 +5,7 @@ namespace MedusaContentSuite\Taxonomy;
 use MedusaContentSuite\Config\TaxConfig as TaxConfig;
 use MedusaContentSuite\Functions\Common as Common;
 use MedusaContentSuite\Post\PostTypes as PostTypes;
-use MedusaContentSuite\Post\PostMeta as PostMeta;
+use MedusaContentSuite\CMB\Meta\PostMeta as PostMeta;
 
 class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 {
@@ -24,10 +24,10 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 		add_action( 'admin_menu', array( $this, 'removeTaxonomyMetaBox' ), 1 );
 	}
 
+
 	public function getTaxTypesForPt( $type )
 	{
 		$TaxConfig = self::$Globals->taxConfig;
-
 	}
 
 
@@ -60,13 +60,10 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 		Common::write_log( "removeTaxonomyMetaBox( )" );
 
 		$TaxConfig = self::$Globals->taxConfig;
-
-
+		
 		foreach( $TaxConfig as $tc ) :
-
-
 			$tax = $tc['tax'];
-
+			#$fieldTypes = $tc['fields'];
 			if( ! empty ( $tc['pt'] ) ) :
 				foreach( $tc['pt'] as $pt ) :
 					#Common::write_log( $pt );
@@ -76,23 +73,41 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 						#Common::write_log( $pt['id'] . " - " . $pt['show_tax_meta'] );
 						#Common::write_log( $pt['show_tax_meta'] );
 
-						$test = PostTypes::getPostConfigByPostType( $pt['id'] );
-						$test2 = PostMeta::getPostMetaConfigByPostType( $pt['id'] );
+						#$test = PostTypes::getPostConfigByPostType( $pt['id'] );
+						$postMetaConfig = PostMeta::getPostMetaConfigByPostType( $pt['id'] );
 
-						Common::write_log( 'test2' );
-						Common::write_log( $test2 );
+						# use $tax var with pt var
+						# are there any taxonomy fields in given tax attached to given pt
+						# gu
+
+						if( $pt['id'] == "class" ) : #tmp
+						
+							#$this->checkPostMetaFieldsTaxonomy( $pt['id'], $tax );
+
+							Common::write_log( 'postMetaConfig :' );
+							Common::write_log( $postMetaConfig );						
+
+						endif;
 
 						if( ! $pt['show_tax_meta'] ) :
 							#Common::write_log( "removing " . $tax . " meta box from post type : " . $pt['id'] );
 							\remove_meta_box( 'tagsdiv-'.$tax, $pt, 'side' );
 						endif;
-
 					endif;
 				endforeach;
 			endif;
 		endforeach;
 	}
 
+
+	public function checkPostMetaFieldsTaxonomy( $pt, $tax )
+	{
+		Common::write_log( 'checkPostMetaFieldsTaxonomy' );
+		Common::write_log( 'pt - ' . $pt);
+		Common::write_log( 'tax - ' . $tax );
+
+		return true;
+	}
 
 	/*
 	public function meta_boxes_function( )
