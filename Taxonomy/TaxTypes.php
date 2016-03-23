@@ -80,14 +80,14 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 						# are there any taxonomy fields in given tax attached to given pt
 						# gu
 
-						if( $pt['id'] == "class" ) : #tmp
+						/*if( $pt['id'] == "class" ) : #tmp
 						
 							#$this->checkPostMetaFieldsTaxonomy( $pt['id'], $tax );
 
 							Common::write_log( 'postMetaConfig :' );
 							Common::write_log( $postMetaConfig );						
 
-						endif;
+						endif;*/
 
 						if( ! $pt['show_tax_meta'] ) :
 							#Common::write_log( "removing " . $tax . " meta box from post type : " . $pt['id'] );
