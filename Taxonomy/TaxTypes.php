@@ -74,14 +74,14 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 						#Common::write_log( $pt['show_tax_meta'] );
 
 						#$test = PostTypes::getPostConfigByPostType( $pt['id'] );
-						$postMetaConfig = PostMeta::getPostMetaConfigByPostType( $pt['id'] );
+						#$postMetaConfig = PostMeta::getPostMetaConfigByPostType( $pt['id'] );
 
 						# use $tax var with pt var
 						# are there any taxonomy fields in given tax attached to given pt
 						# gu
 
 						/*if( $pt['id'] == "class" ) : #tmp
-						
+
 							#$this->checkPostMetaFieldsTaxonomy( $pt['id'], $tax );
 
 							Common::write_log( 'postMetaConfig :' );

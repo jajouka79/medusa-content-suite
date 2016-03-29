@@ -31,4 +31,5 @@ TODO :
     - text editor config - permission integration
     - media library config
 
-  - TaxTypes.php - 
+  - disbale wp tax box when cmb2 tax field if used - see TaxTypes.php
+  - menu location caching - old locations saved - in terms db table
