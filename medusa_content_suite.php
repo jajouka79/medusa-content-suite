@@ -71,8 +71,9 @@ add_action( 'wp_print_scripts', function( ){
 
 #TODO - sort out validation classes
 #///////////////////////////////////////////////////////
-$number = 123;
-$xx = v::numeric( )->validate( $number ); // true
+
+/*$number = 123;
+$xx = v::numeric( )->validate( $number );*/
 
 #print($xx);
 ///////////////////////////////////////////////////////
