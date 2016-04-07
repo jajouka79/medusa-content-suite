@@ -11,6 +11,12 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 {
 	public static $Globals;
 
+
+	public static function getMetaPrefix($pt){
+
+		return "qwerty" . $pt;
+	}
+
 	public function __construct(  )
 	{				
 		self::$Globals = parent::getGlobals( );
@@ -77,10 +83,33 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 		endif;
 	}
 
-	public function getPosMetaConfigByPt()
+	public static function getPosMetaConfig( )
 	{
+		return self::$Globals->postMetaConfig;
+	}
 
-		$PostMetaConfig = self::$Globals->postMetaConfig;
+	public static function getPosMetaConfigByPt( $pt )
+	{
+		$postMetaConfigPt = array( );
+
+		$postMetaConfig = self::$Globals->postMetaConfig;
+
+		foreach( $postMetaConfig as $meta ) :
+
+			#write_log( $meta['object_types'] );
+
+			foreach( $meta['object_types'] as $p ) :
+
+				if( $p == $pt) :
+					$postMetaConfigPt[] = $meta;
+				endif;
+
+			endforeach;
+
+		endforeach;
+
+		write_log( "postMetaConfigPt:" );
+		write_log( $postMetaConfigPt );
 
 	}
 
