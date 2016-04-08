@@ -139,6 +139,15 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 	}
 
 
+	public static function getFieldsForDisplay( $type )
+	{
+		$metaConfig = self::getPostMetaConfigByPostType( $type );
+
+
+		return $metaConfig;
+	}
+
+
 }
 
 
