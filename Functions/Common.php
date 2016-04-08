@@ -71,7 +71,6 @@ class Common
 	}
 
 
-
 	public static function getPageIdByName( $name )
 	{
 		$this_post = get_page_by_title( $name, OBJECT, 'page' );
@@ -82,6 +81,19 @@ class Common
 
 		return false;
 	}
+
+
+	public static function getPageIdByNameAndType( $name, $type )
+	{
+		$this_post = get_page_by_title( $name, OBJECT, $type );
+
+		if( ! empty( $this_post ) ) :
+			return $this_post->ID;
+		endif;
+
+		return false;
+	}
+
 
 
 }
