@@ -53,4 +53,35 @@ class Common
 			return false;
 		endif;
 	}
+
+
+
+
+	public static function getPageNameById( $id )
+	{
+		$this_post = get_post( $id );
+
+		if( isset( $this_post ) ) :
+			if( ! empty( $this_post ) ):
+				return $this_post->post_name;
+			endif;
+		endif;
+
+		return false;
+	}
+
+
+
+	public static function getPageIdByName( $name )
+	{
+		$this_post = get_page_by_title( $name, OBJECT, 'page' );
+
+		if( ! empty( $this_post ) ) :
+			return $this_post->ID;
+		endif;
+
+		return false;
+	}
+
+
 }
