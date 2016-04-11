@@ -57,7 +57,7 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 
 	public function removeTaxonomyMetaBox( )
 	{
-		Common::write_log( "removeTaxonomyMetaBox( )" );
+		#Common::write_log( "removeTaxonomyMetaBox( )" );
 
 		$TaxConfig = self::$Globals->taxConfig;
 		

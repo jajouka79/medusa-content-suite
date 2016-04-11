@@ -81,15 +81,15 @@ class Common
 	}
 
 
-	public static function getPageIdByNameAndType( $name, $type ) {
+	public static function getPageIdByNameAndType( $name, $type )
+	{
 		$this_post = get_page_by_title( $name, OBJECT, $type );
 
-		if( ! empty( $this_post ) ):
+		if( ! empty( $this_post ) ) :
 			return $this_post->ID;
 		endif;
 
 		return false;
 	}
-
 
 }

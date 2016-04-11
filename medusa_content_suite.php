@@ -6,42 +6,28 @@ Plugin URI: http://www.medusamediacreations.co.uk
 Author: S. Beasley
 Version: 1.0
 Author URI: http://www.medusamediacreations.co.uk
-
 */
 
 namespace MedusaContentSuite;
-
 define( "MEDUSACONTENTSUITE", 1 );
 
 use MedusaContentSuite\Functions\Common as Common;
-
 use MedusaContentSuite\Config\Globals as Globals;
-
 use MedusaContentSuite\Config\Paths as Paths;
-
 use MedusaContentSuite\TimberMods\TimberPostMod as TimberPostMod;
-
-
 use MedusaContentSuite\Taxonomy\TaxFormatters as TaxFormatters;
 use MedusaContentSuite\Taxonomy\TaxTypes as TaxTypes;
 use MedusaContentSuite\Taxonomy\TaxMods as TaxMods;
-
 use MedusaContentSuite\Post\PostTypes as PostTypes;
 use MedusaContentSuite\Post\PostMods as PostMods;
-
 use MedusaContentSuite\Functions\Callbacks as Callbacks;
 use MedusaContentSuite\Functions\Rules as Rules;
-
-
 use MedusaContentSuite\CMB\Meta\PostMeta as PostMeta;
 use MedusaContentSuite\CMB\Meta\TaxMeta as TaxMeta;
-
 use Respect\Validation\Validator as v;
 use MedusaContentSuite\CMB\Validators\Validator as Validator;
-
-
-
 use MedusaContentSuite\Config\Menus as Menus;
+use MedusaContentSuite\Images\ImageSizes as ImageSizes;
 
 #require_once '/var/www/bedrock-test1/vendor/autoload.php';
 
@@ -56,18 +42,9 @@ use MedusaContentSuite\Config\Menus as Menus;
   
 #});
 
-
-
-
-
-
-
 add_action( 'wp_print_scripts', function( ){
    #wp_dequeue_script( 'cmb2-scripts' );
 });
-
-
-
 
 #TODO - sort out validation classes
 #///////////////////////////////////////////////////////
@@ -78,13 +55,13 @@ $xx = v::numeric( )->validate( $number );*/
 #print($xx);
 ///////////////////////////////////////////////////////
 
-
 $Common = new Common; #call this first
 $Globals = new Globals;
 
-/*Common::write_log( "Globals" );
-Common::write_log( $Globals );*/
-
+/*
+Common::write_log( "Globals" );
+Common::write_log( $Globals );
+*/
 
 $MedusaContentSuite = new MedusaContentSuite( $Globals );
 
@@ -106,46 +83,39 @@ class MedusaContentSuite
 
       Common::write_log( "MCS Error :: root config folder missing" );
     
-    endif;  
-
+    endif;
   }
-
 
   public function init( )
   {
 
-      $PostTypes = new PostTypes;
-      $PostMeta = new PostMeta;
-      $TaxTypes = new TaxTypes;
-      $TaxMeta = new TaxMeta;
-      $Menus = new Menus;
-      $PostMods = new PostMods;
+    $PostTypes = new PostTypes;
+    $PostMeta = new PostMeta;
+    $TaxTypes = new TaxTypes;
+    $TaxMeta = new TaxMeta;
+    $Menus = new Menus;
+    $PostMods = new PostMods;
+    $ImageSizes = new ImageSizes;
 
-      Paths::loadCMB( );
-
-    
-
+    Paths::loadCMB( );
 
     /*
+    #$Validator = new Validator;
 
-      #$Validator = new Validator;
+    #$Menus = new Menus;
+    #$PostMods = new PostMods;
 
-      #$Menus = new Menus;
-      #$PostMods = new PostMods;
+    #$Yaml = new Yaml;#test
 
+    #$TaxFormatters = new TaxFormatters;
+    #$TaxMods = new TaxMods;
+    #$Rules = new Rules;
 
-      #$Yaml = new Yaml;#test
+    #$Callbacks = new Callbacks;
+    #$Callbacks = $Callbacks->getCallbacks( );
 
-      #$TaxFormatters = new TaxFormatters;
-      #$TaxMods = new TaxMods;
-      #$Rules = new Rules;
-
-      #$Callbacks = new Callbacks;
-      #$Callbacks = $Callbacks->getCallbacks( );
-
-      #$CustomFieldTypes = new CustomFieldTypes;
-      #$PackagesFieldTypes = new PackagesFieldTypes;
-
+    #$CustomFieldTypes = new CustomFieldTypes;
+    #$PackagesFieldTypes = new PackagesFieldTypes;
     */
 
   }
