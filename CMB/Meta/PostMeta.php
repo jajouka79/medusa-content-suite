@@ -29,7 +29,6 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 		$PostMetaConfig = self::$Globals->postMetaConfig;
 		$PostMetaConfig = apply_filters( 'PostMetaConfigHook', $PostMetaConfig, array( ) );
 
-
 		if ( ! empty ( $PostMetaConfig ) ) :
 
 			foreach ( $PostMetaConfig as $mb ) :
@@ -120,39 +119,60 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 		$PostMetaConfig = self::$Globals->postMetaConfig;
 
 		foreach( $PostMetaConfig as $meta ) :
-
-			#$meta['object_types']
-
 			foreach( $meta['object_types'] as $pt) :
-
 				if( $type == $pt ) :
 					#Common::write_log( "type = meta object types" );
-					#Common::write_log( $meta );
+					#Common::write_log( $meta ); 
 					$metaConfig[] = $meta;
 				endif;
-
 			endforeach;
-
 		endforeach;
 
 		return $metaConfig;
 	}
 
 
-	public static function getFieldsForDisplay( $type )
+	public static function getMetaBoxFieldNames( $type )
 	{
-		$metaConfig = self::getPostMetaConfigByPostType( $type );
+		$metaConfig = self::getPostMetaConfigByPostType( $type );	
+		$fieldNames = array( );
+		$fieldNames2 = array( );
+		$strip = "_cmb_";
 
+		foreach( $metaConfig as $mb ) : 
+			$fieldNames[] = $mb['fields'];			
+		endforeach;
 
-		return $metaConfig;
+		foreach( $fieldNames as $f ) :
+			foreach( $f as $f2 ) :
+				$fieldNames2[$f2['name']] = self::fieldNameFilter( $f2['id'], $strip );
+			endforeach;
+		endforeach;
+		
+		return $fieldNames2;
 	}
 
+
+	public static function fieldNameFilter( $str, $strip )
+	{
+		return str_replace( $strip, "", $str );
+	}
+
+	public static function getMetaValues( $fieldNames, $strip )
+	{
+		foreach( $fieldName as $f ) :
+			$key = $strip . $f;
+			$value = get_post_meta( $post, $key, true );
+			$fields[$key] = $value;
+		endforeach;
+
+		return $fields;
+	}
 
 }
 
 
 /*
-
 	YAML stuff :-
 
 	$path = Paths::getThisPluginPath( "/Paths" ) . '/PostMetaConfig.yml';
