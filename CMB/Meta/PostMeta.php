@@ -11,7 +11,6 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 {
 	public static $Globals;
 
-
 	public static function getMetaPrefix($pt){
 
 		return "qwerty" . $pt;
@@ -158,12 +157,18 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 		return str_replace( $strip, "", $str );
 	}
 
+
 	public static function getMetaValues( $fieldNames, $strip )
 	{
-		foreach( $fieldName as $f ) :
+		global $post;
+
+		foreach( $fieldNames as $f ) :
+
 			$key = $strip . $f;
-			$value = get_post_meta( $post, $key, true );
-			$fields[$key] = $value;
+			$value = get_post_meta( $post->ID, $key, true );
+
+			$fields[$f] = $value;
+
 		endforeach;
 
 		return $fields;
