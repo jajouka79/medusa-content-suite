@@ -106,9 +106,6 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 
 		endforeach;
 
-		write_log( "postMetaConfigPt:" );
-		write_log( $postMetaConfigPt );
-
 	}
 
 
