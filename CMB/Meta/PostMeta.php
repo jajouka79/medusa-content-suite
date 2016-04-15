@@ -117,17 +117,22 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 		$metaConfig = array( );
 		$PostMetaConfig = self::$Globals->postMetaConfig;
 
-		foreach( $PostMetaConfig as $meta ) :
-			foreach( $meta['object_types'] as $pt) :
-				if( $type == $pt ) :
-					#Common::write_log( "type = meta object types" );
-					#Common::write_log( $meta ); 
-					$metaConfig[] = $meta;
-				endif;
-			endforeach;
-		endforeach;
+		if( ! empty( $PostMetaConfig ) ) :
 
-		return $metaConfig;
+			foreach( $PostMetaConfig as $meta ) :
+				foreach( $meta['object_types'] as $pt) :
+					if( $type == $pt ) :
+						#Common::write_log( "type = meta object types" );
+						#Common::write_log( $meta ); 
+						$metaConfig[] = $meta;
+					endif;
+				endforeach;
+			endforeach;
+
+			return $metaConfig;
+
+		endif;
+		
 	}
 
 
@@ -162,16 +167,19 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 	{
 		global $post;
 
-		foreach( $fieldNames as $f ) :
+		if( ! empty(  $fieldNames ) ) :
 
-			$key = $strip . $f;
-			$value = get_post_meta( $post->ID, $key, true );
+			foreach( $fieldNames as $f ) :
 
-			$fields[$f] = $value;
+				$key = $strip . $f;
+				$value = get_post_meta( $post->ID, $key, true );
 
-		endforeach;
+				$fields[$f] = $value;
 
-		return $fields;
+			endforeach;
+
+			return $fields;
+		endif;
 	}
 
 }
