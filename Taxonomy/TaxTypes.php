@@ -35,21 +35,25 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 	{
 		$TaxConfig = self::$Globals->taxConfig;
 
-		foreach ( $TaxConfig as $tc ) :			
-			#Common::write_log( $tc );
-			#Common::write_log( $tc['tax'] );
-			if( ! empty ( $tc['pt'] ) ) :
-				$pts = array( );
-				foreach ( $tc['pt'] as $pt ) :
-					#Common::write_log( $pt );
-					if ( ! empty ( $pt ) ) : 
-						$pts[] = $pt['id'];
-					endif;
-				endforeach;
-				#Common::write_log(  $tc['tax'], $pts, $tc['args'] );
-				register_taxonomy( $tc['tax'], $pts, $tc['args'] );
-			endif;
-		endforeach;
+		if( ! empty( $TaxConfig ) ) :
+
+			foreach ( $TaxConfig as $tc ) :			
+				#Common::write_log( $tc );
+				#Common::write_log( $tc['tax'] );
+				if( ! empty ( $tc['pt'] ) ) :
+					$pts = array( );
+					foreach ( $tc['pt'] as $pt ) :
+						#Common::write_log( $pt );
+						if ( ! empty ( $pt ) ) : 
+							$pts[] = $pt['id'];
+						endif;
+					endforeach;
+					#Common::write_log(  $tc['tax'], $pts, $tc['args'] );
+					register_taxonomy( $tc['tax'], $pts, $tc['args'] );
+				endif;
+			endforeach;
+
+		endif;
 
 		return $TaxConfig;
 	}
@@ -61,41 +65,43 @@ class TaxTypes extends \MedusaContentSuite\MedusaContentSuite
 
 		$TaxConfig = self::$Globals->taxConfig;
 		
-		foreach( $TaxConfig as $tc ) :
-			$tax = $tc['tax'];
-			#$fieldTypes = $tc['fields'];
-			if( ! empty ( $tc['pt'] ) ) :
-				foreach( $tc['pt'] as $pt ) :
-					#Common::write_log( $pt );
-					if( ! empty ( $pt ) ) :
-
+		if( is_array ( $TaxConfig ) ) : 
+			foreach( $TaxConfig as $tc ) :
+				$tax = $tc['tax'];
+				#$fieldTypes = $tc['fields'];
+				if( ! empty ( $tc['pt'] ) ) :
+					foreach( $tc['pt'] as $pt ) :
 						#Common::write_log( $pt );
-						#Common::write_log( $pt['id'] . " - " . $pt['show_tax_meta'] );
-						#Common::write_log( $pt['show_tax_meta'] );
+						if( ! empty ( $pt ) ) :
 
-						#$test = PostTypes::getPostConfigByPostType( $pt['id'] );
-						#$postMetaConfig = PostMeta::getPostMetaConfigByPostType( $pt['id'] );
+							#Common::write_log( $pt );
+							#Common::write_log( $pt['id'] . " - " . $pt['show_tax_meta'] );
+							#Common::write_log( $pt['show_tax_meta'] );
 
-						# use $tax var with pt var
-						# are there any taxonomy fields in given tax attached to given pt
-						# gu
+							#$test = PostTypes::getPostConfigByPostType( $pt['id'] );
+							#$postMetaConfig = PostMeta::getPostMetaConfigByPostType( $pt['id'] );
 
-						/*if( $pt['id'] == "class" ) : #tmp
+							# use $tax var with pt var
+							# are there any taxonomy fields in given tax attached to given pt
+							# gu
 
-							#$this->checkPostMetaFieldsTaxonomy( $pt['id'], $tax );
-							Common::write_log( 'postMetaConfig :' );
-							Common::write_log( $postMetaConfig );						
+							/*if( $pt['id'] == "class" ) : #tmp
 
-						endif;*/
+								#$this->checkPostMetaFieldsTaxonomy( $pt['id'], $tax );
+								Common::write_log( 'postMetaConfig :' );
+								Common::write_log( $postMetaConfig );						
 
-						if( ! $pt['show_tax_meta'] ) :
-							#Common::write_log( "removing " . $tax . " meta box from post type : " . $pt['id'] );
-							\remove_meta_box( 'tagsdiv-'.$tax, $pt, 'side' );
+							endif;*/
+
+							if( ! $pt['show_tax_meta'] ) :
+								#Common::write_log( "removing " . $tax . " meta box from post type : " . $pt['id'] );
+								\remove_meta_box( 'tagsdiv-'.$tax, $pt, 'side' );
+							endif;
 						endif;
-					endif;
-				endforeach;
-			endif;
-		endforeach;
+					endforeach;
+				endif;
+			endforeach;
+		endif;
 	}
 
 

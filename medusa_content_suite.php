@@ -92,7 +92,7 @@ class MedusaContentSuite
     $PostTypes = new PostTypes;
     $PostMeta = new PostMeta;
     $TaxTypes = new TaxTypes;
-    $TaxMeta = new TaxMeta;
+    //$TaxMeta = new TaxMeta;
     $Menus = new Menus;
     $PostMods = new PostMods;
     $ImageSizes = new ImageSizes;

@@ -23,9 +23,16 @@ class TaxConfig
 
 	public function setTaxConfig( )
 	{
-		if( file_exists( $this->taxConfigLoc ) ) :		
+
+		if( file_exists( $this->taxConfigLoc ) ) :
 			$config = require_once( $this->taxConfigLoc );
-			$this->taxConfig = $config;
+
+			if ( is_array( $config ) ) :
+				$this->taxConfig = $config;
+			else:				
+				Common::write_log('MCS ERROR - Tax config not cound' );
+			endif;
+
 		endif;
 	}
 
