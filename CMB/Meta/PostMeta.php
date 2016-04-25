@@ -94,8 +94,6 @@ class PostMeta extends \MedusaContentSuite\MedusaContentSuite
 
 		foreach( $postMetaConfig as $meta ) :
 
-			#write_log( $meta['object_types'] );
-
 			foreach( $meta['object_types'] as $p ) :
 
 				if( $p == $pt) :
