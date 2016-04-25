@@ -64,5 +64,17 @@ class PostTypes extends \MedusaContentSuite\MedusaContentSuite
 
 	}
 
+	public static function getLabelByPt( $pt )
+	{
+		$PostConfig = parent::$Globals->postConfig;
+
+		foreach( $PostConfig as $pc ) :
+			if( $pt == $pc['types']  ) :
+				$label = $pc['args']['labels']['name'];
+				return $label;				
+			endif;
+		endforeach;
+	}
+
 
 }
