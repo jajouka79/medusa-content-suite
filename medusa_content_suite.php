@@ -73,7 +73,7 @@ class MedusaContentSuite
   {
     self::$Globals = $Globals;
 
-    Common::write_log( $Globals );
+    #Common::write_log( $Globals );
   
     if( Paths::checkRootConfigLocExists( ) ) :  
 
